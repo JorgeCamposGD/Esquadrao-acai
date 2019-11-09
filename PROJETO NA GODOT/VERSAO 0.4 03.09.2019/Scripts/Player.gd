@@ -1,41 +1,51 @@
 extends KinematicBody
-export (float) var gravidade
-var motion=Vector3()
-var walkdir
-var angle=45
-export (int) var speed=1
+ 
+const MOVE_SPEED = 12
+const JUMP_FORCE = 30
+const GRAVITY = 0.98
+const MAX_FALL_SPEED = 30
+ 
+const H_LOOK_SENS = 1.0
+const V_LOOK_SENS = 1.0
+ 
+
+var rot=0
+var y_velo = 0
+onready var body=get_node("Spatial")
+
+ 
 func _physics_process(delta):
-	walkdir=Vector2()
-	motion.y=0
+	var move_vec = Vector3()
 	if Input.is_action_pressed("up"):
-		walkdir.y=-1
+		move_vec.z -= 1
 	if Input.is_action_pressed("down"):
-		walkdir.y=1
+		move_vec.z += 1
 	if Input.is_action_pressed("right"):
-		walkdir.x=1
+		move_vec.x += 1
 	if Input.is_action_pressed("left"):
-		walkdir.x=-1
-	if (walkdir.x!=0 or walkdir.y!=0):
-		get_node("Spatial/Armature/AnimationPlayer").play("ANDANDO")
-		
-	else:
-		get_node("Spatial/Armature/AnimationPlayer").play("PARADO")
-	rot()
+		move_vec.x -= 1
+	move_vec = move_vec.normalized()
+	move_vec = move_vec.rotated(Vector3(0, 1, 0), rotation.y)
+	move_vec *= MOVE_SPEED
+	move_vec.y = y_velo
 	
+	if move_vec.z!=0 and move_vec.x!=0:
+		rot=atan2(move_vec.z,move_vec.x*-1)
+
+	print(rad2deg(rot) )
+	body.set_rotation( Vector3(0,rot,0) )
 	
-	motion.y+=delta*gravidade
-	walkdir=walkdir.normalized()*speed
-	motion=Vector3(walkdir.x,gravidade,walkdir.y)
-	motion=move_and_slide(motion,Vector3(0,1,0), 0.05, 4, deg2rad(angle))
-
-func rot():
-	var rot=int(rad2deg( (Vector2( walkdir.x*-1, ( walkdir.y ) ) ).angle()))
-	var actual_rot=int(get_node("Spatial").get_rotation_degrees().y)
-	if rot!=actual_rot:
-		if rot<=90 and rot>=0:
-			print("asln")
-			get_node("Spatial").rotate_y(deg2rad(-10))
-
-		#get_node("Spatial").set_rotation_degrees(Vector3(0,rot,0))
-	print(rot,actual_rot)
-
+	move_and_slide(move_vec, Vector3(0, 1, 0))
+   
+	var grounded = is_on_floor()
+	y_velo -= GRAVITY
+	var just_jumped = false
+	if grounded and y_velo <= 0:
+		y_velo = -0.1
+	if y_velo < -MAX_FALL_SPEED:
+		y_velo = -MAX_FALL_SPEED
+   
+	elif grounded:
+		if move_vec.x == 0 and move_vec.z == 0:
+			body
+	

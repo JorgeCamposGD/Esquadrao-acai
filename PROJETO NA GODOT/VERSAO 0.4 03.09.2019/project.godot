@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="paraense dream"
+config/name="Squad acai"
 run/main_scene="res://CENAS/FASE 2 VER O KILO.tscn"
 config/icon="res://icon.png"
 
