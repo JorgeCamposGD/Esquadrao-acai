@@ -1,48 +1,89 @@
 extends KinematicBody
  
-const MOVE_SPEED = 12
+
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
- 
-
+export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=0
+export (float, 0,5,0.020) var atack_melee
+export (float, 0,5,0.020) var fire_rate_pistol
+export (float, 0,5,0.020) var fire_rate_shotgun
+export (float, 0,5,0.020) var fire_rate_smg
+export (float, 0,5,0.020) var fire_rate_sniper
+export (float,1,100) var move_speed =12
+export (Array,PackedScene) var nao_mexa_nunca
+export (Array,Resource)var Sons
+onready var body=get_node("Spatial")
+onready var fire_rate=[atack_melee,
+					fire_rate_pistol,
+					fire_rate_shotgun,
+					fire_rate_smg,
+					fire_rate_sniper]
+var cooldown=0
+var rotate_speed=20
 var rot=0
 var y_speed = 0
+var up
+var down
+var left
+var right
+var btn=Vector2(0,0)
+func _ready():
+	move_speed*=scale.x
+	for x in nao_mexa_nunca:
+		var bl=x.instance()
+		add_child(bl)
+		bl.translate(Vector3(100,100,100))
 
-
-onready var body=get_node("Spatial")
-
- 
 func _physics_process(delta):
 
 	var move_vec = Vector3()
-	if Input.is_action_pressed("up"):
-		move_vec.z -= 1
-	if Input.is_action_pressed("down"):
-		move_vec.z += 1
-	if Input.is_action_pressed("right"):
-		move_vec.x += 1
-	if Input.is_action_pressed("left"):
-		move_vec.x -= 1
-	move_vec = move_vec.normalized()
+	up=Input.is_action_pressed("up")
+	down= Input.is_action_pressed("down")
+	right= Input.is_action_pressed("right")
+	left= Input.is_action_pressed("left")
 	
-	#move_vec = move_vec.rotated(Vector3(0, 1, 0), rotation.y)
+	if (up or down) and not(up and down):
+		move_vec.z = -1 if up else 1
+		btn.y=1 if up else -1
+	elif (up and down):
+		move_vec.z=btn.y
 
-	move_vec *= MOVE_SPEED
-	move_vec.y = y_speed
+	if (left or right) and not(left and right):
+		move_vec.x = -1 if left else 1
+		btn.x=1 if left else -1
+	elif (left and right):
+		move_vec.x=btn.x
+#	move_vec.x += 1 right
+#	move_vec.x -= 1 left
+	cooldown-=delta if cooldown>0 else 0
+
+	if Input.is_action_pressed("shoot"):
+
+		shoot()
+
+
+	move_vec = move_vec.normalized()
+	move_vec *= move_speed#direção de movimento
+	move_vec.y = y_speed#gravidade
 	
 	if move_vec.z!=0 or move_vec.x!=0:
-		
+		#verifica se o Player esta andando
 		rot=atan2(move_vec.x*-1,move_vec.z*-1)
+		#transforma os vetores de movimento em um angulo que será usado para rotação
 		if body.rotation!=Vector3(0,rot,0):
-			var bodyquat=Quat(body.global_transform.basis)
-			var rotquat=Quat(0,0,0,0)
-			rotquat.set_euler(Vector3(0,rot,0))
-			body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*10) )
 
-	move_and_slide(move_vec, Vector3(0, 1, 0))
+			rot+=deg2rad(-90)#corrige a rotação da animação q algum traste fez errado
+			#verifica se a rotação atual é igual ao angulo para o qual ira virar
+			var bodyquat=Quat(body.global_transform.basis.get_rotation_quat())#quaternion de rotação do personagem
+			var rotquat=Quat(0,0,0,0)#quaternion que será usado para rotação
+
+			rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
+			body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
+
+	move_and_slide(move_vec, Vector3(0, 1, 0),true,4)#movimenta o personagem
    
 	var grounded = is_on_floor()
 	y_speed -= GRAVITY
@@ -56,5 +97,20 @@ func _physics_process(delta):
 		if move_vec.x == 0 and move_vec.z == 0:
 			body
 
+func shoot():
 
-
+	if cooldown<=0:
+		cooldown=fire_rate[arma_atual]
+		
+		if arma_atual==0:
+			pass#chamar ataque melee
+		else:
+			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
+			var bullet=nao_mexa_nunca[arma_atual-1].instance()
+			bullet.global_transform=cano_pos
+			get_parent().get_parent().add_child(bullet,true)
+			bullet.add_collision_exception_with(self)
+			var bls=get_node("Bullet_sound")
+			bls.set_stream(Sons[arma_atual])
+			bls._set_playing(true)
+			#chamar animação
