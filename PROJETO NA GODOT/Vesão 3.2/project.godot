@@ -19,10 +19,6 @@ config/name="Squad acai"
 run/main_scene="res://CENAS/Mapa alpha.tscn"
 config/icon="res://icon.webp"
 
-[autoload]
-
-HUD="*res://CENAS/Interface/HUD.tscn"
-
 [debug]
 
 gdscript/warnings/unused_variable=false
@@ -76,6 +72,14 @@ shoot={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
+
+[layer_names]
+
+3d_physics/layer_1="Personagem"
+3d_physics/layer_2="Cenario"
+3d_physics/layer_3="Inimigos"
+3d_physics/layer_4="Balas"
 
 [physics]
 

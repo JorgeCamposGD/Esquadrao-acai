@@ -13,6 +13,8 @@ export (float, 0,5,0.020) var fire_rate_shotgun
 export (float, 0,5,0.020) var fire_rate_smg
 export (float, 0,5,0.020) var fire_rate_sniper
 export (float,1,100) var move_speed =12
+export (int,1,1000,10) var hp_maximo=100
+export (int,1,1000,10) var hp_atual=100
 export (Array,PackedScene) var nao_mexa_nunca
 export (Array,Resource)var Sons
 onready var body=get_node("Spatial")
@@ -21,6 +23,7 @@ onready var fire_rate=[atack_melee,
 					fire_rate_shotgun,
 					fire_rate_smg,
 					fire_rate_sniper]
+onready var hud=get_node("Control")
 var cooldown=0
 var rotate_speed=20
 var rot=0
@@ -30,16 +33,18 @@ var down
 var left
 var right
 var btn=Vector2(0,0)
+var body_in_rage=[]
 func _ready():
 	move_speed*=scale.x
 	for x in nao_mexa_nunca:
 		var bl=x.instance()
 		add_child(bl)
 		bl.translate(Vector3(100,100,100))
-
+		hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
 func _physics_process(delta):
 
 	var move_vec = Vector3()
+	
 	up=Input.is_action_pressed("up")
 	down= Input.is_action_pressed("down")
 	right= Input.is_action_pressed("right")
@@ -56,10 +61,11 @@ func _physics_process(delta):
 		btn.x=1 if left else -1
 	elif (left and right):
 		move_vec.x=btn.x
-#	move_vec.x += 1 right
-#	move_vec.x -= 1 left
-	cooldown-=delta if cooldown>0 else 0
 
+	cooldown-=delta if cooldown>0 else 0
+	if not(up or down or left or right) and hud.get_input_vec()!=Vector2():
+		move_vec.x=hud.get_input_vec().x
+		move_vec.z=hud.get_input_vec().y
 	if Input.is_action_pressed("shoot"):
 
 		shoot()
@@ -103,7 +109,12 @@ func shoot():
 		cooldown=fire_rate[arma_atual]
 		
 		if arma_atual==0:
-			pass#chamar ataque melee
+			if body_in_rage.size()<0:
+				for enemy in body_in_rage:
+					if enemy.has_method("damage_melee"):
+						enemy.damage_melee()
+			#chamar animação
+			
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
 			var bullet=nao_mexa_nunca[arma_atual-1].instance()
@@ -114,3 +125,15 @@ func shoot():
 			bls.set_stream(Sons[arma_atual])
 			bls._set_playing(true)
 			#chamar animação
+
+
+func _on_Melee_Range_body_entered(body):
+	body_in_rage.append(body)
+	print("asm" )
+
+func _on_Melee_Range_body_exited(body):
+	body_in_rage.erase(body)
+	print("exit")
+
+func _on_Melee_Range_body_shape_entered(body_id, body, body_shape, area_shape):
+	print("aksnd")

@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/INTERFACE/RodaMovimentoExterior.png" type="Texture" id=3]
+[ext_resource path="res://assets/INTERFACE/RodaMovimentoInterior.png" type="Texture" id=4]
+[ext_resource path="res://assets/INTERFACE/BotãoATIRAR.png" type="Texture" id=5]
+[ext_resource path="res://assets/INTERFACE/BotãoTRAVARMOVIMENTO.png" type="Texture" id=6]
+[ext_resource path="res://assets/INTERFACE/HUDExemplo.png" type="Texture" id=7]
+[ext_resource path="res://assets/INTERFACE/BotãoINTERAGIR.png" type="Texture" id=8]
+[ext_resource path="res://assets/INTERFACE/BotãoOPÇÕES.png" type="Texture" id=9]
+[ext_resource path="res://assets/INTERFACE/BarraVidaDetalhe.png" type="Texture" id=10]
+[ext_resource path="res://assets/INTERFACE/BarraVidaCru.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -13,32 +22,91 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUDExemplo" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="FPS" type="Label" parent="CanvasLayer"]
-margin_left = 147.797
-margin_top = 547.247
-margin_right = 238.797
-margin_bottom = 594.247
+margin_left = 21.5349
+margin_top = 27.5172
+margin_right = 112.535
+margin_bottom = 74.5172
 custom_fonts/font = SubResource( 1 )
 text = "64fs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Mobile_hud" type="Control" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
 margin_left = 26.3553
 margin_top = 660.35
 margin_right = 426.356
 margin_bottom = 1060.35
+texture_normal = ExtResource( 3 )
 expand = true
-stretch_mode = 3
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Analog" type="Polygon2D" parent="CanvasLayer/Mobile_hud/TextureButton"]
+[node name="Analog" type="Sprite" parent="CanvasLayer/Mobile_hud/TextureButton"]
 position = Vector2( 200, 200 )
-polygon = PoolVector2Array( -14.7036, -0.157776, 0.659882, -26.6946, 17.42, 0.540588, 0.659882, 15.2057 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="Shoot" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1574.04, 728.101 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 5 )
+action = "shoot"
+
+[node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1422.28, 556.898 )
+scale = Vector2( 4.5, 4.5 )
+normal = ExtResource( 8 )
+
+[node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1759.84, 39.8183 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 9 )
+action = "ui_cancel"
+
+[node name="Lock" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1665.14, 491.473 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 6 )
+
+[node name="ProgressBar" type="TextureProgress" parent="."]
+anchor_left = 0.022
+anchor_top = 0.032
+anchor_right = 0.404
+anchor_bottom = 0.194
+margin_left = 0.403797
+margin_top = 0.0341454
+margin_right = -0.0362549
+margin_bottom = 0.0741425
+value = 40.0
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="button_up" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_button_up"]
 [connection signal="gui_input" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_gui_input"]
