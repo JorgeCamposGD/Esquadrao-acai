@@ -54,10 +54,14 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
-margin_left = 26.3553
-margin_top = 660.35
-margin_right = 426.356
-margin_bottom = 1060.35
+anchor_left = 1.0
+anchor_top = 16.509
+anchor_right = 10.659
+anchor_bottom = 26.509
+margin_left = -13.6447
+margin_top = -0.0100708
+margin_right = -0.00402832
+margin_bottom = -0.0100098
 texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 4
@@ -92,7 +96,7 @@ position = Vector2( 1665.14, 491.473 )
 scale = Vector2( 2, 2 )
 normal = ExtResource( 6 )
 
-[node name="ProgressBar" type="TextureProgress" parent="."]
+[node name="ProgressBar2" type="TextureProgress" parent="."]
 anchor_left = 0.022
 anchor_top = 0.032
 anchor_right = 0.404
@@ -101,8 +105,24 @@ margin_left = 0.403797
 margin_top = 0.0341454
 margin_right = -0.0362549
 margin_bottom = 0.0741425
-value = 40.0
 texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="."]
+modulate = Color( 1, 1, 1, 0.545098 )
+anchor_left = 0.022
+anchor_top = 0.032
+anchor_right = 0.404
+anchor_bottom = 0.194
+margin_left = 163.76
+margin_top = 54.44
+margin_right = -8.68005
+margin_bottom = -55.52
+value = 100.0
 texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 __meta__ = {

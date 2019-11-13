@@ -1,4 +1,5 @@
 extends Control
+
 onready var fps_label=get_node("CanvasLayer/FPS")
 onready var mobile_interface=get_node("CanvasLayer/Mobile_hud")
 onready var texture_size=get_node("CanvasLayer/Mobile_hud/TextureButton").get_size()
@@ -12,8 +13,8 @@ var touch_input=Vector2()
 func _ready():
 	Engine.set_target_fps(60)
 	pass
-#	if Sistema=="Android" or "IPhone":
-#		mobile_interface.hide()
+	if Sistema=="Android" or "IPhone":
+		mobile_interface.hide()
 func _process(delta):
 	fps=Engine.get_frames_per_second()
 	fps_label.set_text("FPS: "+str(fps) )

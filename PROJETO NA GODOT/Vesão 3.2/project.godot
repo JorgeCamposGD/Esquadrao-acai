@@ -19,6 +19,10 @@ config/name="Squad acai"
 run/main_scene="res://CENAS/Mapa alpha.tscn"
 config/icon="res://icon.webp"
 
+[autoload]
+
+Global="*res://CENAS/Global.tscn"
+
 [debug]
 
 gdscript/warnings/unused_variable=false

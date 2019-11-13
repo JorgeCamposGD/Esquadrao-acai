@@ -129,11 +129,9 @@ func shoot():
 
 func _on_Melee_Range_body_entered(body):
 	body_in_rage.append(body)
-	print("asm" )
+
 
 func _on_Melee_Range_body_exited(body):
 	body_in_rage.erase(body)
 	print("exit")
 
-func _on_Melee_Range_body_shape_entered(body_id, body, body_shape, area_shape):
-	print("aksnd")
