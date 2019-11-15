@@ -81,6 +81,11 @@ func _physics_process(delta):
 	if not(up or down or left or right) and hud.get_input_vec()!=Vector2():
 		move_vec.x=hud.get_input_vec().x
 		move_vec.z=hud.get_input_vec().y
+	if Input.is_action_just_pressed("ui_select"):
+		if arma_atual==0:
+			arma_atual=1
+		elif arma_atual==1:
+			arma_atual=0
 	if Input.is_action_pressed("shoot"):
 
 		shoot()
@@ -160,4 +165,4 @@ func damage(dano,type):
 		match type:
 			0: hp_atual-=dano
 	hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
-	print("dano")
+

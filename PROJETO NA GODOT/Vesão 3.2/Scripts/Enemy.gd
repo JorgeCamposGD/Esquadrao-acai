@@ -39,6 +39,7 @@ func _ready():
 func _physics_process(delta):
 	
 	if hp_atual<=0:
+		queue_free()
 		get_node("AnimationPlayer").play("Die")
 		return
 	var move_vec = Vector3()

@@ -1,7 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://CENAS/Personagem/Player.gd" type="Script" id=1]
+[ext_resource path="res://CENAS/Personagem/Balas/bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CENAS/Interface/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CENAS/Personagem/Balas/Pistola.wav" type="AudioStream" id=4]
+[ext_resource path="res://CENAS/Personagem/Balas/fx_bullet_explodewav.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ANDANDO"
@@ -832,7 +835,11 @@ albedo_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 dano_melee = 10.0
 dano_pistola = 20.0
+atack_melee = 0.3
+fire_rate_pistol = 0.5
 move_speed = 29.301
+nao_mexa_nunca = [ ExtResource( 2 ), ExtResource( 2 ) ]
+Sons = [ ExtResource( 5 ), ExtResource( 4 ) ]
 
 [node name="Position3D" type="Position3D" parent="."]
 

@@ -13,8 +13,7 @@ var touch_input=Vector2()
 func _ready():
 	Engine.set_target_fps(60)
 	pass
-	if Sistema=="Android" or "IPhone":
-		mobile_interface.hide()
+
 func _process(delta):
 	fps=Engine.get_frames_per_second()
 	fps_label.set_text("FPS: "+str(fps) )
