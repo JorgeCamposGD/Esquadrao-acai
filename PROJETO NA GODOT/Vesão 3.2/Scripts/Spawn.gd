@@ -16,13 +16,13 @@ func _physics_process(delta):
 		actual_wave+=1
 		in_wave=true
 	
-#		get_node("Timer").start(randi()%10+1) 
+	get_node("Timer").start(randi()%10+1) 
 
 
 
-	else:
-		finish()
-		return
+	#else:
+	#	finish()
+	#	return
 	
 func finish():
 	pass

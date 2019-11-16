@@ -81,7 +81,7 @@ func _physics_process(delta):
    
 
 func atk():
-	
+
 	if cooldown<=0:
 		cooldown=fire_rate[arma_atual]
 		
@@ -149,6 +149,7 @@ func get_bigger_distance(local1,local2,my_pos):
 		return local2-my_pos
 
 func damage(dano,type):
+
 	if hp_atual>0:
 		match type:
 			0: hp_atual-=dano
