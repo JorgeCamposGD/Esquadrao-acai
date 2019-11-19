@@ -6,7 +6,7 @@ const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
-export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=0
+export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=1
 export (float, 0,1000,10) var dano_melee
 export (float, 0,1000,10) var dano_pistola
 export (float, 0,1000,10) var dano_shotgun
@@ -34,7 +34,7 @@ onready var fire_rate=[atack_melee,
 					fire_rate_sniper]
 onready var hud=get_node("Control")
 var cooldown=0
-var rotate_speed=20
+var rotate_speed=25
 var rot=0
 var y_speed = 0
 var up
@@ -82,10 +82,10 @@ func _physics_process(delta):
 		move_vec.x=hud.get_input_vec().x
 		move_vec.z=hud.get_input_vec().y
 	if Input.is_action_just_pressed("ui_select"):
-		if arma_atual==0:
+		if arma_atual==1:
+			arma_atual=3
+		elif arma_atual==3:
 			arma_atual=1
-		elif arma_atual==1:
-			arma_atual=0
 	if Input.is_action_pressed("shoot"):
 
 		shoot()
