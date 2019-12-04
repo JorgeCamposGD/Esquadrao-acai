@@ -6,7 +6,8 @@ const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
-export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=1
+export (int,"melee","pistol")var classe=1#,"shotgun","smg","sniper") 
+var arma_atual=0
 export (float, 0,1000,10) var dano_melee
 export (float, 0,1000,10) var dano_pistola
 export (float, 0,1000,10) var dano_shotgun
@@ -33,6 +34,7 @@ onready var fire_rate=[atack_melee,
 					fire_rate_smg,
 					fire_rate_sniper]
 onready var hud=get_node("Control")
+onready var animation_dmg=get_node("AnimationPlayer2")
 var cooldown=0
 var rotate_speed=25
 var rot=0
@@ -82,12 +84,11 @@ func _physics_process(delta):
 		move_vec.x=hud.get_input_vec().x
 		move_vec.z=hud.get_input_vec().y
 	if Input.is_action_just_pressed("ui_select"):
-		if arma_atual==1:
-			arma_atual=3
-		elif arma_atual==3:
-			arma_atual=1
+		if arma_atual==classe:
+			arma_atual=0
+		elif arma_atual==0:
+			arma_atual=classe
 	if Input.is_action_pressed("shoot"):
-
 		shoot()
 
 
@@ -128,23 +129,23 @@ func _physics_process(delta):
 func shoot():
 
 	if cooldown<=0:
-		cooldown=fire_rate[arma_atual]
+		cooldown=fire_rate[classe]
 		
 		if arma_atual==0:
 			if body_in_rage.size()>0:
 				for enemy in body_in_rage:
 					if enemy.has_method("damage"):
-						enemy.damage(damage[arma_atual],0)
+						enemy.damage(damage[classe],0)
 			#chamar animação
 			
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
-			var bullet=nao_mexa_nunca[arma_atual-1].instance()
+			var bullet=nao_mexa_nunca[classe-1].instance()
 			bullet.global_transform=cano_pos
 			get_parent().get_parent().add_child(bullet,true)
 			bullet.add_collision_exception_with(self)
 			var bls=get_node("Bullet_sound")
-			bls.set_stream(Sons[arma_atual])
+			bls.set_stream(Sons[classe])
 			bls._set_playing(true)
 			#chamar animação
 
@@ -165,4 +166,5 @@ func damage(dano,type):
 		match type:
 			0: hp_atual-=dano
 	hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
+	animation_dmg.play("dmg")
 
