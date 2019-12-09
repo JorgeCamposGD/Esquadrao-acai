@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BotãoINTERAGIR.png-0a5e041dca88e24a6ce7a724be7d702c.stex"
+path="res://.import/BotaoATIRAR.png-ab44e037d7ce0c161b35f5ac0545f1b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/INTERFACE/BotãoINTERAGIR.png"
-dest_files=[ "res://.import/BotãoINTERAGIR.png-0a5e041dca88e24a6ce7a724be7d702c.stex" ]
+source_file="res://assets/INTERFACE/BotaoATIRAR.png"
+dest_files=[ "res://.import/BotaoATIRAR.png-ab44e037d7ce0c161b35f5ac0545f1b7.stex" ]
 
 [params]
 

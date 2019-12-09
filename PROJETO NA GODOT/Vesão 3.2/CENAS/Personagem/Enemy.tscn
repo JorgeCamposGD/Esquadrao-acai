@@ -149,6 +149,18 @@ tracks/17/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("Spatial/Armature/Skeleton/Personagem:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "ATIRANDO"

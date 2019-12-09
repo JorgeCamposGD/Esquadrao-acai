@@ -28,7 +28,7 @@ func _physics_process(delta):
 		if (col.collider and col.collider.has_method("damage")):
 			col.collider.damage(bullet_dmg,0)
 			print("deu dano")
-		$CollisionShape.disabled=true
+#		$CollisionShape.disabled=true
 		$anim.play("explode")
 		hit=true
 	

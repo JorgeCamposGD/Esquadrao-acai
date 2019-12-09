@@ -10,8 +10,9 @@ var in_wave=false
 var time_to_wave=10
 
 func _ready():
+	Engine.target_fps=60
 	instace_mob()
-func _physics_process(delta):
+func process(delta):
 	if actual_wave<=maximo_de_ondas and not in_wave:
 		actual_wave+=1
 		in_wave=true

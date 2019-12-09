@@ -4,11 +4,11 @@
 [ext_resource path="res://Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/INTERFACE/RodaMovimentoExterior.png" type="Texture" id=3]
 [ext_resource path="res://assets/INTERFACE/RodaMovimentoInterior.png" type="Texture" id=4]
-[ext_resource path="res://assets/INTERFACE/BotãoATIRAR.png" type="Texture" id=5]
-[ext_resource path="res://assets/INTERFACE/BotãoTRAVARMOVIMENTO.png" type="Texture" id=6]
+[ext_resource path="res://assets/INTERFACE/BotaoATIRAR.png" type="Texture" id=5]
+[ext_resource path="res://assets/INTERFACE/BotaoTRAVARMOVIMENTO.png" type="Texture" id=6]
 [ext_resource path="res://assets/INTERFACE/HUDExemplo.png" type="Texture" id=7]
-[ext_resource path="res://assets/INTERFACE/BotãoINTERAGIR.png" type="Texture" id=8]
-[ext_resource path="res://assets/INTERFACE/BotãoOPÇÕES.png" type="Texture" id=9]
+[ext_resource path="res://assets/INTERFACE/BotaoINTERAGIR.png" type="Texture" id=8]
+[ext_resource path="res://assets/INTERFACE/BotaoOPcoES.png" type="Texture" id=9]
 [ext_resource path="res://assets/INTERFACE/BarraVidaDetalhe.png" type="Texture" id=10]
 [ext_resource path="res://assets/INTERFACE/BarraVidaCru.png" type="Texture" id=11]
 
@@ -84,6 +84,7 @@ action = "shoot"
 position = Vector2( 1422.28, 556.898 )
 scale = Vector2( 4.5, 4.5 )
 normal = ExtResource( 8 )
+action = "ui_select"
 
 [node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1759.84, 39.8183 )
