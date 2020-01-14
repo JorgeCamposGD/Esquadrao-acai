@@ -26,7 +26,6 @@ Global="*res://CENAS/Global.tscn"
 [debug]
 
 gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 
 [display]

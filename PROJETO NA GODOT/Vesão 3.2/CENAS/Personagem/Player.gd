@@ -1,40 +1,40 @@
 extends KinematicBody
- 
+
 
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
-const H_LOOK_SENS = 1.0
-const V_LOOK_SENS = 1.0
-export (int,"melee","pistol")var classe=1#,"shotgun","smg","sniper") 
-var arma_atual=0
-export (float, 0,1000,10) var dano_melee
-export (float, 0,1000,10) var dano_pistola
-export (float, 0,1000,10) var dano_shotgun
-export (float, 0,1000,10) var dano_smg
-export (float, 0,1000,10) var dano_sniper
 
-export (float, 0,5,0.020) var atack_melee
-export (float, 0,5,0.020) var fire_rate_pistol
-export (float, 0,5,0.020) var fire_rate_shotgun
-export (float, 0,5,0.020) var fire_rate_smg
-export (float, 0,5,0.020) var fire_rate_sniper
-
+export (String, "Pistol", "Shotgun","Smg","Sniper")var classe="Pistol"
+export (float, 0,1000,10) var dano_melee=15
+export (float, 0,5,0.020) var speed_melee=0.5
 export (float,1,100) var move_speed =12
-
-onready var damage=[dano_melee,dano_pistola,dano_shotgun,dano_smg,dano_sniper]
+export  var classe_status={"Pistol":{"damage":15,"fire_rate":0.4},#pistola
+							"Shotgun":{"damage":40,"fire_rate":0.8},#shotgun
+							"Smg":{"damage":10,"fire_rate":0.2},#smg
+							"Sniper":{"damage":50,"fire_rate":1}#sniper
+}
 export (int,1,1000,5) var hp_maximo=100
 export (int,1,1000,5) var hp_atual=100
-export (Array,PackedScene) var nao_mexa_nunca
-export (Array,Resource)var Sons
+var bullets={
+			"Pistol":preload("res://CENAS/Personagem/Balas/bullet.tscn"),
+			"Shotgun":preload("res://CENAS/Personagem/Balas/bullet.tscn"),
+			"Smg":preload("res://CENAS/Personagem/Balas/bullet.tscn"),
+			"Sniper":preload("res://CENAS/Personagem/Balas/bullet.tscn")
+			}
+var Sons={
+			"Pistol":preload("res://CENAS/Personagem/Balas/Pistola.wav"),
+			"Shotgun":preload("res://CENAS/Personagem/Balas/Pistola.wav"),
+			"Smg":preload("res://CENAS/Personagem/Balas/Pistola.wav"),
+			"Sniper":preload("res://CENAS/Personagem/Balas/Pistola.wav")
+			}
 onready var body=get_node("Spatial")
-onready var fire_rate=[atack_melee,
-					fire_rate_pistol,
-					fire_rate_shotgun,
-					fire_rate_smg,
-					fire_rate_sniper]
+
 onready var hud=get_node("Control")
 onready var animation_dmg=get_node("AnimationPlayer2")
+
+
+
 var cooldown=0
 var rotate_speed=25
 var rot=0
@@ -45,13 +45,18 @@ var left
 var right
 var btn=Vector2(0,0)
 var body_in_rage=[]
+var melee=true
+
 func _ready():
 	hp_atual=100
 	Global._add_player(self)
 	move_speed*=scale.x
 	hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
-	for x in nao_mexa_nunca:
-		var bl=x.instance()
+
+
+	for x in bullets:
+		
+		var bl=bullets[x].instance()
 		add_child(bl)
 		bl.translate(Vector3(100,100,100))
 		
@@ -84,13 +89,12 @@ func _physics_process(delta):
 		move_vec.x=hud.get_input_vec().x
 		move_vec.z=hud.get_input_vec().y
 	if Input.is_action_just_pressed("ui_select"):
-		if arma_atual==classe:
-			arma_atual=0
-		elif arma_atual==0:
-			arma_atual=classe
+		if melee:
+			melee=false
+		else:
+			melee=true
 	if Input.is_action_pressed("shoot"):
 		shoot()
-
 
 	move_vec = move_vec.normalized()
 	move_vec *= move_speed#direção de movimento
@@ -122,32 +126,32 @@ func _physics_process(delta):
 	if y_speed < -MAX_FALL_SPEED:
 		y_speed = -MAX_FALL_SPEED
    
-	elif grounded:
-		if move_vec.x == 0 and move_vec.z == 0:
-			body
+#	elif grounded:
+#		if move_vec.x == 0 and move_vec.z == 0:
+#			body
 
 func shoot():
 
 	if cooldown<=0:
-		cooldown=fire_rate[classe]
+		cooldown=classe_status[classe].fire_rate
 		
-		if arma_atual==0:
+		if melee:
 			if body_in_rage.size()>0:
 				for enemy in body_in_rage:
 					if enemy.has_method("damage"):
-						enemy.damage(damage[classe],0)
-			#chamar animação
+						enemy.damage(dano_melee,0)
+			cooldown=melee
 			
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
-			var bullet=nao_mexa_nunca[classe-1].instance()
+			var bullet=bullets[classe].instance()
 			bullet.global_transform=cano_pos
-			get_parent().get_parent().add_child(bullet,true)
+			get_parent().get_parent().add_child(bullet,false)
 			bullet.add_collision_exception_with(self)
 			var bls=get_node("Bullet_sound")
 			bls.set_stream(Sons[classe])
 			bls._set_playing(true)
-			#chamar animação
+			
 
 
 func _on_Melee_Range_body_entered(body):
