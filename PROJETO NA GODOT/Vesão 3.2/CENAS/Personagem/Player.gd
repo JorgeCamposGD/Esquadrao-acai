@@ -48,6 +48,7 @@ var body_in_rage=[]
 var melee=true
 
 func _ready():
+	print("aqui")
 	hp_atual=100
 	Global._add_player(self)
 	move_speed*=scale.x
@@ -57,8 +58,10 @@ func _ready():
 	for x in bullets:
 		
 		var bl=bullets[x].instance()
+		print(bullets)
+		
 		add_child(bl)
-		bl.translate(Vector3(100,100,100))
+		bl.translate(Vector3(10,10,10))
 		
 func _physics_process(delta):
 
@@ -84,17 +87,22 @@ func _physics_process(delta):
 	elif (left and right):
 		move_vec.x=btn.x
 
-	cooldown-=delta if cooldown>0 else 0
+	if cooldown>0:
+		cooldown-=delta
+	else:
+		cooldown=0
+	#cooldown-=delta if cooldown>0 else 0
 	if not(up or down or left or right) and hud.get_input_vec()!=Vector2():
 		move_vec.x=hud.get_input_vec().x
 		move_vec.z=hud.get_input_vec().y
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select"): #verifica se o botão de seleção foi apertado
 		if melee:
 			melee=false
 		else:
 			melee=true
-	if Input.is_action_pressed("shoot"):
-		shoot()
+
+	if Input.is_action_pressed("shoot"): #verifica se o botão de ataque foi apertado
+		atack() #chama a função de tiro
 
 	move_vec = move_vec.normalized()
 	move_vec *= move_speed#direção de movimento
@@ -130,7 +138,7 @@ func _physics_process(delta):
 #		if move_vec.x == 0 and move_vec.z == 0:
 #			body
 
-func shoot():
+func atack():
 
 	if cooldown<=0:
 		cooldown=classe_status[classe].fire_rate
@@ -140,7 +148,7 @@ func shoot():
 				for enemy in body_in_rage:
 					if enemy.has_method("damage"):
 						enemy.damage(dano_melee,0)
-			cooldown=melee
+			#cooldown=melee
 			
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform

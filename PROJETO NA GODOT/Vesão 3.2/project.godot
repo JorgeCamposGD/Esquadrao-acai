@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Squad acai"
 run/main_scene="res://CENAS/Mapa alpha.tscn"
-config/icon="res://icon.webp"
+config/icon="res://ic_on.webp"
 
 [autoload]
 
