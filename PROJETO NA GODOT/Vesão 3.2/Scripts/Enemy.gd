@@ -157,5 +157,5 @@ func damage(dano,type):
 
 
 func _on_Timer_timeout():
-	print("morri")
+
 	queue_free()
