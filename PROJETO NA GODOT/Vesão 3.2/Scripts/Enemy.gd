@@ -154,3 +154,8 @@ func damage(dano,type):
 		match type:
 			0: hp_atual-=dano
 		get_node("AnimationPlayer2").play("Dano")
+
+
+func _on_Timer_timeout():
+	print("morri")
+	queue_free()

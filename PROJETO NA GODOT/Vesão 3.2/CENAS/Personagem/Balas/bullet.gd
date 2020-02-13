@@ -9,10 +9,9 @@ var direction = Vector3()
 
 var bullet_speed = 20
 var hit=false
-export (int,1,100,5)var bullet_dmg=15
+export (int,1,100,5)var bullet_dmg=1500
 
-func _ready():
-	set_karma(true)
+
 func _physics_process(delta):
 	
 	if (hit):
@@ -32,14 +31,14 @@ func _physics_process(delta):
 		$anim.play("explode")
 		hit=true
 	
-func set_karma(aliado):
-	if aliado==true:
-		set_collision_mask_bit(0,true)
-	else:
-		pass
+
 func _on_bullet_body_entered():
 	print("got into body")
 
 func set_bullet_speed_and_damage(speed,damage):
 	self.bullet_speed=speed
 	self.bullet_dmg=damage
+
+
+func _on_Timer_timeout():
+	get_node("MeshInstance").visible=true

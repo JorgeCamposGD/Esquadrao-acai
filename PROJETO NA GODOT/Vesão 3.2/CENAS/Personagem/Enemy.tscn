@@ -1834,6 +1834,10 @@ transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.
 [node name="Find_player" type="Timer" parent="."]
 
 [node name="Mob" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
 [connection signal="body_entered" from="Spatial/Melee Range" to="." method="_on_Melee_Range_body_entered"]
 [connection signal="body_exited" from="Spatial/Melee Range" to="." method="_on_Melee_Range_body_exited"]
 [connection signal="timeout" from="Find_player" to="." method="_on_Find_player_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

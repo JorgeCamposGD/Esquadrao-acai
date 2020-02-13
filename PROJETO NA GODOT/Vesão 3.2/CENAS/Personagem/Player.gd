@@ -17,10 +17,10 @@ export  var classe_status={"Pistol":{"damage":15,"fire_rate":0.4},#pistola
 export (int,1,1000,5) var hp_maximo=100
 export (int,1,1000,5) var hp_atual=100
 var bullets={
-			"Pistol":preload("res://CENAS/Personagem/Balas/bullet.tscn"),
-			"Shotgun":preload("res://CENAS/Personagem/Balas/bullet.tscn"),
-			"Smg":preload("res://CENAS/Personagem/Balas/bullet.tscn"),
-			"Sniper":preload("res://CENAS/Personagem/Balas/bullet.tscn")
+			"Pistol":preload("res://CENAS/Personagem/Balas/bullet.tscn").instance(),
+			"Shotgun":preload("res://CENAS/Personagem/Balas/bullet.tscn").instance(),
+			"Smg":preload("res://CENAS/Personagem/Balas/bullet.tscn").instance(),
+			"Sniper":preload("res://CENAS/Personagem/Balas/bullet.tscn").instance()
 			}
 var Sons={
 			"Pistol":preload("res://CENAS/Personagem/Balas/Pistola.wav"),
@@ -46,23 +46,20 @@ var right
 var btn=Vector2(0,0)
 var body_in_rage=[]
 var melee=true
-
+onready var world=get_tree().get_root()
 func _ready():
 	print("aqui")
 	hp_atual=100
 	Global._add_player(self)
 	move_speed*=scale.x
 	hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
-
+#	world=get_tree()
 
 	for x in bullets:
-		
-		var bl=bullets[x].instance()
-		print(bullets)
-		
-		add_child(bl)
-		bl.translate(Vector3(10,10,10))
-		
+
+		bullets[x].translate(Vector3(10,-10,10))
+		world.call_deferred("add_child",bullets[x].duplicate())
+
 func _physics_process(delta):
 
 	if hp_atual<=0:
@@ -101,8 +98,7 @@ func _physics_process(delta):
 		else:
 			melee=true
 
-	if Input.is_action_pressed("shoot"): #verifica se o botão de ataque foi apertado
-		atack() #chama a função de tiro
+	
 
 	move_vec = move_vec.normalized()
 	move_vec *= move_speed#direção de movimento
@@ -137,7 +133,8 @@ func _physics_process(delta):
 #	elif grounded:
 #		if move_vec.x == 0 and move_vec.z == 0:
 #			body
-
+	if Input.is_action_pressed("shoot"): #verifica se o botão de ataque foi apertado
+		atack() #chama a função de tiro
 func atack():
 
 	if cooldown<=0:
@@ -152,10 +149,13 @@ func atack():
 			
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
-			var bullet=bullets[classe].instance()
-			bullet.global_transform=cano_pos
-			get_parent().get_parent().add_child(bullet,false)
-			bullet.add_collision_exception_with(self)
+			var bl=bullets[classe].duplicate()
+
+			bl.add_collision_exception_with(self)
+			bl.set_global_transform(cano_pos)
+			
+			world.call_deferred("add_child",bl)
+			
 			var bls=get_node("Bullet_sound")
 			bls.set_stream(Sons[classe])
 			bls._set_playing(true)

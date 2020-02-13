@@ -922,8 +922,6 @@ script = ExtResource( 1 )
 dano_melee = 10.0
 move_speed = 29.301
 
-[node name="Position3D" type="Position3D" parent="."]
-
 [node name="Control" parent="." instance=ExtResource( 3 )]
 
 [node name="Bullet_sound" type="AudioStreamPlayer3D" parent="."]

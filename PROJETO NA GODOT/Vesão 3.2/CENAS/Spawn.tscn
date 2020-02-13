@@ -1,21 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://CENAS/Personagem/Enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/Spawn.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Spawn_manager.gd" type="Script" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
 [node name="Spawn" type="Spatial"]
-transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0.905472, 1.37305, 32.1072 )
 script = ExtResource( 2 )
-mob = ExtResource( 1 )
 
-[node name="Position3D" type="Position3D" parent="."]
+[node name="Spawn_pos" type="Position3D" parent="."]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.257783, 0, 0, 0, 0.5, 0, 0, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="Spawn_pos"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Timer" type="Timer" parent="."]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[node name="Spawn_init" type="Position3D" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn_init"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn_init"]
+[connection signal="timeout" from="Spawn_init/Timer" to="." method="_on_Timer_timeout"]
