@@ -17,7 +17,7 @@ export (float,1,100) var move_speed =12
 export (int,1,1000,10) var hp_atual=100
 
 export (Array,Resource)var Sons
-var projeteis=[preload("res://CENAS/Personagem/Balas/bullet.tscn")]
+
 
 onready var body=get_node("Spatial")
 onready var fire_rate=[atack_melee,
@@ -31,9 +31,11 @@ var rotate_speed=20
 var rot=0
 var y_speed = 0
 export (int,"Zombie","Special")  var type_find
+export (bool) var usable=true
 var body_in_rage=[]
-func _ready():
 
+func _ready():
+	set_physics_process(usable)
 	move_speed*=scale.x
 
 func _physics_process(delta):
@@ -91,18 +93,6 @@ func atk():
 					if enemy.has_method("damage"):
 
 						enemy.damage(10,0)
-			#chamar animação
-			
-		else:
-			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
-			var bullet=projeteis[arma_atual-1].instance()
-			bullet.global_transform=cano_pos
-			get_parent().get_parent().add_child(bullet,true)
-			bullet.add_collision_exception_with(self)
-			var bls=get_node("Mob")
-			bls.set_stream(Sons[arma_atual])
-			bls._set_playing(true)
-			#chamar animação
 
 
 func _on_Melee_Range_body_entered(body):
@@ -136,8 +126,7 @@ func get_targuet(type):
 
 		return targuet_pos
 
-func _on_Find_player_timeout():
-	pass # Replace with function body.
+
 func get_bigger_distance(local1,local2,my_pos):
 
 	if local1.distance_to(my_pos) < local2.distance_to(my_pos):

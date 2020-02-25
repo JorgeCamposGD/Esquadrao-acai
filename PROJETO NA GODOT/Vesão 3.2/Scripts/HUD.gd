@@ -38,3 +38,8 @@ func set_hp(hp_max,hp_actual):
 	hp_bar.set_value(hp_actual)
 	hp_bar.set_max(hp_max)
 
+
+
+func _on_OptionButton_item_selected(id):
+	if get_parent().has_method("set_class"):
+		get_parent().set_class(id)

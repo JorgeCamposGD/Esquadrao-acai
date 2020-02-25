@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://assets/Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Interface/Buttons/RodaMovimentoExterior.png" type="Texture" id=3]
+[ext_resource path="res://assets/Interface/Buttons/RodaMovimentoInterior.png" type="Texture" id=4]
+[ext_resource path="res://assets/Interface/Buttons/BotaoATIRAR.png" type="Texture" id=5]
+[ext_resource path="res://assets/Interface/Buttons/BotaoTRAVARMOVIMENTO.png" type="Texture" id=6]
+[ext_resource path="res://assets/Interface/Buttons/BotaoINTERAGIR.png" type="Texture" id=8]
+[ext_resource path="res://assets/Interface/Buttons/BotaoOPcoES.png" type="Texture" id=9]
+[ext_resource path="res://assets/Interface/Hud/BarraVidaDetalhe.png" type="Texture" id=10]
+[ext_resource path="res://assets/Interface/Hud/BarraVidaCru.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="FPS" type="Label" parent="CanvasLayer"]
+margin_left = 21.5349
+margin_top = 27.5172
+margin_right = 112.535
+margin_bottom = 74.5172
+custom_fonts/font = SubResource( 1 )
+text = "64fs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mobile_hud" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
+anchor_left = 1.0
+anchor_top = 16.509
+anchor_right = 10.659
+anchor_bottom = 26.509
+margin_left = -13.6447
+margin_top = -0.0100708
+margin_right = -0.00402832
+margin_bottom = -0.0100098
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Analog" type="Sprite" parent="CanvasLayer/Mobile_hud/TextureButton"]
+position = Vector2( 204.659, 200 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="Shoot" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1574.04, 728.101 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 5 )
+action = "shoot"
+
+[node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1422.28, 556.898 )
+scale = Vector2( 4.5, 4.5 )
+normal = ExtResource( 8 )
+action = "ui_select"
+
+[node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1759.84, 39.8183 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 9 )
+action = "ui_cancel"
+
+[node name="Lock" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1665.14, 491.473 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 6 )
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
+anchor_left = 0.107292
+anchor_top = 0.272222
+anchor_right = 0.260417
+anchor_bottom = 0.397222
+margin_right = -196.0
+margin_bottom = -90.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = SubResource( 2 )
+text = "Pistol"
+items = [ "Pistol", null, false, 0, false, "Shotgun", null, false, 0, false, "SMG", null, false, 0, false, "Sniper", null, false, 0, false ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ProgressBar2" type="TextureProgress" parent="."]
+anchor_left = 0.022
+anchor_top = 0.032
+anchor_right = 0.404
+anchor_bottom = 0.194
+margin_left = 0.403797
+margin_top = 0.0341454
+margin_right = -0.0362549
+margin_bottom = 0.0741425
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="."]
+modulate = Color( 1, 1, 1, 0.545098 )
+anchor_left = 0.022
+anchor_top = 0.032
+anchor_right = 0.404
+anchor_bottom = 0.194
+margin_left = 163.76
+margin_top = 54.44
+margin_right = -8.68005
+margin_bottom = -55.52
+value = 100.0
+texture_progress = ExtResource( 11 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_button_up"]
+[connection signal="gui_input" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_gui_input"]
+[connection signal="item_selected" from="CanvasLayer/OptionButton" to="." method="_on_OptionButton_item_selected"]
