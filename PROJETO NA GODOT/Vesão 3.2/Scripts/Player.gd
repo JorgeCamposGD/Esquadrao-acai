@@ -173,7 +173,6 @@ func atack():
 			bls._set_playing(true)
 
 
-
 func _on_Melee_Range_body_entered(body):
 	body_in_rage.append(body)
 
