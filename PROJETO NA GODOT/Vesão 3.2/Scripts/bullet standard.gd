@@ -12,11 +12,11 @@ var hit=false
 export (int,1,100,5)var bullet_dmg=1500
 
 func _ready():
-	print(self)
+
 	if not(usable):
 		set_physics_process(false)
 func _physics_process(delta):
-	print("ok")
+
 	if (hit):
 		return
 	time_alive-=delta
@@ -35,8 +35,6 @@ func _physics_process(delta):
 		hit=true
 	
 
-func _on_bullet_body_entered():
-	print("got into body")
 
 func set_bullet_speed_and_damage(speed,damage):
 	self.bullet_speed=speed

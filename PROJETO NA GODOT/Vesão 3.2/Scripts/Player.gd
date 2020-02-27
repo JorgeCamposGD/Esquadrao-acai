@@ -9,19 +9,24 @@ export (String, "Pistol", "Shotgun","Smg","Sniper")var classe="Pistol"
 export (float, 0,1000,10) var dano_melee=15
 export (float, 0,5,0.020) var speed_melee=0.5
 export (float,1,100) var move_speed =12
+export (int,1,1000,5) var hp_maximo=100
+export (int,1,1000,5) var hp_atual=100
 export  var classe_status={"Pistol":{"damage":15,"fire_rate":0.4},#pistola
 							"Shotgun":{"damage":40,"fire_rate":0.8},#shotgun
 							"Smg":{"damage":10,"fire_rate":0.2},#smg
 							"Sniper":{"damage":50,"fire_rate":1}#sniper
-}
-
-export (int,1,1000,5) var hp_maximo=100
-export (int,1,1000,5) var hp_atual=100
+							}
 onready var bullets={
 			"Pistol":preload("res://scenes/Personagem/Balas/bullet pistol.tscn"),
 			"Shotgun":preload("res://scenes/Personagem/Balas/bullet shotgun.tscn"),
 			"Smg":preload("res://scenes/Personagem/Balas/bullet smg.tscn"),
 			"Sniper":preload("res://scenes/Personagem/Balas/bullet sniper.tscn")
+			}
+onready var specials_resources={
+			"Pistol":preload("res://scenes/Personagem/especiais/Grenade.tscn"),
+			"Shotgun":preload("res://scenes/Personagem/especiais/Wall.tscn"),
+			"Smg":preload("res://scenes/Personagem/especiais/Turret.tscn"),
+			"Sniper":preload("res://scenes/Personagem/especiais/Trap.tscn")
 			}
 onready var Sons={
 			"Pistol":preload("res://assets/sounds/Pistola.wav"),
@@ -50,15 +55,14 @@ var left
 var right
 var btn=Vector2(0,0)
 var body_in_rage=[]
-var melee=false
 var in_range_colisor=[]
+var melee=false
 var free=true
 var using_special=false
 
 
 
 func _ready():
-	
 	#for x in especiais:
 	hp_atual=100
 	Global._add_player(self)
@@ -77,6 +81,7 @@ func _physics_process(delta):
 	down= Input.is_action_pressed("down")
 	right= Input.is_action_pressed("right")
 	left= Input.is_action_pressed("left")
+	
 
 	if (up or down) and not(up and down):
 		move_vec.z = -1 if up else 1
@@ -134,14 +139,14 @@ func _physics_process(delta):
 	if y_speed < -MAX_FALL_SPEED:
 		y_speed = -MAX_FALL_SPEED
 
-	if Input.is_action_just_pressed("r1"):
+	if Input.is_action_pressed("r1"):
 		especiais[classe].set_visible(true)
 		using_special=true
 
 	if Input.is_action_just_pressed("square"): #verifica se o botão de ataque foi apertado
 		if using_special and free:
-			print("colocou")
-	elif Input.is_action_pressed("square"):
+			construct_item(classe)
+	if Input.is_action_pressed("square") and not(Input.is_action_pressed("r1")):
 			atack() #chama a função de tiro
 	
 	if Input.is_action_just_released("r1"):
@@ -162,8 +167,10 @@ func atack():
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
 			var bl=bullets[classe].instance()
-
+			print(classe)
 			bl.add_collision_exception_with(self)
+
+
 			bl.set_global_transform(cano_pos)
 
 			world.call_deferred("add_child",bl)
@@ -171,6 +178,7 @@ func atack():
 			var bls=get_node("Bullet_sound")
 			bls.set_stream(Sons[classe])
 			bls._set_playing(true)
+
 
 
 func _on_Melee_Range_body_entered(body):
@@ -219,4 +227,14 @@ func _on_Contruct_area_body_exited(body):
 		if not(anim.is_playing()):
 			anim.play("livre")
 		free=true
-	print(body_in_rage)
+
+func construct_item(type):
+	var item=specials_resources[type].instance()
+	
+	world.call_deferred("add_child",item)
+	
+	if type=="Pistol":
+		item.set_global_transform(get_node("Spatial/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform() )
+
+	else:
+		item.global_translate(ray_to_obj.get_collision_point())
