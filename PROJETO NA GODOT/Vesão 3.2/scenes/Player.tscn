@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=3]
@@ -1057,42 +1057,6 @@ emission_on_uv2 = false
 
 [sub_resource type="SphereMesh" id=34]
 
-[sub_resource type="Gradient" id=43]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=44]
-gradient = SubResource( 43 )
-
-[sub_resource type="Curve" id=45]
-max_value = 4.0
-_data = [ Vector2( 0.150987, 4 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.6936 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=46]
-curve = SubResource( 45 )
-
-[sub_resource type="ParticlesMaterial" id=47]
-direction = Vector3( 0, 0, -1 )
-initial_velocity = 1.0
-scale = 0.25
-scale_curve = SubResource( 46 )
-color_ramp = SubResource( 44 )
-
-[sub_resource type="SpatialMaterial" id=48]
-flags_transparent = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-roughness = 0.0
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 2.0
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=49]
-material = SubResource( 48 )
-radius = 0.1
-height = 0.2
-
 [sub_resource type="SpatialMaterial" id=35]
 albedo_color = Color( 0, 0, 0, 1 )
 roughness = 0.0
@@ -1140,7 +1104,6 @@ emission_on_uv2 = false
 [node name="PLAYER" type="KinematicBody"]
 collision_mask = 19
 script = ExtResource( 1 )
-classe = "Sniper"
 dano_melee = 10.0
 move_speed = 29.301
 
@@ -1278,8 +1241,8 @@ mesh = SubResource( 23 )
 material/0 = null
 
 [node name="Contruct_area" type="Area" parent="Spatial"]
-collision_layer = 0
-collision_mask = 22
+collision_layer = 18
+collision_mask = 18
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Contruct_area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.12214 )
@@ -1303,7 +1266,8 @@ mesh = SubResource( 29 )
 material/0 = null
 
 [node name="Granead" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
-transform = Transform( 1, 0, 0, 0, -0.723473, 0.690352, 0, -0.690352, -0.723473, 0, 0.688733, 2.83806 )
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 2, 0.5 )
+visible = false
 mesh = SubResource( 30 )
 material/0 = null
 
@@ -1320,19 +1284,10 @@ anims/ocupado = SubResource( 32 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.0502, 0 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="optimizer"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -12.0492, -5.54926 )
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
 material_override = SubResource( 33 )
 mesh = SubResource( 34 )
 material/0 = null
-
-[node name="Particles" type="Particles" parent="optimizer/MeshInstance5"]
-emitting = false
-amount = 100
-one_shot = true
-visibility_aabb = AABB( -15, -15, -15, 30, 30, 30 )
-local_coords = false
-process_material = SubResource( 47 )
-draw_pass_1 = SubResource( 49 )
 
 [node name="Trap2" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )

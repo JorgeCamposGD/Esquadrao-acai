@@ -75,8 +75,7 @@ tracks/0/keys = {
 }
 
 [node name="bullet" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-collision_layer = 0
+collision_layer = 22
 collision_mask = 22
 script = ExtResource( 2 )
 
@@ -91,6 +90,7 @@ shape = SubResource( 3 )
 
 [node name="explosion" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.452378, 0 )
+visible = false
 explosiveness = 1.0
 process_material = SubResource( 8 )
 draw_pass_1 = SubResource( 10 )
