@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=3]
@@ -841,7 +841,7 @@ nodes/Blend2/position = Vector2( -260, -800 )
 nodes/OneShot/node = SubResource( 14 )
 nodes/OneShot/position = Vector2( -80.0712, -635.5 )
 nodes/output/position = Vector2( 240, -760 )
-node_connections = [ "output", 0, "OneShot", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3" ]
+node_connections = [ "output", 0, "OneShot", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
 
 [sub_resource type="CapsuleShape" id=16]
 radius = 2.05424
@@ -899,7 +899,7 @@ shader = SubResource( 19 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5
 shader_param/metallic = 0.0
-shader_param/roughness = 1.0
+shader_param/roughness = 0.0
 shader_param/point_size = 1.0
 shader_param/uv1_scale = Vector3( 1, 1, 1 )
 shader_param/uv1_offset = Vector3( 0, 0, 0 )
@@ -934,8 +934,13 @@ albedo_color = Color( 1, 0, 0, 0.878431 )
 material = SubResource( 27 )
 size = Vector3( 6, 6, 6 )
 
+[sub_resource type="SpatialMaterial" id=43]
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
 [sub_resource type="SphereMesh" id=29]
-material = SubResource( 27 )
+material = SubResource( 43 )
 radius = 3.0
 height = 6.0
 
@@ -1104,6 +1109,7 @@ emission_on_uv2 = false
 [node name="PLAYER" type="KinematicBody"]
 collision_mask = 19
 script = ExtResource( 1 )
+classe = "Shotgun"
 dano_melee = 10.0
 move_speed = 29.301
 
@@ -1242,7 +1248,7 @@ material/0 = null
 
 [node name="Contruct_area" type="Area" parent="Spatial"]
 collision_layer = 18
-collision_mask = 18
+collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Contruct_area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.12214 )
@@ -1266,7 +1272,7 @@ mesh = SubResource( 29 )
 material/0 = null
 
 [node name="Granead" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
-transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 2, 0.5 )
+transform = Transform( 1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, -4.76837e-07 )
 visible = false
 mesh = SubResource( 30 )
 material/0 = null

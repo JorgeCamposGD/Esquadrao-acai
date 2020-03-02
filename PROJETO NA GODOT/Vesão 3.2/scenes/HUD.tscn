@@ -76,13 +76,13 @@ texture = ExtResource( 4 )
 position = Vector2( 1574.04, 728.101 )
 scale = Vector2( 3, 3 )
 normal = ExtResource( 5 )
-action = "shoot"
+action = "square"
 
 [node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1422.28, 556.898 )
 scale = Vector2( 4.5, 4.5 )
 normal = ExtResource( 8 )
-action = "ui_select"
+action = "r1"
 
 [node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1759.84, 39.8183 )
@@ -94,6 +94,7 @@ action = "ui_cancel"
 position = Vector2( 1665.14, 491.473 )
 scale = Vector2( 2, 2 )
 normal = ExtResource( 6 )
+action = "triangle"
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
 anchor_left = 0.107292

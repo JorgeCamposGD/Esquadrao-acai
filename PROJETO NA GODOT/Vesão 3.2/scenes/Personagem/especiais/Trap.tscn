@@ -1,17 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="SpatialMaterial" id=24]
-resource_local_to_scene = true
-flags_transparent = true
-albedo_color = Color( 1, 0, 0, 0.878431 )
+[ext_resource path="res://assets/maps/fraco do presepio/metal.material" type="Material" id=1]
 
-[sub_resource type="PrismMesh" id=25]
-material = SubResource( 24 )
+[sub_resource type="PrismMesh" id=2]
 size = Vector3( 6, 6, 6 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Spatial" type="Area"]
 
 [node name="Triangle" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-mesh = SubResource( 25 )
-material/0 = null
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )

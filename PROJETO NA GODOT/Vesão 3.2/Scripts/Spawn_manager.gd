@@ -19,7 +19,7 @@ onready var mob=mob_resource.instance()
 func _ready():
 
 	if spawn_places.empty():
-
+		print(get_children())
 		spawn_points=get_children()
 		
 	else:

@@ -1,1 +1,2 @@
-extends "res://Scripts/bullet standard.gd"
+extends Bullet
+

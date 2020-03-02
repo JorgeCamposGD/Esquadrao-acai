@@ -1,8 +1,6 @@
 extends KinematicBody
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+class_name Bullet
 
 var time_alive=5
 var direction = Vector3()

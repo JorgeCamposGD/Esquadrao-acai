@@ -1,5 +1,5 @@
 extends RigidBody
 
 func _ready():
-	print(self.translation)
-	add_force(self.global_transform.basis.z.normalized()*400,Vector3())
+
+	add_force(global_transform.basis.z.normalized()*400,Vector3())

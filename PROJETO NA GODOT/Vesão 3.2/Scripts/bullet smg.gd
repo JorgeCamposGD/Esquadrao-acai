@@ -1,6 +1,4 @@
-extends "res://Scripts/bullet standard.gd"
-
+extends Bullet
 
 func _ready():
-	._ready()
-	.set_physics_process(true)
+	print(get_class())

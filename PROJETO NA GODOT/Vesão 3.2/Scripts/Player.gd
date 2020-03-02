@@ -1,5 +1,6 @@
 extends KinematicBody
 
+class_name player
 
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
@@ -231,10 +232,13 @@ func _on_Contruct_area_body_exited(body):
 func construct_item(type):
 	var item=specials_resources[type].instance()
 	
-	world.call_deferred("add_child",item)
-	
+
 	if type=="Pistol":
 		item.set_global_transform(get_node("Spatial/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform() )
 
 	else:
-		item.global_translate(ray_to_obj.get_collision_point())
+		var point=ray_to_obj.get_collision_point()
+		item.transform.origin=point
+		#item.global_transform.origin=ray_to_obj.get_collision_point()
+	world.call_deferred("add_child",item)
+	item.scale=scale
