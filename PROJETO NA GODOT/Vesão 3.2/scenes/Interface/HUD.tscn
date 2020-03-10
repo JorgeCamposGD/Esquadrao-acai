@@ -1,31 +1,31 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
-[ext_resource path="res://assets/Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/Interface/Buttons/RodaMovimentoExterior.png" type="Texture" id=3]
-[ext_resource path="res://assets/Interface/Buttons/RodaMovimentoInterior.png" type="Texture" id=4]
-[ext_resource path="res://assets/Interface/Buttons/BotaoATIRAR.png" type="Texture" id=5]
-[ext_resource path="res://assets/Interface/Buttons/BotaoTRAVARMOVIMENTO.png" type="Texture" id=6]
-[ext_resource path="res://assets/Interface/Buttons/BotaoINTERAGIR.png" type="Texture" id=8]
-[ext_resource path="res://assets/Interface/Buttons/BotaoOPcoES.png" type="Texture" id=9]
-[ext_resource path="res://assets/Interface/Hud/BarraVidaDetalhe.png" type="Texture" id=10]
-[ext_resource path="res://assets/Interface/Hud/BarraVidaCru.png" type="Texture" id=11]
+[ext_resource path="res://assets/Interface/Buttons/BotaoTRAVARMOVIMENTO.png" type="Texture" id=1]
+[ext_resource path="res://assets/Interface/Buttons/BotaoATIRAR.png" type="Texture" id=2]
+[ext_resource path="res://assets/Interface/Buttons/RodaMovimentoInterior.png" type="Texture" id=3]
+[ext_resource path="res://assets/Interface/Buttons/BotaoOPcoES.png" type="Texture" id=4]
+[ext_resource path="res://assets/Interface/Hud/BarraVidaDetalhe.png" type="Texture" id=5]
+[ext_resource path="res://assets/Interface/Hud/BarraVidaCru.png" type="Texture" id=6]
+[ext_resource path="res://assets/Interface/Buttons/BotaoINTERAGIR.png" type="Texture" id=7]
+[ext_resource path="res://assets/Interface/Buttons/RodaMovimentoExterior.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
 use_filter = true
-font_data = ExtResource( 2 )
+font_data = ExtResource( 9 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,7 +60,7 @@ margin_left = -13.6447
 margin_top = -0.0100708
 margin_right = -0.00402832
 margin_bottom = -0.0100098
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 4
 __meta__ = {
@@ -70,30 +70,30 @@ __meta__ = {
 [node name="Analog" type="Sprite" parent="CanvasLayer/Mobile_hud/TextureButton"]
 position = Vector2( 204.659, 200 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="Shoot" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1574.04, 728.101 )
 scale = Vector2( 3, 3 )
-normal = ExtResource( 5 )
+normal = ExtResource( 2 )
 action = "square"
 
 [node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1422.28, 556.898 )
 scale = Vector2( 4.5, 4.5 )
-normal = ExtResource( 8 )
+normal = ExtResource( 7 )
 action = "r1"
 
 [node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1759.84, 39.8183 )
 scale = Vector2( 3, 3 )
-normal = ExtResource( 9 )
+normal = ExtResource( 4 )
 action = "ui_cancel"
 
 [node name="Lock" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1665.14, 491.473 )
 scale = Vector2( 2, 2 )
-normal = ExtResource( 6 )
+normal = ExtResource( 1 )
 action = "triangle"
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
@@ -121,8 +121,8 @@ margin_left = 0.403797
 margin_top = 0.0341454
 margin_right = -0.0362549
 margin_bottom = 0.0741425
-texture_under = ExtResource( 10 )
-texture_progress = ExtResource( 11 )
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -139,7 +139,7 @@ margin_top = 54.44
 margin_right = -8.68005
 margin_bottom = -55.52
 value = 100.0
-texture_progress = ExtResource( 11 )
+texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false

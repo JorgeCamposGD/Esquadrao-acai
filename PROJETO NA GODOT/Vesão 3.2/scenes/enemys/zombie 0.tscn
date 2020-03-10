@@ -1,8 +1,9 @@
 [gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/sounds/Pistola.wav" type="AudioStream" id=1]
-[ext_resource path="res://assets/caracters/anim.tres" type="Animation" id=2]
+[ext_resource path="res://assets/characters/anim.tres" type="Animation" id=2]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=3]
+
 
 
 

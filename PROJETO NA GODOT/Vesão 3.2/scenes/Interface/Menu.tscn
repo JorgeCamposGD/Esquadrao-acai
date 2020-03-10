@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.713726, 0.807843, 0.866667, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Panel"]
+anchor_left = 0.406771
+anchor_top = 0.138737
+anchor_right = 0.593229
+anchor_bottom = 0.276699
+custom_fonts/font = SubResource( 1 )
+text = "Play solo"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Play p2p" type="Button" parent="Panel"]
+anchor_left = 0.406771
+anchor_top = 0.302662
+anchor_right = 0.593229
+anchor_bottom = 0.440625
+custom_fonts/font = SubResource( 1 )
+text = "Play p2p"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Play host" type="Button" parent="Panel"]
+anchor_left = 0.406771
+anchor_top = 0.471227
+anchor_right = 0.593229
+anchor_bottom = 0.60919
+custom_fonts/font = SubResource( 1 )
+text = "Play in server"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Exit" type="Button" parent="Panel"]
+anchor_left = 0.406771
+anchor_top = 0.635152
+anchor_right = 0.593229
+anchor_bottom = 0.773115
+custom_fonts/font = SubResource( 1 )
+text = "exit"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PopupPanel" type="PopupPanel" parent="Panel"]
+visible = true
+anchor_left = 0.165672
+anchor_top = 0.0967735
+anchor_right = 0.87036
+anchor_bottom = 0.752329
+margin_bottom = -6.10352e-05
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="pressed" from="Panel/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Panel/Play p2p" to="." method="_on_Play_p2p_pressed"]
+[connection signal="pressed" from="Panel/Play host" to="." method="_on_Play_host_pressed"]
+[connection signal="pressed" from="Panel/Exit" to="." method="_on_Exit_pressed"]

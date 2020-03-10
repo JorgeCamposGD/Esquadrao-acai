@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Squad acai"
-run/main_scene="res://scenes/Maps/Mapa alpha.tscn"
+run/main_scene="res://scenes/Interface/Menu.tscn"
 config/icon="res://ic_on.webp"
 
 [autoload]

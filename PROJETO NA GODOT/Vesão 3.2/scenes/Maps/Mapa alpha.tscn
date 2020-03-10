@@ -57,7 +57,7 @@ background_sky = SubResource( 5 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Scene Root" type="Spatial" parent="."]
-transform = Transform( -1.62921e-007, 0, 1, 0, 1, 0, -1, 0, -1.62921e-007, -26.1802, 0, 0 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -26.1802, 0, 0 )
 
 [node name="PLAYER" parent="Scene Root" instance=ExtResource( 1 )]
 transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -1.38304, 1.26852, 30.2877 )
@@ -65,10 +65,10 @@ hp_maximo = 1000
 hp_atual = 1000
 
 [node name="Position3D2" type="Position3D" parent="Scene Root/PLAYER"]
-transform = Transform( 0.999999, 0, -7.10543e-015, 0, 0.999999, 0, 3.55271e-015, 0, 1, -8.07988, 8.80968, -1.19209e-006 )
+transform = Transform( 0.999999, 0, -7.10543e-15, 0, 0.999999, 0, 3.55271e-15, 0, 1, -8.07988, 8.80968, -1.19209e-06 )
 
 [node name="Camera" type="ClippedCamera" parent="Scene Root/PLAYER/Position3D2"]
-transform = Transform( -5.63131e-007, 6.2649, -2.27937, 7.46834e-007, 2.27937, 6.2649, 6.66667, 2.73848e-007, -8.94363e-007, -5.70386, 38.2226, 9.53674e-007 )
+transform = Transform( -5.63131e-07, 6.2649, -2.27937, 7.46834e-07, 2.27937, 6.2649, 6.66667, 2.73848e-07, -8.94363e-07, -5.70386, 38.2226, 9.53674e-07 )
 current = true
 collision_mask = 18
 
@@ -77,30 +77,30 @@ collision_mask = 18
 [node name="Colisão do jogador" type="Spatial" parent="Scene Root"]
 
 [node name="parede de colisao" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 0.583994, 0, -6.77761e-008, 0, 1, 0, -6.77761e-008, 0, 1, -2.09518, 2.55024, 27.6209 )
+transform = Transform( 0.583994, 0, -6.77761e-08, 0, 1, 0, -6.77761e-08, 0, 1, -2.09518, 2.55024, 27.6209 )
 collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao2" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 1.35516, 0, 5.78632e-008, 0, 1, 0, 5.78632e-008, 0, 1, 14.7144, 2.55024, 27.6209 )
+transform = Transform( 1.35516, 0, 5.78632e-08, 0, 1, 0, 5.78632e-08, 0, 1, 14.7144, 2.55024, 27.6209 )
 collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao2"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao4" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 0.583994, 0, -6.77761e-008, 0, 1, 0, -6.77761e-008, 0, 1, -3.21436, 2.55024, 38.3076 )
+transform = Transform( 0.583994, 0, -6.77761e-08, 0, 1, 0, -6.77761e-08, 0, 1, -3.21436, 2.55024, 38.3076 )
 collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao4"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao5" type="StaticBody" parent="Scene Root/Colisão do jogador"]
@@ -109,7 +109,7 @@ collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao5"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao6" type="StaticBody" parent="Scene Root/Colisão do jogador"]
@@ -118,7 +118,7 @@ collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao6"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao7" type="StaticBody" parent="Scene Root/Colisão do jogador"]
@@ -127,7 +127,7 @@ collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao7"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao8" type="StaticBody" parent="Scene Root/Colisão do jogador"]
@@ -136,16 +136,16 @@ collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao8"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao9" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.000815168, 0.906049, -0.423169, 0.00174527, 0.423172, 0.906045, 0.219248, 1.47614e-007, -0.00123846, 15.4288, 2.32093, 33.7678 )
+transform = Transform( -0.000815168, 0.906049, -0.423169, 0.00174527, 0.423172, 0.906045, 0.219248, 1.47614e-07, -0.00123846, 15.4288, 2.32093, 33.7678 )
 collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao9"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao10" type="StaticBody" parent="Scene Root/Colisão do jogador"]
@@ -154,25 +154,25 @@ collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao10"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="parede de colisao3" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 1.502, 0, 8.17861e-008, 0, 1, 0, 8.17861e-008, 0, 1, 14.4914, 2.55024, 38.3076 )
+transform = Transform( 1.502, 0, 8.17861e-08, 0, 1, 0, 8.17861e-08, 0, 1, 14.4914, 2.55024, 38.3076 )
 collision_layer = 50
 collision_mask = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao3"]
-transform = Transform( 5.2605, 0, -1.10028e-008, 0, 1.96804, 0, -1.07522e-006, 0, 1.96804, -5.63477, 0, -2.2635 )
+transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
 shape = SubResource( 1 )
 
 [node name="Coisas do cenario" type="Spatial" parent="Scene Root"]
 
 [node name="VER O PESO" type="Spatial" parent="Scene Root/Coisas do cenario"]
-transform = Transform( 1.24516, 0, 0, 0, 1.24516, 0, 0, 0, 1.24516, 1.31792e-006, 0, -8.08932 )
+transform = Transform( 1.24516, 0, 0, 0, 1.24516, 0, 0, 0, 1.24516, 1.31792e-06, 0, -8.08932 )
 
 [node name="assets de enfeite" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( 1.8103e-009, 0.140574, -2.28231e-009, 0.0239781, -1.0613e-008, 1.7231e-016, -2.64698e-023, -4.58048e-008, -0.00700437, -1.67722, 0.645969, 30.0558 )
+transform = Transform( 1.8103e-09, 0.140574, -2.28231e-09, 0.0239781, -1.0613e-08, 1.7231e-16, -2.64698e-23, -4.58048e-08, -0.00700437, -1.67722, 0.645969, 30.0558 )
 mesh = ExtResource( 8 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 19 )
@@ -188,7 +188,7 @@ material/10 = ExtResource( 15 )
 material/11 = ExtResource( 28 )
 
 [node name="barco" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( 0.0582308, 0, 0, 0, 0.0582308, 0, -8.88178e-016, 0, 0.0582308, 21.077, 1.74559, 29.4183 )
+transform = Transform( 0.0582308, 0, 0, 0, 0.0582308, 0, -8.88178e-16, 0, 0.0582308, 21.077, 1.74559, 29.4183 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 24 )
@@ -197,11 +197,11 @@ material/2 = ExtResource( 23 )
 [node name="StaticBody" type="StaticBody" parent="Scene Root/Coisas do cenario/VER O PESO/barco"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Coisas do cenario/VER O PESO/barco/StaticBody"]
-transform = Transform( 1, 3.38813e-021, 2.84217e-014, 1.69407e-021, 1, -4.32444e-021, -1.42109e-014, -4.32444e-021, 1, 0, 0, 0 )
+transform = Transform( 1, 3.38813e-21, 2.84217e-14, 1.69407e-21, 1, -4.32444e-21, -1.42109e-14, -4.32444e-21, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="barraca de frutas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( -1.16246e-008, 0, 0.26594, 0, 0.26594, 0, -0.26594, 0, -1.16246e-008, 10.8345, 1.22031, 25.7305 )
+transform = Transform( -1.16246e-08, 0, 0.26594, 0, 0.26594, 0, -0.26594, 0, -1.16246e-08, 10.8345, 1.22031, 25.7305 )
 mesh = ExtResource( 3 )
 material/0 = ExtResource( 24 )
 material/1 = ExtResource( 14 )
@@ -209,7 +209,7 @@ material/2 = ExtResource( 24 )
 material/3 = ExtResource( 19 )
 
 [node name="barracas de comidas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( -1.25992e-008, 0, 1.05469, 0, 0.288235, 0, -0.288235, 0, -4.61021e-008, 8.74115, 1.42909, 38.0277 )
+transform = Transform( -1.25992e-08, 0, 1.05469, 0, 0.288235, 0, -0.288235, 0, -4.61021e-08, 8.74115, 1.42909, 38.0277 )
 mesh = ExtResource( 11 )
 material/0 = ExtResource( 25 )
 material/1 = ExtResource( 29 )
@@ -230,7 +230,7 @@ collision_mask = 2
 shape = SubResource( 4 )
 
 [node name="lixos" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( -0.120798, 0, -3.93611e-008, 0, 0.235708, 0, 3.93611e-008, 0, -0.120798, 8.53361, 1.09867, 34.2304 )
+transform = Transform( -0.120798, 0, -3.93611e-08, 0, 0.235708, 0, 3.93611e-08, 0, -0.120798, 8.53361, 1.09867, 34.2304 )
 mesh = ExtResource( 10 )
 material/0 = ExtResource( 25 )
 material/1 = ExtResource( 27 )
@@ -238,7 +238,7 @@ material/2 = ExtResource( 23 )
 material/3 = ExtResource( 17 )
 
 [node name="lonas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( 2.16948, 0, 5.68434e-014, 0, 2.16948, 0, -5.68434e-014, 0, 2.16948, -4.61067, 2.70881, 37.4332 )
+transform = Transform( 2.16948, 0, 5.68434e-14, 0, 2.16948, 0, -5.68434e-14, 0, 2.16948, -4.61067, 2.70881, 37.4332 )
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 26 )
 
@@ -273,7 +273,7 @@ render_target_update_mode = 3
 transform = Transform( 0.0311876, 0, -0.632248, 0, 0.633017, 0, 0.632248, 0, 0.0311876, 3.95538, 0.399957, 8.62672 )
 
 [node name="BARRICADA DE MADEIRA" type="MeshInstance" parent="BARRICADA DE MADEIRA"]
-transform = Transform( 1, 0, 3.72529e-009, 0, 1, 0, -3.72529e-009, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 31 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 25 )
