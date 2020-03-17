@@ -9,12 +9,13 @@ onready var confirm_password=$Login/Panel2/Submit/Password3/Create_password
 
 var peer
 
-
+var cena=preload("res://scenes/Maps/Mapa alpha.tscn")
 
 
 func _on_Play_pressed():
 
-	pass
+	get_tree().change_scene_to(cena)
+	print("olá android")
 func _on_Play_p2p_pressed():
 	pass # Replace with function body.
 

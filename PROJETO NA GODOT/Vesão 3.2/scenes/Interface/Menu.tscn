@@ -87,7 +87,6 @@ __meta__ = {
 }
 
 [node name="Login" type="PopupPanel" parent="."]
-visible = true
 anchor_left = 0.0994792
 anchor_top = 0.0657407
 anchor_right = 0.935938
@@ -299,9 +298,19 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="Login/Panel2"]
-anchor_left = 0.418924
+anchor_left = 0.303262
 anchor_top = 0.779721
-anchor_right = 0.581627
+anchor_right = 0.465965
+anchor_bottom = 0.899721
+text = "Loggin with Facebook"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button2" type="Button" parent="Login/Panel2"]
+anchor_left = 0.583316
+anchor_top = 0.779721
+anchor_right = 0.746019
 anchor_bottom = 0.899721
 text = "Loggin with Facebook"
 __meta__ = {
@@ -309,6 +318,7 @@ __meta__ = {
 }
 
 [node name="PopupPanel2" type="PopupPanel" parent="."]
+visible = true
 anchor_left = 0.0994792
 anchor_top = 0.0657407
 anchor_right = 0.935938
@@ -342,18 +352,15 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="PopupPanel2/Panel2"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -157.0
-margin_top = -55.5
-margin_right = 157.0
-margin_bottom = 55.5
+anchor_left = 0.583316
+anchor_top = 0.57898
+anchor_right = 0.779812
+anchor_bottom = 0.702313
+margin_bottom = 3.05176e-05
 custom_fonts/font = SubResource( 8 )
 text = "Create host"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="LineEdit" type="LineEdit" parent="PopupPanel2/Panel2"]
@@ -368,6 +375,12 @@ placeholder_alpha = 0.342
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Label" type="Label" parent="PopupPanel2/Panel2"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Your IPV6
+"
 [connection signal="pressed" from="Panel/Play online" to="." method="_on_Play_online_pressed"]
 [connection signal="pressed" from="Panel/Play_solo" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_Exit_pressed"]

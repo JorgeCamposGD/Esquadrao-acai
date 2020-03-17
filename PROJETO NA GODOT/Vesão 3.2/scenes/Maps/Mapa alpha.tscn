@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/System/Spawn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/maps/ver o peso/Cubo_167.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/maps/ver o peso/Plano_004.mesh" type="ArrayMesh" id=4]
-[ext_resource path="res://assets/maps/ver o peso/Círculo_000.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/maps/ver o peso/Circulo_000.mesh" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/maps/ver o peso/Cubo_033.mesh" type="ArrayMesh" id=6]
 [ext_resource path="res://assets/maps/ver o peso/Plano_027.mesh" type="ArrayMesh" id=7]
 [ext_resource path="res://assets/maps/ver o peso/Cube_008.mesh" type="ArrayMesh" id=8]
@@ -31,6 +31,7 @@
 [ext_resource path="res://assets/maps/ver o peso/CINZA.material" type="Material" id=29]
 [ext_resource path="res://assets/maps/ver o peso/RUA.material" type="Material" id=30]
 [ext_resource path="res://assets/Personagens/Gordo/Cubo_008.mesh" type="ArrayMesh" id=31]
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1, 0.234884 )
