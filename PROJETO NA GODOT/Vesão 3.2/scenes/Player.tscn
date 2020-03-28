@@ -1,8 +1,7 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Interface/HUD.tscn" type="PackedScene" id=3]
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "ANDANDO"
@@ -842,7 +841,7 @@ nodes/Blend2/position = Vector2( -260, -800 )
 nodes/OneShot/node = SubResource( 14 )
 nodes/OneShot/position = Vector2( -80.0712, -635.5 )
 nodes/output/position = Vector2( 240, -760 )
-node_connections = [ "output", 0, "OneShot", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+node_connections = [ "output", 0, "OneShot", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3" ]
 
 [sub_resource type="CapsuleShape" id=16]
 radius = 2.05424
@@ -920,7 +919,7 @@ extents = Vector3( 3, 3.68382, 3 )
 [sub_resource type="SpatialMaterial" id=25]
 resource_local_to_scene = true
 flags_transparent = true
-albedo_color = Color( 1, 0, 0, 0.878431 )
+albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
 [sub_resource type="PrismMesh" id=26]
 material = SubResource( 25 )
@@ -929,78 +928,24 @@ size = Vector3( 6, 6, 6 )
 [sub_resource type="SpatialMaterial" id=27]
 resource_local_to_scene = true
 flags_transparent = true
-albedo_color = Color( 1, 0, 0, 0.878431 )
+albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
 [sub_resource type="CubeMesh" id=28]
 material = SubResource( 27 )
 size = Vector3( 6, 6, 6 )
 
-[sub_resource type="SpatialMaterial" id=43]
-metallic = 1.0
-metallic_specular = 1.0
-roughness = 0.0
+[sub_resource type="SpatialMaterial" id=36]
 
-[sub_resource type="SphereMesh" id=29]
-material = SubResource( 43 )
-radius = 3.0
-height = 6.0
+[sub_resource type="SphereMesh" id=37]
+material = SubResource( 36 )
 
-[sub_resource type="CapsuleMesh" id=30]
-material = SubResource( 27 )
+[sub_resource type="SpatialMaterial" id=35]
+albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
-[sub_resource type="Animation" id=31]
-resource_name = "livre"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("CollisionShape/Spatial/Trap:mesh:material:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape/Spatial/Turret:mesh:material:albedo_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape/Spatial/Wall:mesh:material:albedo_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape/Spatial/Granead:mesh:material:albedo_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
-}
+[sub_resource type="CapsuleMesh" id=34]
+material = SubResource( 35 )
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=33]
 resource_name = "ocupado"
 length = 0.1
 tracks/0/type = "value"
@@ -1013,7 +958,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 1, 0, 0, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape/Spatial/Turret:mesh:material:albedo_color")
@@ -1025,7 +970,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 1, 0, 0, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape/Spatial/Wall:mesh:material:albedo_color")
@@ -1037,7 +982,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 1, 0, 0, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionShape/Spatial/Granead:mesh:material:albedo_color")
@@ -1049,63 +994,11 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 1, 0, 0, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=33]
-albedo_color = Color( 0, 0, 0, 1 )
-roughness = 0.0
-emission_enabled = true
-emission = Color( 0.109804, 0.894118, 1, 1 )
-emission_energy = 7.34
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=34]
-
-[sub_resource type="SpatialMaterial" id=35]
-albedo_color = Color( 0, 0, 0, 1 )
-roughness = 0.0
-emission_enabled = true
-emission = Color( 0.109804, 0.894118, 1, 1 )
-emission_energy = 7.34
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=36]
-
-[sub_resource type="SpatialMaterial" id=37]
-albedo_color = Color( 0, 0, 0, 1 )
-roughness = 0.0
-emission_enabled = true
-emission = Color( 0.109804, 0.894118, 1, 1 )
-emission_energy = 7.34
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=38]
-
-[sub_resource type="SpatialMaterial" id=39]
-albedo_color = Color( 0, 0, 0, 1 )
-roughness = 0.0
-emission_enabled = true
-emission = Color( 0.109804, 0.894118, 1, 1 )
-emission_energy = 7.34
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=40]
-
-[sub_resource type="SpatialMaterial" id=41]
-albedo_color = Color( 0, 0, 0, 1 )
-roughness = 0.0
-emission_enabled = true
-emission = Color( 0.109804, 0.894118, 1, 1 )
-emission_energy = 7.34
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="SphereMesh" id=42]
+[sub_resource type="CapsuleMesh" id=31]
+material = SubResource( 27 )
 
 [node name="PLAYER" type="KinematicBody"]
 collision_mask = 19
@@ -1113,6 +1006,8 @@ script = ExtResource( 1 )
 classe = "Shotgun"
 dano_melee = 10.0
 move_speed = 29.301
+hp_maximo = 1000
+hp_atual = 1000
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 
@@ -1247,12 +1142,19 @@ transform = Transform( 3.38114, 0, 0, 0, 0.191895, 0, 0, 0, 0.122526, -3.02696, 
 mesh = SubResource( 23 )
 material/0 = null
 
+[node name="RayCast" type="RayCast" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )
+enabled = true
+cast_to = Vector3( 0, -10, 0 )
+collision_mask = 2
+
 [node name="Contruct_area" type="Area" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.410171, 0 )
 collision_layer = 18
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Contruct_area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.12214 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )
 shape = SubResource( 24 )
 
 [node name="Spatial" type="Spatial" parent="Spatial/Contruct_area/CollisionShape"]
@@ -1268,33 +1170,29 @@ mesh = SubResource( 28 )
 material/0 = null
 
 [node name="Turret" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 visible = false
-mesh = SubResource( 29 )
+mesh = SubResource( 37 )
 material/0 = null
+__meta__ = {
+"_editor_description_": "				 "
+}
 
 [node name="Granead" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
 transform = Transform( 1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, -4.76837e-07 )
 visible = false
-mesh = SubResource( 30 )
+mesh = SubResource( 34 )
 material/0 = null
 
-[node name="RayCast" type="RayCast" parent="Spatial/Contruct_area/CollisionShape"]
-enabled = true
-cast_to = Vector3( 0, -10, 0 )
-collision_mask = 2
-
 [node name="livre" type="AnimationPlayer" parent="Spatial/Contruct_area"]
-anims/livre = SubResource( 31 )
-anims/ocupado = SubResource( 32 )
+anims/livre = SubResource( 33 )
+anims/ocupado = SubResource( 33 )
 
 [node name="optimizer" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.0502, 0 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="optimizer"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
-material_override = SubResource( 33 )
-mesh = SubResource( 34 )
-material/0 = null
 
 [node name="Trap2" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )
@@ -1303,27 +1201,15 @@ material/0 = null
 
 [node name="MeshInstance4" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428886, -1.20008, -5.54926 )
-material_override = SubResource( 35 )
-mesh = SubResource( 36 )
-material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="optimizer"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
-material_override = SubResource( 37 )
-mesh = SubResource( 38 )
-material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="optimizer"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
-material_override = SubResource( 39 )
-mesh = SubResource( 40 )
-material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428886, -1.20008, -5.54926 )
-material_override = SubResource( 41 )
-mesh = SubResource( 42 )
-material/0 = null
 
 [node name="Wall2" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )
@@ -1332,13 +1218,19 @@ material/0 = null
 
 [node name="Turret2" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )
-mesh = SubResource( 29 )
+mesh = SubResource( 31 )
 material/0 = null
 
 [node name="Granead2" type="MeshInstance" parent="optimizer"]
 transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, -0.251159, -5.62214 )
-mesh = SubResource( 30 )
-material/0 = null
+
+[node name="Cam" type="Position3D" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 0.999999, 0, -0.999999, 0, -1.62921e-07, -8.07988, 8.80968, -9.53674e-07 )
+
+[node name="Camera" type="ClippedCamera" parent="Cam"]
+transform = Transform( -5.63131e-07, 6.2649, -2.27937, 7.46834e-07, 2.27937, 6.2649, 6.66667, 2.73848e-07, -8.94363e-07, -5.70386, 38.2226, 9.53674e-07 )
+current = true
+collision_mask = 18
 [connection signal="body_entered" from="Spatial/Melee Range" to="." method="_on_Melee_Range_body_entered"]
 [connection signal="body_exited" from="Spatial/Melee Range" to="." method="_on_Melee_Range_body_exited"]
 [connection signal="body_entered" from="Spatial/Contruct_area" to="." method="_on_Contruct_area_body_entered"]

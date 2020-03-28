@@ -28,12 +28,13 @@ _global_script_class_icons={
 
 config/name="Squad acai"
 run/main_scene="res://scenes/Interface/Menu.tscn"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://ic_on.webp"
 
 [autoload]
 
 Global="*res://scenes/System/Global.tscn"
-Firebase="*res://scenes/System/HTTPRequest.tscn"
+Network="*res://scenes/System/HTTPRequest.tscn"
 
 [debug]
 
@@ -44,10 +45,15 @@ gdscript/warnings/unused_argument=false
 
 window/size/width=1920
 window/size/height=1080
-window/vsync/use_vsync=false
+window/size/test_width=1920
+window/size/test_height=1080
 window/handheld/orientation="sensor_landscape"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor]
+
+script_templates_search_path="res://Scripts"
 
 [importer_defaults]
 
@@ -1187,6 +1193,10 @@ pointing/emulate_touch_from_mouse=true
 3d_physics/layer_4="Balas"
 3d_physics/layer_5="Colisor para personagem"
 3d_physics/layer_6="Colisor para inimigo"
+
+[locale]
+
+locale_filter=[ 0, [  ] ]
 
 [rendering]
 

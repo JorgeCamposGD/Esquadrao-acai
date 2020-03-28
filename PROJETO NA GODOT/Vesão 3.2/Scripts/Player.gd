@@ -45,7 +45,7 @@ onready var especiais={
 onready var hud=get_node("Control")
 onready var anim=get_node("Spatial/Contruct_area/livre")
 onready var world=get_tree().get_root()
-onready var ray_to_obj=get_node("Spatial/Contruct_area/CollisionShape/RayCast")
+onready var ray_to_obj=get_node("Spatial/RayCast")
 var cooldown=0
 var rotate_speed=25
 var rot=0
@@ -61,7 +61,7 @@ var melee=false
 var free=true
 var using_special=false
 
-
+var peer_id=null
 
 func _ready():
 	#for x in especiais:
@@ -239,6 +239,6 @@ func construct_item(type):
 	else:
 		var point=ray_to_obj.get_collision_point()
 		item.transform.origin=point
-		#item.global_transform.origin=ray_to_obj.get_collision_point()
+		item.global_transform.origin=ray_to_obj.get_collision_point()
 	world.call_deferred("add_child",item)
-	item.scale=scale
+	#item.scale=scale

@@ -72,7 +72,7 @@ material/12 = null
 shape = SubResource( 4 )
 
 [node name="Ship001" type="MeshInstance" parent="forte/forte do presepio"]
-transform = Transform( -7.87403e-010, -7.87403e-010, 0.0180137, 0, 0.0180137, 7.87403e-010, -0.0180137, 3.44185e-017, -7.87403e-010, -0.898748, -0.442972, 7.61777 )
+transform = Transform( -7.87403e-10, -7.87403e-10, 0.0180137, 0, 0.0180137, 7.87403e-10, -0.0180137, 3.44185e-17, -7.87403e-10, -0.898748, -0.442972, 7.61777 )
 mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null

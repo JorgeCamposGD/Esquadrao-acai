@@ -39,7 +39,7 @@ func instace_mob(persist):
 
 	add_child(new_m)
 	new_m.set_global_transform(spawn_points[randi()%spawn_points.size()-1].get_global_transform() )
-	new_m.set_scale(Vector3(0.15,0.15,0.15))
+
 	
 	new_m._ready()
 	instanced_enemys.append(new_m)

@@ -2,6 +2,11 @@
 
 [ext_resource path="res://Scripts/Firebase.gd" type="Script" id=1]
 
-[node name="HTTPRequest" type="HTTPRequest"]
+[node name="HTTP" type="Node"]
 script = ExtResource( 1 )
-[connection signal="request_completed" from="." to="." method="_on_HTTPRequest_request_completed"]
+
+[node name="IPV6" type="HTTPRequest" parent="."]
+
+[node name="Firebase" type="HTTPRequest" parent="."]
+[connection signal="request_completed" from="IPV6" to="." method="_on_IPV6_request_completed"]
+[connection signal="request_completed" from="Firebase" to="." method="_on_Firebase_request_completed"]
