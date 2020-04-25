@@ -35,6 +35,7 @@ config/icon="res://ic_on.webp"
 
 Global="*res://scenes/System/Global.tscn"
 Network="*res://scenes/System/HTTPRequest.tscn"
+CharRess="*res://scenes/System/Char_resources.tscn"
 
 [debug]
 
@@ -1196,7 +1197,10 @@ pointing/emulate_touch_from_mouse=true
 
 [locale]
 
-locale_filter=[ 0, [  ] ]
+locale_filter=[ 1, [ "pt_BR" ] ]
+translation_remaps={
+
+}
 
 [rendering]
 

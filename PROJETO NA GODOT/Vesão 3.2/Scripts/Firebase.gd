@@ -12,7 +12,7 @@ var user_ip
 var getting_ip=false
 var ip_adress="https://api6.ipify.org"
 
-
+signal ip_recived
 func _get_user_info(result: Array) -> Dictionary:
 	var result_body := JSON.parse(result[3].get_string_from_ascii()).result as Dictionary
 	return {
@@ -85,9 +85,9 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 
 func _on_IPV6_request_completed(result, response_code, headers, body):
 	ipv6=body.get_string_from_ascii()
+	emit_signal("ip_recived",ipv6)
 
-
-func get_ip() -> String:
+func get_ip() -> void:
 	var self_ip
 
 	if ipv6!=null:
@@ -99,7 +99,9 @@ func get_ip() -> String:
 		if ipv6!=null:
 			self_ip=ipv6
 			
-	return self_ip
+
+
+
 func _on_Firebase_request_completed(result, response_code, headers, body):
 	var response_body := JSON.parse(body.get_string_from_ascii())
 	if getting_ip:

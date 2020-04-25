@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Interface/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Interface/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Char_resources.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ANDANDO"
@@ -841,7 +842,7 @@ nodes/Blend2/position = Vector2( -260, -800 )
 nodes/OneShot/node = SubResource( 14 )
 nodes/OneShot/position = Vector2( -80.0712, -635.5 )
 nodes/output/position = Vector2( 240, -760 )
-node_connections = [ "output", 0, "OneShot", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+node_connections = [ "output", 0, "OneShot", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3" ]
 
 [sub_resource type="CapsuleShape" id=16]
 radius = 2.05424
@@ -1000,21 +1001,24 @@ tracks/3/keys = {
 [sub_resource type="CapsuleMesh" id=34]
 material = SubResource( 27 )
 
-[node name="PLAYER" type="KinematicBody"]
+[node name="Char_resources" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="PLAYER_default" type="KinematicBody" parent="."]
 collision_mask = 19
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 classe = "Shotgun"
 dano_melee = 10.0
 move_speed = 29.301
 hp_maximo = 1000
 hp_atual = 1000
 
-[node name="Control" parent="." instance=ExtResource( 3 )]
+[node name="Control" parent="PLAYER_default" instance=ExtResource( 1 )]
 
-[node name="Bullet_sound" type="AudioStreamPlayer3D" parent="."]
+[node name="Bullet_sound" type="AudioStreamPlayer3D" parent="PLAYER_default"]
 max_db = 5.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PLAYER_default"]
 autoplay = "ATIRANDO ANDANDO"
 anims/ANDANDO = SubResource( 1 )
 anims/ATIRANDO = SubResource( 2 )
@@ -1026,32 +1030,32 @@ anims/PARADO = SubResource( 7 )
 "anims/PARADO COM ARMA" = SubResource( 8 )
 anims/dmg = SubResource( 9 )
 
-[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
+[node name="AnimationTree" type="AnimationTree" parent="PLAYER_default/AnimationPlayer"]
 tree_root = SubResource( 15 )
 anim_player = NodePath("..")
 active = true
 parameters/Blend2/blend_amount = 0.0
 parameters/OneShot/active = false
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShape" type="CollisionShape" parent="PLAYER_default"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.249256, 0 )
 shape = SubResource( 16 )
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Spatial" type="Spatial" parent="PLAYER_default"]
 
-[node name="Melee Range" type="Area" parent="Spatial"]
+[node name="Melee Range" type="Area" parent="PLAYER_default/Spatial"]
 transform = Transform( -1.52803, 0, -8.74228e-08, 0, 1, 0, 1.33585e-07, 0, -1, 0, 0, -2.6 )
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape" type="CollisionShape" parent="Spatial/Melee Range"]
+[node name="CollisionShape" type="CollisionShape" parent="PLAYER_default/Spatial/Melee Range"]
 transform = Transform( 1.96913, 0, 0, 0, 4.04692, 0, 0, 0, 2.99846, 0, 0, 0 )
 shape = SubResource( 17 )
 
-[node name="Armature" type="Spatial" parent="Spatial"]
+[node name="Armature" type="Spatial" parent="PLAYER_default/Spatial"]
 transform = Transform( -1.69693, -6.60808e-07, 0, 6.60808e-07, -1.69693, 0, 0, 0, 1.69693, 0, 0, 0 )
 
-[node name="Skeleton" type="Skeleton" parent="Spatial/Armature"]
+[node name="Skeleton" type="Skeleton" parent="PLAYER_default/Spatial/Armature"]
 transform = Transform( 1, 3.10862e-14, 4.47035e-08, -5.63993e-14, 1, 1.24345e-14, -4.47035e-08, 5.32907e-15, 1, -3.47852e-11, -0.000397896, -1.86409e-18 )
 bones/0/name = "Bone"
 bones/0/parent = -1
@@ -1124,52 +1128,52 @@ bones/13/rest = Transform( -0.142892, -0.985516, 0.0913225, -0.00192102, 0.09254
 bones/13/enabled = true
 bones/13/bound_children = [  ]
 
-[node name="Cube004" type="MeshInstance" parent="Spatial/Armature/Skeleton"]
+[node name="Cube004" type="MeshInstance" parent="PLAYER_default/Spatial/Armature/Skeleton"]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 18 )
 material/0 = SubResource( 20 )
 
-[node name="Cano da arma" type="MeshInstance" parent="Spatial"]
+[node name="Cano da arma" type="MeshInstance" parent="PLAYER_default/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.724, -2.835 )
 mesh = SubResource( 21 )
 material/0 = SubResource( 22 )
 
-[node name="Position3D" type="Position3D" parent="Spatial/Cano da arma"]
+[node name="Position3D" type="Position3D" parent="PLAYER_default/Spatial/Cano da arma"]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Spatial"]
+[node name="MeshInstance" type="MeshInstance" parent="PLAYER_default/Spatial"]
 transform = Transform( 3.38114, 0, 0, 0, 0.191895, 0, 0, 0, 0.122526, -3.02696, -0.5, -0.40896 )
 mesh = SubResource( 23 )
 material/0 = null
 
-[node name="RayCast" type="RayCast" parent="Spatial"]
+[node name="RayCast" type="RayCast" parent="PLAYER_default/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )
 enabled = true
 cast_to = Vector3( 0, -10, 0 )
 collision_mask = 2
 
-[node name="Contruct_area" type="Area" parent="Spatial"]
+[node name="Contruct_area" type="Area" parent="PLAYER_default/Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.410171, 0 )
 collision_layer = 18
 collision_mask = 4
 
-[node name="CollisionShape" type="CollisionShape" parent="Spatial/Contruct_area"]
+[node name="CollisionShape" type="CollisionShape" parent="PLAYER_default/Spatial/Contruct_area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )
 shape = SubResource( 24 )
 
-[node name="Spatial" type="Spatial" parent="Spatial/Contruct_area/CollisionShape"]
+[node name="Spatial" type="Spatial" parent="PLAYER_default/Spatial/Contruct_area/CollisionShape"]
 
-[node name="Trap" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
+[node name="Trap" type="MeshInstance" parent="PLAYER_default/Spatial/Contruct_area/CollisionShape/Spatial"]
 visible = false
 mesh = SubResource( 26 )
 material/0 = null
 
-[node name="Wall" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
+[node name="Wall" type="MeshInstance" parent="PLAYER_default/Spatial/Contruct_area/CollisionShape/Spatial"]
 visible = false
 mesh = SubResource( 28 )
 material/0 = null
 
-[node name="Turret" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
+[node name="Turret" type="MeshInstance" parent="PLAYER_default/Spatial/Contruct_area/CollisionShape/Spatial"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 visible = false
 mesh = SubResource( 30 )
@@ -1178,52 +1182,52 @@ __meta__ = {
 "_editor_description_": "				 "
 }
 
-[node name="Granead" type="MeshInstance" parent="Spatial/Contruct_area/CollisionShape/Spatial"]
+[node name="Granead" type="MeshInstance" parent="PLAYER_default/Spatial/Contruct_area/CollisionShape/Spatial"]
 transform = Transform( 1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, -4.76837e-07 )
 visible = false
 mesh = SubResource( 32 )
 material/0 = null
 
-[node name="livre" type="AnimationPlayer" parent="Spatial/Contruct_area"]
+[node name="livre" type="AnimationPlayer" parent="PLAYER_default/Spatial/Contruct_area"]
 anims/livre = SubResource( 33 )
 anims/ocupado = SubResource( 33 )
 
-[node name="optimizer" type="Spatial" parent="."]
+[node name="optimizer" type="Spatial" parent="PLAYER_default"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.0502, 0 )
 
-[node name="MeshInstance5" type="MeshInstance" parent="optimizer"]
+[node name="MeshInstance5" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
 
-[node name="Trap2" type="MeshInstance" parent="optimizer"]
+[node name="Trap2" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )
 mesh = SubResource( 26 )
 material/0 = null
 
-[node name="MeshInstance4" type="MeshInstance" parent="optimizer"]
+[node name="MeshInstance4" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428886, -1.20008, -5.54926 )
 
-[node name="MeshInstance3" type="MeshInstance" parent="optimizer"]
+[node name="MeshInstance3" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="optimizer"]
+[node name="MeshInstance2" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
 
-[node name="MeshInstance" type="MeshInstance" parent="optimizer"]
+[node name="MeshInstance" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428886, -1.20008, -5.54926 )
 
-[node name="Wall2" type="MeshInstance" parent="optimizer"]
+[node name="Wall2" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )
 mesh = SubResource( 28 )
 material/0 = null
 
-[node name="Turret2" type="MeshInstance" parent="optimizer"]
+[node name="Turret2" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.25116, -6.12214 )
 mesh = SubResource( 34 )
 material/0 = null
 
-[node name="Granead2" type="MeshInstance" parent="optimizer"]
+[node name="Granead2" type="MeshInstance" parent="PLAYER_default/optimizer"]
 transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, -0.251159, -5.62214 )
-[connection signal="body_entered" from="Spatial/Melee Range" to="." method="_on_Melee_Range_body_entered"]
-[connection signal="body_exited" from="Spatial/Melee Range" to="." method="_on_Melee_Range_body_exited"]
-[connection signal="body_entered" from="Spatial/Contruct_area" to="." method="_on_Contruct_area_body_entered"]
-[connection signal="body_exited" from="Spatial/Contruct_area" to="." method="_on_Contruct_area_body_exited"]
+[connection signal="body_entered" from="PLAYER_default/Spatial/Melee Range" to="PLAYER_default" method="_on_Melee_Range_body_entered"]
+[connection signal="body_exited" from="PLAYER_default/Spatial/Melee Range" to="PLAYER_default" method="_on_Melee_Range_body_exited"]
+[connection signal="body_entered" from="PLAYER_default/Spatial/Contruct_area" to="PLAYER_default" method="_on_Contruct_area_body_entered"]
+[connection signal="body_exited" from="PLAYER_default/Spatial/Contruct_area" to="PLAYER_default" method="_on_Contruct_area_body_exited"]

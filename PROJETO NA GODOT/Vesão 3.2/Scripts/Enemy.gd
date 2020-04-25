@@ -111,7 +111,7 @@ func get_targuet(type):
 	var my_pos=get_global_transform().origin
 	var targuet_pos
 	
-	if players.size()<0:
+	if players.size()<=0:
 		return Vector3()
 	elif players.size()==1:
 		return players[0].get_global_pos()-my_pos

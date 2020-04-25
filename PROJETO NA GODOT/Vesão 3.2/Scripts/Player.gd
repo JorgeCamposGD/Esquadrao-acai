@@ -17,24 +17,7 @@ export  var classe_status={"Pistol":{"damage":15,"fire_rate":0.4},#pistola
 							"Smg":{"damage":10,"fire_rate":0.2},#smg
 							"Sniper":{"damage":50,"fire_rate":1}#sniper
 							}
-onready var bullets={
-			"Pistol":preload("res://scenes/Personagem/Balas/bullet pistol.tscn"),
-			"Shotgun":preload("res://scenes/Personagem/Balas/bullet shotgun.tscn"),
-			"Smg":preload("res://scenes/Personagem/Balas/bullet smg.tscn"),
-			"Sniper":preload("res://scenes/Personagem/Balas/bullet sniper.tscn")
-			}
-onready var specials_resources={
-			"Pistol":preload("res://scenes/Personagem/especiais/Grenade.tscn"),
-			"Shotgun":preload("res://scenes/Personagem/especiais/Wall.tscn"),
-			"Smg":preload("res://scenes/Personagem/especiais/Turret.tscn"),
-			"Sniper":preload("res://scenes/Personagem/especiais/Trap.tscn")
-			}
-onready var Sons={
-			"Pistol":preload("res://assets/sounds/Pistola.wav"),
-			"Shotgun":preload("res://assets/sounds/Shotgun.wav"),
-			"Smg":preload("res://assets/sounds/Smg.wav"),
-			"Sniper":preload("res://assets/sounds/Sniper.wav")
-			}
+
 onready var body=get_node("Spatial")
 onready var especiais={
 			"Pistol":get_node("Spatial/Contruct_area/CollisionShape/Spatial/Granead"),
@@ -63,13 +46,22 @@ var using_special=false
 
 var peer_id=null
 
+onready var bullets=CharRess.get_bullet(classe)
+onready var Sons=CharRess.get_sound(classe)
+onready var specials_resources=CharRess.get_special_resource(classe)
+
 func _ready():
+	#Global._add_player(self)
+	set_process(false)
+	
+func _start():
 	#for x in especiais:
+	set_process(true)
 	hp_atual=100
 	Global._add_player(self)
 	move_speed*=scale.x
 	hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
-#
+	
 func _physics_process(delta):
 
 	if hp_atual<=0:
@@ -167,7 +159,7 @@ func atack():
 
 		else:
 			var cano_pos=get_node("Spatial/Cano da arma/Position3D").global_transform
-			var bl=bullets[classe].instance()
+			var bl=bullets.instance()
 			print(classe)
 			bl.add_collision_exception_with(self)
 
@@ -177,7 +169,7 @@ func atack():
 			world.call_deferred("add_child",bl)
 
 			var bls=get_node("Bullet_sound")
-			bls.set_stream(Sons[classe])
+			bls.set_stream(Sons)
 			bls._set_playing(true)
 
 
