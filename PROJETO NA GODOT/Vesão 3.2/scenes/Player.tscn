@@ -841,7 +841,7 @@ nodes/Blend2/position = Vector2( -260, -800 )
 nodes/OneShot/node = SubResource( 14 )
 nodes/OneShot/position = Vector2( -80.0712, -635.5 )
 nodes/output/position = Vector2( 240, -760 )
-node_connections = [ "output", 0, "OneShot", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+node_connections = [ "output", 0, "OneShot", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2", "OneShot", 0, "Blend2", "OneShot", 1, "Animation 3" ]
 
 [sub_resource type="CapsuleShape" id=16]
 radius = 2.05424
@@ -1008,6 +1008,11 @@ dano_melee = 10.0
 move_speed = 29.301
 hp_maximo = 1000
 hp_atual = 1000
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+target = NodePath("../Pos")
+
+[node name="Pos" type="Position3D" parent="."]
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 

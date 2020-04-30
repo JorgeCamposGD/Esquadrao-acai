@@ -37,6 +37,7 @@ onready var connect_status=$Play_direct_panel/Panel2/Notify_conect
 onready var players_labels=[host_name, player1_name, player2_name, player3_name]
 onready var players_classe_btn=[host_class, player1_class, player2_class, player3_class]
 
+var slots_array=[]
 var self_info={
 	"name":"",
 	"classe":null,
@@ -47,15 +48,14 @@ var players_info
 var network=Network
 var peer
 var ip
-var cena=preload("res://scenes/Maps/Mapa alpha.tscn")
+
 var used_slots={}
 var pre_slots={}
 
+var selected=0
 func _ready():
 	
-	var unp=UPNP.new()
-	var vas=unp.discover()
-	print(vas)
+
 	Network.get_ip()
 	Network.connect("ip_recived",self,"_ip_recived")
 	Global.connect('players_change', self, 'players_changed')
@@ -66,7 +66,7 @@ func _ready():
 
 func _on_Play_pressed():
 
-	get_tree().change_scene_to(cena)
+	Global.start_alone(selected)
 
 func _on_Play_p2p_pressed():
 	pass # Replace with function body.
@@ -104,7 +104,7 @@ func _on_Play_direct_pressed():
 
 func _on_Create_host_pressed():
 	self_info["name"]=nick_name.get_text()
-
+	self_info["id"]=1
 	if nick_name.get_text()=="":
 		notify_conect.set_text("insert Nick name")
 	else:
@@ -165,7 +165,7 @@ func go_to_lobby():
 
 
 func _on_Quit_pressed():
-	used_slots={}
+	slots_array.clear()
 	lobby_popup.hide()
 	Global.disconnect_game()
 	for x in players_labels:
@@ -175,43 +175,27 @@ func _on_Quit_pressed():
 
 
 func players_changed(changes,id,type):
-
 	
-	if type=="player_out":
-		for key in used_slots:
-			if used_slots[key]["id"]==id:
-				used_slots.erase(key)
-				players_labels[key-1].set_text("")
-				pre_slots.erase(id)
+	slots_array.clear()
+	
+	for i in menu_list:
+		i.set_disabled(true)
 
+	for key in players_info:
+		slots_array.append( players_info[key] )
 
-	elif type=="player_in":
-		
+	slots_array.sort_custom(MySystem, "sort_by_id")
 
-		used_slots[1]=players_info[1]
-		pre_slots[1]=players_info[1]
-		
-		for key in players_info:
-			if key==1:
-				continue
-			else:
-				if not(pre_slots.has(key)):
+	for index in players_labels:
+		index.set_text("")
 
-					pre_slots[key]=players_info[key]
-					used_slots[used_slots.size()+1]=players_info[key]
-				
-		for key in used_slots:
-			players_labels[key-1].set_text(used_slots[key]["name"])
-			if used_slots[key]["id"]==self_info["id"]:
-					players_classe_btn[key-1].set_disabled(false)
+	for index in slots_array:
+		players_labels[slots_array.find(index)].set_text(index["name"])
+	
+		if index["id"]==get_tree().get_network_unique_id():
+			menu_list[slots_array.find(index)].set_disabled(false)
 
-
-	elif type=="class_change":
-		for x in used_slots:
-			if used_slots[x]["classe"]!=null or used_slots[x]["classe"]!=-1:
-				menu_list[x-1].set_item_disabled(x,true)
-			else:
-				menu_list[x-1].set_item_disabled(x,false)
+	refres_class() 
 
 func _connected_to_server():
 	go_to_lobby()
@@ -229,23 +213,52 @@ func _ip_recived(ip_recived):
 
 
 func _on_MenuButton_item_selected(id):
-
-
-	if id==-1 and players_info[get_tree().get_network_unique_id()]["classe"]!=null:
-		for key in used_slots:
-				if used_slots[key]["id"]==get_tree().get_network_unique_id():
-					menu_list[used_slots[key]["classe"]].set_item_disabled(id,false)
+	var to_set=null
+	if id<=0:
+		players_info[get_tree().get_network_unique_id()]["classe"]=null
 	else:
-		if players_info[get_tree().get_network_unique_id()]["classe"]!=null:
-			for key in used_slots:
-				if used_slots[key]["id"]==get_tree().get_network_unique_id():
-					menu_list[used_slots[key]["classe"]].set_item_disabled(id,false)
-		for key in used_slots:
-			if used_slots[key]["id"]==get_tree().get_network_unique_id():
-				menu_list[key-1].set_item_disabled(id,true)
-				break
-
 		
-	Global.set_class(id)
+		players_info[get_tree().get_network_unique_id()]["classe"]=(id)
+		to_set=id
 
 
+	Global.set_class(to_set)
+	refres_class()
+
+func refres_class():
+	
+	slots_array.clear()
+
+	for key in players_info:
+		slots_array.append( players_info[key] )
+
+	slots_array.sort_custom(MySystem, "sort_by_id")
+
+	for i in range (0,slots_array.size()):
+		
+		for x in range(0,5):
+			menu_list[i].set_item_disabled(x,false)
+		
+	for i in range (0,slots_array.size()):
+
+		for id in range(0,slots_array.size()):
+			for x in range(0,5):
+				if slots_array[id]["classe"]==x:
+					menu_list[i].set_item_disabled(x,true)
+	
+	if get_tree().is_network_server():
+		select_button.set_disabled(true)
+		var ready=true
+		for index in slots_array:
+			if index["classe"]==null:
+				ready=false
+		select_button.set_disabled(!ready)
+		mission_start.set_disabled(!ready)
+
+
+func _on_stage_select_item_selected(id):
+	selected=id
+
+
+func _on_Start_Game_pressed():
+	Global.start_the_game(selected)

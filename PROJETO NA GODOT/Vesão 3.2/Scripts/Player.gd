@@ -46,9 +46,9 @@ var using_special=false
 
 var peer_id=null
 
-onready var bullets=CharRess.get_bullet(classe)
-onready var Sons=CharRess.get_sound(classe)
-onready var specials_resources=CharRess.get_special_resource(classe)
+onready var bullets=Ress_3D.get_bullet(classe)
+onready var Sons=Ress_3D.get_sound(classe)
+onready var specials_resources=Ress_3D.get_special_resource(classe)
 
 func _ready():
 	#Global._add_player(self)
@@ -222,7 +222,7 @@ func _on_Contruct_area_body_exited(body):
 		free=true
 
 func construct_item(type):
-	var item=specials_resources[type].instance()
+	var item=specials_resources.instance()
 	
 
 	if type=="Pistol":

@@ -23,6 +23,6 @@ var Sons={
 func get_bullet(classe):
 	return bullets[classe]
 func get_sound(classe):
-	pass
+	return Sons[classe]
 func get_special_resource(classe):
-	pass
+	return specials_resources[classe]

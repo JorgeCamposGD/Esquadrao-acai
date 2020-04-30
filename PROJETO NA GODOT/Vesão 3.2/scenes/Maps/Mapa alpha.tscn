@@ -55,9 +55,6 @@ background_sky = SubResource( 4 )
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 32 )
 
-[node name="PLAYER" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.26724, 8.26347, 2.72848e-12 )
-
 [node name="Spawn" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 19.8191, 9.73584, -0.542589 )
 
@@ -262,3 +259,6 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
 handle_input_locally = false
 render_target_update_mode = 3
+
+[node name="PLAYER" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4149, -14.6909, 39.8632 )

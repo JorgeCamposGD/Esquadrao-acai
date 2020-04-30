@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/bullet standard.gd"
 }, {
+"base": "Reference",
+"class": "MySystem",
+"language": "GDScript",
+"path": "res://Scripts/system_class.gd"
+}, {
 "base": "KinematicBody",
 "class": "player",
 "language": "GDScript",
@@ -21,6 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"MySystem": "",
 "player": ""
 }
 
@@ -35,7 +41,7 @@ config/icon="res://ic_on.webp"
 
 Global="*res://scenes/System/Global.tscn"
 Network="*res://scenes/System/HTTPRequest.tscn"
-CharRess="*res://scenes/System/Char_resources.tscn"
+Ress_3D="*res://scenes/System/Char_resources.tscn"
 
 [debug]
 

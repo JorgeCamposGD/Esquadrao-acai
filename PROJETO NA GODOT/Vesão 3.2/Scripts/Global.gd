@@ -5,15 +5,40 @@ signal players_change
 const MAX_PLAYERS=4
 const DEFAULT_PORT=10567
 
+onready var stages=[scence_0]
+
+var scence_0="res://scenes/Maps/Mapa alpha.tscn"
 var players=[]
 var peer
 
 var players_info={}
 var my_info={}
+var level
+
+var loader
+var wait_frames
+var time_max = 100 # msec
+var current_scene
+
+onready var animation=$Anim
+
+
+
 
 
 func _ready():
+	var root = get_tree().get_root()
+	current_scene = root.get_child(root.get_child_count() -1)
 
+
+
+
+	get_tree().set_auto_accept_quit(false)
+
+	var upnp = UPNP.new()
+	upnp.discover(2000, 2, "InternetGatewayDevice")
+	upnp.add_port_mapping(DEFAULT_PORT)
+	print(upnp.get_discover_local_port())
 	_get_players() 
 	get_tree().connect('network_peer_connected', self, '_peer_connected')
 	get_tree().connect('network_peer_disconnected', self, '_peer_disconnected')
@@ -21,6 +46,66 @@ func _ready():
 	get_tree().connect('connected_to_server', self, '_connected_to_server')
 	get_tree().connect('connection_failed', self, '_connection_on_server_fail')
 	get_tree().connect('server_disconnected', self, '_server_disconnected')
+
+
+
+
+func _process(time):
+	if loader == null:
+		# no need to process anymore
+		set_process(false)
+		return
+
+	if wait_frames > 0: # wait for frames to let the "loading" animation show up
+		wait_frames -= 1
+		return
+
+	var t = OS.get_ticks_msec()
+	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control for how long we block this thread
+
+		# poll your loader
+		var err = loader.poll()
+
+		if err == ERR_FILE_EOF: # Finished loading.
+			var resource = loader.get_resource()
+			loader = null
+			set_new_scene(resource)
+			break
+		elif err == OK:
+			update_progress()
+		else: # error during loading
+			  
+			loader = null
+			break
+
+remotesync func selected_level(level_id):
+	var self_id= get_tree().get_network_unique_id()
+	loader = ResourceLoader.load_interactive(stages[level_id])
+	if loader == null: # check for errors
+		  
+		return
+	set_process(true)
+
+	current_scene.queue_free() # get rid of the old scene
+
+	# start your "loading..." animation
+	animation.play("loading")
+
+	wait_frames = 1
+func update_progress():
+	var progress = float(loader.get_stage()) / loader.get_stage_count()
+	# Update your progress bar?
+	get_node("CanvasLayer/Progress").set_value(100*progress)
+
+	# ... or update a progress animation?
+	var length = animation.get_current_animation_length()
+
+	# Call this on a paused animation. Use "true" as the second argument to force the animation to update.
+	animation.seek(progress * length, true)
+
+func set_new_scene(scene_resource):
+	current_scene = scene_resource.instance()
+	get_node("/root").add_child(current_scene)
 
 func _get_players():
 
@@ -36,7 +121,8 @@ func create_server(player_info):
 	peer.create_server(DEFAULT_PORT,MAX_PLAYERS)
 
 	p_info["host"]=true
-	p_info["id"]=get_tree().set_network_peer(peer)
+	p_info["id"]=1
+	get_tree().set_network_peer(peer)
 
 	players_info[peer.get_unique_id()]=p_info
 	my_info=p_info
@@ -153,15 +239,32 @@ func get_players_info():
 func disconnect_game():
 	peer.close_connection(5)
 
-func set_class(id):
-	if get_tree().is_network_server():
-		players_info[1]["classe"]=id
-	else:
-		players_info[get_tree().get_network_unique_id()]
-	rpc("send_class", get_tree().get_network_unique_id(), id)
+func set_class(new_class):
+	
+	players_info[get_tree().get_network_unique_id()]["classe"]=new_class
+	rpc("send_class", get_tree().get_network_unique_id(), new_class)
+	emit_signal("players_change",players_info,new_class,"change_class")
 
 remote func send_class(id,class_id):
 	players_info[id]["classe"]=class_id
-	print(players_info)
+	emit_signal("players_change",players_info,id,"change_class")
 
 
+func set_level(id):
+	level=id
+	
+	rpc("selected_level",id)
+
+func start_the_game(level):
+	var selected
+	if stages.size()>=(level):
+		selected=level
+	
+	if get_tree().is_network_server():
+		rpc("selected_level",selected)
+
+
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		get_tree().quit() 

@@ -449,7 +449,7 @@ anchor_bottom = 0.460904
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
 custom_fonts/font = SubResource( 9 )
-text = "2804:14c:598f:8ed8:2066:ab28:e95a:a718"
+text = "2804:14c:598f:8ed8:bc80:dd05:189:8e9b"
 align = 1
 max_length = 50
 placeholder_text = "2804:14c:598f:8ed8:9c34:920d:c576:463d"
@@ -465,6 +465,7 @@ anchor_bottom = 0.314083
 margin_bottom = 3.05176e-05
 custom_fonts/font = SubResource( 10 )
 text = "Player 1"
+align = 1
 placeholder_text = "Nick name"
 placeholder_alpha = 0.3
 __meta__ = {
@@ -528,7 +529,6 @@ __meta__ = {
 }
 
 [node name="Lobby_popup" type="PopupPanel" parent="."]
-visible = true
 anchor_left = 0.0333333
 anchor_top = 0.0592593
 anchor_right = 0.970833
@@ -614,7 +614,7 @@ custom_fonts/font = SubResource( 19 )
 disabled = true
 text = "Select class"
 align = 1
-items = [ "Select class", null, false, 0, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
+items = [ "Select class", null, false, 0, false, "Pistol", null, false, 1, false, "Shotgun", null, false, 2, false, "SMG", null, false, 3, false, "Sniper", null, false, 4, null ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": true
@@ -678,7 +678,7 @@ custom_fonts/font = SubResource( 19 )
 disabled = true
 text = "Select class"
 align = 1
-items = [ "Select class", null, false, 0, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
+items = [ "Select class", null, false, 10, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": true
@@ -744,7 +744,7 @@ custom_fonts/font = SubResource( 19 )
 disabled = true
 text = "Select class"
 align = 1
-items = [ "Select class", null, false, 0, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
+items = [ "Select class", null, false, 10, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": true
@@ -809,7 +809,7 @@ custom_fonts/font = SubResource( 19 )
 disabled = true
 text = "Select class"
 align = 1
-items = [ "", null, false, 0, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
+items = [ "Select class", null, false, 10, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": true
@@ -846,9 +846,9 @@ anchor_bottom = 0.91602
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 21 )
 disabled = true
-text = "Fase 1"
+text = "Fase teste"
 align = 1
-items = [ "Fase 1", null, false, 0, false, "0", null, false, 0, false ]
+items = [ "Fase teste", null, false, 0, false, "0", null, false, 0, false ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": true
@@ -869,4 +869,6 @@ __meta__ = {
 [connection signal="item_selected" from="Lobby_popup/Lobby_panel/Player1/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="item_selected" from="Lobby_popup/Lobby_panel/Player2/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="item_selected" from="Lobby_popup/Lobby_panel/Player3/MenuButton" to="." method="_on_MenuButton_item_selected"]
+[connection signal="pressed" from="Lobby_popup/Lobby_panel/Start_Game" to="." method="_on_Start_Game_pressed"]
 [connection signal="pressed" from="Lobby_popup/Lobby_panel/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="item_selected" from="Lobby_popup/Lobby_panel/stage_select" to="." method="_on_stage_select_item_selected"]
