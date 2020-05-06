@@ -449,7 +449,7 @@ anchor_bottom = 0.460904
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
 custom_fonts/font = SubResource( 9 )
-text = "2804:14c:598f:8ed8:bc80:dd05:189:8e9b"
+text = "2804:14c:598f:8ed8:b0e4:7815:e30f:2880"
 align = 1
 max_length = 50
 placeholder_text = "2804:14c:598f:8ed8:9c34:920d:c576:463d"
@@ -848,7 +848,7 @@ custom_fonts/font = SubResource( 21 )
 disabled = true
 text = "Fase teste"
 align = 1
-items = [ "Fase teste", null, false, 0, false, "0", null, false, 0, false ]
+items = [ "Fase teste", null, false, 0, false ]
 selected = 0
 __meta__ = {
 "_edit_use_anchors_": true

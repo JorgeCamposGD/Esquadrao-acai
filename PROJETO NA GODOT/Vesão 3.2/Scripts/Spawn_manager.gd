@@ -1,5 +1,5 @@
 extends Spatial
-export (PackedScene) var mob_resource=preload("res://scenes/enemys/zombie 0.tscn")
+export (Array,PackedScene) var mob_resource=[preload("res://scenes/enemys/LoucoDaGranola.tscn")]
 export (int,0,30) var maximo_de_ondas=5
 export (int,0,30) var inimigos_por_onda=5
 export (float,0,300) var segundos_entre_as_ondas=50
@@ -13,13 +13,15 @@ var in_wave=false
 var time_to_wave=10
 var place_index=0
 var spawn_points=[]
-
+export (bool) var active=true
 onready var mob=mob_resource.instance()
 
 func _ready():
-
+	
+	if not(active):
+		return
 	if spawn_places.empty():
-		print(get_children())
+
 		spawn_points=get_children()
 		
 	else:
@@ -31,8 +33,9 @@ func _ready():
 	instace_mob(false) 
 
 
-
-	
+func set_active():
+	active=true
+	_ready()
 func instace_mob(persist):
 	
 	var new_m=mob_resource.instance()
@@ -41,7 +44,7 @@ func instace_mob(persist):
 	new_m.set_global_transform(spawn_points[randi()%spawn_points.size()-1].get_global_transform() )
 
 	
-	new_m._ready()
+	#new_m._ready()
 	instanced_enemys.append(new_m)
 	get_node("Spawn_pos/Timer").start(randi()%5+1) 
 

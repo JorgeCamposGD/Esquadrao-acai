@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Enemys/Carangote/andandocanrangote_001.anim" type="Animation" id=1]
+[ext_resource path="res://assets/Enemys/Carangote/atkcarangote.anim" type="Animation" id=2]
+[ext_resource path="res://assets/Enemys/Carangote/andandocanrangote.anim" type="Animation" id=3]
+[ext_resource path="res://assets/Enemys/Carangote/Esfera icosaedrica_001.mesh" type="ArrayMesh" id=4]
+
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CARANGOTE" type="Spatial" parent="."]
+
+[node name="Armação carangote" type="Spatial" parent="CARANGOTE"]
+transform = Transform( 1.40371, 0, 0, 0, 1.40371, 0, 0, 0, 1.40371, 0.148113, 0.767421, -0.0130132 )
+
+[node name="Skeleton" type="Skeleton" parent="CARANGOTE/Armação carangote"]
+bones/0/name = "Bone"
+bones/0/parent = -1
+bones/0/rest = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0.010304, -0.0474983, 0.0535636 )
+bones/0/enabled = true
+bones/0/bound_children = [  ]
+bones/1/name = "Bone.001"
+bones/1/parent = 0
+bones/1/rest = Transform( 0.241678, -0.952548, -0.18505, 0.968495, 0.224982, 0.10677, -0.0600703, -0.205024, 0.976912, 2.23517e-08, -1.49012e-08, -1.21017 )
+bones/1/enabled = true
+bones/1/bound_children = [  ]
+bones/2/name = "Bone.002"
+bones/2/parent = 0
+bones/2/rest = Transform( -0.0894321, -0.32658, -0.940929, -0.0089595, 0.94494, -0.32712, 0.995953, -0.0208248, -0.0874339, -0.414854, 1.09267, -0.690775 )
+bones/2/enabled = true
+bones/2/bound_children = [  ]
+bones/3/name = "Bone.003"
+bones/3/parent = 0
+bones/3/rest = Transform( -0.119122, 0.345841, -0.930701, -0.00142312, 0.937315, 0.348481, 0.992879, 0.0428361, -0.111162, -0.710066, -1.15875, -0.902123 )
+bones/3/enabled = true
+bones/3/bound_children = [  ]
+bones/4/name = "Bone.004"
+bones/4/parent = 0
+bones/4/rest = Transform( 0.216366, 0.262532, -0.940353, 0.846741, -0.529936, 0.046877, -0.48602, -0.806377, -0.336957, -0.710066, -1.15875, -0.902123 )
+bones/4/enabled = true
+bones/4/bound_children = [  ]
+bones/5/name = "Bone.005"
+bones/5/parent = 0
+bones/5/rest = Transform( -0.082288, 0.248001, -0.965259, 0.702205, 0.701716, 0.120427, 0.707204, -0.6679, -0.23189, -0.414854, 1.09267, -0.690775 )
+bones/5/enabled = true
+bones/5/bound_children = [  ]
+
+[node name="carangote mash" type="MeshInstance" parent="CARANGOTE/Armação carangote/Skeleton"]
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CARANGOTE"]
+anims/andandocanrangote = ExtResource( 3 )
+anims/andandocanrangote.001 = ExtResource( 1 )
+anims/atkcarangote = ExtResource( 2 )

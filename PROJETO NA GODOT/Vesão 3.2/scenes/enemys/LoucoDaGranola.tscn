@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=2]
+[ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=3]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 2.05424
+height = 3.65173
+
+[node name="LoucoDaGranola" type="KinematicBody"]
+collision_layer = 4
+collision_mask = 39
+script = ExtResource( 1 )
+
+[node name="DOIDO DA GRANOLA" type="Spatial" parent="."]
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0 )
+
+[node name="Armadure" type="Spatial" parent="Spatial"]
+transform = Transform( 1.31756, 0, 0, 0, 1.31756, 0, 0, 0, 1.31756, 0.558617, 2.64046, -0.0744687 )
+
+[node name="Skeleton" type="Skeleton" parent="Spatial/Armadure"]
+bones/0/name = "Bone.001"
+bones/0/parent = -1
+bones/0/rest = Transform( -0.200778, 0.976186, -0.0821574, 0.0153007, -0.08073, -0.996618, -0.979517, -0.201356, 0.00127243, -0.470352, -1.39861, 0.0452919 )
+bones/0/enabled = true
+bones/0/bound_children = [  ]
+bones/1/name = "Bone"
+bones/1/parent = 0
+bones/1/rest = Transform( -0.184437, -0.979518, 0.0808007, 0.899714, -0.201356, -0.38726, 0.395598, 0.00127252, 0.918423, 0.0575858, 0.282344, -1.43335 )
+bones/1/enabled = true
+bones/1/bound_children = [  ]
+bones/2/name = "Bone.002"
+bones/2/parent = 0
+bones/2/rest = Transform( -0.98893, -0.130985, -0.0697186, 0.0585931, 0.0869549, -0.994488, 0.136325, -0.987564, -0.0783175, -0.584191, 0.824938, -1.36402 )
+bones/2/enabled = true
+bones/2/bound_children = [  ]
+bones/3/name = "Bone.003"
+bones/3/parent = 0
+bones/3/rest = Transform( -0.935262, -0.124218, 0.331444, -0.338157, 0.0369281, -0.940365, 0.104571, -0.991568, -0.0765428, 0.498924, 0.757662, -0.595716 )
+bones/3/enabled = true
+bones/3/bound_children = [  ]
+
+[node name="Corpo" type="MeshInstance" parent="Spatial/Armadure/Skeleton"]
+transform = Transform( -1.7, 0, -2.56693e-07, 0, 1.7, 0, 2.56693e-07, 0, -1.7, -0.4, -1.525, -3.72529e-09 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="Cano da arma" type="MeshInstance" parent="Spatial"]
+transform = Transform( 0.999112, 0, 0, 0, 0.528336, 0, 0, 0, 0.624785, -2.83512, -0.723664, -0.110381 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Position3D" type="Position3D" parent="Spatial/Cano da arma"]
+transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.99623e-08, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spatial"]
+anims/andando = ExtResource( 2 )
+
+[node name="Find_player" type="Timer" parent="."]
+
+[node name="Mob" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 7 )

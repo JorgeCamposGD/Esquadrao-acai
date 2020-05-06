@@ -42,7 +42,8 @@ var self_info={
 	"name":"",
 	"classe":null,
 	"host":false,
-	"id":null
+	"id":null,
+	"status_in_game":null
 }
 var players_info
 var network=Network
@@ -156,7 +157,6 @@ func go_to_lobby():
 	if Global.get_tree().is_network_server():
 		host_name.set_text(players_info[1].name)
 		host_class.set_disabled(false)
-		mission_start.set_disabled(false)
 		select_button.set_disabled(false)
 	lobby_popup.show()
 

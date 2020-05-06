@@ -42,7 +42,7 @@ func _physics_process(delta):
 	
 	if hp_atual<=0:
 		queue_free()
-		get_node("AnimationPlayer").play("Die")
+		#get_node("AnimationPlayer").play("Die")
 		return
 	var move_vec = Vector3()
 
@@ -54,7 +54,7 @@ func _physics_process(delta):
 	move_vec.y = y_speed#gravidade
 	cooldown-=delta if cooldown>0 else 0
 	if move_vec.z!=0 or move_vec.x!=0:
-		get_node("AnimationPlayer").play("ANDANDO")
+		#get_node("AnimationPlayer").play("ANDANDO")
 		#verifica se o Player esta andando
 		rot=atan2(move_vec.x*-1,move_vec.z*-1)
 		#transforma os vetores de movimento em um angulo que será usado para rotação
@@ -67,8 +67,8 @@ func _physics_process(delta):
 
 			rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
 			body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
-	else:
-		get_node("AnimationPlayer").play("PARADO")
+	#else:
+		#get_node("AnimationPlayer").play("PARADO")
 	move_and_slide(move_vec, Vector3(0, 1, 0),true,4)#movimenta o personagem
 	
 	atk()
@@ -95,14 +95,6 @@ func atk():
 						enemy.damage(10,0)
 
 
-func _on_Melee_Range_body_entered(body):
-
-	body_in_rage.append(body)
-	atk()
-
-
-func _on_Melee_Range_body_exited(body):
-	body_in_rage.erase(body)
 
 
 func get_targuet(type):
@@ -110,12 +102,11 @@ func get_targuet(type):
 	var targuet
 	var my_pos=get_global_transform().origin
 	var targuet_pos
-	
+
 	if players.size()<=0:
 		return Vector3()
 	elif players.size()==1:
 		return players[0].get_global_pos()-my_pos
-
 	else:
 		for t in players:
 			if targuet==null:
@@ -142,9 +133,24 @@ func damage(dano,type):
 	if hp_atual>0:
 		match type:
 			0: hp_atual-=dano
-		get_node("AnimationPlayer2").play("Dano")
+		#get_node("AnimationPlayer2").play("Dano")
 
 
 func _on_Timer_timeout():
 
 	queue_free()
+
+#
+#func _on_AreaMelee_body_entered(body):
+#	print(body)
+#
+#
+#func _on_Area_body_entered(body):
+#	print(body,"out")
+#	body_in_rage.append(body)
+#	atk()
+#
+#
+#func _on_Area_body_exited(body):
+#	print(body,"in")
+#	body_in_rage.erase(body)

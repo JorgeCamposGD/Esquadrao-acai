@@ -1,7 +1,8 @@
 extends Node
 
 signal players_change 
-
+signal game_status
+signal disconnect_from_server
 const MAX_PLAYERS=4
 const DEFAULT_PORT=10567
 
@@ -19,14 +20,22 @@ var loader
 var wait_frames
 var time_max = 100 # msec
 var current_scene
+var actual_game_state="on_menu"
 
+var instanced_players={}
+
+var players_status={}
+var all_ready
+var offline=true
 onready var animation=$Anim
 
 
-
+func get_game_state():
+	return actual_game_state
 
 
 func _ready():
+	offline=Global.offline
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 
@@ -35,10 +44,7 @@ func _ready():
 
 	get_tree().set_auto_accept_quit(false)
 
-	var upnp = UPNP.new()
-	upnp.discover(2000, 2, "InternetGatewayDevice")
-	upnp.add_port_mapping(DEFAULT_PORT)
-	print(upnp.get_discover_local_port())
+
 	_get_players() 
 	get_tree().connect('network_peer_connected', self, '_peer_connected')
 	get_tree().connect('network_peer_disconnected', self, '_peer_disconnected')
@@ -51,11 +57,13 @@ func _ready():
 
 
 func _process(time):
+	if Input.is_action_just_pressed("square"):
+		print("atirou")
 	if loader == null:
 		# no need to process anymore
 		set_process(false)
 		return
-
+	actual_game_state="loading"
 	if wait_frames > 0: # wait for frames to let the "loading" animation show up
 		wait_frames -= 1
 		return
@@ -95,7 +103,7 @@ remotesync func selected_level(level_id):
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
 	# Update your progress bar?
-	get_node("CanvasLayer/Progress").set_value(100*progress)
+	get_node("CanvasLayer/Control/Progress").set_value(100*progress)
 
 	# ... or update a progress animation?
 	var length = animation.get_current_animation_length()
@@ -104,8 +112,72 @@ func update_progress():
 	animation.seek(progress * length, true)
 
 func set_new_scene(scene_resource):
+	
+	
 	current_scene = scene_resource.instance()
+	Ress_3D.ocult()
 	get_node("/root").add_child(current_scene)
+
+	connect("game_status",current_scene,"game_status_change")
+	connect("disconnect_from_server",current_scene,"server_out")
+	place_in_scene()
+	get_node("CanvasLayer/Control").hide()
+
+func place_in_scene():
+	
+	for key in players_info:
+		
+	
+		var avatar=Ress_3D.get_player()
+		var instanced=avatar.instance()
+		connect("disconnect_from_server",instanced,"server_out")
+
+		instanced.set_name( str(players_info[key]["name"]) )
+		instanced.set_network_master(key)
+		instanced.set_class(players_info[key]["classe"]-1)
+		
+		if players_info[key]["id"]==get_tree().get_network_unique_id():
+			instanced.set_players_interface(get_tree().get_network_unique_id(),players_info)
+
+		current_scene.add_child(instanced)
+		instanced_players[key]={"pos":current_scene.get_node("PlayerPos").set_player_in_pos(),"node":instanced}
+		if get_tree().is_network_server():
+			rpc("_set_players",key,instanced_players[key]["pos"],instanced_players.size())
+
+remotesync func _set_players(key,place,size):
+	try_set_players(key,place,size)
+func try_set_players(key,place,size):
+	if instanced_players.size()<size:
+		yield(get_tree(), "idle_frame")
+		try_set_players(key,place,size)
+	else:
+		var inst=instanced_players[key]["node"]
+		inst.set_global_transform(place)
+		current_scene.player_in.append(inst)
+	print("chegou aqui")
+
+func get_game_status():
+
+	if all_ready==true:
+		emit_signal("game_status","ready")
+	else:
+		emit_signal("game_status","wait_players")
+func scene_ready():
+	rpc("player_ready",get_tree().get_network_unique_id())
+
+remotesync func player_ready(id):
+	
+	players_info[id]["status_in_game"]="ready"
+	all_ready=true
+	for key in players_info:
+		if players_info[key]["status_in_game"]!="ready":
+			all_ready=false
+
+	if all_ready:
+		#setar o jogador como pronto
+		emit_signal("game_status","ready")
+	else:
+		emit_signal("game_status","wait_players")
 
 func _get_players():
 
@@ -175,6 +247,7 @@ func _peer_disconnected(id):
 
 
 func _peer_connected(connected_id):
+	offline=false
 #é chamado quando o peer detecta que se conectou a outro peer, recebe o endereço do peer que se conectou a ele como connected_id	print("conect_peer")
 	
 	if not(get_tree().is_network_server()):
@@ -222,7 +295,9 @@ func _connected_ok():
 	print("conectou")
 
 func _server_disconnected():
-	print("saiu do servidor")
+	offline=true
+	get_tree().paused
+	emit_signal("disconnect_from_server")
 
 func _connection_on_server_fail():
 	print("erro ao entrar no servidor")
@@ -268,3 +343,10 @@ func start_the_game(level):
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		get_tree().quit() 
+
+
+func is_master(requester):
+	if offline:
+		return false
+	else:
+		return requester.is_network_master()
