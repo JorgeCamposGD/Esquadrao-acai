@@ -22,7 +22,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=25]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
@@ -70,23 +70,23 @@ use_filter = true
 extra_spacing_char = 9
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=26]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=12]
 size = 41
 use_filter = true
 extra_spacing_char = 7
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=13]
 size = 57
 use_filter = true
 extra_spacing_char = 7
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=14]
 size = 69
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -94,13 +94,13 @@ use_filter = true
 extra_spacing_char = 5
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxEmpty" id=14]
-
 [sub_resource type="StyleBoxEmpty" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=16]
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="DynamicFont" id=18]
 size = 51
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -108,17 +108,17 @@ use_filter = true
 extra_spacing_char = 2
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=27]
+[sub_resource type="StyleBoxTexture" id=19]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=20]
 size = 43
 use_filter = true
 extra_spacing_char = 8
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=21]
 size = 45
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -126,7 +126,7 @@ use_filter = true
 extra_spacing_char = 6
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=22]
 size = 32
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -134,22 +134,22 @@ use_filter = true
 extra_spacing_char = 5
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=21]
-default_font = SubResource( 20 )
+[sub_resource type="Theme" id=23]
+default_font = SubResource( 22 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=24]
 size = 41
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=25]
 size = 51
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=26]
 size = 71
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -256,7 +256,7 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
-custom_styles/panel = SubResource( 25 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -497,7 +497,7 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
-custom_styles/panel = SubResource( 26 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -507,7 +507,7 @@ anchor_left = 0.108817
 anchor_top = 0.478628
 anchor_right = 0.305313
 anchor_bottom = 0.601961
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Conect to host"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -518,7 +518,7 @@ anchor_left = 0.10888
 anchor_top = 0.623034
 anchor_right = 0.305376
 anchor_bottom = 0.746367
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Create host"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -530,7 +530,7 @@ anchor_top = 0.811059
 anchor_right = 0.621267
 anchor_bottom = 0.934392
 margin_right = -6.10352e-05
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Return"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -543,7 +543,7 @@ anchor_right = 0.892984
 anchor_bottom = 0.460904
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 align = 1
 max_length = 50
 placeholder_text = "2804:14c:598f:8ed8:9c34:920d:c676:463d"
@@ -557,7 +557,7 @@ anchor_top = 0.191184
 anchor_right = 0.89292
 anchor_bottom = 0.314083
 margin_bottom = 3.05176e-05
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "Player1"
 align = 1
 placeholder_text = "Nick name"
@@ -576,10 +576,10 @@ margin_top = -0.492523
 margin_right = -57.9991
 margin_bottom = -0.476532
 hint_tooltip = "your ip adress, if you are the host, send to your friends."
-custom_styles/read_only = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/read_only = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/selection_color = Color( 0, 0.780392, 1, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
@@ -599,10 +599,10 @@ margin_top = -0.180557
 margin_right = -12.8005
 margin_bottom = -0.492554
 hint_tooltip = "your ip adress, if you are the host, send to your friends."
-custom_styles/read_only = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/read_only = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/selection_color = Color( 0, 0.780392, 1, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
@@ -621,7 +621,7 @@ anchor_right = 0.893
 anchor_bottom = 0.579
 margin_right = -0.256226
 margin_bottom = -0.208069
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": true,
 "_editor_description_": ""
@@ -645,7 +645,7 @@ margin_left = -0.0178509
 margin_top = -0.0251546
 margin_right = 0.0175781
 margin_bottom = 0.0252686
-custom_styles/panel = SubResource( 27 )
+custom_styles/panel = SubResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -665,7 +665,7 @@ anchor_top = 0.0567216
 anchor_right = 0.640539
 anchor_bottom = 0.224037
 margin_left = 7.62939e-06
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Host"
 align = 1
 __meta__ = {
@@ -678,7 +678,7 @@ anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
 margin_left = -1.90735e-06
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 text = "Hostname"
 align = 1
 autowrap = true
@@ -694,7 +694,7 @@ anchor_top = 0.420154
 anchor_right = 0.935134
 anchor_bottom = 0.587469
 margin_left = -1.90735e-06
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 text = "No class"
 align = 1
 autowrap = true
@@ -709,8 +709,8 @@ anchor_top = 0.677529
 anchor_right = 0.921622
 anchor_bottom = 0.857763
 margin_left = -1.90735e-06
-theme = SubResource( 21 )
-custom_fonts/font = SubResource( 22 )
+theme = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 disabled = true
 text = "Select class"
 align = 1
@@ -734,7 +734,7 @@ anchor_left = 0.224323
 anchor_top = 0.0567216
 anchor_right = 0.737837
 anchor_bottom = 0.224037
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Player 1"
 align = 1
 __meta__ = {
@@ -746,7 +746,7 @@ anchor_left = 0.0675664
 anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 align = 1
 autowrap = true
 clip_text = true
@@ -760,7 +760,7 @@ anchor_left = 0.0675664
 anchor_top = 0.420154
 anchor_right = 0.935134
 anchor_bottom = 0.587469
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 text = "No class"
 align = 1
 autowrap = true
@@ -774,8 +774,8 @@ anchor_left = 0.0783784
 anchor_top = 0.677529
 anchor_right = 0.921623
 anchor_bottom = 0.857763
-theme = SubResource( 21 )
-custom_fonts/font = SubResource( 22 )
+theme = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 disabled = true
 text = "Select class"
 align = 1
@@ -800,7 +800,7 @@ anchor_left = 0.212161
 anchor_top = 0.0567216
 anchor_right = 0.749999
 anchor_bottom = 0.224037
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Player 2"
 align = 1
 __meta__ = {
@@ -812,7 +812,7 @@ anchor_left = 0.0675664
 anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 align = 1
 autowrap = true
 clip_text = true
@@ -826,7 +826,7 @@ anchor_left = 0.0675664
 anchor_top = 0.420154
 anchor_right = 0.935134
 anchor_bottom = 0.587469
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 text = "No class"
 align = 1
 autowrap = true
@@ -841,8 +841,8 @@ anchor_top = 0.66879
 anchor_right = 0.946184
 anchor_bottom = 0.849024
 margin_right = -0.000274658
-theme = SubResource( 21 )
-custom_fonts/font = SubResource( 22 )
+theme = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 disabled = true
 text = "Select class"
 align = 1
@@ -866,7 +866,7 @@ anchor_left = 0.214863
 anchor_top = 0.0567216
 anchor_right = 0.747296
 anchor_bottom = 0.224037
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Player 3"
 align = 1
 __meta__ = {
@@ -878,7 +878,7 @@ anchor_left = 0.0675662
 anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 align = 1
 autowrap = true
 clip_text = true
@@ -892,7 +892,7 @@ anchor_left = 0.0675662
 anchor_top = 0.420154
 anchor_right = 0.935134
 anchor_bottom = 0.587469
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 text = "No class"
 align = 1
 autowrap = true
@@ -907,8 +907,8 @@ anchor_top = 0.677529
 anchor_right = 0.921623
 anchor_bottom = 0.857763
 margin_left = 1.90735e-06
-theme = SubResource( 21 )
-custom_fonts/font = SubResource( 22 )
+theme = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 disabled = true
 text = "Select class"
 align = 1
@@ -923,7 +923,7 @@ anchor_left = 0.512544
 anchor_top = 0.763789
 anchor_right = 0.719018
 anchor_bottom = 0.919251
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 25 )
 disabled = true
 text = "Start Game"
 __meta__ = {
@@ -935,7 +935,7 @@ anchor_left = 0.759093
 anchor_top = 0.763789
 anchor_right = 0.965566
 anchor_bottom = 0.919251
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 25 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -947,7 +947,7 @@ anchor_top = 0.758457
 anchor_right = 0.482143
 anchor_bottom = 0.91602
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 26 )
 disabled = true
 text = "Fase teste"
 align = 1
