@@ -4,7 +4,7 @@ signal players_change
 signal game_status
 signal disconnect_from_server
 const MAX_PLAYERS=4
-const DEFAULT_PORT=10567
+const DEFAULT_PORT=8080
 
 onready var stages=[scence_0]
 
@@ -27,14 +27,21 @@ var instanced_players={}
 var players_status={}
 var all_ready
 var offline=true
+var ip
+
 onready var animation=$Anim
 
-
+var upnp
 func get_game_state():
 	return actual_game_state
 
 
 func _ready():
+	
+	upnp=UPNP.new()
+	upnp.set_discover_ipv6(true)
+ 
+
 	offline=Global.offline
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
@@ -46,6 +53,8 @@ func _ready():
 
 
 	_get_players() 
+	
+	Network.connect("ip_recived",self,"_ip_recived")
 	get_tree().connect('network_peer_connected', self, '_peer_connected')
 	get_tree().connect('network_peer_disconnected', self, '_peer_disconnected')
 	
@@ -191,6 +200,7 @@ func create_server(player_info):
 	peer=null
 	peer=NetworkedMultiplayerENet.new()
 	peer.create_server(DEFAULT_PORT,MAX_PLAYERS)
+	peer.set_bind_ip(ip)
 
 	p_info["host"]=true
 	p_info["id"]=1
@@ -350,3 +360,7 @@ func is_master(requester):
 		return false
 	else:
 		return requester.is_network_master()
+
+func _ip_recived(revived):
+	ip=revived
+

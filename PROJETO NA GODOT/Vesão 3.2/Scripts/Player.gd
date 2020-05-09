@@ -57,7 +57,10 @@ onready var camera=$Cam
 puppet var puppet_move_vec=Vector3()
 puppet var puppet_transform=Transform()
 
+
 func _ready():
+	
+
 	
 	hp_atual=100
 	Global._add_player(self)
@@ -67,7 +70,7 @@ func _ready():
 	#Global._add_player(self)
 	set_process(false)
 	set_physics_process(false)
-	print("insa")
+
 	if Global.is_master(self):
 		hud=get_node("Control")
 		camera.set_current(true)
@@ -129,10 +132,10 @@ func _physics_process(delta):
 			cooldown-=delta
 		else:
 			cooldown=0
-
-		if not(up or down or left or right) and hud.get_input_vec()!=Vector2():
-			move_vec.x=hud.get_input_vec().x
-			move_vec.z=hud.get_input_vec().y
+		if hud!=null:
+			if not(up or down or left or right) and hud.get_input_vec()!=Vector2():
+				move_vec.x=hud.get_input_vec().x
+				move_vec.z=hud.get_input_vec().y
 	
 
 		if Input.is_action_just_pressed("triangle"): #verifica se o botão de seleção foi apertado
@@ -142,10 +145,12 @@ func _physics_process(delta):
 				melee=true
 		#chamar animação
 		anim_control.play("trocando de arma")
+		
+		rset("puppet_transform",get_global_transform())
 		rset("puppet_move_vec",move_vec)
 	else:
 		move_vec=puppet_move_vec
-		global_transform=puppet_transform
+		set_global_transform(puppet_transform)
 	move_vec = move_vec.normalized()
 	move_vec *= move_speed#direção de movimento
 	move_vec.y = y_speed#gravidade
@@ -165,6 +170,9 @@ func _physics_process(delta):
 	else:
 		move_state=0
 	move_and_slide(move_vec, Vector3(0, 1, 0),true,4)#movimenta o personagem
+
+	if not Global.is_master(self):
+		puppet_transform=get_global_transform()
 
 	var grounded = is_on_floor()
 	y_speed -= GRAVITY
@@ -190,11 +198,11 @@ func _physics_process(delta):
 			using_special=false
 			especiais[classe].set_visible(false)
 		
-#	if action_state==0 and move_state==0:
-#		if melee:
-#			anim_control.play("parado com sandalha")
-#		else:
-#			anim_control.play("parado com arma")
+	if action_state==0 and move_state==0:
+		if melee:
+			anim_control.play("parado com sandalha")
+		else:
+			anim_control.play("parado com arma")
 	if action_state==1 and move_state==0:
 		if melee:
 			anim_control.play("atacando com a sandalha")
@@ -205,8 +213,7 @@ func _physics_process(delta):
 	elif action_state==3:
 		anim_control.play("trocando de arma")
 		
-	if not Global.is_master(self):
-		puppet_transform=get_global_transform()
+	
 func atack():
 
 	if cooldown<=0:
@@ -255,7 +262,8 @@ func damage(dano,type):
 	if hp_atual>0:
 		match type:
 			0: hp_atual-=dano
-	hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
+	if Global.is_master(self):
+		hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
 	#animation_dmg.play("dmg")
 
 func set_class(id_class):

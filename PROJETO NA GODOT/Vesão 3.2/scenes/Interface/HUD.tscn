@@ -8,21 +8,23 @@
 [ext_resource path="res://assets/Interface/Hud/BarraVidaCru.png" type="Texture" id=6]
 [ext_resource path="res://assets/Interface/Buttons/BotaoINTERAGIR.png" type="Texture" id=7]
 [ext_resource path="res://assets/Interface/Buttons/RodaMovimentoExterior.png" type="Texture" id=8]
-[ext_resource path="res://assets/Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/Fonts/Fonte 1.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 34
+size = 37
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 72
+use_filter = true
+extra_spacing_char = 9
 font_data = ExtResource( 9 )
 
 [node name="Control" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 10 )
@@ -34,10 +36,10 @@ __meta__ = {
 layer = 2
 
 [node name="FPS" type="Label" parent="CanvasLayer"]
-margin_left = 21.5349
-margin_top = 27.5172
-margin_right = 112.535
-margin_bottom = 74.5172
+margin_left = 5.13342
+margin_top = 3.08005
+margin_right = 96.1335
+margin_bottom = 50.08
 custom_fonts/font = SubResource( 1 )
 text = "64fs"
 __meta__ = {
@@ -45,7 +47,6 @@ __meta__ = {
 }
 
 [node name="Mobile_hud" type="Control" parent="CanvasLayer"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
