@@ -2,13 +2,12 @@
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://assets/Interface/Hud/BarraVidaCru.png" type="Texture" id=2]
-[ext_resource path="res://assets/Fonts/CinzelDecorativeRegular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Interface/Menu/fundo .jpg" type="Texture" id=3]
+[ext_resource path="res://assets/Fonts/Fonte 1.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="GradientTexture" id=1]
-
-[sub_resource type="DynamicFont" id=3]
-size = 41
-font_data = ExtResource( 3 )
+[sub_resource type="DynamicFont" id=1]
+size = 90
+font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "loading"
@@ -30,7 +29,7 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 1 )
+texture = ExtResource( 3 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": true
@@ -47,7 +46,6 @@ margin_right = 95.0
 margin_bottom = -138.0
 rect_scale = Vector2( 7, 7 )
 rect_pivot_offset = Vector2( 95, 11 )
-value = 50.0
 rounded = true
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 2 )
@@ -62,12 +60,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -107.5
-margin_top = -25.0
-margin_right = 107.5
-margin_bottom = 25.0
-custom_fonts/font = SubResource( 3 )
+margin_left = -150.5
+margin_top = 178.297
+margin_right = 150.5
+margin_bottom = 279.297
+custom_fonts/font = SubResource( 1 )
 text = "Loading..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/loading = SubResource( 2 )

@@ -4,12 +4,12 @@
 [ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=2]
 [ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=3]
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=1]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CapsuleShape" id=7]
+[sub_resource type="CapsuleShape" id=3]
 radius = 2.05424
 height = 3.65173
 
@@ -57,8 +57,8 @@ material/1 = null
 [node name="Cano da arma" type="MeshInstance" parent="Spatial"]
 transform = Transform( 0.999112, 0, 0, 0, 0.528336, 0, 0, 0, 0.624785, -2.83512, -0.723664, -0.110381 )
 visible = false
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="Position3D" type="Position3D" parent="Spatial/Cano da arma"]
 transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.99623e-08, 0, 0, 0 )
@@ -75,4 +75,4 @@ wait_time = 0.3
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
