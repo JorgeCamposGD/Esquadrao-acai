@@ -50,6 +50,8 @@ var action_state=0
 var peer_id=null
 var off_line=false
 
+var lock_cam=false
+
 onready var Sons=Ress_3D.get_sound(classe)
 
 onready var camera=$Cam
@@ -62,7 +64,7 @@ func _ready():
 	
 
 	
-	hp_atual=100
+	hp_atual=hp_maximo
 	Global._add_player(self)
 	move_speed*=scale.x
 	
@@ -70,14 +72,17 @@ func _ready():
 	#Global._add_player(self)
 	set_process(false)
 	set_physics_process(false)
-
+	hud=get_node("Control")
 	if Global.is_master(self):
-		hud=get_node("Control")
+		
 		camera.set_current(true)
 		hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
+	else:
+		hud.queue_free()
 
 
 func set_my_player():
+	get_node("WorldEnvironment").queue_free()
 	camera.set_current(true)
 
 func start_game():
@@ -103,9 +108,8 @@ func _physics_process(delta):
 	action_state=0
 
 	if hp_atual<=0:
-		#chamar animação
-		#return
-		pass  
+		die()
+
 	var move_vec = Vector3()
 
 	if Global.is_master(self) or off_line:
@@ -137,7 +141,9 @@ func _physics_process(delta):
 				move_vec.x=hud.get_input_vec().x
 				move_vec.z=hud.get_input_vec().y
 	
-
+		if Input.is_action_just_pressed("circle"):
+			lock_cam=!lock_cam
+			print(lock_cam)
 		if Input.is_action_just_pressed("triangle"): #verifica se o botão de seleção foi apertado
 			if melee:
 				melee=false
@@ -155,20 +161,21 @@ func _physics_process(delta):
 	move_vec *= move_speed#direção de movimento
 	move_vec.y = y_speed#gravidade
 	
-	if move_vec.z!=0 or move_vec.x!=0:
-		move_state=1
-		#verifica se o Player esta andando
-		rot=atan2(move_vec.x*-1,move_vec.z*-1)
-		#transforma os vetores de movimento em um angulo que será usado para rotação
-
-
-		var bodyquat=Quat(body.global_transform.basis.get_rotation_quat())#quaternion de rotação do personagem
-		var rotquat=Quat(0,0,0,0)#quaternion que será usado para rotação
-
-		rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
-		body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
-	else:
-		move_state=0
+	if not(lock_cam):
+		if move_vec.z!=0 or move_vec.x!=0:
+			move_state=1
+			#verifica se o Player esta andando
+			rot=atan2(move_vec.x*-1,move_vec.z*-1)
+			#transforma os vetores de movimento em um angulo que será usado para rotação
+	
+	
+			var bodyquat=Quat(body.global_transform.basis.get_rotation_quat())#quaternion de rotação do personagem
+			var rotquat=Quat(0,0,0,0)#quaternion que será usado para rotação
+	
+			rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
+			body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
+		else:
+			move_state=0
 	move_and_slide(move_vec, Vector3(0, 1, 0),true,4)#movimenta o personagem
 
 	if not Global.is_master(self):
@@ -235,7 +242,7 @@ remotesync func atk(melee,body,cano_pos,type):
 
 		else:
 			var bl=Ress_3D.get_bullet(type).instance()
-			print(type)
+
 			bl.add_collision_exception_with(self)
 
 
@@ -305,7 +312,7 @@ func construct_item(type):
 	#item.scale=scale
 remotesync func construct(type,grenade,point,global_transfor):
 	var item=Ress_3D.get_special_resource(type).instance()
-	print("asdhaoishfpiuea")
+
 	if type=="Pistol":
 		item.set_global_transform(grenade)
 
@@ -326,3 +333,6 @@ func _on_Melee_body_exited(body):
 
 func server_out():
 	get_tree().paused=true
+	
+func die():
+	pass

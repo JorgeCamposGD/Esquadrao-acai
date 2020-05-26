@@ -1,0 +1,6 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+ambient_light_color = Color( 1, 1, 1, 1 )
+dof_blur_far_distance = 35.0
+dof_blur_near_quality = 2

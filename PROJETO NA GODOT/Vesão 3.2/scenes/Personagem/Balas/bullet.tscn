@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/weapons/blue_myst.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/bullet standard.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -17,47 +16,7 @@ emission_on_uv2 = false
 [sub_resource type="SphereShape" id=3]
 radius = 0.170413
 
-[sub_resource type="Gradient" id=4]
-colors = PoolColorArray( 1, 1, 1, 0.961538, 0.960784, 0.960784, 0.960784, 0 )
-
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
-
-[sub_resource type="Curve" id=6]
-max_value = 2.0
-_data = [ Vector2( 0, 0.3856 ), 0.0, 0.0, 0, 0, Vector2( 0.0612366, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.999703, 1.4752 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
-
-[sub_resource type="ParticlesMaterial" id=8]
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 0.3
-angular_velocity = 35.2
-angular_velocity_random = 1.0
-scale = 4.0
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 5 )
-
-[sub_resource type="SpatialMaterial" id=9]
-flags_transparent = true
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-params_blend_mode = 1
-params_billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = ExtResource( 1 )
-proximity_fade_enable = true
-proximity_fade_distance = 0.2
-
-[sub_resource type="QuadMesh" id=10]
-material = SubResource( 9 )
-
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 resource_name = "explode"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -75,8 +34,8 @@ tracks/0/keys = {
 }
 
 [node name="bullet" type="KinematicBody"]
-collision_layer = 0
-collision_mask = 22
+collision_layer = 12
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -88,12 +47,5 @@ material/0 = null
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0 )
 shape = SubResource( 3 )
 
-[node name="explosion" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.452378, 0 )
-visible = false
-explosiveness = 1.0
-process_material = SubResource( 8 )
-draw_pass_1 = SubResource( 10 )
-
 [node name="anim" type="AnimationPlayer" parent="."]
-anims/explode = SubResource( 11 )
+anims/explode = SubResource( 4 )

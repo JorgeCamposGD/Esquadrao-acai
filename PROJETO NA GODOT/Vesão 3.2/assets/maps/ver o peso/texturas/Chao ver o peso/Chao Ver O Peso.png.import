@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.s3tc.stex"
 path.etc2="res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.etc2.stex"
+path.etc="res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/Chao ver o peso/Chao Ver O Peso.png"
-dest_files=[ "res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.s3tc.stex", "res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.etc2.stex" ]
+dest_files=[ "res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.s3tc.stex", "res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.etc2.stex", "res://.import/Chao Ver O Peso.png-25e3f33ccab3ba34e39551e6fa5da2fe.etc.stex" ]
 
 [params]
 

@@ -2,12 +2,19 @@ extends Spatial
 
 var level_status=null
 onready var play_places=get_node("PlayerPos")
+onready var world=get_node("World")
 var actual_state
 var player_in=[]
 export(Array,NodePath)var mob_spawn=["Spawn"]
+
+var high_world=false
 func _ready():
 
-	pass   
+
+	if high_world:
+		world.set_environment(Ress_3D.get_envir("pc"))
+
+
 
 func game_status_change(type):
 

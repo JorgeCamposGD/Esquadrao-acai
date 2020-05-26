@@ -52,11 +52,13 @@ var ip
 
 var used_slots={}
 var pre_slots={}
-
+var username
 var selected=0
-func _ready():
-	
 
+func _ready():
+	if OS.has_environment("USERNAME"):
+		username = OS.get_environment("USERNAME")
+		nick_name.set_text(username)
 	Network.get_ip()
 	Network.connect("ip_recived",self,"_ip_recived")
 	Global.connect('players_change', self, 'players_changed')
@@ -64,6 +66,8 @@ func _ready():
 	Global.get_tree().connect('connected_to_server', self, '_connected_to_server')
 	Global.get_tree().connect('connection_failed', self, '_connection_on_server_fail')
 	Global.get_tree().connect('server_disconnected', self, '_server_disconnected')
+
+
 
 func _on_Play_pressed():
 

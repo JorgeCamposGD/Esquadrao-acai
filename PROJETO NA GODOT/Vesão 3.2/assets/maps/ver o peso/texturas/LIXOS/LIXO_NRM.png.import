@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.s3tc.stex"
 path.etc2="res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.etc2.stex"
+path.etc="res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/LIXOS/LIXO_NRM.png"
-dest_files=[ "res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.s3tc.stex", "res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.etc2.stex" ]
+dest_files=[ "res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.s3tc.stex", "res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.etc2.stex", "res://.import/LIXO_NRM.png-d55f766adc4ec867a4996fd45404d4f1.etc.stex" ]
 
 [params]
 

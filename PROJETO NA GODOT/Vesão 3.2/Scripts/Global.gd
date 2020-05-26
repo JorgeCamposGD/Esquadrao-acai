@@ -3,54 +3,51 @@ extends Node
 signal players_change 
 signal game_status
 signal disconnect_from_server
+
 const MAX_PLAYERS=4
 const DEFAULT_PORT=8080
 
-onready var stages=[scence_0]
+onready var stages=[scene_0]
+onready var stages_mobile=[scene_0_mobile]
+onready var animation=$Anim
 
-var scence_0="res://scenes/Maps/Mapa alpha.tscn"
+var scene_0="res://scenes/Maps/Mapa alpha.tscn"
+var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
+
 var players=[]
-var peer
 
 var players_info={}
 var my_info={}
-var level
+var instanced_players={}
+var players_status={}
 
+var time_max = 100 # msec
+
+var current_scene
+var level
+var peer
 var loader
 var wait_frames
-var time_max = 100 # msec
-var current_scene
+var all_ready
+var ip
+var upnp
+
 var actual_game_state="on_menu"
 
-var instanced_players={}
-
-var players_status={}
-var all_ready
+var loading_scenes=false
 var offline=true
-var ip
 
-onready var animation=$Anim
-
-var upnp
 func get_game_state():
 	return actual_game_state
 
 
 func _ready():
-	
-	upnp=UPNP.new()
-	upnp.set_discover_ipv6(true)
  
-
 	offline=Global.offline
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 
-
-
-
 	get_tree().set_auto_accept_quit(false)
-
 
 	_get_players() 
 	
@@ -62,52 +59,53 @@ func _ready():
 	get_tree().connect('connection_failed', self, '_connection_on_server_fail')
 	get_tree().connect('server_disconnected', self, '_server_disconnected')
 
-
-
-
 func _process(time):
-	if Input.is_action_just_pressed("square"):
-		print("atirou")
-	if loader == null:
-		# no need to process anymore
-		set_process(false)
-		return
-	actual_game_state="loading"
-	if wait_frames > 0: # wait for frames to let the "loading" animation show up
-		wait_frames -= 1
-		return
-
-	var t = OS.get_ticks_msec()
-	while OS.get_ticks_msec() < t + time_max: # use "time_max" to control for how long we block this thread
-
-		# poll your loader
-		var err = loader.poll()
-
-		if err == ERR_FILE_EOF: # Finished loading.
-			var resource = loader.get_resource()
-			loader = null
-			set_new_scene(resource)
-			break
-		elif err == OK:
-			update_progress()
-		else: # error during loading
-			  
-			loader = null
-			break
+	print()
+	if loading_scenes:
+		if loader == null:
+			# no need to process anymore
+			loading_scenes=false
+			return
+		actual_game_state="loading"
+		if wait_frames > 0: # wait for frames to let the "loading" animation show up
+			wait_frames -= 1
+			return
+	
+		var t = OS.get_ticks_msec()
+		while OS.get_ticks_msec() < t + time_max: # use "time_max" to control for how long we block this thread
+	
+			# poll your loader
+			var err = loader.poll()
+	
+			if err == ERR_FILE_EOF: # Finished loading.
+				var resource = loader.get_resource()
+				loader = null
+				set_new_scene(resource)
+				break
+			elif err == OK:
+				update_progress()
+			else: # error during loading
+				  
+				loader = null
+				break
 
 remotesync func selected_level(level_id):
+	
 	var self_id= get_tree().get_network_unique_id()
-	loader = ResourceLoader.load_interactive(stages[level_id])
+	
+	if OS.get_name()!="Android":
+		loader = ResourceLoader.load_interactive(stages[level_id])
+	
+	else:
+		loader = ResourceLoader.load_interactive(stages_mobile[level_id])
 	if loader == null: # check for errors
-		  
 		return
-	set_process(true)
-
-	current_scene.queue_free() # get rid of the old scene
-
-	# start your "loading..." animation
+	
+	loading_scenes=true
+	
+	current_scene.queue_free()#remove a cena atual para pode carregadr a nova
 	animation.play("loading")
-
+	
 	wait_frames = 1
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
@@ -133,15 +131,17 @@ func set_new_scene(scene_resource):
 	get_node("CanvasLayer/Control").hide()
 
 func place_in_scene():
+	#coloca o jogadores na cena
 	
-	for key in players_info:
-		
-	
-		var avatar=Ress_3D.get_player()
-		var instanced=avatar.instance()
-		connect("disconnect_from_server",instanced,"server_out")
+	for key in players_info:#para cada jogador no dicionario ele vai adicionar na cena
 
-		instanced.set_name( str(players_info[key]["name"]) )
+		var avatar=Ress_3D.get_player()#recebe o avatar do node que carregou
+		var instanced=avatar.instance()#instancia o personagem
+
+		connect("disconnect_from_server",instanced,"server_out")#conecta o sinal de jogador saindo do jogo
+
+		#configura a instancia da instancia com base no jogador
+		instanced.set_name( str(players_info[key]["id"]) )
 		instanced.set_network_master(key)
 		instanced.set_class(players_info[key]["classe"]-1)
 		
@@ -155,6 +155,7 @@ func place_in_scene():
 
 remotesync func _set_players(key,place,size):
 	try_set_players(key,place,size)
+
 func try_set_players(key,place,size):
 	if instanced_players.size()<size:
 		yield(get_tree(), "idle_frame")
@@ -171,6 +172,7 @@ func get_game_status():
 		emit_signal("game_status","ready")
 	else:
 		emit_signal("game_status","wait_players")
+
 func scene_ready():
 	rpc("player_ready",get_tree().get_network_unique_id())
 
@@ -200,7 +202,6 @@ func create_server(player_info):
 	peer=null
 	peer=NetworkedMultiplayerENet.new()
 	peer.create_server(DEFAULT_PORT,MAX_PLAYERS)
-	peer.set_bind_ip(ip)
 
 	p_info["host"]=true
 	p_info["id"]=1
@@ -208,9 +209,6 @@ func create_server(player_info):
 
 	players_info[peer.get_unique_id()]=p_info
 	my_info=p_info
-	
-
-
 
 func conect_to_server(ip,player_info):#recebe o id do player e as informações
 	players_info={}
@@ -357,10 +355,12 @@ func _notification(what):
 
 func is_master(requester):
 	if offline:
-		return false
+		return true
 	else:
 		return requester.is_network_master()
 
 func _ip_recived(revived):
 	ip=revived
 
+func get_difficulty():
+	return 1

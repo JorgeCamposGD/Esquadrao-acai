@@ -81,14 +81,15 @@ extra_spacing_char = 7
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=13]
-size = 57
+size = 59
+use_mipmaps = true
 use_filter = true
-extra_spacing_char = 7
+extra_spacing_char = 5
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 69
-outline_size = 2
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 5
@@ -101,11 +102,11 @@ font_data = ExtResource( 4 )
 [sub_resource type="StyleBoxEmpty" id=17]
 
 [sub_resource type="DynamicFont" id=18]
-size = 51
-outline_size = 2
+size = 56
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-extra_spacing_char = 2
+extra_spacing_char = 4
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxTexture" id=19]
@@ -120,7 +121,7 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=21]
 size = 45
-outline_size = 2
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 6
@@ -128,7 +129,7 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=22]
 size = 32
-outline_size = 2
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 5
@@ -144,14 +145,14 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=25]
 size = 51
-outline_size = 2
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=26]
 size = 71
-outline_size = 2
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
@@ -178,6 +179,7 @@ anchor_top = 0.263422
 anchor_right = 0.355931
 anchor_bottom = 0.401384
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Conect and play"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,6 +202,7 @@ anchor_top = 0.612156
 anchor_right = 0.355931
 anchor_bottom = 0.750118
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Configuration"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -222,6 +225,7 @@ anchor_top = 0.0796293
 anchor_right = 0.354687
 anchor_bottom = 0.217592
 custom_fonts/font = SubResource( 2 )
+disabled = true
 text = "Play solo"
 clip_text = true
 __meta__ = {
@@ -544,6 +548,7 @@ anchor_bottom = 0.460904
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
 custom_fonts/font = SubResource( 13 )
+text = "2804:14c:598f:8ed8:a053:2017:11f0:f8eb"
 align = 1
 max_length = 50
 placeholder_text = "2804:14c:598f:8ed8:9c34:920d:c676:463d"
@@ -594,9 +599,9 @@ anchor_left = 0.108817
 anchor_top = 0.069
 anchor_right = 0.275
 anchor_bottom = 0.167017
-margin_left = -12.0005
+margin_left = -25.0001
 margin_top = -0.180557
-margin_right = -12.8005
+margin_right = -25.8001
 margin_bottom = -0.492554
 hint_tooltip = "your ip adress, if you are the host, send to your friends."
 custom_styles/read_only = SubResource( 15 )

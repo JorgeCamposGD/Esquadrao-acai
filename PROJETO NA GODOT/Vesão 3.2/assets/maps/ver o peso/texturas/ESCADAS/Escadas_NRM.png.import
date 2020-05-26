@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.s3tc.stex"
 path.etc2="res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.etc2.stex"
+path.etc="res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/ESCADAS/Escadas_NRM.png"
-dest_files=[ "res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.s3tc.stex", "res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.etc2.stex" ]
+dest_files=[ "res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.s3tc.stex", "res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.etc2.stex", "res://.import/Escadas_NRM.png-9e5173e82feedbc1a55d91dfda615a4c.etc.stex" ]
 
 [params]
 

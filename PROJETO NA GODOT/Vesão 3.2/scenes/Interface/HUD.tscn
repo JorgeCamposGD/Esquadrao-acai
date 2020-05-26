@@ -47,7 +47,6 @@ __meta__ = {
 }
 
 [node name="Mobile_hud" type="Control" parent="CanvasLayer"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -59,10 +58,11 @@ anchor_left = 1.0
 anchor_top = 16.509
 anchor_right = 10.659
 anchor_bottom = 26.509
-margin_left = -13.6447
-margin_top = -0.0100708
-margin_right = -0.00402832
-margin_bottom = -0.0100098
+margin_left = -15.0
+margin_top = -0.359985
+margin_right = -1.35995
+margin_bottom = -0.359863
+keep_pressed_outside = true
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 4
@@ -71,7 +71,7 @@ __meta__ = {
 }
 
 [node name="Analog" type="Sprite" parent="CanvasLayer/Mobile_hud/TextureButton"]
-position = Vector2( 204.659, 200 )
+position = Vector2( 200, 200 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
 
@@ -80,24 +80,27 @@ position = Vector2( 1574.04, 728.101 )
 scale = Vector2( 3, 3 )
 normal = ExtResource( 2 )
 action = "square"
+visibility_mode = 1
 
 [node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1422.28, 556.898 )
 scale = Vector2( 4.5, 4.5 )
 normal = ExtResource( 7 )
 action = "r1"
+visibility_mode = 1
 
 [node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1759.84, 39.8183 )
 scale = Vector2( 3, 3 )
 normal = ExtResource( 4 )
 action = "ui_cancel"
+visibility_mode = 1
 
 [node name="Lock" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
 position = Vector2( 1665.14, 491.473 )
 scale = Vector2( 2, 2 )
 normal = ExtResource( 1 )
-action = "triangle"
+action = "circle"
 
 [node name="ProgressBar2" type="TextureProgress" parent="."]
 anchor_left = 0.022
@@ -146,5 +149,4 @@ text = "Nome"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_button_up"]
 [connection signal="gui_input" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_gui_input"]

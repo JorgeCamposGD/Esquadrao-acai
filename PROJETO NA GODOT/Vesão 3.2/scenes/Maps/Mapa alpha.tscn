@@ -1,7 +1,7 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scenes/Players_pos.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Spawn_manager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Spawn_manager.gd" type="Script" id=2]
 [ext_resource path="res://assets/maps/ver o peso/Cubo_167.mesh" type="ArrayMesh" id=3]
 [ext_resource path="res://assets/maps/ver o peso/Plano_004.mesh" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/maps/ver o peso/Circulo_000.mesh" type="ArrayMesh" id=5]
@@ -34,48 +34,94 @@
 [ext_resource path="res://Scripts/Level_manager.gd" type="Script" id=32]
 [ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=33]
 [ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=34]
+[ext_resource path="res://scenes/waterEnvi.tres" type="Environment" id=35]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 1, 1, 0.234884 )
+[sub_resource type="CapsuleMesh" id=1]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 6.74278, 1, 1.30972 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 12.3072, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 1, 7.65458 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.595122, 1, 3.28115 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.595122, 1, 1.85993 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 3.57819, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 7.43901, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 8.22509, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 3.39835, 1, 3.51145 )
+
+[sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="ConcavePolygonShape" id=52]
+[sub_resource type="ConcavePolygonShape" id=12]
 data = PoolVector3Array( 1.0249, -0.0076, 2.1225, -1.0018, -0.0076, 2.1225, -1.0018, -0.0076, -2.1225, 1.5303, 0.0689, 2.1225, 1.5303, 0.0689, -2.1225, 2.5189, 0.0689, -2.1225, 2.5189, 0.0689, 2.1225, 2.5189, 0.0689, -2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.1486, -2.1225, 3.1189, 0.1486, 2.1225, 3.1189, 0.1486, -2.1225, 3.5274, 0.1486, -2.1225, 1.0249, -0.0076, 6.368, -0.998, -0.0076, 6.368, -0.998, -0.0076, 2.1229, 1.5303, 0.0689, 6.368, 1.5303, 0.0689, 2.1229, 2.5189, 0.0689, 2.1229, 2.5189, 0.0689, 6.368, 2.5189, 0.0689, 2.1229, 3.1189, 0.0689, 2.1229, 3.1189, 0.0689, 6.368, 3.1189, 0.0689, 2.1229, 3.1189, 0.1486, 2.1229, 3.1189, 0.1486, 6.368, 3.1189, 0.1486, 2.1229, 3.5274, 0.1486, 2.1229, 1.0249, -0.0076, 2.1225, -1.0018, -0.0076, -2.1225, 1.0249, -0.0076, -2.1225, 1.5303, 0.0689, 2.1225, 2.5189, 0.0689, -2.1225, 2.5189, 0.0689, 2.1225, 2.5189, 0.0689, 2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.1486, -2.1225, 3.1189, 0.1486, 2.1225, 3.1189, 0.1486, 2.1225, 3.5274, 0.1486, -2.1225, 3.5274, 0.1486, 2.1225, 1.0249, -0.0076, 6.368, -0.998, -0.0076, 2.1229, 1.0249, -0.0076, 2.1229, 1.5303, 0.0689, 6.368, 2.5189, 0.0689, 2.1229, 2.5189, 0.0689, 6.368, 2.5189, 0.0689, 6.368, 3.1189, 0.0689, 2.1229, 3.1189, 0.0689, 6.368, 3.1189, 0.0689, 6.368, 3.1189, 0.1486, 2.1229, 3.1189, 0.1486, 6.368, 3.1189, 0.1486, 6.368, 3.5274, 0.1486, 2.1229, 3.5274, 0.1486, 6.368, 1.0249, -0.0076, 2.1225, 1.0249, -0.0076, -2.1225, 1.5303, 0.0689, -2.1225, 1.0249, -0.0076, 6.368, 1.0249, -0.0076, 2.1229, 1.5303, 0.0689, 2.1229, 1.0249, -0.0076, 2.1225, 1.5303, 0.0689, -2.1225, 1.5303, 0.0689, 2.1225, 1.0249, -0.0076, 6.368, 1.5303, 0.0689, 2.1229, 1.5303, 0.0689, 6.368, -1.0018, -0.0076, 2.1225, -1.4738, -0.0076, 2.1225, -1.4738, -0.0076, -2.1225, -0.998, -0.0076, 6.368, -1.4738, -0.0076, 6.368, -1.4738, -0.0076, 2.1229, -1.0018, -0.0076, 2.1225, -1.4738, -0.0076, -2.1225, -1.0018, -0.0076, -2.1225, -0.998, -0.0076, 6.368, -1.4738, -0.0076, 2.1229, -0.998, -0.0076, 2.1229 )
 
-[sub_resource type="ProceduralSky" id=53]
-sky_top_color = Color( 0.952941, 0.952941, 0.94902, 1 )
-sky_horizon_color = Color( 0.839216, 0.843137, 0.686275, 1 )
-ground_bottom_color = Color( 0.254902, 0.215686, 0.109804, 1 )
-ground_horizon_color = Color( 0.235294, 0.2, 0.172549, 1 )
+[sub_resource type="CubeMesh" id=13]
 
-[sub_resource type="Environment" id=54]
-background_mode = 2
-background_sky = SubResource( 53 )
-
-[sub_resource type="CubeMesh" id=55]
-
-[sub_resource type="SpatialMaterial" id=56]
+[sub_resource type="SpatialMaterial" id=14]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CapsuleShape" id=57]
+[sub_resource type="CapsuleShape" id=15]
 radius = 2.05424
 height = 3.65173
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 32 )
 
-[node name="Spawn" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, -14.9641, 17.4544 )
+[node name="Spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
+script = ExtResource( 2 )
+active = true
+
+[node name="Spawn_pos" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0768, -1.58473, 2.31607 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos"]
+
+[node name="Spawn_pos2" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1874, -2.8897, -6.68034 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos2"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos2"]
 
 [node name="PlayerPos" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4227, 13.4788 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
-transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 2.56641, -8.33169, -0.542589 )
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 2.56641, 19.0873, -0.542589 )
 
 [node name="Scene Root" type="Spatial" parent="."]
-transform = Transform( -1.01825e-06, 0, 6.25, 0, 6.25, 0, -6.25, 0, -1.01825e-06, -189.996, -22.1838, 4.18164 )
+transform = Transform( -1.01825e-06, 0, 6.25, 0, 6.25, 0, -6.25, 0, -1.01825e-06, -189.996, 5.23519, 4.18164 )
 
 [node name="BARRICADA DE MADEIRA" type="Spatial" parent="Scene Root"]
 transform = Transform( -0.632248, 0, -0.0311875, 0, 0.633017, 0, 0.0311875, 0, -0.632248, -8.62673, 0.399957, 30.1356 )
@@ -86,97 +132,59 @@ mesh = ExtResource( 31 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 25 )
 
-[node name="Colisão do jogador" type="Spatial" parent="Scene Root"]
+[node name="ColisaoDoJogador" type="Spatial" parent="Scene Root"]
 
-[node name="parede de colisao" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 0.583994, 0, -6.77761e-08, 0, 1, 0, -6.77761e-08, 0, 1, -2.09518, 2.55024, 27.6209 )
-collision_layer = 50
-collision_mask = 50
+[node name="StaticBody" type="StaticBody" parent="Scene Root/ColisaoDoJogador"]
+transform = Transform( 1, 0, -9.9476e-14, 0, 1, 0, 9.9476e-14, 0, 1, -1.37677, 1.05325, 24.7871 )
+collision_layer = 16
+collision_mask = 16
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="LateralEsq" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56329, 0, 0 )
+shape = SubResource( 2 )
 
-[node name="parede de colisao2" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 1.35516, 0, 5.78632e-08, 0, 1, 0, 5.78632e-08, 0, 1, 14.7144, 2.55024, 27.6209 )
-collision_layer = 50
-collision_mask = 50
+[node name="LateralEsq2" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.102, 1.20931, -1.30504 )
+shape = SubResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao2"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="LateralDir" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64763, 0.163311, 14.5061 )
+shape = SubResource( 3 )
 
-[node name="parede de colisao4" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 0.583994, 0, -6.77761e-08, 0, 1, 0, -6.77761e-08, 0, 1, -3.21436, 2.55024, 38.3076 )
-collision_layer = 50
-collision_mask = 50
+[node name="Tras" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.81384, 0.357806, 5.4636 )
+shape = SubResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao4"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="FrenteEsq" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2209, 0.357806, 1.41975 )
+shape = SubResource( 5 )
 
-[node name="parede de colisao5" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.00192631, 0, -0.999995, 0, 1, 0, 0.411071, 0, -0.00232204, -10.9584, 2.42807, 35.8194 )
-collision_layer = 50
-collision_mask = 50
+[node name="FrenteDir" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2209, 0.357806, 9.22948 )
+shape = SubResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao5"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="ColisaoDoInimigo" type="Spatial" parent="Scene Root"]
 
-[node name="parede de colisao6" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.00192631, 0, -0.999995, 0, 1, 0, 0.411071, 0, -0.00232204, -10.9584, 2.42807, 29.0655 )
-collision_layer = 50
-collision_mask = 50
+[node name="StaticBody" type="StaticBody" parent="Scene Root/ColisaoDoInimigo"]
+transform = Transform( 1, 0, -9.9476e-14, 0, 1, 0, 9.9476e-14, 0, 1, -1.37677, 0.576699, 24.7871 )
+collision_layer = 32
+collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao6"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="LateralEsq" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.07486, 0.774328, -3.8846 )
+shape = SubResource( 7 )
 
-[node name="parede de colisao7" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.00192631, 0, -0.999995, 0, 1, 0, 0.411071, 0, -0.00232204, 11.5316, 2.42807, 36.4553 )
-collision_layer = 50
-collision_mask = 50
+[node name="LateralEsq2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14473, 1.22326, -3.8846 )
+shape = SubResource( 8 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao7"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="LateralDir" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73987, 1.22326, 14.4518 )
+shape = SubResource( 9 )
 
-[node name="parede de colisao8" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.00192634, 0, -0.999995, 0, 1, 0, 0.558742, 0, -0.00315613, 11.5316, 2.42807, 29.6794 )
-collision_layer = 50
-collision_mask = 50
-
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao8"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
-
-[node name="parede de colisao9" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.000815168, 0.906049, -0.423169, 0.00174527, 0.423172, 0.906045, 0.219248, 1.47614e-07, -0.00123846, 15.4288, 2.32093, 33.7678 )
-collision_layer = 50
-collision_mask = 50
-
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao9"]
-transform = Transform( 5.2605, 0, -1.02445e-08, 0, 1.96804, 0, -1.07649e-06, 0, 1.96804, -5.63477, 9.53674e-07, -2.2635 )
-shape = SubResource( 1 )
-
-[node name="parede de colisao10" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( -0.00510509, -0.987674, 0.154606, 0.00033994, 0.154793, 0.987925, -0.219196, 0.023243, -0.0096177, 22.7574, 2.99508, 31.0039 )
-collision_layer = 50
-collision_mask = 50
-
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao10"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
-
-[node name="parede de colisao3" type="StaticBody" parent="Scene Root/Colisão do jogador"]
-transform = Transform( 1.502, 0, 8.17861e-08, 0, 1, 0, 8.17861e-08, 0, 1, 14.4914, 2.55024, 38.3076 )
-collision_layer = 50
-collision_mask = 50
-
-[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Colisão do jogador/parede de colisao3"]
-transform = Transform( 5.2605, 0, -1.10028e-08, 0, 1.96804, 0, -1.07522e-06, 0, 1.96804, -5.63477, 0, -2.2635 )
-shape = SubResource( 1 )
+[node name="LateralDir2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05517, 1.22326, 14.4518 )
+shape = SubResource( 10 )
 
 [node name="Coisas do cenario" type="Spatial" parent="Scene Root"]
 
@@ -188,7 +196,7 @@ transform = Transform( 1.04812e-09, 0.140574, -2.7276e-09, 0.0239781, -6.14468e-
 mesh = ExtResource( 8 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 19 )
-material/2 = SubResource( 2 )
+material/2 = SubResource( 11 )
 material/3 = ExtResource( 17 )
 material/4 = ExtResource( 18 )
 material/5 = ExtResource( 18 )
@@ -200,7 +208,7 @@ material/10 = ExtResource( 15 )
 material/11 = ExtResource( 28 )
 
 [node name="barco" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( 0.0582308, 0, 0, 0, 0.0582308, 0, -8.88178e-16, 0, 0.0582308, 21.077, 1.74559, 29.4183 )
+transform = Transform( 0.0582308, 0, 0, 0, 0.0582308, 0, -8.88178e-16, 0, 0.0582308, 21.077, 1.74559, -15.1539 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 24 )
@@ -233,7 +241,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Coisas do cenario/VER O PESO/chao/StaticBody"]
-shape = SubResource( 52 )
+shape = SubResource( 12 )
 
 [node name="lixos" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
 transform = Transform( -0.120798, 0, -3.93611e-08, 0, 0.235708, 0, 3.93611e-08, 0, -0.120798, 8.53361, 1.09867, 34.2304 )
@@ -244,7 +252,7 @@ material/2 = ExtResource( 23 )
 material/3 = ExtResource( 17 )
 
 [node name="lonas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
-transform = Transform( 2.16948, 0, 5.68434e-14, 0, 2.16948, 0, -5.68434e-14, 0, 2.16948, -4.61067, 2.70881, 37.4332 )
+transform = Transform( 2.16948, 0, 1.13687e-13, 0, 2.16948, 0, -1.13687e-13, 0, 2.16948, -4.61067, 2.70881, 37.4332 )
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 26 )
 
@@ -259,24 +267,8 @@ transform = Transform( 0.188508, 0, 0, 0, 0.188508, 0, 0, 0, 0.188508, -6.99298,
 mesh = ExtResource( 5 )
 material/0 = ExtResource( 22 )
 
-[node name="iluminaçao " type="Spatial" parent="Scene Root/Coisas do cenario"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene Root/Coisas do cenario/iluminaçao "]
-environment = SubResource( 54 )
-
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-margin_right = 1082.0
-margin_bottom = 1082.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-handle_input_locally = false
-render_target_update_mode = 3
-
 [node name="LoucoDaGranola" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03813, -23.989, 1.48528 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03813, 3.42999, 1.48528 )
 collision_layer = 4
 collision_mask = 39
 
@@ -319,8 +311,8 @@ material/1 = null
 [node name="Cano da arma" type="MeshInstance" parent="LoucoDaGranola/Spatial"]
 transform = Transform( 0.999112, 0, 0, 0, 0.528336, 0, 0, 0, 0.624785, -2.83512, -0.723664, -0.110381 )
 visible = false
-mesh = SubResource( 55 )
-material/0 = SubResource( 56 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
 
 [node name="Position3D" type="Position3D" parent="LoucoDaGranola/Spatial/Cano da arma"]
 transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.99623e-08, 0, 0, 0 )
@@ -332,5 +324,12 @@ anims/andando = ExtResource( 34 )
 
 [node name="CollisionShape" type="CollisionShape" parent="LoucoDaGranola"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 57 )
+shape = SubResource( 15 )
+
+[node name="World" type="WorldEnvironment" parent="."]
+environment = ExtResource( 35 )
+[connection signal="timeout" from="Spawn/Spawn_pos/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos/Timer" to="Spawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos2/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos2/Timer" to="Spawn" method="_on_Timer_timeout"]
 [connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]

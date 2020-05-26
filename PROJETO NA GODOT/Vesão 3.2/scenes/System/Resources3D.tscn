@@ -1,41 +1,40 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=60 format=2]
 
-[ext_resource path="res://assets/characters/Bahia/Esfera icosaedrica_002.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://Scripts/Char_resources.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Personagem/Balas/bullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/characters/PP/Esfera icosaedrica.mesh" type="ArrayMesh" id=4]
-[ext_resource path="res://assets/characters/Nitty/Crafitando.anim" type="Animation" id=6]
-[ext_resource path="res://assets/characters/Nitty/andando com a arma.anim" type="Animation" id=7]
-[ext_resource path="res://assets/characters/Nitty/andando com a sandalha.anim" type="Animation" id=8]
-[ext_resource path="res://assets/characters/Nitty/atacando com a sandalha.anim" type="Animation" id=9]
-[ext_resource path="res://assets/characters/Nitty/atirando com arma.anim" type="Animation" id=10]
-[ext_resource path="res://assets/characters/Nitty/interagindo com interagindo com coisas.anim" type="Animation" id=11]
-[ext_resource path="res://assets/characters/PP/parado com arma.anim" type="Animation" id=12]
-[ext_resource path="res://assets/characters/PP/atirando com arma.anim" type="Animation" id=13]
-[ext_resource path="res://assets/characters/PP/atacando com a sandalha.anim" type="Animation" id=14]
-[ext_resource path="res://assets/characters/PP/Crafitando.anim" type="Animation" id=15]
-[ext_resource path="res://assets/characters/PP/trocando de arma.anim" type="Animation" id=16]
-[ext_resource path="res://assets/characters/PP/parado com sandalha.anim" type="Animation" id=17]
-[ext_resource path="res://assets/characters/PP/andando com a arma.anim" type="Animation" id=18]
-[ext_resource path="res://assets/characters/PP/andando com a sandalha.anim" type="Animation" id=19]
-[ext_resource path="res://assets/characters/PP/interagindo com coisas.anim" type="Animation" id=20]
-[ext_resource path="res://assets/characters/Bahia/xxxxxxxxxxx.anim" type="Animation" id=21]
-[ext_resource path="res://scenes/Personagem/Balas/bullet shotgun.tscn" type="PackedScene" id=22]
-[ext_resource path="res://assets/characters/Nitty/parado com arma.anim" type="Animation" id=23]
-[ext_resource path="res://assets/characters/Bahia/andando com a arma.anim" type="Animation" id=24]
-[ext_resource path="res://assets/characters/Nitty/parado com sandalha.anim" type="Animation" id=25]
-[ext_resource path="res://assets/characters/Bahia/andando com a sandalha.anim" type="Animation" id=26]
-[ext_resource path="res://assets/characters/Bahia/atacando com a sandalha.anim" type="Animation" id=27]
-[ext_resource path="res://assets/characters/Bahia/interagindo com coisas.anim" type="Animation" id=28]
-[ext_resource path="res://assets/characters/Bahia/atirando com arma.anim" type="Animation" id=29]
-[ext_resource path="res://assets/characters/Bahia/parado com arma.anim" type="Animation" id=30]
-[ext_resource path="res://assets/characters/Bahia/trocando de arma.anim" type="Animation" id=31]
-[ext_resource path="res://assets/characters/Bahia/parado com sandalha.anim" type="Animation" id=32]
-[ext_resource path="res://assets/characters/Nitty/trocando de arma.anim" type="Animation" id=33]
-[ext_resource path="res://assets/characters/Bahia/Crafitando.anim" type="Animation" id=34]
-[ext_resource path="res://assets/characters/Nitty/Esfera icosaedrica.mesh" type="ArrayMesh" id=35]
-[ext_resource path="res://assets/characters/Bahia/xxxxxxxxxxxxx_001.anim" type="Animation" id=36]
-[ext_resource path="res://assets/characters/Bahia/xxxxxxxxxxxxx.anim" type="Animation" id=37]
+[ext_resource path="res://assets/characters/Bahia/Esfera icosaedrica_002.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/characters/PP/Esfera icosaedrica.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/characters/Nitty/Esfera icosaedrica.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://scenes/Personagem/Balas/bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Resources3D.gd" type="Script" id=6]
+[ext_resource path="res://assets/characters/Nitty/parado com sandalha.anim" type="Animation" id=7]
+[ext_resource path="res://assets/characters/Bahia/interagindo com coisas.anim" type="Animation" id=8]
+[ext_resource path="res://assets/characters/Bahia/atirando com arma.anim" type="Animation" id=9]
+[ext_resource path="res://assets/characters/Nitty/andando com a arma.anim" type="Animation" id=10]
+[ext_resource path="res://assets/characters/Bahia/trocando de arma.anim" type="Animation" id=11]
+[ext_resource path="res://assets/characters/Bahia/andando com a sandalha.anim" type="Animation" id=12]
+[ext_resource path="res://assets/characters/Bahia/parado com sandalha.anim" type="Animation" id=13]
+[ext_resource path="res://assets/characters/Bahia/xxxxxxxxxxx.anim" type="Animation" id=14]
+[ext_resource path="res://assets/characters/Nitty/trocando de arma.anim" type="Animation" id=15]
+[ext_resource path="res://assets/characters/Nitty/atacando com a sandalha.anim" type="Animation" id=16]
+[ext_resource path="res://assets/characters/Bahia/atacando com a sandalha.anim" type="Animation" id=17]
+[ext_resource path="res://assets/characters/Bahia/parado com arma.anim" type="Animation" id=18]
+[ext_resource path="res://assets/characters/Bahia/xxxxxxxxxxxxx_001.anim" type="Animation" id=19]
+[ext_resource path="res://assets/characters/Bahia/xxxxxxxxxxxxx.anim" type="Animation" id=20]
+[ext_resource path="res://assets/characters/Bahia/andando com a arma.anim" type="Animation" id=21]
+[ext_resource path="res://assets/characters/Bahia/Crafitando.anim" type="Animation" id=22]
+[ext_resource path="res://assets/characters/Nitty/interagindo com interagindo com coisas.anim" type="Animation" id=23]
+[ext_resource path="res://assets/characters/Nitty/atirando com arma.anim" type="Animation" id=24]
+[ext_resource path="res://assets/characters/Nitty/parado com arma.anim" type="Animation" id=25]
+[ext_resource path="res://assets/characters/PP/Crafitando.anim" type="Animation" id=26]
+[ext_resource path="res://assets/characters/PP/atirando com arma.anim" type="Animation" id=27]
+[ext_resource path="res://assets/characters/PP/andando com a arma.anim" type="Animation" id=28]
+[ext_resource path="res://assets/characters/PP/andando com a sandalha.anim" type="Animation" id=29]
+[ext_resource path="res://assets/characters/PP/parado com sandalha.anim" type="Animation" id=30]
+[ext_resource path="res://assets/characters/PP/interagindo com coisas.anim" type="Animation" id=31]
+[ext_resource path="res://assets/characters/PP/trocando de arma.anim" type="Animation" id=32]
+[ext_resource path="res://assets/characters/Nitty/andando com a sandalha.anim" type="Animation" id=33]
+[ext_resource path="res://assets/characters/PP/parado com arma.anim" type="Animation" id=34]
+[ext_resource path="res://assets/characters/PP/atacando com a sandalha.anim" type="Animation" id=35]
+[ext_resource path="res://assets/characters/Nitty/Crafitando.anim" type="Animation" id=36]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.05424
@@ -455,10 +454,9 @@ albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 material = SubResource( 23 )
 
 [node name="Char_resources" type="Spatial"]
-script = ExtResource( 2 )
+script = ExtResource( 6 )
 
 [node name="PLAYER" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -242.744, 760.306, -4007.25 )
 collision_mask = 19
 
 [node name="Cam" type="InterpolatedCamera" parent="PLAYER"]
@@ -470,7 +468,10 @@ enabled = true
 transform = Transform( 1, 0, 0, 0, 0.672767, 0.739854, 0, -0.739854, 0.672767, 0, 26.0348, 16.5747 )
 
 [node name="Bullet_sound" type="AudioStreamPlayer3D" parent="PLAYER"]
-max_db = 5.0
+unit_db = 44.358
+unit_size = 34.6
+max_db = 6.0
+max_distance = 6.0
 
 [node name="CollisionShape" type="CollisionShape" parent="PLAYER"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.249256, 0 )
@@ -484,18 +485,18 @@ shape = SubResource( 1 )
 transform = Transform( -2.60673e-07, -2.60673e-07, 1.6, 0, 1.6, 2.60673e-07, -1.6, 4.2469e-14, -2.60673e-07, 0, -2.2944, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PLAYER/Char/Armature/Pistol"]
-anims/Crafitando = ExtResource( 34 )
-"anims/andando com a arma" = ExtResource( 24 )
-"anims/andando com a sandalha" = ExtResource( 26 )
-"anims/atacando com a sandalha" = ExtResource( 27 )
-"anims/atirando com arma" = ExtResource( 29 )
-"anims/interagindo com coisas" = ExtResource( 28 )
-"anims/parado com arma" = ExtResource( 30 )
-"anims/parado com sandalha" = ExtResource( 32 )
-"anims/trocando de arma" = ExtResource( 31 )
-anims/xxxxxxxxxxx = ExtResource( 21 )
-anims/xxxxxxxxxxxxx = ExtResource( 37 )
-anims/xxxxxxxxxxxxx.001 = ExtResource( 36 )
+anims/Crafitando = ExtResource( 22 )
+"anims/andando com a arma" = ExtResource( 21 )
+"anims/andando com a sandalha" = ExtResource( 12 )
+"anims/atacando com a sandalha" = ExtResource( 17 )
+"anims/atirando com arma" = ExtResource( 9 )
+"anims/interagindo com coisas" = ExtResource( 8 )
+"anims/parado com arma" = ExtResource( 18 )
+"anims/parado com sandalha" = ExtResource( 13 )
+"anims/trocando de arma" = ExtResource( 11 )
+anims/xxxxxxxxxxx = ExtResource( 14 )
+anims/xxxxxxxxxxxxx = ExtResource( 20 )
+anims/xxxxxxxxxxxxx.001 = ExtResource( 19 )
 
 [node name="Skeleton" type="Skeleton" parent="PLAYER/Char/Armature/Pistol"]
 bones/0/name = "Bone"
@@ -521,7 +522,7 @@ bones/3/bound_children = [  ]
 
 [node name="corpo002" type="MeshInstance" parent="PLAYER/Char/Armature/Pistol/Skeleton"]
 transform = Transform( 1.5, 0, 1.39698e-09, 0, 1.5, 0, -1.39698e-09, 0, 1.5, 0, 0, 0 )
-mesh = ExtResource( 1 )
+mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -606,7 +607,7 @@ bones/3/bound_children = [  ]
 
 [node name="Esfera icosaedrica" type="MeshInstance" parent="PLAYER/Char/Armature/Smg/Armature/Skeleton"]
 transform = Transform( 1.45544, 0, 0.362883, 0, 1.5, 0, -0.362883, 0, 1.45544, 0, 0, 0 )
-mesh = ExtResource( 35 )
+mesh = ExtResource( 4 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -614,15 +615,15 @@ material/3 = null
 material/4 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PLAYER/Char/Armature/Smg"]
-anims/Crafitando = ExtResource( 6 )
-"anims/andando com a arma" = ExtResource( 7 )
-"anims/andando com a sandalha" = ExtResource( 8 )
-"anims/atacando com a sandalha" = ExtResource( 9 )
-"anims/atirando com arma" = ExtResource( 10 )
-"anims/interagindo com interagindo com coisas" = ExtResource( 11 )
-"anims/parado com arma" = ExtResource( 23 )
-"anims/parado com sandalha" = ExtResource( 25 )
-"anims/trocando de arma" = ExtResource( 33 )
+anims/Crafitando = ExtResource( 36 )
+"anims/andando com a arma" = ExtResource( 10 )
+"anims/andando com a sandalha" = ExtResource( 33 )
+"anims/atacando com a sandalha" = ExtResource( 16 )
+"anims/atirando com arma" = ExtResource( 24 )
+"anims/interagindo com interagindo com coisas" = ExtResource( 23 )
+"anims/parado com arma" = ExtResource( 25 )
+"anims/parado com sandalha" = ExtResource( 7 )
+"anims/trocando de arma" = ExtResource( 15 )
 
 [node name="Sniper" type="Spatial" parent="PLAYER/Char/Armature"]
 transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -0.219055, 0 )
@@ -654,7 +655,7 @@ bones/3/bound_children = [  ]
 
 [node name="MASHNITYN" type="MeshInstance" parent="PLAYER/Char/Armature/Sniper/Armature/Skeleton"]
 transform = Transform( 0.970296, 0, 0.241922, 0, 1, 0, -0.241922, 0, 0.970296, 0, 0, 0 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 3 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -666,15 +667,15 @@ material/7 = null
 material/8 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PLAYER/Char/Armature/Sniper"]
-anims/Crafitando = ExtResource( 15 )
-"anims/andando com a arma" = ExtResource( 18 )
-"anims/andando com a sandalha" = ExtResource( 19 )
-"anims/atacando com a sandalha" = ExtResource( 14 )
-"anims/atirando com arma" = ExtResource( 13 )
-"anims/interagindo com coisas" = ExtResource( 20 )
-"anims/parado com arma" = ExtResource( 12 )
-"anims/parado com sandalha" = ExtResource( 17 )
-"anims/trocando de arma" = ExtResource( 16 )
+anims/Crafitando = ExtResource( 26 )
+"anims/andando com a arma" = ExtResource( 28 )
+"anims/andando com a sandalha" = ExtResource( 29 )
+"anims/atacando com a sandalha" = ExtResource( 35 )
+"anims/atirando com arma" = ExtResource( 27 )
+"anims/interagindo com coisas" = ExtResource( 31 )
+"anims/parado com arma" = ExtResource( 34 )
+"anims/parado com sandalha" = ExtResource( 30 )
+"anims/trocando de arma" = ExtResource( 32 )
 
 [node name="Melee" type="Area" parent="PLAYER/Char"]
 transform = Transform( -1.52803, 0, -8.74228e-08, 0, 1, 0, 1.33585e-07, 0, -1, 0, 0, -2.6 )
@@ -733,8 +734,5 @@ material/0 = null
 [node name="Granead2" type="MeshInstance" parent="PLAYER/optimizer"]
 transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, -0.251159, -5.62214 )
 
-[node name="bullet" parent="PLAYER/optimizer" instance=ExtResource( 3 )]
+[node name="bullet" parent="PLAYER/optimizer" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72131, 0 )
-
-[node name="bullet" parent="PLAYER/optimizer/bullet" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47878, 2.91973, -1.16006 )

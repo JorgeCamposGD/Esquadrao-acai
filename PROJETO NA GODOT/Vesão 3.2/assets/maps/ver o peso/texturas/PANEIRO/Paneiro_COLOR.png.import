@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.s3tc.stex"
 path.etc2="res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.etc2.stex"
+path.etc="res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/PANEIRO/Paneiro_COLOR.png"
-dest_files=[ "res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.s3tc.stex", "res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.etc2.stex" ]
+dest_files=[ "res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.s3tc.stex", "res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.etc2.stex", "res://.import/Paneiro_COLOR.png-591f2e4afd959a086baa3ed6968bed80.etc.stex" ]
 
 [params]
 

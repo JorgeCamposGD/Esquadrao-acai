@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.s3tc.stex"
 path.etc2="res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.etc2.stex"
+path.etc="res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/MADEIRA2/madeira1_NRM.png"
-dest_files=[ "res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.s3tc.stex", "res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.etc2.stex" ]
+dest_files=[ "res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.s3tc.stex", "res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.etc2.stex", "res://.import/madeira1_NRM.png-0369f531f956fc20bbcdd91c925587b6.etc.stex" ]
 
 [params]
 

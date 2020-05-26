@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.s3tc.stex"
 path.etc2="res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.etc2.stex"
+path.etc="res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/images/entradaalerta.jpg"
-dest_files=[ "res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.s3tc.stex", "res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.etc2.stex" ]
+dest_files=[ "res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.s3tc.stex", "res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.etc2.stex", "res://.import/entradaalerta.jpg-5e829629cfed2d22d4f53316019ff916.etc.stex" ]
 
 [params]
 

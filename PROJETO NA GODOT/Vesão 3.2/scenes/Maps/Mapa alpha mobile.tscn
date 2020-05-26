@@ -1,0 +1,348 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://scenes/Players_pos.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Spawn_manager.gd" type="Script" id=2]
+[ext_resource path="res://assets/maps/ver o peso/Cubo_167.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/maps/ver o peso/Plano_004.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/maps/ver o peso/Circulo_000.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/maps/ver o peso/Cubo_033.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/maps/ver o peso/Plano_027.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://assets/maps/ver o peso/Cube_008.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://assets/maps/ver o peso/Malha_003.mesh" type="ArrayMesh" id=9]
+[ext_resource path="res://assets/maps/ver o peso/Cubo_123.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://assets/maps/ver o peso/Cubo_199.mesh" type="ArrayMesh" id=11]
+[ext_resource path="res://assets/maps/ver o peso/ESCADAS.material" type="Material" id=13]
+[ext_resource path="res://assets/maps/ver o peso/madeira.material" type="Material" id=14]
+[ext_resource path="res://assets/maps/ver o peso/VERMELHO.material" type="Material" id=15]
+[ext_resource path="res://assets/maps/ver o peso/PANEIRO.material" type="Material" id=16]
+[ext_resource path="res://assets/maps/ver o peso/BRANCO.material" type="Material" id=17]
+[ext_resource path="res://assets/maps/ver o peso/AMARELO.material" type="Material" id=18]
+[ext_resource path="res://assets/maps/ver o peso/AZUL.material" type="Material" id=19]
+[ext_resource path="res://assets/maps/ver o peso/tijolos.material" type="Material" id=21]
+[ext_resource path="res://assets/maps/ver o peso/FERRO FERRUGEM.material" type="Material" id=22]
+[ext_resource path="res://assets/maps/ver o peso/rodas.material" type="Material" id=23]
+[ext_resource path="res://assets/maps/ver o peso/MARRON.material" type="Material" id=24]
+[ext_resource path="res://assets/maps/ver o peso/LARANJA.material" type="Material" id=25]
+[ext_resource path="res://assets/maps/ver o peso/Materiais_001.material" type="Material" id=26]
+[ext_resource path="res://assets/maps/ver o peso/LIXO.material" type="Material" id=27]
+[ext_resource path="res://assets/maps/ver o peso/aviso.material" type="Material" id=28]
+[ext_resource path="res://assets/maps/ver o peso/CINZA.material" type="Material" id=29]
+[ext_resource path="res://assets/maps/ver o peso/RUA.material" type="Material" id=30]
+[ext_resource path="res://assets/characters/Gordo da pedreira/Cubo_008.mesh" type="ArrayMesh" id=31]
+[ext_resource path="res://Scripts/Level_manager.gd" type="Script" id=32]
+[ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=33]
+[ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=34]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 6.74278, 1, 1.30972 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 12.3072, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 1, 7.65458 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.595122, 1, 3.28115 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.595122, 1, 1.85993 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 3.57819, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 7.43901, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 8.22509, 1, 3.51145 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 3.39835, 1, 3.51145 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.94902, 0.972549, 0.270588, 1 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0, 1, 0.298039, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.972549, 1, 0.0666667, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=15]
+data = PoolVector3Array( 1.0249, -0.0076, 2.1225, -1.0018, -0.0076, 2.1225, -1.0018, -0.0076, -2.1225, 1.5303, 0.0689, 2.1225, 1.5303, 0.0689, -2.1225, 2.5189, 0.0689, -2.1225, 2.5189, 0.0689, 2.1225, 2.5189, 0.0689, -2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.1486, -2.1225, 3.1189, 0.1486, 2.1225, 3.1189, 0.1486, -2.1225, 3.5274, 0.1486, -2.1225, 1.0249, -0.0076, 6.368, -0.998, -0.0076, 6.368, -0.998, -0.0076, 2.1229, 1.5303, 0.0689, 6.368, 1.5303, 0.0689, 2.1229, 2.5189, 0.0689, 2.1229, 2.5189, 0.0689, 6.368, 2.5189, 0.0689, 2.1229, 3.1189, 0.0689, 2.1229, 3.1189, 0.0689, 6.368, 3.1189, 0.0689, 2.1229, 3.1189, 0.1486, 2.1229, 3.1189, 0.1486, 6.368, 3.1189, 0.1486, 2.1229, 3.5274, 0.1486, 2.1229, 1.0249, -0.0076, 2.1225, -1.0018, -0.0076, -2.1225, 1.0249, -0.0076, -2.1225, 1.5303, 0.0689, 2.1225, 2.5189, 0.0689, -2.1225, 2.5189, 0.0689, 2.1225, 2.5189, 0.0689, 2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.1486, -2.1225, 3.1189, 0.1486, 2.1225, 3.1189, 0.1486, 2.1225, 3.5274, 0.1486, -2.1225, 3.5274, 0.1486, 2.1225, 1.0249, -0.0076, 6.368, -0.998, -0.0076, 2.1229, 1.0249, -0.0076, 2.1229, 1.5303, 0.0689, 6.368, 2.5189, 0.0689, 2.1229, 2.5189, 0.0689, 6.368, 2.5189, 0.0689, 6.368, 3.1189, 0.0689, 2.1229, 3.1189, 0.0689, 6.368, 3.1189, 0.0689, 6.368, 3.1189, 0.1486, 2.1229, 3.1189, 0.1486, 6.368, 3.1189, 0.1486, 6.368, 3.5274, 0.1486, 2.1229, 3.5274, 0.1486, 6.368, 1.0249, -0.0076, 2.1225, 1.0249, -0.0076, -2.1225, 1.5303, 0.0689, -2.1225, 1.0249, -0.0076, 6.368, 1.0249, -0.0076, 2.1229, 1.5303, 0.0689, 2.1229, 1.0249, -0.0076, 2.1225, 1.5303, 0.0689, -2.1225, 1.5303, 0.0689, 2.1225, 1.0249, -0.0076, 6.368, 1.5303, 0.0689, 2.1229, 1.5303, 0.0689, 6.368, -1.0018, -0.0076, 2.1225, -1.4738, -0.0076, 2.1225, -1.4738, -0.0076, -2.1225, -0.998, -0.0076, 6.368, -1.4738, -0.0076, 6.368, -1.4738, -0.0076, 2.1229, -1.0018, -0.0076, 2.1225, -1.4738, -0.0076, -2.1225, -1.0018, -0.0076, -2.1225, -0.998, -0.0076, 6.368, -1.4738, -0.0076, 2.1229, -0.998, -0.0076, 2.1229 )
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape" id=18]
+radius = 2.05424
+height = 3.65173
+
+[sub_resource type="Environment" id=19]
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 32 )
+
+[node name="Spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
+script = ExtResource( 2 )
+active = true
+
+[node name="Spawn_pos" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0768, -1.58473, 2.31607 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos"]
+
+[node name="Spawn_pos2" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1874, -2.8897, -6.68034 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos2"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos2"]
+
+[node name="PlayerPos" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4227, 13.4788 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 2.56641, 19.0873, -0.542589 )
+
+[node name="Scene Root" type="Spatial" parent="."]
+transform = Transform( -1.01825e-06, 0, 6.25, 0, 6.25, 0, -6.25, 0, -1.01825e-06, -189.996, 5.23519, 4.18164 )
+
+[node name="BARRICADA DE MADEIRA" type="Spatial" parent="Scene Root"]
+transform = Transform( -0.632248, 0, -0.0311875, 0, 0.633017, 0, 0.0311875, 0, -0.632248, -8.62673, 0.399957, 30.1356 )
+
+[node name="BARRICADA DE MADEIRA" type="MeshInstance" parent="Scene Root/BARRICADA DE MADEIRA"]
+transform = Transform( 1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 31 )
+material/0 = ExtResource( 14 )
+material/1 = ExtResource( 25 )
+
+[node name="ColisaoDoJogador" type="Spatial" parent="Scene Root"]
+
+[node name="StaticBody" type="StaticBody" parent="Scene Root/ColisaoDoJogador"]
+transform = Transform( 1, 0, -9.9476e-14, 0, 1, 0, 9.9476e-14, 0, 1, -1.37677, 1.05325, 24.7871 )
+collision_layer = 16
+collision_mask = 16
+
+[node name="LateralEsq" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56329, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="LateralEsq2" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.102, 1.20931, -1.30504 )
+shape = SubResource( 2 )
+
+[node name="LateralDir" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64763, 0.163311, 14.5061 )
+shape = SubResource( 3 )
+
+[node name="Tras" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.81384, 0.357806, 5.4636 )
+shape = SubResource( 4 )
+
+[node name="FrenteEsq" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2209, 0.357806, 1.41975 )
+shape = SubResource( 5 )
+
+[node name="FrenteDir" type="CollisionShape" parent="Scene Root/ColisaoDoJogador/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2209, 0.357806, 9.22948 )
+shape = SubResource( 6 )
+
+[node name="ColisaoDoInimigo" type="Spatial" parent="Scene Root"]
+
+[node name="StaticBody" type="StaticBody" parent="Scene Root/ColisaoDoInimigo"]
+transform = Transform( 1, 0, -9.9476e-14, 0, 1, 0, 9.9476e-14, 0, 1, -1.37677, 0.576699, 24.7871 )
+collision_layer = 32
+collision_mask = 0
+
+[node name="LateralEsq" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.07486, 0.774328, -3.8846 )
+shape = SubResource( 7 )
+
+[node name="LateralEsq2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14473, 1.22326, -3.8846 )
+shape = SubResource( 8 )
+
+[node name="LateralDir" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73987, 1.22326, 14.4518 )
+shape = SubResource( 9 )
+
+[node name="LateralDir2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05517, 1.22326, 14.4518 )
+shape = SubResource( 10 )
+
+[node name="Coisas do cenario" type="Spatial" parent="Scene Root"]
+
+[node name="VER O PESO" type="Spatial" parent="Scene Root/Coisas do cenario"]
+transform = Transform( 1.24516, 0, 0, 0, 1.24516, 0, 0, 0, 1.24516, 1.31792e-06, 0, -8.08932 )
+
+[node name="assets de enfeite" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( 1.04812e-09, 0.140574, -2.7276e-09, 0.0239781, -6.14468e-09, 1.7231e-16, 1.81719e-16, -5.47415e-08, -0.00700437, -1.67722, 0.645969, 30.0558 )
+mesh = ExtResource( 8 )
+material/0 = ExtResource( 14 )
+material/1 = ExtResource( 19 )
+material/2 = SubResource( 11 )
+material/3 = ExtResource( 17 )
+material/4 = ExtResource( 18 )
+material/5 = ExtResource( 18 )
+material/6 = ExtResource( 16 )
+material/7 = SubResource( 12 )
+material/8 = SubResource( 13 )
+material/9 = SubResource( 14 )
+material/10 = ExtResource( 15 )
+material/11 = ExtResource( 28 )
+
+[node name="barco" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( 0.0582308, 0, 0, 0, 0.0582308, 0, -8.88178e-16, 0, 0.0582308, 21.077, 1.74559, -15.1539 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 14 )
+material/1 = ExtResource( 24 )
+material/2 = ExtResource( 23 )
+
+[node name="barraca de frutas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( -1.16246e-08, 0, 0.26594, 0, 0.26594, 0, -0.26594, 0, -1.16246e-08, 10.8345, 1.22031, 25.7305 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 24 )
+material/1 = ExtResource( 14 )
+material/2 = ExtResource( 24 )
+material/3 = ExtResource( 19 )
+
+[node name="barracas de comidas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( -1.25992e-08, 0, 1.05469, 0, 0.288235, 0, -0.288235, 0, -4.61021e-08, 8.74115, 1.42909, 38.0277 )
+mesh = ExtResource( 11 )
+material/0 = ExtResource( 25 )
+material/1 = ExtResource( 29 )
+material/2 = ExtResource( 14 )
+
+[node name="chao" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( 5.42784, 0, 5.68434e-14, 0, 5.42784, 0, -5.68434e-14, 0, 5.42784, -2.49123, 0.396663, 19.1175 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 21 )
+material/1 = ExtResource( 13 )
+material/2 = ExtResource( 30 )
+
+[node name="StaticBody" type="StaticBody" parent="Scene Root/Coisas do cenario/VER O PESO/chao"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene Root/Coisas do cenario/VER O PESO/chao/StaticBody"]
+shape = SubResource( 15 )
+
+[node name="lixos" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( -0.120798, 0, -3.93611e-08, 0, 0.235708, 0, 3.93611e-08, 0, -0.120798, 8.53361, 1.09867, 34.2304 )
+visible = false
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 25 )
+material/1 = ExtResource( 27 )
+material/2 = ExtResource( 23 )
+material/3 = ExtResource( 17 )
+
+[node name="lonas" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( 2.16948, 0, 5.68434e-14, 0, 2.16948, 0, -5.68434e-14, 0, 2.16948, -4.61067, 2.70881, 37.4332 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 26 )
+
+[node name="postes" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( 0.243468, 0, 0, 0, 0.0121508, 0, 0, 0, 0.243468, -7.61072, 0.380046, 23.8016 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 22 )
+material/1 = ExtResource( 25 )
+
+[node name="seguralona" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]
+transform = Transform( 0.188508, 0, 0, 0, 0.188508, 0, 0, 0, 0.188508, -6.99298, 0.4307, 34.862 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 22 )
+
+[node name="LoucoDaGranola" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03813, 3.42999, 1.48528 )
+collision_layer = 4
+collision_mask = 39
+
+[node name="DOIDO DA GRANOLA" type="Spatial" parent="LoucoDaGranola"]
+
+[node name="Spatial" type="Spatial" parent="LoucoDaGranola"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0 )
+
+[node name="Armadure" type="Spatial" parent="LoucoDaGranola/Spatial"]
+transform = Transform( 1.31756, 0, 0, 0, 1.31756, 0, 0, 0, 1.31756, 0.558617, 2.64046, -0.0744687 )
+
+[node name="Skeleton" type="Skeleton" parent="LoucoDaGranola/Spatial/Armadure"]
+bones/0/name = "Bone.001"
+bones/0/parent = -1
+bones/0/rest = Transform( -0.200778, 0.976186, -0.0821574, 0.0153007, -0.08073, -0.996618, -0.979517, -0.201356, 0.00127243, -0.470352, -1.39861, 0.0452919 )
+bones/0/enabled = true
+bones/0/bound_children = [  ]
+bones/1/name = "Bone"
+bones/1/parent = 0
+bones/1/rest = Transform( -0.184437, -0.979518, 0.0808007, 0.899714, -0.201356, -0.38726, 0.395598, 0.00127252, 0.918423, 0.0575858, 0.282344, -1.43335 )
+bones/1/enabled = true
+bones/1/bound_children = [  ]
+bones/2/name = "Bone.002"
+bones/2/parent = 0
+bones/2/rest = Transform( -0.98893, -0.130985, -0.0697186, 0.0585931, 0.0869549, -0.994488, 0.136325, -0.987564, -0.0783175, -0.584191, 0.824938, -1.36402 )
+bones/2/enabled = true
+bones/2/bound_children = [  ]
+bones/3/name = "Bone.003"
+bones/3/parent = 0
+bones/3/rest = Transform( -0.935262, -0.124218, 0.331444, -0.338157, 0.0369281, -0.940365, 0.104571, -0.991568, -0.0765428, 0.498924, 0.757662, -0.595716 )
+bones/3/enabled = true
+bones/3/bound_children = [  ]
+
+[node name="Corpo" type="MeshInstance" parent="LoucoDaGranola/Spatial/Armadure/Skeleton"]
+transform = Transform( -1.7, 0, -2.56693e-07, 0, 1.7, 0, 2.56693e-07, 0, -1.7, -0.4, -1.525, -3.72529e-09 )
+mesh = ExtResource( 33 )
+material/0 = null
+material/1 = null
+
+[node name="Cano da arma" type="MeshInstance" parent="LoucoDaGranola/Spatial"]
+transform = Transform( 0.999112, 0, 0, 0, 0.528336, 0, 0, 0, 0.624785, -2.83512, -0.723664, -0.110381 )
+visible = false
+mesh = SubResource( 16 )
+material/0 = SubResource( 17 )
+
+[node name="Position3D" type="Position3D" parent="LoucoDaGranola/Spatial/Cano da arma"]
+transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.99623e-08, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoucoDaGranola/Spatial"]
+anims/andando = ExtResource( 34 )
+
+[node name="Mob" type="AudioStreamPlayer3D" parent="LoucoDaGranola"]
+
+[node name="CollisionShape" type="CollisionShape" parent="LoucoDaGranola"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 18 )
+
+[node name="World" type="WorldEnvironment" parent="."]
+environment = SubResource( 19 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.35814, 0.933668, 0, -0.933668, 0.35814, 0, 34.1466, 16.3045 )
+[connection signal="timeout" from="Spawn/Spawn_pos/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos/Timer" to="Spawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos2/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos2/Timer" to="Spawn" method="_on_Timer_timeout"]
+[connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]

@@ -41,7 +41,7 @@ config/icon="res://ic_on.webp"
 
 Global="*res://scenes/System/Global.tscn"
 Network="*res://scenes/System/HTTPRequest.tscn"
-Ress_3D="*res://scenes/System/Char_resources.tscn"
+Ress_3D="*res://scenes/System/Resources3D.tscn"
 
 [debug]
 
@@ -52,10 +52,10 @@ gdscript/warnings/unused_argument=false
 
 window/size/width=1920
 window/size/height=1080
-window/size/test_width=960
-window/size/test_height=540
+window/vsync/use_vsync=false
+window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor_landscape"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [editor]
@@ -1188,10 +1188,6 @@ start={
  ]
 }
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-
 [layer_names]
 
 3d_physics/layer_1="Personagem"
@@ -1201,13 +1197,9 @@ pointing/emulate_touch_from_mouse=true
 3d_physics/layer_5="Colisor para personagem"
 3d_physics/layer_6="Colisor para inimigo"
 
-[locale]
-
-locale_filter=[ 1, [ "pt_BR" ] ]
-translation_remaps={
-
-}
-
 [rendering]
 
+quality/driver/fallback_to_gles2=true
+vram_compression/import_etc=true
+quality/shadow_atlas/size.mobile=1024
 environment/default_environment="res://default_env.tres"

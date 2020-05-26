@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Personagem/Balas/bullet.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://assets/characters/PP/andando com a arma.anim" type="Animation" id=35]
 [ext_resource path="res://assets/characters/PP/andando com a sandalha.anim" type="Animation" id=36]
 [ext_resource path="res://assets/characters/PP/interagindo com coisas.anim" type="Animation" id=37]
+[ext_resource path="res://shaders/cell_shading.tres" type="Material" id=38]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.05424
@@ -329,21 +330,27 @@ tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.0503826, -0.143033, 0.021036, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.0666667, 1, 0.0705537, -0.136636, 0.0299986, -0.425373, -0.0855775, 0.0740534, 0.897914, 1, 1, 1, 0.133333, 1, 0.121225, -0.120566, 0.0525133, -0.4161, -0.1061, 0.062592, 0.900936, 1, 1, 1, 0.2, 1, 0.198665, -0.0960062, 0.0869223, -0.401217, -0.137729, 0.0447726, 0.904462, 1, 1, 1, 0.4, 1, 0.521348, 0.00633216, 0.230301, -0.330904, -0.269876, -0.031813, 0.903691, 1, 1, 1, 0.6, 1, 0.839976, 0.107384, 0.371877, -0.252377, -0.392761, -0.106481, 0.877899, 1, 1, 1, 0.666667, 1, 0.915632, 0.131378, 0.405493, -0.233124, -0.41979, -0.123425, 0.868445, 1, 1, 1, 0.733333, 1, 0.96176, 0.146007, 0.42599, -0.221377, -0.435748, -0.133529, 0.86214, 1, 1, 1, 0.8, 1, 0.976341, 0.150632, 0.432469, -0.217661, -0.440716, -0.136689, 0.860064, 1, 1, 1, 0.866667, 1, 0.95557, 0.144044, 0.423239, -0.222952, -0.433631, -0.132184, 0.863009, 1, 1, 1, 0.933333, 1, 0.90531, 0.128105, 0.400907, -0.235762, -0.41615, -0.121132, 0.869806, 1, 1, 1, 1, 1, 0.832795, 0.105106, 0.368686, -0.254184, -0.390168, -0.104867, 0.878728, 1, 1, 1, 1.2, 1, 0.527897, 0.00840914, 0.233211, -0.329361, -0.272513, -0.0333782, 0.903407, 1, 1, 1, 1.4, 1, 0.217436, -0.0900528, 0.0952629, -0.397478, -0.145438, 0.0404, 0.905111, 1, 1, 1, 1.46667, 1, 0.1388, -0.114992, 0.0603229, -0.412799, -0.11325, 0.0585802, 0.901854, 1, 1, 1, 1.53333, 1, 0.0824205, -0.132873, 0.0352716, -0.423235, -0.0903682, 0.0713849, 0.898671, 1, 1, 1, 1.6, 1, 0.0544162, -0.141754, 0.0228283, -0.428248, -0.0790769, 0.0776674, 0.896838, 1, 1, 1, 1.66667, 1, 0.0503826, -0.143033, 0.021036, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 2.08333, 1, 0.0503826, -0.143033, 0.021036, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=11]
+next_pass = ExtResource( 38 )
 albedo_color = Color( 0, 0.239216, 0.541176, 1 )
 
 [sub_resource type="SpatialMaterial" id=12]
+next_pass = ExtResource( 38 )
 albedo_color = Color( 0.921569, 0.909804, 0.909804, 1 )
 
 [sub_resource type="SpatialMaterial" id=13]
+next_pass = ExtResource( 38 )
 albedo_color = Color( 0.247059, 0.282353, 0.301961, 1 )
 
 [sub_resource type="SpatialMaterial" id=14]
+next_pass = ExtResource( 38 )
 albedo_color = Color( 0.364706, 0.321569, 0.239216, 1 )
 
 [sub_resource type="SpatialMaterial" id=15]
+next_pass = ExtResource( 38 )
 albedo_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="SpatialMaterial" id=16]
+next_pass = ExtResource( 38 )
 albedo_color = Color( 0.203922, 0.192157, 0.192157, 1 )
 
 [sub_resource type="ArrayMesh" id=17]
@@ -435,7 +442,7 @@ extents = Vector3( 3, 3.68382, 3 )
 [sub_resource type="SpatialMaterial" id=20]
 resource_local_to_scene = true
 flags_transparent = true
-albedo_color = Color( 1, 0, 0, 0.878431 )
+albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
 [sub_resource type="PrismMesh" id=21]
 material = SubResource( 20 )
@@ -529,6 +536,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 1, 0, 0, 0.878431 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape/Spatial/Wall:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape/Spatial/Turret:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape/Spatial/Granead:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
+}
 
 [sub_resource type="SpatialMaterial" id=30]
 resource_local_to_scene = true
@@ -539,26 +582,14 @@ albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 material = SubResource( 30 )
 
 [node name="PLAYER" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.95819, 0 )
 collision_mask = 19
 script = ExtResource( 1 )
-classe = "Shotgun"
-dano_melee = 10.0
-move_speed = 29.301
-hp_maximo = 1000
-hp_atual = 1000
-
-[node name="Cam" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.605113, 0.796139, 0, -0.796139, 0.605113, 0, 15.1648, 7.20834 )
-target = NodePath("../Pos")
-enabled = true
-
-[node name="Pos" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.672767, 0.739854, 0, -0.739854, 0.672767, 0, 26.0348, 16.5747 )
+move_speed = 30.857
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
 
 [node name="Bullet_sound" type="AudioStreamPlayer3D" parent="."]
-max_db = 5.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.249256, 0 )
@@ -569,7 +600,7 @@ shape = SubResource( 1 )
 [node name="Armature" type="Position3D" parent="Char"]
 
 [node name="Pistol" type="Spatial" parent="Char/Armature"]
-transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.05615, 0 )
+transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Armature/Pistol"]
@@ -619,7 +650,7 @@ material/3 = null
 material/4 = null
 
 [node name="Shotgun" type="Spatial" parent="Char/Armature"]
-transform = Transform( -2.76965e-07, 0, 1.7, 0, 1.7, 0, -1.7, 0, -2.76965e-07, 0, -2.34032, 0 )
+transform = Transform( -2.76965e-07, 0, 1.7, 0, 1.7, 0, -1.7, 0, -2.76965e-07, 0, -2.63068, 0 )
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Armature/Shotgun"]
@@ -667,13 +698,13 @@ material/4 = null
 material/5 = null
 
 [node name="Smg" type="Spatial" parent="Char/Armature"]
-transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, 0, 0 )
+transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
 visible = false
 
-[node name="Armação000" type="Spatial" parent="Char/Armature/Smg"]
-transform = Transform( 1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, -1.21381, 0 )
+[node name="Armature" type="Spatial" parent="Char/Armature/Smg"]
+transform = Transform( 1, 1.69407e-21, 0, 0, 1, 1.6292e-07, 0, -1.6292e-07, 1, 0, 0, 0 )
 
-[node name="Skeleton" type="Skeleton" parent="Char/Armature/Smg/Armação000"]
+[node name="Skeleton" type="Skeleton" parent="Char/Armature/Smg/Armature"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform( 0.99956, 0.0275524, 0.0109474, 0.0131328, -0.0804309, -0.996674, -0.0265803, 0.996379, -0.0807575, -0.0325607, 0.086057, -0.00169265 )
@@ -695,8 +726,8 @@ bones/3/rest = Transform( 0.741493, 0.0964478, -0.663992, 0.380035, -0.87594, 0.
 bones/3/enabled = true
 bones/3/bound_children = [  ]
 
-[node name="Esfera icosaedrica" type="MeshInstance" parent="Char/Armature/Smg/Armação000/Skeleton"]
-transform = Transform( 1.45544, 0, 0.362883, 0, 1.5, 0, -0.362883, 0, 1.45544, 0, 0, 0 )
+[node name="Esfera icosaedrica" type="MeshInstance" parent="Char/Armature/Smg/Armature/Skeleton"]
+transform = Transform( 1.45544, 0, 0.362884, 0, 1.5, 0, -0.362884, 0, 1.45544, 0, 0, 0 )
 mesh = ExtResource( 19 )
 material/0 = null
 material/1 = null
@@ -716,11 +747,11 @@ anims/Crafitando = ExtResource( 26 )
 "anims/trocando de arma" = ExtResource( 21 )
 
 [node name="Sniper" type="Spatial" parent="Char/Armature"]
-transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -0.219055, 0 )
+transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
 visible = false
 
 [node name="Armature" type="Spatial" parent="Char/Armature/Sniper"]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 2.44381e-07, 0, -2.44381e-07, 1.5, 0, -1.434, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="Char/Armature/Sniper/Armature"]
 bones/0/name = "Bone"
@@ -745,7 +776,7 @@ bones/3/enabled = true
 bones/3/bound_children = [  ]
 
 [node name="MASHNITYN" type="MeshInstance" parent="Char/Armature/Sniper/Armature/Skeleton"]
-transform = Transform( 0.970296, 0, 0.241922, 2.66701e-15, 1, -6.42137e-15, -0.241922, 1.42109e-14, 0.970296, 0, 0, 0 )
+transform = Transform( 1.45544, 1.12203e-15, 0.362883, 4.00051e-15, 1.5, -2.06832e-14, -0.362883, 2.10366e-14, 1.45544, 0, 0, 0 )
 mesh = ExtResource( 14 )
 material/0 = null
 material/1 = null
@@ -826,6 +857,7 @@ mesh = SubResource( 27 )
 material/0 = null
 
 [node name="livre" type="AnimationPlayer" parent="Char/Contruct_area"]
+autoplay = "livre"
 anims/livre = SubResource( 28 )
 anims/ocupado = SubResource( 29 )
 
@@ -870,6 +902,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72131, 0 )
 
 [node name="bullet" parent="optimizer/bullet" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47878, 2.91973, -1.16006 )
+
+[node name="Cam" type="InterpolatedCamera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 27, 8.8 )
+target = NodePath("../Position3D")
+enabled = true
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 27, 8.8 )
+
+[node name="Listener" type="Listener" parent="."]
 [connection signal="body_entered" from="Char/Melee" to="." method="_on_Melee_body_entered"]
 [connection signal="body_exited" from="Char/Melee" to="." method="_on_Melee_body_exited"]
 [connection signal="body_entered" from="Char/Contruct_area" to="." method="_on_Contruct_area_body_entered"]

@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.s3tc.stex"
 path.etc2="res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.etc2.stex"
+path.etc="res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/METAL/METAL_NRM.png"
-dest_files=[ "res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.s3tc.stex", "res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.etc2.stex" ]
+dest_files=[ "res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.s3tc.stex", "res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.etc2.stex", "res://.import/METAL_NRM.png-535aa4a92909395bc6b8b21a3e438c00.etc.stex" ]
 
 [params]
 

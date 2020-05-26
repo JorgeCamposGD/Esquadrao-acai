@@ -1,5 +1,8 @@
 extends Spatial
 
+var environements={"mobile":preload("res://assets/maps/optimised.tres"), 
+				"pc":preload("res://scenes/waterEnvi.tres")
+			}
 var bullets={
 			"Pistol":preload("res://scenes/Personagem/Balas/bullet pistol.tscn"),
 			"Shotgun":preload("res://scenes/Personagem/Balas/bullet shotgun.tscn"),
@@ -13,10 +16,10 @@ var specials_resources={
 			"Sniper":preload("res://scenes/Personagem/especiais/Trap.tscn")
 			}
 var Sons={
-			"Pistol":preload("res://assets/sounds/Pistola.wav"),
-			"Shotgun":preload("res://assets/sounds/Shotgun.wav"),
-			"Smg":preload("res://assets/sounds/Smg.wav"),
-			"Sniper":preload("res://assets/sounds/Sniper.wav")
+			"Pistol":preload("res://assets/sounds/Som de armas/pistola.wav"),
+			"Shotgun":preload("res://assets/sounds/Som de armas/pistola.wav"),
+			"Smg":preload("res://assets/sounds/Som de armas/metralhadora.wav"),
+			"Sniper":preload("res://assets/sounds/Som de armas/metralhadora.wav")
 			}
 var player_scene=preload("res://scenes/Player.tscn")
 
@@ -30,5 +33,7 @@ func get_sound(classe):
 func get_special_resource(classe):
 	return specials_resources[classe]
 
+func get_envir(type):
+	return environements[type]
 func get_player():
 	return player_scene
