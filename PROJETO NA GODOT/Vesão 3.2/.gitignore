@@ -1,7 +1,7 @@
 res://addons/file-editor/
 res://addons/godot-plugin-refresher/
 res://addons/gdunzip/
-*.import
+
 
 icons.pngs/
 user/
