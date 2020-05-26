@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pato bomba.wav-099d4e10991d7d914b7380fd989ef2c8.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Bombas/pato bomba.wav"
+dest_files=[ "res://.import/pato bomba.wav-099d4e10991d7d914b7380fd989ef2c8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

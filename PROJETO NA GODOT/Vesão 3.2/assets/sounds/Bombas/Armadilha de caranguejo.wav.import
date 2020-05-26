@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Armadilha de caranguejo.wav-6c14a08c9e99af81dd2dcf4c4305418c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Bombas/Armadilha de caranguejo.wav"
+dest_files=[ "res://.import/Armadilha de caranguejo.wav-6c14a08c9e99af81dd2dcf4c4305418c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
