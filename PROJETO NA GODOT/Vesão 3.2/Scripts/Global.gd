@@ -19,6 +19,7 @@ var players=[]
 var players_info={}
 var my_info={}
 var instanced_players={}
+var instanced_enemys={}
 var players_status={}
 
 var time_max = 100 # msec
@@ -41,8 +42,32 @@ func get_game_state():
 	return actual_game_state
 
 
+func start_tutorial():
+	pass
+
 func _ready():
- 
+
+	var upnp = UPNP.new()
+	upnp.discover()
+	var num_devices = upnp.get_device_count()
+	for i in range(num_devices):
+		var upnp_device = upnp.get_device(i)
+		print('device[',i,']:')
+		print('- igd_our_addr: ', upnp_device.igd_our_addr)
+		print('- igd_service_type: ', upnp_device.igd_service_type)
+		print('- igd_status: ', upnp_device.igd_status)
+		print('- service_type: ', upnp_device.service_type)
+		
+		print('- external adrees: ',upnp_device.query_external_address())
+	print('gateway:', upnp.get_gateway())
+	if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
+		var res_udp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, 'Godot', 'UDP')
+		var res_tcp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, 'Godot', 'TCP')
+		print('res_udp:', res_udp)
+		print('res_tcp:', res_tcp)
+	else:
+		print('no valid gateway')
+
 	offline=Global.offline
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
@@ -122,7 +147,7 @@ func set_new_scene(scene_resource):
 	
 	
 	current_scene = scene_resource.instance()
-	Ress_3D.ocult()
+
 	get_node("/root").add_child(current_scene)
 
 	connect("game_status",current_scene,"game_status_change")
@@ -202,6 +227,7 @@ func create_server(player_info):
 	peer=null
 	peer=NetworkedMultiplayerENet.new()
 	peer.create_server(DEFAULT_PORT,MAX_PLAYERS)
+
 
 	p_info["host"]=true
 	p_info["id"]=1

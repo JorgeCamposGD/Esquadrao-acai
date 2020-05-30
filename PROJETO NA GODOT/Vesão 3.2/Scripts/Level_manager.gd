@@ -33,6 +33,7 @@ func game_status_change(type):
 				
 				if Global.get_tree().is_network_server():
 					for spawn in mob_spawn:
+						print_debug("active")
 						get_node(spawn).set_active()
 
 

@@ -23,9 +23,6 @@ var Sons={
 			}
 var player_scene=preload("res://scenes/Player.tscn")
 
-func ocult():
-	.hide()
-	get_node("PLAYER/Cam").queue_free()
 func get_bullet(classe):
 	return bullets[classe]
 func get_sound(classe):

@@ -1,11 +1,63 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
-[sub_resource type="SphereMesh" id=1]
-radius = 3.0
-height = 6.0
+[ext_resource path="res://Scripts/Turret.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Manicoba/Circulo_001.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Manicoba/Circulo_000.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Puraque/Cubo_003.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Acai/Cubo_002.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Batata/Cubo_003.mesh" type="ArrayMesh" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.84828
 
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
 
-[node name="Triangle" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+[node name="PE" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
 material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="acai" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="eletrica" type="MeshInstance" parent="."]
+visible = false
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+
+[node name="batata" type="MeshInstance" parent="."]
+transform = Transform( 0.768684, 0, 0, 0, 0.579705, 0, 0, 0, 0.585327, -0.183107, 4.30577, 0.0297852 )
+visible = false
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Manicoba" type="MeshInstance" parent="."]
+transform = Transform( 1.07116, 0, -0.449331, 0, 1.16159, 0, 0.449331, 0, 1.07116, -0.113777, 6.85133, -0.180568 )
+visible = false
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 2.53066, 0 )
+shape = SubResource( 1 )

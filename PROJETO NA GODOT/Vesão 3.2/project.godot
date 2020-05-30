@@ -1199,6 +1199,7 @@ start={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 quality/shadow_atlas/size.mobile=1024

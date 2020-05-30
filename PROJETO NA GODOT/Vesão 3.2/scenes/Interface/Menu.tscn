@@ -225,8 +225,7 @@ anchor_top = 0.0796293
 anchor_right = 0.354687
 anchor_bottom = 0.217592
 custom_fonts/font = SubResource( 2 )
-disabled = true
-text = "Play solo"
+text = "Tutorial"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -482,6 +481,7 @@ __meta__ = {
 }
 
 [node name="Play_direct_panel" type="PopupPanel" parent="."]
+visible = true
 anchor_left = 0.033
 anchor_top = 0.059
 anchor_right = 0.971
@@ -548,7 +548,7 @@ anchor_bottom = 0.460904
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
 custom_fonts/font = SubResource( 13 )
-text = "2804:14c:598f:8ed8:a053:2017:11f0:f8eb"
+text = "191.178.145.160"
 align = 1
 max_length = 50
 placeholder_text = "2804:14c:598f:8ed8:9c34:920d:c676:463d"
@@ -612,7 +612,7 @@ custom_colors/selection_color = Color( 0, 0.780392, 1, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
-text = "Your IPV6: "
+text = "Your IPV: "
 align = 1
 editable = false
 __meta__ = {

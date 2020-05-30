@@ -54,6 +54,7 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
+visible = false
 anchor_left = 1.0
 anchor_top = 16.509
 anchor_right = 10.659
@@ -101,6 +102,7 @@ position = Vector2( 1665.14, 491.473 )
 scale = Vector2( 2, 2 )
 normal = ExtResource( 1 )
 action = "circle"
+visibility_mode = 1
 
 [node name="ProgressBar2" type="TextureProgress" parent="."]
 anchor_left = 0.022

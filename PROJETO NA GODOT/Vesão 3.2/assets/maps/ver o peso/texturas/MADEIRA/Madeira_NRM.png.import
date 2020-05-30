@@ -2,26 +2,29 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.stex"
+path.s3tc="res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.s3tc.stex"
+path.etc2="res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.etc2.stex"
+path.etc="res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.etc.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2", "etc" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/maps/ver o peso/texturas/MADEIRA/Madeira_NRM.png"
-dest_files=[ "res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.stex" ]
+dest_files=[ "res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.s3tc.stex", "res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.etc2.stex", "res://.import/Madeira_NRM.png-ad2169b5de9c97e26c3ea74a56c40e75.etc.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
-flags/repeat=0
+compress/normal_map=1
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
@@ -30,5 +33,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

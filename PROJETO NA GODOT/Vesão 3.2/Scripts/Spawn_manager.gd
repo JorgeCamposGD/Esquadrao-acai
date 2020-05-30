@@ -5,7 +5,7 @@ export (Array,PackedScene) var mob_resource=[preload("res://scenes/enemys/LoucoD
 export (bool) var active=false
 
 export (int,0,30) var maximo_de_inimigos_no_easy=10
-export (int,0,30) var maximo_de_inimigos_no_medium=0
+export (int,0,30) var maximo_de_inimigos_no_medium=15
 export (int,0,30) var maximo_de_inimigos_no_hard=20
 export (int,0,30) var maximo_de_ondas=5
 export (int,0,30) var inimigos_por_onda=5
@@ -42,18 +42,19 @@ func _ready():
 	randomize()
 	if not(active):
 		return
-	if spawn_places.empty():
-
-		spawn_points=get_children()
-
 	else:
-		for x in spawn_places:
-			spawn_points.append(get_node(x))
-
-#	Engine.target_fps=60
-
+		if spawn_places.empty():
 	
-	instace_mob(false) 
+			spawn_points=get_children()
+	
+		else:
+			for x in spawn_places:
+				spawn_points.append(get_node(x))
+	
+	#	Engine.target_fps=60
+	
+		
+		instace_mob(false) 
 
 func _process(delta):
 
@@ -61,14 +62,15 @@ func _process(delta):
 		return
 
 func set_active():
+	
 	active=true
+	_ready()
 	get_node("Spawn_pos/Start").start()
 func instace_mob(persist):
 	if active==true and in_wave and instanced_enemys.size()<=difficulty_limit:
 		if Global.get_tree().is_network_server():
 			var random_point=spawn_points[randi()%spawn_points.size()].get_global_transform()
 			get_node("Spawn_pos/Timer").start(randi()%5+1) 
-			print(instanced_enemys.size())
 			rpc("_instance_mob",mob_id,random_point)
 			
 

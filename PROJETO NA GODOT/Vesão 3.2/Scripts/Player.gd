@@ -7,11 +7,13 @@ const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 
 export (String, "Pistol", "Shotgun","Smg","Sniper")var classe="Pistol"
+
 export (float, 0,1000,10) var dano_melee=15
 export (float, 0,5,0.020) var speed_melee=0.5
 export (float,1,100) var move_speed =12
 export (int,1,1000,5) var hp_maximo=100
 export (int,1,1000,5) var hp_atual=100
+
 export  var classe_status={"Pistol":{"damage":15,"fire_rate":0.4},#pistola
 							"Shotgun":{"damage":40,"fire_rate":0.8},#shotgun
 							"Smg":{"damage":10,"fire_rate":0.2},#smg
@@ -44,12 +46,12 @@ var in_range_colisor=[]
 var melee=false
 
 var free=true
-var using_special=false
+
 var move_state=0
 var action_state=0
 var peer_id=null
 var off_line=false
-
+var live=true
 var lock_cam=false
 
 onready var Sons=Ress_3D.get_sound(classe)
@@ -112,7 +114,7 @@ func _physics_process(delta):
 
 	var move_vec = Vector3()
 
-	if Global.is_master(self) or off_line:
+	if Global.is_master(self) or off_line and live:
 		
 		up=Input.is_action_pressed("up")
 		down= Input.is_action_pressed("down")
@@ -141,16 +143,7 @@ func _physics_process(delta):
 				move_vec.x=hud.get_input_vec().x
 				move_vec.z=hud.get_input_vec().y
 	
-		if Input.is_action_just_pressed("circle"):
-			lock_cam=!lock_cam
-			print(lock_cam)
-		if Input.is_action_just_pressed("triangle"): #verifica se o botão de seleção foi apertado
-			if melee:
-				melee=false
-			else:
-				melee=true
-		#chamar animação
-		anim_control.play("trocando de arma")
+
 		
 		rset("puppet_transform",get_global_transform())
 		rset("puppet_move_vec",move_vec)
@@ -161,6 +154,14 @@ func _physics_process(delta):
 	move_vec *= move_speed#direção de movimento
 	move_vec.y = y_speed#gravidade
 	
+	var grounded = is_on_floor()
+	y_speed -= GRAVITY
+	var just_jumped = false
+	if grounded and y_speed <= 0:
+		y_speed = -0.1
+	if y_speed < -MAX_FALL_SPEED:
+		y_speed = -MAX_FALL_SPEED
+
 	if not(lock_cam):
 		if move_vec.z!=0 or move_vec.x!=0:
 			move_state=1
@@ -181,30 +182,47 @@ func _physics_process(delta):
 	if not Global.is_master(self):
 		puppet_transform=get_global_transform()
 
-	var grounded = is_on_floor()
-	y_speed -= GRAVITY
-	var just_jumped = false
-	if grounded and y_speed <= 0:
-		y_speed = -0.1
-	if y_speed < -MAX_FALL_SPEED:
-		y_speed = -MAX_FALL_SPEED
+
 
 	if Global.is_master(self) or off_line:
-		if Input.is_action_pressed("r1") and Input.is_action_pressed("r1"):
+
+		if Input.is_action_pressed("r1") :
 			especiais[classe].set_visible(true)
-			using_special=true
-	
-		if Input.is_action_just_pressed("square"): #verifica se o botão de ataque foi apertado
-			if using_special and free:
-				construct_item(classe)
-				action_state=2
+			
+			if free:
+				var type
+				if Input.is_action_just_pressed("cross"): #verifica se o botão de ataque foi apertado
+					type=0
+				elif Input.is_action_just_pressed("square"):
+					type=1
+				elif Input.is_action_just_pressed("triangle"):
+					type=2
+				elif Input.is_action_just_pressed("circle"):
+					type=3
+				if type!=null:
+					action_state=2
+					construct_item(classe,type)
+
+		if Input.is_action_just_released("r1"):
+			especiais[classe].set_visible(false)
+
 		if Input.is_action_pressed("square") and not(Input.is_action_pressed("r1")):
 				atack() #chama a função de tiro
 				action_state=1
-		if Input.is_action_just_released("r1"):
-			using_special=false
-			especiais[classe].set_visible(false)
-		
+
+		if Input.is_action_just_pressed("circle")and not(Input.is_action_pressed("r1")):
+			lock_cam=!lock_cam
+
+	
+		if Input.is_action_just_pressed("triangle")and not(Input.is_action_pressed("r1")): #verifica se o botão de seleção foi apertado
+			if melee:
+				melee=false
+			else:
+				melee=true
+			action_state=3
+
+
+
 	if action_state==0 and move_state==0:
 		if melee:
 			anim_control.play("parado com sandalha")
@@ -303,18 +321,21 @@ func _on_Contruct_area_body_exited(body):
 			anim.play("livre")
 		free=true
 
-func construct_item(type):
+func construct_item(classe,type):
 	var graned_place=get_node("Char/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform()
 	var item_point=ray_to_obj.get_collision_point()
 	var item_transfomr=ray_to_obj.get_collision_point()
 
-	rpc("construct",type,graned_place,item_point,item_transfomr)
+	rpc("construct",classe,graned_place,item_point,item_transfomr,type)
 	#item.scale=scale
-remotesync func construct(type,grenade,point,global_transfor):
-	var item=Ress_3D.get_special_resource(type).instance()
+remotesync func construct(classe,grenade,point,global_transfor,type):
+	
 
-	if type=="Pistol":
+	var item=Ress_3D.get_special_resource(classe).instance()
+
+	if classe=="Pistol":
 		item.set_global_transform(grenade)
+		
 
 	else:
 
@@ -322,8 +343,10 @@ remotesync func construct(type,grenade,point,global_transfor):
 		var t=Transform()
 		t.origin=(global_transfor)
 		item.set_global_transform(t)
-	
+	item.set_type(type)
 	world.call_deferred("add_child",item)
+
+	
 func _on_Melee_body_entered(body):
 	body_in_rage.append(body)
 
@@ -335,4 +358,5 @@ func server_out():
 	get_tree().paused=true
 	
 func die():
-	pass
+	live=false
+	#chama animação de morrer

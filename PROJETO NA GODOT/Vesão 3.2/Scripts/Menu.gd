@@ -71,7 +71,7 @@ func _ready():
 
 func _on_Play_pressed():
 
-	Global.start_alone(selected)
+	Global.start_tutorial()
 
 func _on_Play_p2p_pressed():
 	pass # Replace with function body.

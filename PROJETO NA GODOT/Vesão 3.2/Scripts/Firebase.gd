@@ -10,7 +10,7 @@ var user_info
 var ipv6
 var user_ip
 var getting_ip=false
-var ip_adress="https://api6.ipify.org"
+var ip_adress="https://api.ipify.org"
 
 signal ip_recived
 func _get_user_info(result: Array) -> Dictionary:

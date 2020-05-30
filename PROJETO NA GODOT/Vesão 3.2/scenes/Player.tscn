@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Personagem/Balas/bullet.tscn" type="PackedScene" id=2]
@@ -38,6 +38,30 @@
 [ext_resource path="res://assets/characters/PP/andando com a sandalha.anim" type="Animation" id=36]
 [ext_resource path="res://assets/characters/PP/interagindo com coisas.anim" type="Animation" id=37]
 [ext_resource path="res://shaders/cell_shading.tres" type="Material" id=38]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Circulo.mesh" type="ArrayMesh" id=39]
+[ext_resource path="res://assets/characters/PP/Armadilhas/CaixadeChop/Cube_001.mesh" type="ArrayMesh" id=40]
+[ext_resource path="res://assets/characters/Bahia/bombas/PatoBomba/Plane.mesh" type="ArrayMesh" id=41]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_004.mesh" type="ArrayMesh" id=42]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_005.mesh" type="ArrayMesh" id=43]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_007.mesh" type="ArrayMesh" id=44]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_001.mesh" type="ArrayMesh" id=45]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone.mesh" type="ArrayMesh" id=46]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_002.mesh" type="ArrayMesh" id=47]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_006.mesh" type="ArrayMesh" id=48]
+[ext_resource path="res://assets/characters/PP/Armadilhas/FarinhaDeGranola/Cylinder_007.mesh" type="ArrayMesh" id=49]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Acai/Cubo_002.mesh" type="ArrayMesh" id=50]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Cone_003.mesh" type="ArrayMesh" id=51]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Puraque/Cubo_003.mesh" type="ArrayMesh" id=52]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Batata/Cubo_003.mesh" type="ArrayMesh" id=53]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Manicoba/Circulo_001.mesh" type="ArrayMesh" id=54]
+[ext_resource path="res://assets/characters/Nitty/Turrets/Manicoba/Circulo_000.mesh" type="ArrayMesh" id=55]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Mangas/Sphere.mesh" type="ArrayMesh" id=56]
+[ext_resource path="res://assets/characters/PP/Armadilhas/Material_001.material" type="Material" id=57]
+[ext_resource path="res://assets/characters/Bahia/bombas/BombaCupuacuRelogio/Cylinder.mesh" type="ArrayMesh" id=58]
+[ext_resource path="res://assets/characters/Bahia/bombas/Molotov/Cylinder.mesh" type="ArrayMesh" id=59]
+[ext_resource path="res://assets/characters/Bahia/bombas/CoxinhaDeCaranguejo/Sphere.mesh" type="ArrayMesh" id=60]
+[ext_resource path="res://assets/characters/Gordo da pedreira/Armas/Circulo_001.mesh" type="ArrayMesh" id=61]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.05424
@@ -573,13 +597,14 @@ tracks/3/keys = {
 "values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=30]
-resource_local_to_scene = true
-flags_transparent = true
-albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
+[sub_resource type="CapsuleShape" id=30]
+radius = 1.84828
 
-[sub_resource type="CapsuleMesh" id=31]
-material = SubResource( 30 )
+[sub_resource type="CubeMesh" id=31]
+size = Vector3( 6, 6, 6 )
+
+[sub_resource type="BoxShape" id=32]
+extents = Vector3( 3, 3, 3 )
 
 [node name="PLAYER" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.95819, 0 )
@@ -696,6 +721,13 @@ material/2 = null
 material/3 = null
 material/4 = null
 material/5 = null
+
+[node name="SHOTGUNS DO GORDO DA EDREIRA" type="MeshInstance" parent="Char/Armature/Shotgun"]
+transform = Transform( 0.294118, 7.25305e-09, 5.52024e-10, -7.25304e-09, 0.290729, 0.0445189, 5.52184e-10, -0.0445189, 0.290729, 1.66765, 1.25614, 2.71694e-07 )
+mesh = ExtResource( 61 )
+material/0 = null
+material/1 = null
+material/2 = null
 
 [node name="Smg" type="Spatial" parent="Char/Armature"]
 transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
@@ -814,6 +846,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.724, -2.835 )
 [node name="Position3D" type="Position3D" parent="Char/Cano da arma"]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
 
+[node name="shoutgun" type="Spatial" parent="Char/Cano da arma/Position3D"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Cano da arma/Position3D/shoutgun"]
+
 [node name="RayCast" type="RayCast" parent="Char"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )
 enabled = true
@@ -864,44 +901,188 @@ anims/ocupado = SubResource( 29 )
 [node name="optimizer" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.0502, 0 )
 
-[node name="MeshInstance5" type="MeshInstance" parent="optimizer"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
-
-[node name="Trap2" type="MeshInstance" parent="optimizer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.76837, -1.81052 )
-mesh = SubResource( 21 )
-material/0 = null
-
-[node name="MeshInstance4" type="MeshInstance" parent="optimizer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428886, -1.20008, -5.54926 )
-
-[node name="MeshInstance3" type="MeshInstance" parent="optimizer"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
-
-[node name="MeshInstance2" type="MeshInstance" parent="optimizer"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.428886, -1.20008, -5.54926 )
-
-[node name="MeshInstance" type="MeshInstance" parent="optimizer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428886, -1.20008, -5.54926 )
-
-[node name="Wall2" type="MeshInstance" parent="optimizer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.76837, -1.81052 )
-mesh = SubResource( 23 )
-material/0 = null
-
-[node name="Turret2" type="MeshInstance" parent="optimizer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.76837, -1.81052 )
-mesh = SubResource( 31 )
-material/0 = null
-
-[node name="Granead2" type="MeshInstance" parent="optimizer"]
-transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, -0.251159, -5.62214 )
-
 [node name="bullet" parent="optimizer" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.72131, 0 )
+script = null
 
 [node name="bullet" parent="optimizer/bullet" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47878, 2.91973, -1.16006 )
+script = null
+
+[node name="Granadas" type="RigidBody" parent="optimizer"]
+collision_layer = 2
+collision_mask = 6
+gravity_scale = 3.0
+
+[node name="Molotov" type="MeshInstance" parent="optimizer/Granadas"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.000366211, 0.0368805, 0.000976563 )
+mesh = ExtResource( 59 )
+material/0 = null
+material/1 = null
+
+[node name="Coxinha" type="MeshInstance" parent="optimizer/Granadas"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.000366211, 0.0368805, 0.000976563 )
+mesh = ExtResource( 60 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Pato" type="MeshInstance" parent="optimizer/Granadas"]
+transform = Transform( -0.7, 0, -2.7259e-07, 0, 0.7, 0, 2.7259e-07, 0, -0.7, -0.000366211, 0.0368805, 0.000976563 )
+mesh = ExtResource( 41 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+
+[node name="Cupuacu" type="MeshInstance" parent="optimizer/Granadas"]
+transform = Transform( 1, -0.000122173, 0, -1.99045e-11, -1.62921e-07, -1, 0.000122173, 1, -1.62921e-07, -0.000367165, 0.0368805, 0.000976563 )
+mesh = ExtResource( 58 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Armadilhas" type="Area" parent="optimizer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.34334, 0 )
+
+[node name="CaixadeChop" type="Spatial" parent="optimizer/Armadilhas"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.02541, 0 )
+
+[node name="Cube" type="MeshInstance" parent="optimizer/Armadilhas/CaixadeChop"]
+mesh = ExtResource( 40 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="FarinhaDeGranola" type="Spatial" parent="optimizer/Armadilhas"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="Chop" type="MeshInstance" parent="optimizer/Armadilhas/FarinhaDeGranola"]
+mesh = ExtResource( 49 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="paralize" type="Spatial" parent="optimizer/Armadilhas"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.512592, 0 )
+
+[node name="BASE CARANGUEIJO" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+mesh = ExtResource( 39 )
+material/0 = null
+
+[node name="PERNA1" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.639214, -0.440658, -0.626569 )
+mesh = ExtResource( 44 )
+material/0 = ExtResource( 57 )
+
+[node name="PERNA2" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.774123, -0.435008, -0.250625 )
+mesh = ExtResource( 48 )
+material/0 = ExtResource( 57 )
+
+[node name="PERNA3" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.774123, -0.435008, 0.280379 )
+mesh = ExtResource( 42 )
+material/0 = ExtResource( 57 )
+
+[node name="PERNA4" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.656889, -0.438247, 0.658384 )
+mesh = ExtResource( 43 )
+material/0 = ExtResource( 57 )
+
+[node name="PERNA5" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.673188, -0.438218, -0.627599 )
+mesh = ExtResource( 45 )
+material/0 = ExtResource( 57 )
+
+[node name="PERNA6" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.790584, -0.43504, -0.249595 )
+mesh = ExtResource( 46 )
+material/0 = ExtResource( 57 )
+
+[node name="PERNA7" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.790584, -0.43504, 0.281409 )
+mesh = ExtResource( 47 )
+material/0 = null
+
+[node name="PERNA8" type="MeshInstance" parent="optimizer/Armadilhas/paralize"]
+transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.655488, -0.440623, 0.657353 )
+mesh = ExtResource( 51 )
+material/0 = null
+
+[node name="Mangas" type="Spatial" parent="optimizer/Armadilhas"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="Sphere" type="MeshInstance" parent="optimizer/Armadilhas/Mangas"]
+mesh = ExtResource( 56 )
+material/0 = null
+
+[node name="Turrets" type="Spatial" parent="optimizer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.70817, 0 )
+
+[node name="PE" type="MeshInstance" parent="optimizer/Turrets"]
+mesh = ExtResource( 55 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="acai" type="MeshInstance" parent="optimizer/Turrets"]
+mesh = ExtResource( 50 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="eletrica" type="MeshInstance" parent="optimizer/Turrets"]
+mesh = ExtResource( 52 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+
+[node name="batata" type="MeshInstance" parent="optimizer/Turrets"]
+transform = Transform( 0.768684, 0, 0, 0, 0.579705, 0, 0, 0, 0.585327, -0.183107, 4.30577, 0.0297852 )
+mesh = ExtResource( 53 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="Manicoba" type="MeshInstance" parent="optimizer/Turrets"]
+transform = Transform( 1.07116, 0, -0.449331, 0, 1.16159, 0, 0.449331, 0, 1.07116, -0.113777, 6.85133, -0.180568 )
+mesh = ExtResource( 54 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="StaticBody" type="StaticBody" parent="optimizer/Turrets"]
+
+[node name="CollisionShape" type="CollisionShape" parent="optimizer/Turrets/StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 2.53066, 0 )
+shape = SubResource( 30 )
+
+[node name="Walll" type="Spatial" parent="optimizer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.12601, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="optimizer/Walll"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="Triangle" type="MeshInstance" parent="optimizer/Walll/StaticBody"]
+mesh = SubResource( 31 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="optimizer/Walll/StaticBody"]
+shape = SubResource( 32 )
 
 [node name="Cam" type="InterpolatedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 27, 8.8 )
