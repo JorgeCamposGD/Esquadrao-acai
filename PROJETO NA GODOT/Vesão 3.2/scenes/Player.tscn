@@ -62,7 +62,6 @@
 [ext_resource path="res://assets/characters/Bahia/bombas/CoxinhaDeCaranguejo/Sphere.mesh" type="ArrayMesh" id=60]
 [ext_resource path="res://assets/characters/Gordo da pedreira/Armas/Circulo_001.mesh" type="ArrayMesh" id=61]
 
-
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.05424
 height = 3.65173
@@ -625,7 +624,7 @@ shape = SubResource( 1 )
 [node name="Armature" type="Position3D" parent="Char"]
 
 [node name="Pistol" type="Spatial" parent="Char/Armature"]
-transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
+transform = Transform( 1.6, 0, 0, 0, 1.6, 2.60673e-07, 0, -2.60673e-07, 1.6, 0, -2.6, 0 )
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Armature/Pistol"]
@@ -666,7 +665,7 @@ bones/3/enabled = true
 bones/3/bound_children = [  ]
 
 [node name="corpo002" type="MeshInstance" parent="Char/Armature/Pistol/Skeleton"]
-transform = Transform( 1.5, 0, 1.39698e-09, 0, 1.5, 0, -1.39698e-09, 0, 1.5, 0, 0, 0 )
+transform = Transform( -2.44381e-07, 0, 1.5, 0, 1.5, 0, -1.5, 0, -2.44381e-07, 0, 0, 0 )
 mesh = ExtResource( 4 )
 material/0 = null
 material/1 = null
@@ -730,11 +729,11 @@ material/1 = null
 material/2 = null
 
 [node name="Smg" type="Spatial" parent="Char/Armature"]
-transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
+transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.6, 0 )
 visible = false
 
 [node name="Armature" type="Spatial" parent="Char/Armature/Smg"]
-transform = Transform( 1, 1.69407e-21, 0, 0, 1, 1.6292e-07, 0, -1.6292e-07, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="Char/Armature/Smg/Armature"]
 bones/0/name = "Bone"

@@ -38,7 +38,7 @@ material/4 = null
 material/5 = null
 
 [node name="batata" type="MeshInstance" parent="."]
-transform = Transform( 0.768684, 0, 0, 0, 0.579705, 0, 0, 0, 0.585327, -0.183107, 4.30577, 0.0297852 )
+transform = Transform( 0.768684, 0, 0, 0, 0.579705, 0, 0, 0, 0.585327, -0.183, 4.306, 0 )
 visible = false
 mesh = ExtResource( 6 )
 material/0 = null
@@ -49,7 +49,6 @@ material/4 = null
 
 [node name="Manicoba" type="MeshInstance" parent="."]
 transform = Transform( 1.07116, 0, -0.449331, 0, 1.16159, 0, 0.449331, 0, 1.07116, -0.113777, 6.85133, -0.180568 )
-visible = false
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null

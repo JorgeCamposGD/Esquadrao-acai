@@ -131,6 +131,7 @@ transform = Transform( 1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 31 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 25 )
+material/2 = null
 
 [node name="ColisaoDoJogador" type="Spatial" parent="Scene Root"]
 

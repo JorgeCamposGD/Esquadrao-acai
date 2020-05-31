@@ -10,7 +10,7 @@ albedo_color = Color( 0, 0.501961, 0.137255, 1 )
 [sub_resource type="SphereShape" id=3]
 radius = 0.170413
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 resource_name = "explode"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -66,4 +66,4 @@ transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
-anims/explode = SubResource( 11 )
+anims/explode = SubResource( 4 )
