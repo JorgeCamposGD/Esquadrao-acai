@@ -1,5 +1,5 @@
 extends Spatial
-
+#Okay
 export (Array,PackedScene) var mob_resource=[preload("res://scenes/enemys/LoucoDaGranola.tscn")]
 
 export (bool) var active=false
@@ -18,6 +18,7 @@ export (Array,Array,int) var granola_waves=[3,6,9]
 export (Array,NodePath) var spawn_places
 
 onready var world=get_tree().get_root()
+
 var actual_wave=0
 var instanced_enemys=[]
 var in_wave=true
@@ -66,6 +67,7 @@ func set_active():
 	active=true
 	_ready()
 	get_node("Spawn_pos/Start").start()
+
 func instace_mob(persist):
 	if active==true and in_wave and instanced_enemys.size()<=difficulty_limit:
 		if Global.get_tree().is_network_server():

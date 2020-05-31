@@ -1,13 +1,15 @@
 extends KinematicBody
-
+#Okay
 class_name Bullet
 
-var time_alive=5
-var direction = Vector3()
+
+export (int,1,100,5)var bullet_dmg=15
 export (bool)var usable=true
+
 var bullet_speed = 200
 var hit=false
-export (int,1,100,5)var bullet_dmg=15
+var time_alive=5
+var direction = Vector3()
 
 func _ready():
 

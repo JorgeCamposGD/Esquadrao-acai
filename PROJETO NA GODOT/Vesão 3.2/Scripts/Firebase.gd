@@ -1,18 +1,23 @@
 extends Node
+#Okay
+signal ip_recived
 
 const API_KEY="AIzaSyBv7Qo7BgIFGuRNvH-BdldYmRc_9fe-K8Q"
 const CREATE_ACOUNT_ADRESS="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=%s"%API_KEY
 const LOGIN_ADRESS="https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=%s"%API_KEY
 const FIRESTORE="acai-squad-test"
+
 onready var firebase_request=$Firebase
 onready var ipv6_request=$IPV6
+
 var user_info
 var ipv6
 var user_ip
 var getting_ip=false
 var ip_adress="https://api.ipify.org"
 
-signal ip_recived
+
+
 func _get_user_info(result: Array) -> Dictionary:
 	var result_body := JSON.parse(result[3].get_string_from_ascii()).result as Dictionary
 	return {

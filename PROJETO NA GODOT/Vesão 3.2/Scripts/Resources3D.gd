@@ -25,12 +25,15 @@ var player_scene=preload("res://scenes/Player.tscn")
 
 func get_bullet(classe):
 	return bullets[classe]
+
 func get_sound(classe):
 	return Sons[classe]
+
 func get_special_resource(classe):
 	return specials_resources[classe]
 
 func get_envir(type):
 	return environements[type]
+
 func get_player():
 	return player_scene

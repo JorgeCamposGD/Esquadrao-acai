@@ -9,18 +9,21 @@ onready var texture_pos=get_node("CanvasLayer/Mobile_hud/TextureButton").get_pos
 onready var hp_bar=get_node("ProgressBar")
 onready var name_label=get_node("NameLabel")
 onready var txt_btn=get_node("CanvasLayer/Mobile_hud/TextureButton")
+
 var fps
 var Sistema=OS.get_name()
 var touch_input=Vector2()
 var my_name=""
 var analog_index=null
 var events={}
+
 func _ready():
 
 	Engine.set_target_fps(60)
 	if Sistema=="Android":
 		mobile_interface.show()
 	name_label.set_text(my_name)
+
 func _process(delta):
 	fps=Engine.get_frames_per_second()
 	fps_label.set_text("FPS: "+str(fps) )
@@ -30,9 +33,11 @@ func _process(delta):
 			if Global.is_master(get_parent()):
 				analog.set_global_position(texture_pos+texture_center )
 				touch_input=Vector2()
+
 func set_name(new_name):
 	my_name=new_name
 	_ready()
+
 func _on_TextureButton_gui_input(event):
 	
 	var btn_pos=txt_btn.get_global_position()

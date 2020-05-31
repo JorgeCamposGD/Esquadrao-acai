@@ -1,13 +1,18 @@
 extends Spatial
 
-var level_status=null
+#Okay
+
 onready var play_places=get_node("PlayerPos")
 onready var world=get_node("World")
+
 var actual_state
 var player_in=[]
+
 export(Array,NodePath)var mob_spawn=["Spawn"]
 
 var high_world=false
+var level_status=null
+
 func _ready():
 
 
@@ -43,6 +48,7 @@ func game_status_change(type):
 
 func get_player_in():
 	pass
+
 func _on_VisibilityNotifier_camera_entered(camera):
 	Global.scene_ready()
 

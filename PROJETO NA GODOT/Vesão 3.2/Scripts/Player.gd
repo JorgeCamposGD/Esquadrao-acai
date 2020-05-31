@@ -1,5 +1,5 @@
 extends KinematicBody
-
+#okay
 class_name player
 
 const JUMP_FORCE = 30
@@ -27,11 +27,17 @@ onready var especiais={
 			"Shotgun":get_node("Char/Contruct_area/CollisionShape/Spatial/Wall"),
 			"Sniper":get_node("Char/Contruct_area/CollisionShape/Spatial/Trap")
 			}
-var hud
+			
+
+onready var Sons=Ress_3D.get_sound(classe)
+onready var camera=$Cam
+
 onready var anim=get_node("Char/Contruct_area/livre")
 onready var world=get_tree().get_root()
 onready var ray_to_obj=get_node("Char/RayCast")
 onready var anim_control=get_node("Char/Armature/"+classe+"/AnimationPlayer")
+
+var hud
 var cooldown=0
 var rotate_speed=25
 var rot=0
@@ -54,9 +60,7 @@ var off_line=false
 var live=true
 var lock_cam=false
 
-onready var Sons=Ress_3D.get_sound(classe)
 
-onready var camera=$Cam
 
 puppet var puppet_move_vec=Vector3()
 puppet var puppet_transform=Transform()
@@ -93,10 +97,12 @@ func start_game():
 	set_physics_process(true)
 	if Global.players_info.size()==1:
 		off_line=true
+
 func set_players_interface(id,infos):
 	if id==Global.get_tree().get_network_unique_id():
 		get_node("Control").show()
 	get_node("Control").set_name(infos[id]["name"])
+
 func _start():
 
 	
@@ -157,6 +163,7 @@ func _physics_process(delta):
 	var grounded = is_on_floor()
 	y_speed -= GRAVITY
 	var just_jumped = false
+	
 	if grounded and y_speed <= 0:
 		y_speed = -0.1
 	if y_speed < -MAX_FALL_SPEED:

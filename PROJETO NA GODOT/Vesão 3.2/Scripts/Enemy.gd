@@ -1,11 +1,12 @@
 extends KinematicBody
- 
+ #Okay
 
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
+
 export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=0
 export (float, 0,5,0.020) var atack_melee
 export (float, 0,5,0.020) var fire_rate_pistol
@@ -18,7 +19,8 @@ export (int,1,1000,10) var hp_atual=100
 
 export (Array,Resource)var Sons
 
-
+export (int,"closer","minimun_hp")  var type_find
+export (bool) var usable=true
 
 onready var body=get_node("Spatial")
 onready var fire_rate=[atack_melee,
@@ -33,10 +35,10 @@ var rot=0
 var y_speed = 0
 var my_pos
 var atacking=false
-export (int,"closer","minimun_hp")  var type_find
-export (bool) var usable=true
+
 var body_in_rage=[]
 var my_creator
+
 func _ready():
 	set_physics_process(usable)
 	move_speed*=scale.x

@@ -75,19 +75,24 @@ func _on_Play_pressed():
 
 func _on_Play_p2p_pressed():
 	pass # Replace with function body.
+
 func _on_Play_host_pressed():
 	pass
 	#get_node("PopupPanel").show()
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
 func _on_Return_pressed():
 	$Play_direct_panel.hide()
+
 func _on_Play_online_pressed():
 	online.show()
+
 func _on_Login_email_pressed():
 	if email_login.get_text()!=null and password_login.get_text()!=null:
 		network.login(email_login.get_text(),password_login.get_text())
+
 func _on_Login_email2_pressed():
 	if create_account.get_text()!="":
 		print(create_account.get_text())

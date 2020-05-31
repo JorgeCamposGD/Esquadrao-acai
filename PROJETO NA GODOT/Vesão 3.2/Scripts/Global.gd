@@ -1,5 +1,5 @@
 extends Node
-
+#Okay
 signal players_change 
 signal game_status
 signal disconnect_from_server
@@ -132,6 +132,7 @@ remotesync func selected_level(level_id):
 	animation.play("loading")
 	
 	wait_frames = 1
+
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
 	# Update your progress bar?

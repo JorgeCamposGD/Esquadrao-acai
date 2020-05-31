@@ -1,11 +1,12 @@
 extends Spatial
-
+#Okay
 
 onready var pos0=$Position3D
 onready var pos1=$Position3D2
 onready var pos2=$Position3D3
 onready var pos3=$Position3D4
 onready var pos=[pos0,pos1,pos2,pos3]
+
 var players_in=0
 
 func set_player_in_pos():
