@@ -27,6 +27,8 @@ font_data = ExtResource( 9 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.05054
+margin_right = -2.05054
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,6 +49,7 @@ __meta__ = {
 }
 
 [node name="Mobile_hud" type="Control" parent="CanvasLayer"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -54,7 +57,6 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
-visible = false
 anchor_left = 1.0
 anchor_top = 16.509
 anchor_right = 10.659

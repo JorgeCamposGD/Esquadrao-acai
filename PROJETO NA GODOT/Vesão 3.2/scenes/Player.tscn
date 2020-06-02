@@ -607,7 +607,7 @@ extents = Vector3( 3, 3, 3 )
 
 [node name="PLAYER" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.95819, 0 )
-collision_mask = 19
+collision_mask = 23
 script = ExtResource( 1 )
 move_speed = 30.857
 
@@ -624,7 +624,7 @@ shape = SubResource( 1 )
 [node name="Armature" type="Position3D" parent="Char"]
 
 [node name="Pistol" type="Spatial" parent="Char/Armature"]
-transform = Transform( 1.6, 0, 0, 0, 1.6, 2.60673e-07, 0, -2.60673e-07, 1.6, 0, -2.6, 0 )
+transform = Transform( 1.6, 0, 0, 0, 1.6, 2.60673e-07, 0, -2.60673e-07, 1.6, 0, -2.46106, 0 )
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Armature/Pistol"]
@@ -859,7 +859,7 @@ collision_mask = 2
 [node name="Contruct_area" type="Area" parent="Char"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.410171, 0 )
 collision_layer = 18
-collision_mask = 4
+collision_mask = 20
 
 [node name="CollisionShape" type="CollisionShape" parent="Char/Contruct_area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )

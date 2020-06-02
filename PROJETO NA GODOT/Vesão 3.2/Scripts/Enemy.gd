@@ -15,7 +15,7 @@ export (float, 0,5,0.020) var fire_rate_smg
 export (float, 0,5,0.020) var fire_rate_sniper
 export (float,1,100) var move_speed =12
 
-export (int,1,1000,10) var hp_atual=100
+export (int,1,1000,10) var hp_atual=50
 
 export (Array,Resource)var Sons
 
@@ -44,6 +44,7 @@ func _ready():
 	move_speed*=scale.x
 
 func _physics_process(delta):
+	
 	my_pos=get_global_transform().origin
 	if hp_atual<=0:
 		die()
@@ -148,6 +149,7 @@ func damage(dano,type):
 		#get_node("AnimationPlayer2").play("Dano")
 
 func die():
+	Global.remove_enemy(self)
 	my_creator.remove_instance(self)
 	queue_free()
 func _on_Timer_timeout():

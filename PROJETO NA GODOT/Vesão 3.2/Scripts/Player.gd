@@ -173,7 +173,8 @@ func _physics_process(delta):
 		if move_vec.z!=0 or move_vec.x!=0:
 			move_state=1
 			#verifica se o Player esta andando
-			rot=atan2(move_vec.x*-1,move_vec.z*-1)
+			rot=atan2(move_vec.z*-1,move_vec.x*1)-deg2rad(90)
+
 			#transforma os vetores de movimento em um angulo que será usado para rotação
 	
 	
@@ -331,30 +332,33 @@ func _on_Contruct_area_body_exited(body):
 func construct_item(classe,type):
 	var graned_place=get_node("Char/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform()
 	var item_point=ray_to_obj.get_collision_point()
-	var item_transfomr=ray_to_obj.get_collision_point()
 
-	rpc("construct",classe,graned_place,item_point,item_transfomr,type)
+
+	rpc("construct",classe,graned_place,item_point,type)
 	#item.scale=scale
-remotesync func construct(classe,grenade,point,global_transfor,type):
+remotesync func construct(classe,grenade,point,type):
 	
 
 	var item=Ress_3D.get_special_resource(classe).instance()
+	var new_transform=Transform()
+	match classe:
 
-	if classe=="Pistol":
-		item.set_global_transform(grenade)
+		"Pistol":
+			new_transform=grenade
 		
-
-	else:
-
-		item.transform.origin=point
-		var t=Transform()
-		t.origin=(global_transfor)
-		item.set_global_transform(t)
+		_:
+			
+			
+			new_transform.origin=point
+			new_transform.basis=body.get_global_transform().basis
+	
+	item.set_global_transform(new_transform)
 	item.set_type(type)
 	world.call_deferred("add_child",item)
 
 	
 func _on_Melee_body_entered(body):
+
 	body_in_rage.append(body)
 
 

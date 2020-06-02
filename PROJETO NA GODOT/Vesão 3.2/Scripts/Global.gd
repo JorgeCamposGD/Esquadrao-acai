@@ -12,14 +12,16 @@ onready var stages_mobile=[scene_0_mobile]
 onready var animation=$Anim
 
 var scene_0="res://scenes/Maps/Mapa alpha.tscn"
-var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
-
+var scene_0_mobile="res://scenes/Maps/Mapa alpha.tscn"
+#var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
 var players=[]
+var instanced_enemys=[]
 
+var instanced_players={}
 var players_info={}
 var my_info={}
-var instanced_players={}
-var instanced_enemys={}
+
+
 var players_status={}
 
 var time_max = 100 # msec
@@ -85,7 +87,7 @@ func _ready():
 	get_tree().connect('server_disconnected', self, '_server_disconnected')
 
 func _process(time):
-	print()
+
 	if loading_scenes:
 		if loader == null:
 			# no need to process anymore
@@ -219,6 +221,15 @@ remotesync func player_ready(id):
 func _get_players():
 
 	return players
+
+func add_enemy(new_enemy):
+	instanced_enemys.append(new_enemy)
+func remove_enemy(enemy):
+	instanced_enemys.erase(enemy)
+	
+func _get_enemys():
+
+	return instanced_enemys
 func create_server(player_info):
 	print("create host")
 	players_info={}

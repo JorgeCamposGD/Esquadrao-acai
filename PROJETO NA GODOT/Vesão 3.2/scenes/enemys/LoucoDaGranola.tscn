@@ -10,7 +10,7 @@
 albedo_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="CapsuleShape" id=3]
-radius = 2.05424
+radius = 2.0
 height = 3.65173
 
 [node name="LoucoDaGranola" type="KinematicBody"]

@@ -82,7 +82,7 @@ remotesync func _instance_mob(mob_id,point):
 	new_enemy.set_creator(self)
 	new_enemy.set_global_transform(point)
 	instanced_enemys.append(new_enemy)
-
+	Global.add_enemy(new_enemy)
 func _on_Timer_timeout():
 
 	instace_mob(true)

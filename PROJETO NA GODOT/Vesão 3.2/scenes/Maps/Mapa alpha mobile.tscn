@@ -140,6 +140,7 @@ transform = Transform( 1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0, 0, 0 )
 mesh = ExtResource( 31 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 25 )
+material/2 = null
 
 [node name="ColisaoDoJogador" type="Spatial" parent="Scene Root"]
 
@@ -341,6 +342,11 @@ environment = SubResource( 19 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.35814, 0.933668, 0, -0.933668, 0.35814, 0, 34.1466, 16.3045 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 184.121, 0 )
+light_color = Color( 0.45098, 0.466667, 0.0745098, 1 )
+light_energy = 0.34
 [connection signal="timeout" from="Spawn/Spawn_pos/Start" to="Spawn" method="_on_Start_timeout"]
 [connection signal="timeout" from="Spawn/Spawn_pos/Timer" to="Spawn" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawn/Spawn_pos2/Start" to="Spawn" method="_on_Start_timeout"]

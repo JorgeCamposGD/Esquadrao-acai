@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/bullet smg.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Bullet turret.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.498039, 0.0235294, 0.670588, 1 )
@@ -28,6 +28,30 @@ tracks/0/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -40,9 +64,9 @@ material = SubResource( 5 )
 max_value = 2.0
 _data = [ Vector2( 0, 0.999654 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.424654 ), -1.80398, 0.0, 0, 0 ]
 
-[node name="bullet" type="KinematicBody"]
+[node name="Spatial" type="KinematicBody"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 36
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
