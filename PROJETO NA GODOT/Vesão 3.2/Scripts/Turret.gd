@@ -17,6 +17,9 @@ var rotate_speed=20
 var energy=[15,20,25,50]
 var firerate=[0.5,0.5,0.5,1]
 var turret_range=[50,50,50,50]
+var speed=[200,200,200,200]
+var damage=[10,20,30,50]
+
 var cooldown
 func _ready():
 
@@ -106,7 +109,7 @@ remotesync func atk():
 	bl.add_collision_exception_with(get_node("StaticBody"))
 	add_child(bl)
 	bl.set_global_transform(canos[my_type].get_global_transform())
-
+	bl.set_bullet_speed_and_damage(speed[my_type],damage[my_type])
 
 func get_bigger_distance(local1,local2,my_pos):
 

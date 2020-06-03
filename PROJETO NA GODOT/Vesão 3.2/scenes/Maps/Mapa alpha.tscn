@@ -684,8 +684,6 @@ script = ExtResource( 32 )
 [node name="Spawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
 script = ExtResource( 2 )
-active = true
-maximo_de_inimigos_no_medium = 0
 
 [node name="Spawn_pos" type="Position3D" parent="Spawn"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0768, -1.58473, 2.31607 )

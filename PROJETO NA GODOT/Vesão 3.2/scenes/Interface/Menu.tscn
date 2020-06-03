@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
+[ext_resource path="res://assets/Fonts/Fonte 1.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
 [ext_resource path="res://assets/Interface/Menu/fundo pro menu.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/Fonts/Fonte 1.ttf" type="DynamicFontData" id=4]
@@ -10,10 +11,10 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 54
+size = 46
 use_filter = true
 extra_spacing_char = 8
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 101
@@ -31,7 +32,7 @@ size = 43
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 36
@@ -39,19 +40,19 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 6
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 30
-outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 6
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 47
-font_data = ExtResource( 4 )
+use_filter = true
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 37
@@ -60,15 +61,12 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 6
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 34
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-extra_spacing_char = 9
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 5 )
@@ -78,22 +76,21 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 size = 41
 use_filter = true
 extra_spacing_char = 7
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=13]
 size = 59
 use_mipmaps = true
 use_filter = true
 extra_spacing_char = 5
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 69
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-extra_spacing_char = 5
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=15]
 
@@ -106,8 +103,7 @@ size = 56
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-extra_spacing_char = 4
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=19]
 texture = ExtResource( 5 )
@@ -116,8 +112,7 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=20]
 size = 43
 use_filter = true
-extra_spacing_char = 8
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=21]
 size = 45
@@ -125,7 +120,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 6
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=22]
 size = 32
@@ -133,7 +128,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 5
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=23]
 default_font = SubResource( 22 )
@@ -141,21 +136,19 @@ default_font = SubResource( 22 )
 [sub_resource type="DynamicFont" id=24]
 size = 41
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=25]
 size = 51
-outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=26]
 size = 71
-outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -174,56 +167,58 @@ __meta__ = {
 }
 
 [node name="Play_online" type="Button" parent="Panel"]
-anchor_left = 0.0830146
-anchor_top = 0.263422
-anchor_right = 0.355931
-anchor_bottom = 0.401384
+anchor_left = 0.06875
+anchor_top = 0.262507
+anchor_right = 0.417708
+anchor_bottom = 0.373618
+margin_left = -7.62939e-06
 custom_fonts/font = SubResource( 2 )
-disabled = true
 text = "Conect and play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play_direct" type="Button" parent="Panel"]
-anchor_left = 0.0830146
-anchor_top = 0.430972
-anchor_right = 0.355931
-anchor_bottom = 0.568934
+anchor_left = 0.06875
+anchor_top = 0.401396
+anchor_right = 0.41875
+anchor_bottom = 0.512507
+margin_left = -7.62939e-06
 custom_fonts/font = SubResource( 2 )
 text = "Play without login"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Config" type="Button" parent="Panel"]
-anchor_left = 0.0830146
-anchor_top = 0.612156
-anchor_right = 0.355931
-anchor_bottom = 0.750118
-custom_fonts/font = SubResource( 2 )
-disabled = true
-text = "Configuration"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="Button" parent="Panel/Config"]
-anchor_left = 0.0114504
-anchor_top = 1.30202
-anchor_right = 0.994277
-anchor_bottom = 1.9933
+[node name="Exit" type="Button" parent="Panel"]
+anchor_left = 0.06875
+anchor_top = 0.693182
+anchor_right = 0.417708
+anchor_bottom = 0.804293
 custom_fonts/font = SubResource( 2 )
 text = "exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Config" type="Button" parent="Panel"]
+anchor_left = 0.06875
+anchor_top = 0.540285
+anchor_right = 0.417708
+anchor_bottom = 0.651396
+margin_left = -7.62939e-06
+custom_fonts/font = SubResource( 2 )
+text = "Configuration"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Play_solo" type="Button" parent="Panel"]
-anchor_left = 0.0817706
-anchor_top = 0.0796293
-anchor_right = 0.354687
-anchor_bottom = 0.217592
+anchor_left = 0.06875
+anchor_top = 0.123618
+anchor_right = 0.417708
+anchor_bottom = 0.234729
+margin_left = -7.62939e-06
 custom_fonts/font = SubResource( 2 )
 text = "Tutorial"
 clip_text = true
@@ -244,6 +239,7 @@ __meta__ = {
 }
 
 [node name="Login" type="PopupPanel" parent="."]
+visible = true
 anchor_left = 0.0817706
 anchor_top = 0.0796293
 anchor_right = 0.918229
@@ -289,13 +285,12 @@ anchor_left = -6.83106
 anchor_top = -10.241
 anchor_right = -6.75596
 anchor_bottom = -10.1921
-margin_left = 356.345
-margin_top = 253.655
-margin_right = 473.341
-margin_bottom = 296.971
+margin_left = 65.6294
+margin_top = 252.82
+margin_right = 214.625
+margin_bottom = 300.136
 custom_fonts/font = SubResource( 6 )
 text = "Email:"
-align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -305,6 +300,10 @@ anchor_left = 1.17947
 anchor_top = -0.0720055
 anchor_right = 4.94614
 anchor_bottom = 1.15527
+margin_left = 108.721
+margin_top = -2.38419e-07
+margin_right = 136.187
+margin_bottom = 1.09076
 custom_fonts/font = SubResource( 7 )
 placeholder_text = "exemplo@provedor.com"
 __meta__ = {
@@ -316,13 +315,12 @@ anchor_left = -6.88306
 anchor_top = -10.1658
 anchor_right = -6.75352
 anchor_bottom = -10.117
-margin_left = 275.322
-margin_top = 320.251
-margin_right = 477.141
-margin_bottom = 363.567
+margin_left = 67.7094
+margin_top = 319.416
+margin_right = 330.528
+margin_bottom = 366.733
 custom_fonts/font = SubResource( 6 )
 text = "Password:"
-align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -332,6 +330,8 @@ anchor_left = 1.07729
 anchor_top = -0.0681818
 anchor_right = 3.2657
 anchor_bottom = 1.15909
+margin_right = 13.5061
+margin_bottom = 1.09095
 custom_fonts/font = SubResource( 7 )
 secret = true
 __meta__ = {
@@ -377,10 +377,11 @@ anchor_left = 7.25474
 anchor_top = 4.5444
 anchor_right = 10.2547
 anchor_bottom = 5.64443
-margin_right = -0.000396729
+margin_left = -270.19
+margin_right = -238.188
+margin_bottom = 3.99879
 custom_fonts/font = SubResource( 6 )
 text = "Email:"
-align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -390,6 +391,10 @@ anchor_left = 1.18333
 anchor_top = -0.0681818
 anchor_right = 7.1
 anchor_bottom = 1.15909
+margin_left = 111.134
+margin_top = 0.272726
+margin_right = -0.199951
+margin_bottom = -7.63632
 custom_fonts/font = SubResource( 7 )
 placeholder_text = "exemplo@provedor.com"
 __meta__ = {
@@ -401,10 +406,11 @@ anchor_left = 5.26026
 anchor_top = 6.20798
 anchor_right = 10.4353
 anchor_bottom = 7.30798
-margin_bottom = -0.00305176
+margin_left = -190.41
+margin_right = -129.412
+margin_bottom = 4.0
 custom_fonts/font = SubResource( 6 )
 text = "Password:"
-align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -414,6 +420,10 @@ anchor_left = 1.07576
 anchor_top = -0.0681818
 anchor_right = 4.5
 anchor_bottom = 1.15909
+margin_left = -0.30368
+margin_top = 0.272726
+margin_right = -127.0
+margin_bottom = -4.63632
 custom_fonts/font = SubResource( 7 )
 secret = true
 __meta__ = {
@@ -425,9 +435,12 @@ anchor_left = 0.419917
 anchor_top = 8.01667
 anchor_right = 10.0949
 anchor_bottom = 9.1167
+margin_left = 3.20332
+margin_top = 0.333191
+margin_right = -112.796
+margin_bottom = 4.332
 custom_fonts/font = SubResource( 6 )
-text = "Confirm"
-align = 2
+text = "Confirm:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -437,6 +450,10 @@ anchor_left = 1.07494
 anchor_top = -0.0321219
 anchor_right = 2.90698
 anchor_bottom = 1.19515
+margin_left = -0.308716
+margin_top = -0.458149
+margin_right = 291.208
+margin_bottom = -8.3672
 custom_fonts/font = SubResource( 7 )
 secret = true
 __meta__ = {
@@ -448,10 +465,10 @@ anchor_left = -0.910718
 anchor_top = -10.3121
 anchor_right = -0.677527
 anchor_bottom = -10.2062
-margin_left = 1198.64
+margin_left = 1152.29
 margin_top = 594.263
-margin_right = 1524.31
-margin_bottom = 641.026
+margin_right = 1549.97
+margin_bottom = 714.027
 custom_fonts/font = SubResource( 9 )
 text = "Create acount"
 __meta__ = {
@@ -463,6 +480,10 @@ anchor_left = 0.301627
 anchor_top = 0.717777
 anchor_right = 0.430538
 anchor_bottom = 0.799999
+margin_left = -57.7056
+margin_top = 12.6372
+margin_right = -57.7056
+margin_bottom = 12.6372
 custom_fonts/font = SubResource( 10 )
 text = "Return"
 __meta__ = {
@@ -474,6 +495,10 @@ anchor_left = 0.463079
 anchor_top = 0.717777
 anchor_right = 0.745932
 anchor_bottom = 0.799999
+margin_left = -57.7056
+margin_top = 12.6372
+margin_right = -53.7047
+margin_bottom = 12.6372
 custom_fonts/font = SubResource( 10 )
 text = "Loggin with Facebook"
 __meta__ = {
@@ -481,7 +506,6 @@ __meta__ = {
 }
 
 [node name="Play_direct_panel" type="PopupPanel" parent="."]
-visible = true
 anchor_left = 0.033
 anchor_top = 0.059
 anchor_right = 0.971
@@ -553,7 +577,7 @@ align = 1
 max_length = 50
 placeholder_text = "2804:14c:598f:8ed8:9c34:920d:c676:463d"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Nickname" type="LineEdit" parent="Play_direct_panel/Panel2"]
@@ -568,18 +592,18 @@ align = 1
 placeholder_text = "Nick name"
 placeholder_alpha = 0.3
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="IPV6_Label" type="LineEdit" parent="Play_direct_panel/Panel2"]
-anchor_left = 0.275
-anchor_top = 0.0693277
-anchor_right = 0.892857
-anchor_bottom = 0.167
-margin_left = -58.7993
+anchor_left = 0.290713
+anchor_top = 0.0698451
+anchor_right = 0.908713
+anchor_bottom = 0.166517
+margin_left = 0.33667
 margin_top = -0.492523
-margin_right = -57.9991
-margin_bottom = -0.476532
+margin_right = 0.880615
+margin_bottom = 0.475449
 hint_tooltip = "your ip adress, if you are the host, send to your friends."
 custom_styles/read_only = SubResource( 15 )
 custom_styles/focus = SubResource( 16 )
@@ -591,18 +615,18 @@ custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
 editable = false
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="IPV6_Label2" type="LineEdit" parent="Play_direct_panel/Panel2"]
-anchor_left = 0.108817
-anchor_top = 0.069
-anchor_right = 0.275
-anchor_bottom = 0.167017
-margin_left = -25.0001
+anchor_left = 0.109014
+anchor_top = 0.0695174
+anchor_right = 0.314635
+anchor_bottom = 0.166517
+margin_left = -0.240051
 margin_top = -0.180557
-margin_right = -25.8001
-margin_bottom = -0.492554
+margin_right = -0.712097
+margin_bottom = 0.475616
 hint_tooltip = "your ip adress, if you are the host, send to your friends."
 custom_styles/read_only = SubResource( 15 )
 custom_styles/focus = SubResource( 16 )
@@ -612,18 +636,18 @@ custom_colors/selection_color = Color( 0, 0.780392, 1, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
-text = "Your IPV: "
+text = "Your IP: "
 align = 1
 editable = false
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Notify_conect" type="Label" parent="Play_direct_panel/Panel2"]
-anchor_left = 0.322545
-anchor_top = 0.478992
-anchor_right = 0.893
-anchor_bottom = 0.579
+anchor_left = 0.39692
+anchor_top = 0.478628
+anchor_right = 0.967375
+anchor_bottom = 0.578636
 margin_right = -0.256226
 margin_bottom = -0.208069
 custom_fonts/font = SubResource( 18 )
@@ -661,7 +685,7 @@ anchor_top = 0.0688103
 anchor_right = 0.242188
 anchor_bottom = 0.615029
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Host_identifier" type="Label" parent="Lobby_popup/Lobby_panel/Host"]
@@ -670,11 +694,12 @@ anchor_top = 0.0567216
 anchor_right = 0.640539
 anchor_bottom = 0.224037
 margin_left = 7.62939e-06
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 20 )
 text = "Host"
 align = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Host_name" type="Label" parent="Lobby_popup/Lobby_panel/Host"]
@@ -683,13 +708,14 @@ anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
 margin_left = -1.90735e-06
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 21 )
 text = "Hostname"
 align = 1
 autowrap = true
 clip_text = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Host_class" type="Label" parent="Lobby_popup/Lobby_panel/Host"]
@@ -714,6 +740,7 @@ anchor_top = 0.677529
 anchor_right = 0.921622
 anchor_bottom = 0.857763
 margin_left = -1.90735e-06
+size_flags_vertical = 5
 theme = SubResource( 23 )
 custom_fonts/font = SubResource( 24 )
 disabled = true
@@ -722,7 +749,7 @@ align = 1
 items = [ "Select class", null, false, 0, false, "Pistol", null, false, 1, false, "Shotgun", null, false, 2, false, "SMG", null, false, 3, false, "Sniper", null, false, 4, null ]
 selected = 0
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Player1" type="Panel" parent="Lobby_popup/Lobby_panel"]
@@ -731,7 +758,7 @@ anchor_top = 0.0688103
 anchor_right = 0.481191
 anchor_bottom = 0.615029
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Host_identifier" type="Label" parent="Lobby_popup/Lobby_panel/Player1"]
@@ -739,11 +766,12 @@ anchor_left = 0.224323
 anchor_top = 0.0567216
 anchor_right = 0.737837
 anchor_bottom = 0.224037
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 20 )
 text = "Player 1"
 align = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="player1_name" type="Label" parent="Lobby_popup/Lobby_panel/Player1"]
@@ -751,12 +779,13 @@ anchor_left = 0.0675664
 anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 21 )
 align = 1
 autowrap = true
 clip_text = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="player1_class" type="Label" parent="Lobby_popup/Lobby_panel/Player1"]
@@ -779,6 +808,7 @@ anchor_left = 0.0783784
 anchor_top = 0.677529
 anchor_right = 0.921623
 anchor_bottom = 0.857763
+size_flags_vertical = 5
 theme = SubResource( 23 )
 custom_fonts/font = SubResource( 24 )
 disabled = true
@@ -787,7 +817,7 @@ align = 1
 items = [ "Select class", null, false, 10, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
 selected = 0
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Player2" type="Panel" parent="Lobby_popup/Lobby_panel"]
@@ -797,7 +827,7 @@ anchor_right = 0.723379
 anchor_bottom = 0.615029
 margin_left = 6.10352e-05
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Host_identifier" type="Label" parent="Lobby_popup/Lobby_panel/Player2"]
@@ -805,11 +835,12 @@ anchor_left = 0.212161
 anchor_top = 0.0567216
 anchor_right = 0.749999
 anchor_bottom = 0.224037
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 20 )
 text = "Player 2"
 align = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="player2_name" type="Label" parent="Lobby_popup/Lobby_panel/Player2"]
@@ -817,12 +848,13 @@ anchor_left = 0.0675664
 anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 21 )
 align = 1
 autowrap = true
 clip_text = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="player2_class" type="Label" parent="Lobby_popup/Lobby_panel/Player2"]
@@ -846,6 +878,7 @@ anchor_top = 0.66879
 anchor_right = 0.946184
 anchor_bottom = 0.849024
 margin_right = -0.000274658
+size_flags_vertical = 5
 theme = SubResource( 23 )
 custom_fonts/font = SubResource( 24 )
 disabled = true
@@ -854,7 +887,7 @@ align = 1
 items = [ "Select class", null, false, 10, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
 selected = 0
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Player3" type="Panel" parent="Lobby_popup/Lobby_panel"]
@@ -863,7 +896,7 @@ anchor_top = 0.0688103
 anchor_right = 0.965566
 anchor_bottom = 0.615029
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Host_identifier" type="Label" parent="Lobby_popup/Lobby_panel/Player3"]
@@ -871,11 +904,12 @@ anchor_left = 0.214863
 anchor_top = 0.0567216
 anchor_right = 0.747296
 anchor_bottom = 0.224037
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 20 )
 text = "Player 3"
 align = 1
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="player3_name" type="Label" parent="Lobby_popup/Lobby_panel/Player3"]
@@ -883,12 +917,13 @@ anchor_left = 0.0675662
 anchor_top = 0.238531
 anchor_right = 0.935134
 anchor_bottom = 0.405845
+size_flags_vertical = 5
 custom_fonts/font = SubResource( 21 )
 align = 1
 autowrap = true
 clip_text = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="player3_class" type="Label" parent="Lobby_popup/Lobby_panel/Player3"]
@@ -912,6 +947,7 @@ anchor_top = 0.677529
 anchor_right = 0.921623
 anchor_bottom = 0.857763
 margin_left = 1.90735e-06
+size_flags_vertical = 5
 theme = SubResource( 23 )
 custom_fonts/font = SubResource( 24 )
 disabled = true
@@ -920,7 +956,7 @@ align = 1
 items = [ "Select class", null, false, 10, false, "Pistol", null, false, 0, false, "Shotgun", null, false, 1, false, "SMG", null, false, 2, false, "Sniper", null, false, 3, false ]
 selected = 0
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Start_Game" type="Button" parent="Lobby_popup/Lobby_panel"]
@@ -932,7 +968,7 @@ custom_fonts/font = SubResource( 25 )
 disabled = true
 text = "Start Game"
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Quit" type="Button" parent="Lobby_popup/Lobby_panel"]
@@ -943,7 +979,7 @@ anchor_bottom = 0.919251
 custom_fonts/font = SubResource( 25 )
 text = "Quit"
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="stage_select" type="OptionButton" parent="Lobby_popup/Lobby_panel"]
@@ -959,12 +995,12 @@ align = 1
 items = [ "Fase teste", null, false, 0, false ]
 selected = 0
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 [connection signal="script_changed" from="." to="." method="_on_Control_script_changed"]
 [connection signal="pressed" from="Panel/Play_online" to="." method="_on_Play_online_pressed"]
 [connection signal="pressed" from="Panel/Play_direct" to="." method="_on_Play_direct_pressed"]
-[connection signal="pressed" from="Panel/Config/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Panel/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Panel/Play_solo" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Login/Panel2/Login/Login_email" to="." method="_on_Login_email_pressed"]
 [connection signal="pressed" from="Login/Panel2/Submit/Login_email2" to="." method="_on_Login_email2_pressed"]

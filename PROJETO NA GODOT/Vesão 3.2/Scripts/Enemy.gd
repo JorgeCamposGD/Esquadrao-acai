@@ -23,6 +23,7 @@ export (int,"closer","minimun_hp")  var type_find
 export (bool) var usable=true
 
 onready var body=get_node("Spatial")
+onready var anim=get_node("Spatial/Armação002/Skeleton/AnimationPlayer")
 onready var fire_rate=[atack_melee,
 					fire_rate_pistol,
 					fire_rate_shotgun,
@@ -35,9 +36,10 @@ var rot=0
 var y_speed = 0
 var my_pos
 var atacking=false
-
 var body_in_rage=[]
 var my_creator
+var status="normal"
+var enemy=true
 
 func _ready():
 	set_physics_process(usable)
@@ -52,29 +54,47 @@ func _physics_process(delta):
 		return
 	var move_vec = Vector3()
 
-	move_vec=get_targuet(type_find)-my_pos if get_targuet(type_find)!=Vector3() else Vector3()
-	
-	move_vec = move_vec.normalized()
-
-	move_vec *= move_speed#direção de movimento
-	move_vec.y = y_speed#gravidade
-	cooldown-=delta if cooldown>0 else 0
+	match status:
+		_, "normal":
+			move_vec=get_targuet(type_find,enemy)-my_pos if get_targuet(type_find,enemy)!=Vector3() else Vector3()
+			
+			move_vec = move_vec.normalized()
+			
+			move_vec *= move_speed#direção de movimento
+			move_vec.y = y_speed#gravidade
+			cooldown-=delta if cooldown>0 else 0
+		
+		"traped":
+			pass
+		"paralized":
+			pass
+		
+		"freezed":
+			pass
+			
+		"counter":
+			pass
+		
 	if move_vec.z!=0 or move_vec.x!=0 and not(atacking):
 		#get_node("AnimationPlayer").play("ANDANDO")
 		#verifica se o Player esta andando
+		
 		rot=atan2(move_vec.x*-1,move_vec.z*-1)
 		#transforma os vetores de movimento em um angulo que será usado para rotação
+		
 		if body.rotation!=Vector3(0,rot,0):
 
 			rot+=deg2rad(-90)#corrige a rotação da animação q algum traste fez errado
 			#verifica se a rotação atual é igual ao angulo para o qual ira virar
+			
 			var bodyquat=Quat(body.global_transform.basis.get_rotation_quat())#quaternion de rotação do personagem
 			var rotquat=Quat(0,0,0,0)#quaternion que será usado para rotação
 
 			rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
 			body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
-	#else:
-		#get_node("AnimationPlayer").play("PARADO")
+		anim.play("andando")
+	else:
+		anim.stop()
 	move_and_slide(move_vec, Vector3(0, 1, 0),false,4)#movimenta o personagem
 	
 	atk()
@@ -103,8 +123,12 @@ func atk():
 
 
 
-func get_targuet(type):
-	var players=Global._get_players()
+func get_targuet(type,enemy):
+	var players
+	if not(enemy):
+		players=Global._get_enemys()
+	else:
+		players=Global._get_players()
 	var targuet
 	var targuet_pos
 	var distance_to_targuet
@@ -114,25 +138,25 @@ func get_targuet(type):
 			targuet_pos=Vector3()
 			
 		elif players.size()==1:
-			targuet_pos=players[0].get_global_pos()
-			distance_to_targuet=players[0].get_global_pos().distance_to(my_pos)
+			targuet_pos=players[0].get_global_transform().origin
+			distance_to_targuet=players[0].get_global_transform().origin.distance_to(my_pos)
 	
 		else:
 			for t in players:
 				if targuet==null:
 					
-					targuet=t.get_global_pos()
+					targuet=t.get_global_transform().origin
 					
-				targuet_pos=get_bigger_distance(targuet,t.get_global_pos(),my_pos)
+				targuet_pos=get_bigger_distance(targuet,t.get_global_transform().origin,my_pos)
 
 	
 	if my_pos.distance_to(targuet_pos)<=5.0:
 		targuet_pos=Vector3()
 	return targuet_pos
 
-
+	
 func get_bigger_distance(local1,local2,my_pos):
-
+	
 	if local1.distance_to(my_pos) < local2.distance_to(my_pos):
 
 		return local1
@@ -158,16 +182,15 @@ func _on_Timer_timeout():
 
 func set_creator(creator):
 	my_creator=creator
-#func _on_AreaMelee_body_entered(body):
-#	print(body)
-#
-#
-#func _on_Area_body_entered(body):
-#	print(body,"out")
-#	body_in_rage.append(body)
-#	atk()
-#
-#
-#func _on_Area_body_exited(body):
-#	print(body,"in")
-#	body_in_rage.erase(body)
+
+func on_trap(type):
+	print("on trap", type)
+	match type:
+		0:
+			pass
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
