@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Personagem/especiais/Wall.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/Gordo da pedreira/BARRICADAS/Cubo_008.mesh" type="ArrayMesh" id=2]
@@ -6,22 +6,19 @@
 [ext_resource path="res://assets/characters/Gordo da pedreira/BARRICADAS/new folder/Cubo_008.mesh" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/characters/Gordo da pedreira/BARRICADAS/new folder/Cubo_000.mesh" type="ArrayMesh" id=5]
 
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 6, 6, 6 )
-
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.60329, 3, 2 )
+extents = Vector3( 0.60329, 3, 3.22673 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( -2.44381e-07, 0, 1.5, 0, 1.5, 0, -1.5, 0, -2.44381e-07, 0, 0, 0 )
-collision_layer = 4
-collision_mask = 0
+collision_layer = 0
+collision_mask = 32
 
 [node name="BARRICADA DE ARAME FARPADO" type="Spatial" parent="StaticBody"]
-transform = Transform( 0.999701, -0.0171452, 0.0174497, 0.0174497, 0.999695, -0.0174524, -0.0171452, 0.0177517, 0.999695, 0, 0, 0 )
+transform = Transform( 1.9994, -0.0342903, 0.0348995, 0.0348994, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
 visible = false
 
 [node name="Arame" type="MeshInstance" parent="StaticBody/BARRICADA DE ARAME FARPADO"]
@@ -30,7 +27,7 @@ material/0 = null
 material/1 = null
 
 [node name="Barricada de puraque" type="Spatial" parent="StaticBody"]
-transform = Transform( 0.999701, -0.0171452, 0.0174497, 0.0174497, 0.999695, -0.0174524, -0.0171452, 0.0177517, 0.999695, 0, 0, 0 )
+transform = Transform( 1.9994, -0.0342903, 0.0348995, 0.0348994, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
 visible = false
 
 [node name="BARRICADA DE PURAQUE" type="MeshInstance" parent="StaticBody/Barricada de puraque"]
@@ -42,7 +39,7 @@ material/2 = null
 material/3 = null
 
 [node name="Barricada de metal" type="Spatial" parent="StaticBody"]
-transform = Transform( 0.999701, -0.0171452, 0.0174497, 0.0174497, 0.999695, -0.0174524, -0.0171452, 0.0177517, 0.999695, 0, 0, 0 )
+transform = Transform( 1.9994, -0.0342903, 0.0348995, 0.0348994, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
 visible = false
 
 [node name="barricada de metal" type="MeshInstance" parent="StaticBody/Barricada de metal"]
@@ -54,7 +51,7 @@ material/2 = null
 material/3 = null
 
 [node name="BARRICADA DE MADEIRA" type="Spatial" parent="StaticBody"]
-transform = Transform( 1.9994, -0.0342904, 0.0174497, 0.0348995, 1.99939, -0.0174524, -0.0342904, 0.0355034, 0.999695, 0, 0, 0 )
+transform = Transform( 1.9994, -0.0342905, 0.0348995, 0.0348995, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
 visible = false
 
 [node name="BARRICADA DE MADEIRA" type="MeshInstance" parent="StaticBody/BARRICADA DE MADEIRA"]
@@ -62,11 +59,6 @@ mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 material/2 = null
-
-[node name="Triangle" type="MeshInstance" parent="StaticBody"]
-visible = false
-mesh = SubResource( 1 )
-material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 2.27374e-13, 0, 1, 0, -2.27374e-13, 0, 1, -0.319431, 3.36919, 2.37641e-07 )

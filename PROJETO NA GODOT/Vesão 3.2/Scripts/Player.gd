@@ -85,7 +85,7 @@ func _ready():
 		hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
 	else:
 		hud.queue_free()
-
+	Sons=Ress_3D.get_sound(classe)
 
 func set_my_player():
 	get_node("WorldEnvironment").queue_free()

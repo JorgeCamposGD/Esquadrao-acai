@@ -8,7 +8,7 @@ const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
 
 export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=0
-export (float, 0,5,0.020) var atack_melee
+export (float, 0,5,0.020) var atack_melee=0.5
 export (float, 0,5,0.020) var fire_rate_pistol
 export (float, 0,5,0.020) var fire_rate_shotgun
 export (float, 0,5,0.020) var fire_rate_smg
@@ -92,9 +92,9 @@ func _physics_process(delta):
 
 			rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
 			body.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
-		anim.play("andando")
-	else:
-		anim.stop()
+		#anim.play("andando")
+	#else:
+		#anim.stop()
 	move_and_slide(move_vec, Vector3(0, 1, 0),false,4)#movimenta o personagem
 	
 	atk()
@@ -111,7 +111,7 @@ func _physics_process(delta):
 func atk():
 
 	if cooldown<=0:
-		cooldown=fire_rate[arma_atual]
+		cooldown=fire_rate[0]
 		
 		if arma_atual==0:
 			if body_in_rage.size()>0:
@@ -194,3 +194,7 @@ func on_trap(type):
 			pass
 		3:
 			pass
+
+
+func _on_Area_body_entered(body):
+	pass # Replace with function body.
