@@ -58,14 +58,14 @@ var action_state=0
 var peer_id=null
 var off_line=false
 var live=true
+var anim_name="parado com arma"
+
 var lock_cam=false
-
-
 
 puppet var puppet_move_vec=Vector3()
 puppet var puppet_transform=Transform()
-
-
+puppet var puppet_lock=false
+puppet var puppet_anim="parado com arma"
 func _ready():
 	
 
@@ -85,7 +85,7 @@ func _ready():
 		hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
 	else:
 		hud.queue_free()
-
+	Sons=Ress_3D.get_sound(classe)
 
 func set_my_player():
 	get_node("WorldEnvironment").queue_free()
@@ -173,7 +173,8 @@ func _physics_process(delta):
 		if move_vec.z!=0 or move_vec.x!=0:
 			move_state=1
 			#verifica se o Player esta andando
-			rot=atan2(move_vec.x*-1,move_vec.z*-1)
+			rot=atan2(move_vec.z*-1,move_vec.x*1)-deg2rad(90)
+
 			#transforma os vetores de movimento em um angulo que será usado para rotação
 	
 	
@@ -219,7 +220,7 @@ func _physics_process(delta):
 
 		if Input.is_action_just_pressed("circle")and not(Input.is_action_pressed("r1")):
 			lock_cam=!lock_cam
-
+			rset("puppet_lock",lock_cam)
 	
 		if Input.is_action_just_pressed("triangle")and not(Input.is_action_pressed("r1")): #verifica se o botão de seleção foi apertado
 			if melee:
@@ -227,25 +228,29 @@ func _physics_process(delta):
 			else:
 				melee=true
 			action_state=3
-
-
-
-	if action_state==0 and move_state==0:
-		if melee:
-			anim_control.play("parado com sandalha")
-		else:
-			anim_control.play("parado com arma")
-	if action_state==1 and move_state==0:
-		if melee:
-			anim_control.play("atacando com a sandalha")
-		else:
-			anim_control.play("atirando com arma")
-	elif action_state==2:
-		anim_control.play("Crafitando")
-	elif action_state==3:
-		anim_control.play("trocando de arma")
 		
-	
+
+
+
+		if action_state==0 and move_state==0:
+			if melee:
+				anim_name="parado com sandalha"
+			else:
+				anim_name="parado com arma"
+		if action_state==1 and move_state==0:
+			if melee:
+				anim_name="atacando com a sandalha"
+			else:
+				anim_name="atirando com arma"
+		elif action_state==2:
+			anim_name="Crafitando"
+		elif action_state==3:
+			anim_name="trocando de arma"
+		rset("puppet_anim",anim_name)
+	else:
+		lock_cam=puppet_lock
+		anim_name=puppet_anim
+	anim_control.play(anim_name)
 func atack():
 
 	if cooldown<=0:
@@ -269,22 +274,14 @@ remotesync func atk(melee,body,cano_pos,type):
 			var bl=Ress_3D.get_bullet(type).instance()
 
 			bl.add_collision_exception_with(self)
-
-
 			bl.set_global_transform(cano_pos)
+			bl.set_bullet_speed_and_damage(200,classe_status[classe]["damage"])
 
 			world.call_deferred("add_child",bl)
 
 			var bls=get_node("Bullet_sound")
 			bls.set_stream(Sons)
 			bls._set_playing(true)
-
-
-
-
-
-
-
 
 
 func get_global_pos():
@@ -331,30 +328,33 @@ func _on_Contruct_area_body_exited(body):
 func construct_item(classe,type):
 	var graned_place=get_node("Char/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform()
 	var item_point=ray_to_obj.get_collision_point()
-	var item_transfomr=ray_to_obj.get_collision_point()
 
-	rpc("construct",classe,graned_place,item_point,item_transfomr,type)
+
+	rpc("construct",classe,graned_place,item_point,type)
 	#item.scale=scale
-remotesync func construct(classe,grenade,point,global_transfor,type):
+remotesync func construct(classe,grenade,point,type):
 	
 
 	var item=Ress_3D.get_special_resource(classe).instance()
+	var new_transform=Transform()
+	match classe:
 
-	if classe=="Pistol":
-		item.set_global_transform(grenade)
+		"Pistol":
+			new_transform=grenade
 		
-
-	else:
-
-		item.transform.origin=point
-		var t=Transform()
-		t.origin=(global_transfor)
-		item.set_global_transform(t)
+		_:
+			
+			
+			new_transform.origin=point
+			new_transform.basis=body.get_global_transform().basis
+	
+	item.set_global_transform(new_transform)
 	item.set_type(type)
 	world.call_deferred("add_child",item)
 
 	
 func _on_Melee_body_entered(body):
+
 	body_in_rage.append(body)
 
 

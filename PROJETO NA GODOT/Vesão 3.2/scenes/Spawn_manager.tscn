@@ -18,5 +18,6 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Timer" type="Timer" parent="Spawn_pos"]
+wait_time = 0.5
 [connection signal="timeout" from="Spawn_pos/Start" to="." method="_on_Start_timeout"]
 [connection signal="timeout" from="Spawn_pos/Timer" to="." method="_on_Timer_timeout"]

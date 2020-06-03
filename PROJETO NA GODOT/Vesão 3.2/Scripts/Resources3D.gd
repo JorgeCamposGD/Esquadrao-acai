@@ -23,6 +23,11 @@ var Sons={
 			}
 var player_scene=preload("res://scenes/Player.tscn")
 
+var turret_bullet=preload("res://scenes/Personagem/especiais/Bullet turret.tscn")
+
+func get_t_bullet(classe):
+	return turret_bullet
+
 func get_bullet(classe):
 	return bullets[classe]
 

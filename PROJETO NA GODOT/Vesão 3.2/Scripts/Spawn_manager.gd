@@ -2,7 +2,7 @@ extends Spatial
 #Okay
 export (Array,PackedScene) var mob_resource=[preload("res://scenes/enemys/LoucoDaGranola.tscn")]
 
-export (bool) var active=false
+var active=false
 
 export (int,0,30) var maximo_de_inimigos_no_easy=10
 export (int,0,30) var maximo_de_inimigos_no_medium=15
@@ -53,8 +53,6 @@ func _ready():
 				spawn_points.append(get_node(x))
 	
 	#	Engine.target_fps=60
-	
-		
 		instace_mob(false) 
 
 func _process(delta):
@@ -63,7 +61,7 @@ func _process(delta):
 		return
 
 func set_active():
-	
+	print("active")
 	active=true
 	_ready()
 	get_node("Spawn_pos/Start").start()
@@ -72,7 +70,7 @@ func instace_mob(persist):
 	if active==true and in_wave and instanced_enemys.size()<=difficulty_limit:
 		if Global.get_tree().is_network_server():
 			var random_point=spawn_points[randi()%spawn_points.size()].get_global_transform()
-			get_node("Spawn_pos/Timer").start(randi()%5+1) 
+			get_node("Spawn_pos/Timer").start(randi()%3+1) 
 			rpc("_instance_mob",mob_id,random_point)
 			
 
@@ -82,7 +80,7 @@ remotesync func _instance_mob(mob_id,point):
 	new_enemy.set_creator(self)
 	new_enemy.set_global_transform(point)
 	instanced_enemys.append(new_enemy)
-
+	Global.add_enemy(new_enemy)
 func _on_Timer_timeout():
 
 	instace_mob(true)

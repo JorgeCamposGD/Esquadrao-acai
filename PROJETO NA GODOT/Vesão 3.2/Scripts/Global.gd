@@ -12,14 +12,16 @@ onready var stages_mobile=[scene_0_mobile]
 onready var animation=$Anim
 
 var scene_0="res://scenes/Maps/Mapa alpha.tscn"
-var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
-
+var scene_0_mobile="res://scenes/Maps/Mapa alpha.tscn"
+#var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
 var players=[]
+var instanced_enemys=[]
 
+var instanced_players={}
 var players_info={}
 var my_info={}
-var instanced_players={}
-var instanced_enemys={}
+
+
 var players_status={}
 
 var time_max = 100 # msec
@@ -46,27 +48,11 @@ func start_tutorial():
 	pass
 
 func _ready():
-
-	var upnp = UPNP.new()
+	upnp = UPNP.new()
 	upnp.discover()
 	var num_devices = upnp.get_device_count()
 	for i in range(num_devices):
 		var upnp_device = upnp.get_device(i)
-		print('device[',i,']:')
-		print('- igd_our_addr: ', upnp_device.igd_our_addr)
-		print('- igd_service_type: ', upnp_device.igd_service_type)
-		print('- igd_status: ', upnp_device.igd_status)
-		print('- service_type: ', upnp_device.service_type)
-		
-		print('- external adrees: ',upnp_device.query_external_address())
-	print('gateway:', upnp.get_gateway())
-	if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
-		var res_udp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, 'Godot', 'UDP')
-		var res_tcp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, 'Godot', 'TCP')
-		print('res_udp:', res_udp)
-		print('res_tcp:', res_tcp)
-	else:
-		print('no valid gateway')
 
 	offline=Global.offline
 	var root = get_tree().get_root()
@@ -84,8 +70,17 @@ func _ready():
 	get_tree().connect('connection_failed', self, '_connection_on_server_fail')
 	get_tree().connect('server_disconnected', self, '_server_disconnected')
 
+
+
+func set_upnp():
+
+	if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
+		var res_udp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, 'Godot', 'UDP')
+		var res_tcp = upnp.add_port_mapping(DEFAULT_PORT, DEFAULT_PORT, 'Godot', 'TCP')
+	else:
+		print('no valid gateway')
 func _process(time):
-	print()
+
 	if loading_scenes:
 		if loader == null:
 			# no need to process anymore
@@ -219,8 +214,17 @@ remotesync func player_ready(id):
 func _get_players():
 
 	return players
+
+func add_enemy(new_enemy):
+	instanced_enemys.append(new_enemy)
+func remove_enemy(enemy):
+	instanced_enemys.erase(enemy)
+	
+func _get_enemys():
+
+	return instanced_enemys
 func create_server(player_info):
-	print("create host")
+	
 	players_info={}
 	var p_info=player_info
 	
@@ -236,7 +240,7 @@ func create_server(player_info):
 
 	players_info[peer.get_unique_id()]=p_info
 	my_info=p_info
-
+	set_upnp()
 func conect_to_server(ip,player_info):#recebe o id do player e as informações
 	players_info={}
 	var p_info=player_info
@@ -254,7 +258,7 @@ func conect_to_server(ip,player_info):#recebe o id do player e as informações
 	p_info["host"]=false
 	p_info["id"]=peer.get_unique_id()
 	my_info=player_info
-	
+
 
 func _connected_to_server():
 
