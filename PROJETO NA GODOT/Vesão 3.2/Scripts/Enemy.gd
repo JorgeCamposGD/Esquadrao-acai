@@ -8,14 +8,14 @@ const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
 
 export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=0
-export (float, 0,5,0.020) var atack_melee=0.5
+export (float, 0,5,0.020) var atack_melee=2
 export (float, 0,5,0.020) var fire_rate_pistol
 export (float, 0,5,0.020) var fire_rate_shotgun
 export (float, 0,5,0.020) var fire_rate_smg
 export (float, 0,5,0.020) var fire_rate_sniper
 export (float,1,100) var move_speed =12
 
-export (int,1,1000,10) var hp_atual=50
+export (int,1,1000,10) var hp_atual=30
 
 export (Array,Resource)var Sons
 
@@ -29,7 +29,7 @@ onready var fire_rate=[atack_melee,
 					fire_rate_shotgun,
 					fire_rate_smg,
 					fire_rate_sniper]
-
+onready var dmg_anim=get_node("damageAnin")
 var cooldown=0
 var rotate_speed=20
 var rot=0
@@ -40,7 +40,7 @@ var body_in_rage=[]
 var my_creator
 var status="normal"
 var enemy=true
-
+var atk=false
 func _ready():
 	set_physics_process(usable)
 	move_speed*=scale.x
@@ -95,9 +95,11 @@ func _physics_process(delta):
 		#anim.play("andando")
 	#else:
 		#anim.stop()
+	if atacking:
+		move_vec=Vector3()
 	move_and_slide(move_vec, Vector3(0, 1, 0),false,4)#movimenta o personagem
 	
-	atk()
+	atk(delta)
 	
 	var grounded = is_on_floor()
 	y_speed -= GRAVITY
@@ -108,21 +110,26 @@ func _physics_process(delta):
 		y_speed = -MAX_FALL_SPEED
    
 
-func atk():
-
+func atk(delta):
+	
 	if cooldown<=0:
-		cooldown=fire_rate[0]
-		
-		if arma_atual==0:
-			if body_in_rage.size()>0:
-				for enemy in body_in_rage:
-					if enemy.has_method("damage"):
+	
+		if arma_atual==0 and body_in_rage.size()>0:
+			anim.play("andando")
+			print("cooldown")
+	else:
+		cooldown-=delta
 
-						enemy.damage(10,0)
+func compleat_atk():
+	for enemy in body_in_rage:
+		if enemy.has_method("damage"):
+			print("atacou")
+			enemy.damage(5,0)
 
-
-
-
+func return_walk():
+	cooldown=fire_rate[0]
+	atacking=false
+	anim.stop()
 func get_targuet(type,enemy):
 	var players
 	if not(enemy):
@@ -150,7 +157,7 @@ func get_targuet(type,enemy):
 				targuet_pos=get_bigger_distance(targuet,t.get_global_transform().origin,my_pos)
 
 	
-	if my_pos.distance_to(targuet_pos)<=5.0:
+	if my_pos.distance_to(targuet_pos)<=4.0:
 		targuet_pos=Vector3()
 	return targuet_pos
 
@@ -169,9 +176,11 @@ func damage(dano,type):
 
 	if hp_atual>0:
 		match type:
-			0: hp_atual-=dano
+			0:
+				hp_atual-=dano
+				dmg_anim.play("dano")
 		#get_node("AnimationPlayer2").play("Dano")
-
+	
 func die():
 	Global.remove_enemy(self)
 	my_creator.remove_instance(self)
@@ -197,4 +206,10 @@ func on_trap(type):
 
 
 func _on_Area_body_entered(body):
-	pass # Replace with function body.
+	if body.has_method("damage"):
+		body_in_rage.append(body)
+		atacking=true
+
+
+func _on_Area_body_exited(body):
+	body_in_rage.erase(body)

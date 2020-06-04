@@ -1,20 +1,37 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=2]
 [ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/Enemys/pele.material" type="Material" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 1.89292, 1, 1.89973 )
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.87616, 1, 1.89973 )
 
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="CapsuleShape" id=4]
 radius = 2.0
 height = 3.65173
+
+[sub_resource type="Animation" id=5]
+resource_name = "dano"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Armação002/Skeleton/Corpo:material/0:next_pass:next_pass:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+}
 
 [node name="LoucoDaGranola" type="KinematicBody"]
 collision_layer = 4
@@ -54,7 +71,7 @@ bones/3/bound_children = [  ]
 [node name="Corpo" type="MeshInstance" parent="Spatial/Armação002/Skeleton"]
 transform = Transform( -1.7, 0, -2.56693e-07, 0, 1.7, 0, 2.56693e-07, 0, -1.7, -0.4, -1.525, -3.72529e-09 )
 mesh = ExtResource( 3 )
-material/0 = null
+material/0 = ExtResource( 4 )
 material/1 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spatial/Armação002/Skeleton"]
@@ -72,11 +89,11 @@ transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.
 
 [node name="Area" type="Area" parent="Spatial"]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 33
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91136, 0, 2.88608e-07 )
-shape = SubResource( 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.907304, 0, 1.37e-07 )
+shape = SubResource( 3 )
 
 [node name="Find_player" type="Timer" parent="."]
 
@@ -87,5 +104,9 @@ wait_time = 0.3
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
+
+[node name="damageAnin" type="AnimationPlayer" parent="."]
+anims/dano = SubResource( 5 )
 [connection signal="body_entered" from="Spatial/Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Spatial/Area" to="." method="_on_Area_body_exited"]

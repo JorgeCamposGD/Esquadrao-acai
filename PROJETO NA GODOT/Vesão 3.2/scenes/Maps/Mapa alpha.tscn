@@ -686,7 +686,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
 script = ExtResource( 2 )
 
 [node name="Spawn_pos" type="Position3D" parent="Spawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0768, -1.58473, 2.31607 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3711, 10.5779, 2.31607 )
 
 [node name="Start" type="Timer" parent="Spawn/Spawn_pos"]
 wait_time = 3.0
@@ -699,7 +699,7 @@ material/0 = null
 [node name="Timer" type="Timer" parent="Spawn/Spawn_pos"]
 
 [node name="Spawn_pos2" type="Position3D" parent="Spawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1874, -2.8897, -6.68034 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.8209, 10.165, -6.68034 )
 
 [node name="Start" type="Timer" parent="Spawn/Spawn_pos2"]
 wait_time = 3.0
@@ -710,6 +710,19 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Timer" type="Timer" parent="Spawn/Spawn_pos2"]
+
+[node name="Spawn_pos3" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1115, 29.6254, 69.4327 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos3"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos3"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos3"]
 
 [node name="PlayerPos" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4227, 13.4788 )
@@ -724,7 +737,7 @@ transform = Transform( -1.01825e-06, 0, 6.25, 0, 6.25, 0, -6.25, 0, -1.01825e-06
 transform = Transform( -0.632248, 0, -0.0311875, 0, 0.633017, 0, 0.0311875, 0, -0.632248, -8.62673, 0.399957, 30.1356 )
 
 [node name="BARRICADA DE MADEIRA" type="MeshInstance" parent="Scene Root/BARRICADA DE MADEIRA"]
-transform = Transform( 1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, -0.966352, 0, 19.5903 )
 mesh = ExtResource( 31 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 25 )
@@ -783,6 +796,14 @@ shape = SubResource( 9 )
 [node name="LateralDir2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05517, 1.22326, 14.4518 )
 shape = SubResource( 10 )
+
+[node name="FrenteEsq2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2209, 0.834357, 1.41975 )
+shape = SubResource( 5 )
+
+[node name="FrenteDir2" type="CollisionShape" parent="Scene Root/ColisaoDoInimigo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2209, 0.834357, 9.22948 )
+shape = SubResource( 6 )
 
 [node name="Coisas do cenario" type="Spatial" parent="Scene Root"]
 
@@ -1405,4 +1426,6 @@ transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0
 [connection signal="timeout" from="Spawn/Spawn_pos/Timer" to="Spawn" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawn/Spawn_pos2/Start" to="Spawn" method="_on_Start_timeout"]
 [connection signal="timeout" from="Spawn/Spawn_pos2/Timer" to="Spawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos3/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos3/Timer" to="Spawn" method="_on_Timer_timeout"]
 [connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]

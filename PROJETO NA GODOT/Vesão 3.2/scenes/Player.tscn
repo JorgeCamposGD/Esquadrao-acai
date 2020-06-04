@@ -466,7 +466,7 @@ extents = Vector3( 3, 3.68382, 3 )
 [sub_resource type="SpatialMaterial" id=20]
 resource_local_to_scene = true
 flags_transparent = true
-albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
+albedo_color = Color( 0, 1, 0.0156863, 0.313726 )
 
 [sub_resource type="PrismMesh" id=21]
 material = SubResource( 20 )
@@ -475,20 +475,22 @@ size = Vector3( 6, 6, 6 )
 [sub_resource type="SpatialMaterial" id=22]
 resource_local_to_scene = true
 flags_transparent = true
-albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
+albedo_color = Color( 0, 1, 0.0156863, 0.313726 )
 
 [sub_resource type="CubeMesh" id=23]
 material = SubResource( 22 )
 size = Vector3( 6, 6, 6 )
 
 [sub_resource type="SpatialMaterial" id=24]
-albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
+flags_transparent = true
+albedo_color = Color( 0, 1, 0.0156863, 0.313726 )
 
 [sub_resource type="SphereMesh" id=25]
 material = SubResource( 24 )
 
 [sub_resource type="SpatialMaterial" id=26]
-albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
+flags_transparent = true
+albedo_color = Color( 0, 1, 0.0156863, 0.313726 )
 
 [sub_resource type="CapsuleMesh" id=27]
 material = SubResource( 26 )
@@ -506,7 +508,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.313726 ), Color( 0, 1, 0.0156863, 0.313726 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape/Spatial/Turret:mesh:material:albedo_color")
@@ -518,7 +520,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.313726 ), Color( 0, 1, 0.0156863, 0.313726 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape/Spatial/Wall:mesh:material:albedo_color")
@@ -530,7 +532,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.313726 ), Color( 0, 1, 0.0156863, 0.313726 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionShape/Spatial/Granead:mesh:material:albedo_color")
@@ -542,7 +544,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
+"values": [ Color( 1, 0, 0, 0.313726 ), Color( 0, 1, 0.0156863, 0.313726 ) ]
 }
 
 [sub_resource type="Animation" id=29]
@@ -558,7 +560,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 1, 0, 0, 0.878431 ) ]
+"values": [ Color( 0, 1, 0.0156863, 0.313726 ), Color( 1, 0, 0, 0.313726 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape/Spatial/Wall:mesh:material:albedo_color")
@@ -570,7 +572,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
+"values": [ Color( 0, 1, 0.0156863, 0.313726 ), Color( 0.929412, 0.0470588, 0.0470588, 0.313726 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape/Spatial/Turret:mesh:material:albedo_color")
@@ -582,7 +584,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
+"values": [ Color( 0, 1, 0.0156863, 0.313726 ), Color( 0.929412, 0.0470588, 0.0470588, 0.313726 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionShape/Spatial/Granead:mesh:material:albedo_color")
@@ -594,7 +596,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
+"values": [ Color( 0, 1, 0.0156863, 0.313726 ), Color( 0.929412, 0.0470588, 0.0470588, 0.313726 ) ]
 }
 
 [sub_resource type="CapsuleShape" id=30]
@@ -1086,12 +1088,12 @@ material/0 = null
 shape = SubResource( 32 )
 
 [node name="Cam" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 27, 8.8 )
+transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 33.3535, 13.3267 )
 target = NodePath("../Position3D")
 enabled = true
 
 [node name="Position3D" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 27, 8.8 )
+transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 33.3535, 14.1304 )
 
 [node name="Listener" type="Listener" parent="."]
 current = true
