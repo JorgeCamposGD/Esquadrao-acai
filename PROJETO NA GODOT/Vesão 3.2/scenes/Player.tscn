@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Personagem/Balas/bullet.tscn" type="PackedScene" id=2]
@@ -62,6 +62,11 @@
 [ext_resource path="res://assets/characters/Bahia/bombas/CoxinhaDeCaranguejo/Sphere.mesh" type="ArrayMesh" id=60]
 [ext_resource path="res://assets/characters/Gordo da pedreira/Armas/Circulo_001.mesh" type="ArrayMesh" id=61]
 [ext_resource path="res://assets/sounds/Som de armas/pistola.wav" type="AudioStream" id=62]
+[ext_resource path="res://scenes/Personagem/Armas/Pistola/atira.anim" type="Animation" id=63]
+[ext_resource path="res://scenes/Personagem/Armas/Pistola/Circulo_001.mesh" type="ArrayMesh" id=64]
+[ext_resource path="res://scenes/Personagem/Armas/Smg/metralhadora.dae" type="PackedScene" id=65]
+[ext_resource path="res://scenes/Personagem/Armas/Smg/Cubo.mesh" type="ArrayMesh" id=66]
+[ext_resource path="res://scenes/Personagem/Armas/Sniper/Circulo_002.mesh" type="ArrayMesh" id=67]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.05424
@@ -631,6 +636,80 @@ shape = SubResource( 1 )
 transform = Transform( 1.6, 0, 0, 0, 1.6, 2.60673e-07, 0, -2.60673e-07, 1.6, 0, -2.46106, 0 )
 visible = false
 
+[node name="Spatial" type="Spatial" parent="Char/Armature/Pistol"]
+transform = Transform( 0.0247445, 0, -0.62451, -1.01746e-07, 0.625, -4.03139e-09, 0.62451, 1.01825e-07, 0.0247445, 0.815392, 1.07033, -1.39999 )
+
+[node name="Armação" type="Spatial" parent="Char/Armature/Pistol/Spatial"]
+transform = Transform( 0.587127, 0, 0, 0, 0.587127, 0, 0, 0, 0.587127, -0.0285764, -0.716846, 0.0260027 )
+
+[node name="Skeleton" type="Skeleton" parent="Char/Armature/Pistol/Spatial/Armação"]
+bones/0/name = "Bone"
+bones/0/parent = -1
+bones/0/rest = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 3.72529e-09, 0, 0 )
+bones/0/enabled = true
+bones/0/bound_children = [  ]
+bones/1/name = "Bone.001"
+bones/1/parent = 0
+bones/1/rest = Transform( 0.988737, 0.149603, 0.00422292, -0.149662, 0.988343, 0.0278985, 2.2473e-09, -0.0282163, 0.999602, -1.11759e-08, 3.72529e-09, -1 )
+bones/1/enabled = true
+bones/1/bound_children = [  ]
+bones/2/name = "Bone.002"
+bones/2/parent = 1
+bones/2/rest = Transform( 0.149662, -0.26039, 0.953834, -0.988344, -0.0121784, 0.151753, -0.0278986, -0.965427, -0.259177, 3.26759e-09, -1.86265e-09, -1.00207 )
+bones/2/enabled = true
+bones/2/bound_children = [  ]
+bones/3/name = "Bone.003"
+bones/3/parent = 2
+bones/3/rest = Transform( 1, 3.41409e-08, -9.32022e-09, -3.53903e-08, 0.964699, -0.263356, 0, 0.263356, 0.964699, 0, 1.19209e-07, -1.12517 )
+bones/3/enabled = true
+bones/3/bound_children = [  ]
+bones/4/name = "Bone.004"
+bones/4/parent = 3
+bones/4/rest = Transform( 1, -7.10543e-15, 8.88178e-16, 7.54952e-15, 1, 2.98023e-08, -2.84217e-14, -2.98023e-08, 1, 0, -1.19209e-07, -0.948294 )
+bones/4/enabled = true
+bones/4/bound_children = [  ]
+bones/5/name = "Bone.005"
+bones/5/parent = 4
+bones/5/rest = Transform( 1, 1.69407e-21, 2.52435e-29, 4.44089e-16, 1, 1.56542e-37, -2.84217e-14, 7.10543e-15, 1, 0, 0, -0.974629 )
+bones/5/enabled = true
+bones/5/bound_children = [  ]
+bones/6/name = "Bone.006"
+bones/6/parent = 5
+bones/6/rest = Transform( 1, -4.03897e-28, 0, 4.44089e-16, 1, 1.26117e-44, -2.84217e-14, 7.10543e-15, 1, 0, 0, -1.0399 )
+bones/6/enabled = true
+bones/6/bound_children = [  ]
+bones/7/name = "Bone.007"
+bones/7/parent = 6
+bones/7/rest = Transform( 0.00122104, -0.999926, 0.0121052, -0.199705, -0.0121051, -0.979781, 0.979855, -0.0012211, -0.199705, 0, -2.38419e-07, -1.01803 )
+bones/7/enabled = true
+bones/7/bound_children = [  ]
+bones/8/name = "Bone.008"
+bones/8/parent = 7
+bones/8/rest = Transform( 0.296371, -0.833352, -0.466572, 0.953845, 0.233506, 0.188823, -0.0484085, -0.500999, 0.864093, 0, -4.09782e-08, -1.37305 )
+bones/8/enabled = true
+bones/8/bound_children = [  ]
+bones/9/name = "Bone.009"
+bones/9/parent = 8
+bones/9/rest = Transform( 0.993053, 0.101254, -0.0599391, -0.10612, 0.990757, -0.0844915, 0.0508299, 0.0902656, 0.99462, -1.19209e-07, 9.53674e-07, -0.900567 )
+bones/9/enabled = true
+bones/9/bound_children = [  ]
+bones/10/name = "Bone.010"
+bones/10/parent = 9
+bones/10/rest = Transform( 0.997897, 0.0291629, 0.0578838, -0.0266007, 0.998653, -0.0445512, -0.0591051, 0.0429177, 0.997329, 2.38419e-07, -9.53674e-07, -0.976293 )
+bones/10/enabled = true
+bones/10/bound_children = [  ]
+
+[node name="PISTOLA DO BAHIA" type="MeshInstance" parent="Char/Armature/Pistol/Spatial/Armação/Skeleton"]
+transform = Transform( 1, 1.0842e-19, -3.72529e-09, -1.0842e-19, 1, 0, 3.72529e-09, -3.38813e-21, 1, -0.0868552, 0, 2.19208 )
+mesh = ExtResource( 64 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Armature/Pistol/Spatial"]
+playback_speed = 3.0
+anims/atira = ExtResource( 63 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Char/Armature/Pistol"]
 root_node = NodePath("../..")
 anims/Crafitando = ExtResource( 16 )
@@ -726,11 +805,14 @@ material/4 = null
 material/5 = null
 
 [node name="SHOTGUNS DO GORDO DA EDREIRA" type="MeshInstance" parent="Char/Armature/Shotgun"]
-transform = Transform( 0.294118, 7.25305e-09, 5.52024e-10, -7.25304e-09, 0.290729, 0.0445189, 5.52184e-10, -0.0445189, 0.290729, 1.66765, 1.25614, 2.71694e-07 )
+transform = Transform( 0.199132, -0.00281683, 0.0183953, -4.93206e-09, 0.197696, 0.0302728, -0.0186097, -0.0301415, 0.196838, 1.66765, 1.25614, 2.71695e-07 )
 mesh = ExtResource( 61 )
 material/0 = null
 material/1 = null
 material/2 = null
+
+[node name="metralhadora" parent="Char/Armature/Shotgun/SHOTGUNS DO GORDO DA EDREIRA" instance=ExtResource( 65 )]
+transform = Transform( 1, 9.31323e-10, -1.49012e-08, -9.31323e-10, 1, -1.01281e-08, 0, 5.00586e-09, 1, 11245.7, 1858.78, -3835.34 )
 
 [node name="Smg" type="Spatial" parent="Char/Armature"]
 transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.6, 0 )
@@ -762,7 +844,7 @@ bones/3/enabled = true
 bones/3/bound_children = [  ]
 
 [node name="Esfera icosaedrica" type="MeshInstance" parent="Char/Armature/Smg/Armature/Skeleton"]
-transform = Transform( 1.45544, 0, 0.362884, 0, 1.5, 0, -0.362884, 0, 1.45544, 0, 0, 0 )
+transform = Transform( 1.45544, 6.77626e-21, 0.362884, -3.10488e-15, 1.5, 4.57875e-15, -0.362884, -6.48665e-21, 1.45544, 0, 0, 0 )
 mesh = ExtResource( 19 )
 material/0 = null
 material/1 = null
@@ -780,6 +862,20 @@ anims/Crafitando = ExtResource( 26 )
 "anims/parado com arma" = ExtResource( 27 )
 "anims/parado com sandalha" = ExtResource( 24 )
 "anims/trocando de arma" = ExtResource( 21 )
+
+[node name="METRALHADO DA NYTI" type="MeshInstance" parent="Char/Armature/Smg"]
+transform = Transform( -4.88762e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -4.88762e-08, 1.16596, 1.4505, -0.0630771 )
+mesh = ExtResource( 66 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Círculo_002" type="MeshInstance" parent="Char/Armature/Smg/METRALHADO DA NYTI"]
+transform = Transform( 1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, -7829.28, 2945.63, -1570.48 )
+mesh = ExtResource( 67 )
+material/0 = null
+material/1 = null
+material/2 = null
 
 [node name="Sniper" type="Spatial" parent="Char/Armature"]
 transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.63068, 0 )
@@ -833,6 +929,13 @@ anims/Crafitando = ExtResource( 32 )
 "anims/parado com arma" = ExtResource( 29 )
 "anims/parado com sandalha" = ExtResource( 34 )
 "anims/trocando de arma" = ExtResource( 33 )
+
+[node name="SNIPER DA PP" type="MeshInstance" parent="Char/Armature/Sniper"]
+transform = Transform( -3.10003e-10, 0.02, 2.77128e-09, 0.0183534, 1.38564e-09, -0.00794694, -0.00794694, 2.41994e-09, -0.0183534, 6.11511, 1.67448, 9.96277e-07 )
+mesh = ExtResource( 67 )
+material/0 = null
+material/1 = null
+material/2 = null
 
 [node name="Melee" type="Area" parent="Char"]
 transform = Transform( -1.52803, 0, -8.74228e-08, 0, 1, 0, 1.33585e-07, 0, -1, 0, 0, -2.6 )

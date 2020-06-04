@@ -47,6 +47,8 @@ func _ready():
 
 func _physics_process(delta):
 	
+	if get_global_transform().origin.y<=-10:
+		die()
 	my_pos=get_global_transform().origin
 	if hp_atual<=0:
 		die()
