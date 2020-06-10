@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Interface/Buttons/BotaoTRAVARMOVIMENTO.png" type="Texture" id=1]
 [ext_resource path="res://assets/Interface/Buttons/BotaoATIRAR.png" type="Texture" id=2]
@@ -45,12 +45,19 @@ use_filter = true
 font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 46
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 72
 use_filter = true
 extra_spacing_char = 9
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 35
 font_data = ExtResource( 11 )
 
@@ -274,6 +281,8 @@ texture = ExtResource( 30 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -30.3579
+margin_right = -30.3579
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -297,6 +306,69 @@ texture = ExtResource( 15 )
 position = Vector2( 155, 0 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 14 )
+
+[node name="Resources" type="Control" parent="CanvasLayer/Pc_hud/Constructions"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Res1" type="Label" parent="CanvasLayer/Pc_hud/Constructions/Resources"]
+margin_left = -177.72
+margin_top = -126.108
+margin_right = -117.72
+margin_bottom = 0.891907
+custom_fonts/font = SubResource( 3 )
+text = "52
+"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Res0" type="Label" parent="CanvasLayer/Pc_hud/Constructions/Resources"]
+margin_left = -64.0
+margin_top = 40.0
+margin_right = -4.0
+margin_bottom = 167.0
+custom_fonts/font = SubResource( 3 )
+text = "52
+"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Res3" type="Label" parent="CanvasLayer/Pc_hud/Constructions/Resources"]
+margin_left = 96.0
+margin_top = -126.108
+margin_right = 156.0
+margin_bottom = 0.891907
+custom_fonts/font = SubResource( 3 )
+text = "52
+"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Res2" type="Label" parent="CanvasLayer/Pc_hud/Constructions/Resources"]
+margin_left = -64.0
+margin_top = -293.5
+margin_right = -4.0
+margin_bottom = -166.5
+custom_fonts/font = SubResource( 3 )
+text = "52
+"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="CanvasLayer/Pc_hud/Constructions"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="ProgressBar2" type="TextureProgress" parent="."]
 anchor_left = 0.022
@@ -340,7 +412,7 @@ margin_left = 0.559982
 margin_top = -0.440018
 margin_right = 0.919983
 margin_bottom = 0.159973
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Nome"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -361,7 +433,7 @@ anchor_left = 0.242708
 anchor_top = 0.456481
 anchor_right = 0.757292
 anchor_bottom = 0.543519
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Esperando jogadores"
 __meta__ = {
 "_edit_use_anchors_": true

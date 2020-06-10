@@ -1200,7 +1200,7 @@ start={
 
 [locale]
 
-translations=PoolStringArray( "res://assets/Translation.pt_BR.translation", "res://assets/Translation.en.translation", "res://assets/Translation.fr_FR.translation" )
+translations=PoolStringArray( "res://assets/Translation.pt_BR.translation", "res://assets/Translation.fr_FR.translation", "res://assets/Translation.en.translation" )
 
 [rendering]
 

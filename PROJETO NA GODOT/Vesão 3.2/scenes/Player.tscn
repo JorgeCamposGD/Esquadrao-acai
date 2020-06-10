@@ -990,7 +990,7 @@ __meta__ = {
 }
 
 [node name="Granead" type="MeshInstance" parent="Char/Contruct_area/CollisionShape/Spatial"]
-transform = Transform( 1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, -4.76837e-07 )
+transform = Transform( 1, 3.25841e-07, -3.25841e-07, 3.25841e-07, -1, 0, -3.25841e-07, -1.06173e-13, -1, 0, 0, -4.76837e-07 )
 visible = false
 mesh = SubResource( 27 )
 material/0 = null

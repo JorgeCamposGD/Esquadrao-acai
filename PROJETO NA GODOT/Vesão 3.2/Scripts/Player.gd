@@ -1,7 +1,7 @@
 extends KinematicBody
 #okay
 class_name player
-
+var imortal=true
 
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
@@ -13,13 +13,13 @@ export (float, 0,1000,10) var dano_melee=15
 export (float, 0,5,0.020) var speed_melee=0.5
 export (float,1,100) var move_speed =12
 export (int,1,1000,5) var hp_maximo=100
-export (int,1,1000,5) var hp_atual=10000
+export (int,1,1000,5) var hp_atual=100
 
 
 export  var classe_status={"Pistol":{"damage":25,"fire_rate":0.4,"ammo_initial":80},#pistola
 							"Shotgun":{"damage":40,"fire_rate":0.8,"ammo_initial":50},#shotgun
 							"Smg":{"damage":20,"fire_rate":0.2,"ammo_initial":100},#smg
-							"Sniper":{"damage":50,"fire_rate":1,"ammo_initial":40}#sniper
+							"Sniper":{"damage":100,"fire_rate":1,"ammo_initial":20}#sniper
 							}
 
 onready var body=get_node("Char")
@@ -38,10 +38,10 @@ onready var anim=get_node("Char/Contruct_area/livre")
 onready var world=get_tree().get_root()
 onready var ray_to_obj=get_node("Char/RayCast")
 onready var anim_control=get_node("Char/Armature/"+classe+"/AnimationPlayer")
-var resources={0:0,
-				1:0,
-				2:0,
-				3:0
+var resources={0:10,
+				1:10,
+				2:10,
+				3:10
 				}
 var hud
 var cooldown=0
@@ -65,7 +65,7 @@ var peer_id=null
 var off_line=false
 var live=true
 var anim_name="parado com arma"
-
+var class_n
 var lock_cam=false
 var ammo=30
 var my_status=[hp_atual,ammo,resources]
@@ -74,18 +74,28 @@ puppet var puppet_transform=Transform()
 puppet var puppet_lock=false
 puppet var puppet_anim="parado com arma"
 func _ready():
-	
+	match classe:
+		"Pistol":
+			class_n=1
+		"Shotgun":
+			class_n=2
+		"Smg":
+			class_n=3
+		"Sniper":
+			class_n=4
 	Global.set_cam(get_node("Cam"))
 	ammo=classe_status[classe]["ammo_initial"]
+	my_status[1]=ammo
 	hp_atual=hp_maximo
 	Global._add_player(self)
 	move_speed*=scale.x
-	
+	Global
 	
 	#Global._add_player(self)
 	set_process(false)
 	set_physics_process(false)
 	hud=get_node("Control")
+
 	if Global.is_master(self):
 		
 		camera.set_current(true)
@@ -94,7 +104,10 @@ func _ready():
 		hud.queue_free()
 	Sons=Ress_3D.get_sound(classe)
 	Global.set_my_status(my_status)
-	
+
+func get_resources():
+	return resources
+
 func set_my_player():
 	get_node("WorldEnvironment").queue_free()
 	camera.set_current(true)
@@ -259,9 +272,11 @@ func _physics_process(delta):
 			anim_name="trocando de arma"
 		rset("puppet_anim",anim_name)
 	else:
-		lock_cam=puppet_lock
-		anim_name=puppet_anim
-	anim_control.play(anim_name)
+		if live:
+			lock_cam=puppet_lock
+			anim_name=puppet_anim
+	if not(anim_control.is_playing() ):
+		anim_control.play(anim_name)
 func atack():
 
 	if cooldown<=0:
@@ -302,6 +317,8 @@ func get_global_pos():
 	return get_global_transform().origin
 
 func damage(dano,type):
+	if imortal:
+		return
 	if Global.is_master(self):
 		if hp_atual>0:
 			match type:
@@ -345,22 +362,15 @@ func _on_Contruct_area_body_exited(body):
 		free=true
 
 func construct_item(classe,type):
-	match classe:
-		"Pistol":
-			pass
-		"Shotgun":
-			pass
-		"Smg":
-			pass
-		"Sniper":
-			pass
 
-	var graned_place=get_node("Char/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform()
-	var item_point=ray_to_obj.get_collision_point()
-
-
-	rpc("construct",classe,graned_place,item_point,type)
-	#item.scale=scale
+	if resources[type]>0:
+		var graned_place=get_node("Char/Contruct_area/CollisionShape/Spatial/Granead").get_global_transform()
+		var item_point=ray_to_obj.get_collision_point()
+	
+		resources[type]-=1
+		hud.set_resources(resources)
+		rpc("construct",classe,graned_place,item_point,type)
+		#item.scale=scale
 remotesync func construct(classe,grenade,point,type):
 	
 
@@ -399,7 +409,7 @@ func die():
 func colect(item,classe_item,type):
 	var classe_name
 	if classe_item==0:
-		ammo+=classe_status[classe]["ammo_initial"]
+		ammo+=classe_status[classe]["ammo_initial"]/5
 		my_status[1]=ammo
 		
 		item.colected()
@@ -420,4 +430,4 @@ func colect(item,classe_item,type):
 		item.rpc("colected")
 	my_status[2]=resources
 	Global.set_my_status(my_status)
-	print(resources)
+	hud.set_resources(resources)

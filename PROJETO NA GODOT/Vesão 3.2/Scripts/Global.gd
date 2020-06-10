@@ -42,6 +42,10 @@ var loading_scenes=false
 var offline=true
 var state=false
 var self_id
+var actual_music
+var next_music
+onready var music_box=get_node("Music_box")
+
 func get_game_state():
 	return actual_game_state
 
@@ -402,8 +406,13 @@ func start_the_game(level):
 	if get_tree().is_network_server():
 		rpc("selected_level",selected)
 
-
-
+func set_music(path):
+	if actual_music==null:
+		actual_music=path
+		music_box.set_stream(load(path))
+		music_box.play()
+	else:
+		next_music=path 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		get_tree().quit() 
@@ -429,3 +438,12 @@ func set_cam(new_cam):
 	
 func get_cam():
 	return cam
+
+
+func _on_Music_box_finished():
+	if next_music!=null:
+		actual_music=next_music
+		next_music=null
+	music_box.set_stream(load(actual_music) )
+	music_box.play()
+	

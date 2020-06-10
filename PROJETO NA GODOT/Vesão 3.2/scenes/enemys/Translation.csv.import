@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://scenes/enemys/Translation.pt_BR.translation", "res://scenes/enemys/Translation.fr_FR.translation", "res://scenes/enemys/Translation.en.translation" ]
+
+source_file="res://scenes/enemys/Translation.csv"
+dest_files=[ "res://scenes/enemys/Translation.pt_BR.translation", "res://scenes/enemys/Translation.fr_FR.translation", "res://scenes/enemys/Translation.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

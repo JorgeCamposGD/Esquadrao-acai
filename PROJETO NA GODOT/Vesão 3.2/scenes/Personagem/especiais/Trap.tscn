@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Trap.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters/PP/Armadilhas/Circulo.mesh" type="ArrayMesh" id=2]
@@ -18,13 +18,78 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.60245, 3.89507, 3.29376 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CaixadeChop:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -3, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FarinhaDeGranola:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -7, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("paralize:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -3, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Mangas:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -3, 0 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
 [node name="Spatial" type="Area"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 1 )
 
 [node name="CaixadeChop" type="Spatial" parent="."]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.02541, 0 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 visible = false
 
 [node name="Cube" type="MeshInstance" parent="CaixadeChop"]
@@ -35,7 +100,7 @@ material/2 = null
 material/3 = null
 
 [node name="FarinhaDeGranola" type="Spatial" parent="."]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+transform = Transform( 1.49794, 0, -0.0785039, 0, 1.5, 0, 0.0785039, 0, 1.49794, 0, 0, 0 )
 visible = false
 
 [node name="Chop" type="MeshInstance" parent="FarinhaDeGranola"]
@@ -45,55 +110,56 @@ material/1 = null
 material/2 = null
 
 [node name="paralize" type="Spatial" parent="."]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.512592, 0 )
+transform = Transform( 1.49794, 0, -0.0785039, 0, 1.5, 0, 0.0785039, 0, 1.49794, 0, 0, 0 )
 visible = false
 
 [node name="BASE CARANGUEIJO" type="MeshInstance" parent="paralize"]
+transform = Transform( 1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, 0, 0.50585, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 
 [node name="PERNA1" type="MeshInstance" parent="paralize"]
-transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.639214, -0.440658, -0.626569 )
+transform = Transform( -0.399431, 0.0213317, -1.58325e-07, 0.0213317, 0.399431, 1.63756e-08, 1.65775e-07, 7.68341e-09, -0.4, -0.639214, 0.0651925, -0.626569 )
 mesh = ExtResource( 5 )
 material/0 = ExtResource( 13 )
 
 [node name="PERNA2" type="MeshInstance" parent="paralize"]
-transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.774123, -0.435008, -0.250625 )
+transform = Transform( -0.399431, 0.0213317, -1.58325e-07, 0.0213317, 0.399431, 1.63756e-08, 1.65775e-07, 7.68341e-09, -0.4, -0.774123, 0.0708425, -0.250625 )
 mesh = ExtResource( 9 )
 material/0 = ExtResource( 13 )
 
 [node name="PERNA3" type="MeshInstance" parent="paralize"]
-transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.774123, -0.435008, 0.280379 )
+transform = Transform( -0.399431, 0.0213317, -1.58325e-07, 0.0213317, 0.399431, 1.63756e-08, 1.65775e-07, 7.68341e-09, -0.4, -0.774123, 0.0708425, 0.280379 )
 mesh = ExtResource( 3 )
 material/0 = ExtResource( 13 )
 
 [node name="PERNA4" type="MeshInstance" parent="paralize"]
-transform = Transform( -0.399431, 0.0213317, -1.55766e-07, 0.0213317, 0.399431, 1.63756e-08, 1.56417e-07, 8.04544e-09, -0.4, -0.656889, -0.438247, 0.658384 )
+transform = Transform( -0.399431, 0.0213317, -1.58325e-07, 0.0213317, 0.399431, 1.63756e-08, 1.65775e-07, 7.68341e-09, -0.4, -0.656889, 0.0676035, 0.658384 )
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 13 )
 
 [node name="PERNA5" type="MeshInstance" parent="paralize"]
-transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.673188, -0.438218, -0.627599 )
+transform = Transform( 0.399461, -0.0207607, 1.86265e-09, 0.0207607, 0.399461, 0, -3.72529e-09, 4.65661e-10, 0.4, 0.673188, 0.0676325, -0.627599 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 13 )
 
 [node name="PERNA6" type="MeshInstance" parent="paralize"]
-transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.790584, -0.43504, -0.249595 )
+transform = Transform( 0.399461, -0.0207607, 1.86265e-09, 0.0207607, 0.399461, 0, -3.72529e-09, 4.65661e-10, 0.4, 0.790584, 0.0708105, -0.249595 )
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 13 )
 
 [node name="PERNA7" type="MeshInstance" parent="paralize"]
-transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.790584, -0.43504, 0.281409 )
+transform = Transform( 0.399461, -0.0207607, 1.86265e-09, 0.0207607, 0.399461, 0, -3.72529e-09, 4.65661e-10, 0.4, 0.790584, 0.0708105, 0.281409 )
 mesh = ExtResource( 8 )
 material/0 = null
 
 [node name="PERNA8" type="MeshInstance" parent="paralize"]
-transform = Transform( 0.399461, -0.0207607, 0, 0.0207607, 0.399461, 0, 0, 0, 0.4, 0.655488, -0.440623, 0.657353 )
+transform = Transform( 0.399461, -0.0207607, 1.86265e-09, 0.0207607, 0.399461, 0, -3.72529e-09, 4.65661e-10, 0.4, 0.655488, 0.0652275, 0.657353 )
 mesh = ExtResource( 11 )
 material/0 = null
 
 [node name="Mangas" type="Spatial" parent="."]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+transform = Transform( 1.49794, 0, -0.0785039, 0, 1.5, 0, 0.0785039, 0, 1.49794, 0, 0, 0 )
 visible = false
 
 [node name="Sphere" type="MeshInstance" parent="Mangas"]
@@ -102,5 +168,12 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0305786, 3.08135, -0.0488281 )
+visible = false
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_Spatial_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

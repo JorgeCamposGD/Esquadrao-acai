@@ -14,3 +14,6 @@ func _on_Area_body_entered(body):
 
 remotesync func colected():
 	queue_free()
+
+
+

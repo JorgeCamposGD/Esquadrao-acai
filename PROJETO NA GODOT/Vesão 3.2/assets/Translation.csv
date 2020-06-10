@@ -8,7 +8,7 @@ PASSWORD,Senha,Mot de passe,Password
 CONFIRM,Confirmar,Confirmer,Confirm
 CREATE_ACCOUNT,Criar conta,créer une compte,Create account
 RETURN,Voltar,retourner,Return
-YOUR_IP,Seu ip,To IP,Your IP
+YOUR_IP,Seu ip,Votre IP,Your IP
 CONECT_TO_HOST,Conectar ao host,connecter aux host,Conect to host
 CREATE_HOST,Criar host,Créer un host,create host
 JOGADOR,Jogador,Joeur,Player
@@ -22,3 +22,7 @@ Play_solo,Jogar sozinho,Jouer en solo,Play solo
 SELECT_STAGE,Selecionar fase,Selectioner stage,Select Stage
 Login_with_email,Logar com email,Faire login avec email,Login with email
 Language:,Idioma:,Langue:,Language:
+IPV6 INDISPONIVEL,IPV6 indisponivel,IPV6 non disponible,IPV¨unavailable
+IPV4 Local,Seu IPV4,Votre IPV4,You4 IPV4
+AMMO_ACOUNT,Munição,Ammo,Ammo
+balas,Munição,Ammo,Ammo

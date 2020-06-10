@@ -73,3 +73,7 @@ __meta__ = {
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/loading = SubResource( 2 )
+
+[node name="Music_box" type="AudioStreamPlayer" parent="."]
+volume_db = -4.8
+[connection signal="finished" from="Music_box" to="." method="_on_Music_box_finished"]

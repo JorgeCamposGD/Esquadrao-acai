@@ -10,6 +10,7 @@ onready var hp_bar=get_node("ProgressBar")
 onready var name_label=get_node("NameLabel")
 onready var txt_btn=get_node("CanvasLayer/Mobile_hud/TextureButton")
 onready var ammo_display=$CanvasLayer/Pc_hud/Weapons/Ammo
+onready var res_hud=[get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res0"),get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res1"),get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res2"),get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res3")]
 var fps
 var Sistema=OS.get_name()
 var touch_input=Vector2()
@@ -17,11 +18,12 @@ var my_name=""
 var analog_index=null
 var events={}
 var ammo
-
+var resources
 func start():
 	get_node("Pause Panel").hide()
 
 func _ready():
+	set_resources(get_parent().get_resources())
 	var classe_name
 	match Global.get_my_info()["classe"]:
 		1:
@@ -44,8 +46,11 @@ func _ready():
 
 func _process(delta):
 	if Global.get_my_info()["ammo"]!=ammo:
+	
 		ammo=Global.get_my_info()["ammo"]
-		ammo_display.set_text(tr("AMMO_ACOUNT"+":"+str(ammo)))
+
+		ammo_display.set_text(tr("AMMO_ACOUNT")+":"+str(ammo) )
+		
 	fps=Engine.get_frames_per_second()
 	fps_label.set_text("FPS: "+str(fps) )
 	if Sistema=="Android":
@@ -58,6 +63,13 @@ func _process(delta):
 func set_name(new_name):
 	my_name=new_name
 	_ready()
+func set_ammo(qtd):
+	ammo_display.set_text(tr("AMMO_ACOUNT"+":"+str(qtd)))
+	print("asdasf")
+func set_resources(res):
+
+	for x in range(res.size()):
+		res_hud[x].set_text(str(res[x]))
 
 func _on_TextureButton_gui_input(event):
 	

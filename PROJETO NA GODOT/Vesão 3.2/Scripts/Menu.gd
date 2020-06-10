@@ -85,6 +85,7 @@ var username
 var selected=0
 
 func _ready():
+	Global.set_music("res://assets/sounds/musica final.wav")
 	retranslate()
 	if OS.has_environment("USERNAME"):
 		username = OS.get_environment("USERNAME")

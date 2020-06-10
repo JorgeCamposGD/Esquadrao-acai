@@ -108,5 +108,10 @@ shape = SubResource( 4 )
 
 [node name="damageAnin" type="AnimationPlayer" parent="."]
 anims/dano = SubResource( 5 )
+
+[node name="Fire" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="body_entered" from="Spatial/Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Spatial/Area" to="." method="_on_Area_body_exited"]
+[connection signal="timeout" from="Fire" to="." method="_on_Fire_timeout"]

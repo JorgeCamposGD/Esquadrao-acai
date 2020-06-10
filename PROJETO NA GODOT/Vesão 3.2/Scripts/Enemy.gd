@@ -41,6 +41,8 @@ var my_creator
 var status="normal"
 var enemy=true
 var atk=false
+var efects=[[],[]]
+var on_fire=false
 func _ready():
 	randomize()
 	set_physics_process(usable)
@@ -55,6 +57,8 @@ func _physics_process(delta):
 		die()
 		#get_node("AnimationPlayer").play("Die")
 		return
+	if on_fire:
+		hp_atual-=10*delta
 	var move_vec = Vector3()
 
 	match status:
@@ -118,7 +122,8 @@ func atk(delta):
 	if cooldown<=0:
 	
 		if arma_atual==0 and body_in_rage.size()>0:
-			anim.play("andando")
+			if not(anim.is_playing()):
+				anim.play("andando")
 			
 	else:
 		cooldown-=delta
@@ -182,7 +187,8 @@ func damage(dano,type):
 		match type:
 			0:
 				hp_atual-=dano
-				dmg_anim.play("dano")
+				if not(dmg_anim.is_playing()):
+					dmg_anim.play("dano")
 		#get_node("AnimationPlayer2").play("Dano")
 	
 func die():
@@ -213,18 +219,28 @@ func _on_Timer_timeout():
 func set_creator(creator):
 	my_creator=creator
 
-func on_trap(type):
-	print("on trap", type)
-	match type:
-		0:
-			pass
-		1:
-			pass
-		2:
-			pass
-		3:
-			pass
+func aply_efect(classe,type,duration):
 
+	var aplied=false
+	if classe==4:
+		if not(efects[1].has(type)):
+			efects[1].append(type)
+			aplied=true
+	elif classe==1:
+		if not(efects[1].has(type)):
+			efects[1].append(type)
+			aplied=true
+			if type==3:
+				hp_atual-=100
+			elif type==1:
+				hp_atual-=50
+			elif type==0:
+				hp_atual-=25
+			elif type==2:
+				on_fire=true
+				get_node("Fire").start(duration)
+	print("aplyed", classe,type,duration)
+	return aplied
 
 func _on_Area_body_entered(body):
 	
@@ -236,3 +252,7 @@ func _on_Area_body_entered(body):
 
 func _on_Area_body_exited(body):
 	body_in_rage.erase(body)
+
+
+func _on_Fire_timeout():
+	on_fire=false

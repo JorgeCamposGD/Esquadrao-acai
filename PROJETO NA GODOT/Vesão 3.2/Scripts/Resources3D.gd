@@ -19,7 +19,7 @@ var Sons={
 			"Pistol":preload("res://assets/sounds/Som de armas/pistola.wav"),
 			"Shotgun":preload("res://assets/sounds/Som de armas/pistola.wav"),
 			"Smg":preload("res://assets/sounds/Som de armas/metralhadora.wav"),
-			"Sniper":preload("res://assets/sounds/Som de armas/metralhadora.wav")
+			"Sniper":preload("res://assets/sounds/Som de armas/Som de flecha pra sniper.wav")
 			}
 var player_scene=preload("res://scenes/Player.tscn")
 
