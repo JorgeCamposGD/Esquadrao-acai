@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=2]
+[gd_scene load_steps=143 format=2]
 
 [ext_resource path="res://scenes/Players_pos.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Spawn_manager.gd" type="Script" id=2]
@@ -33,7 +33,7 @@
 [ext_resource path="res://assets/characters/Gordo da pedreira/Cubo_008.mesh" type="ArrayMesh" id=31]
 [ext_resource path="res://Scripts/Level_manager.gd" type="Script" id=32]
 [ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=33]
-[ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=34]
+[ext_resource path="res://scenes/itens/drop.tscn" type="PackedScene" id=34]
 [ext_resource path="res://scenes/waterEnvi.tres" type="Environment" id=35]
 [ext_resource path="res://assets/characters/Nitty/Esfera icosaedrica.mesh" type="ArrayMesh" id=36]
 [ext_resource path="res://assets/characters/Bahia/Esfera icosaedrica_002.mesh" type="ArrayMesh" id=37]
@@ -130,36 +130,26 @@ albedo_color = Color( 0, 0, 0, 1 )
 [sub_resource type="ConcavePolygonShape" id=12]
 data = PoolVector3Array( 1.0249, -0.0076, 2.1225, -1.0018, -0.0076, 2.1225, -1.0018, -0.0076, -2.1225, 1.5303, 0.0689, 2.1225, 1.5303, 0.0689, -2.1225, 2.5189, 0.0689, -2.1225, 2.5189, 0.0689, 2.1225, 2.5189, 0.0689, -2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.1486, -2.1225, 3.1189, 0.1486, 2.1225, 3.1189, 0.1486, -2.1225, 3.5274, 0.1486, -2.1225, 1.0249, -0.0076, 6.368, -0.998, -0.0076, 6.368, -0.998, -0.0076, 2.1229, 1.5303, 0.0689, 6.368, 1.5303, 0.0689, 2.1229, 2.5189, 0.0689, 2.1229, 2.5189, 0.0689, 6.368, 2.5189, 0.0689, 2.1229, 3.1189, 0.0689, 2.1229, 3.1189, 0.0689, 6.368, 3.1189, 0.0689, 2.1229, 3.1189, 0.1486, 2.1229, 3.1189, 0.1486, 6.368, 3.1189, 0.1486, 2.1229, 3.5274, 0.1486, 2.1229, 1.0249, -0.0076, 2.1225, -1.0018, -0.0076, -2.1225, 1.0249, -0.0076, -2.1225, 1.5303, 0.0689, 2.1225, 2.5189, 0.0689, -2.1225, 2.5189, 0.0689, 2.1225, 2.5189, 0.0689, 2.1225, 3.1189, 0.0689, -2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.0689, 2.1225, 3.1189, 0.1486, -2.1225, 3.1189, 0.1486, 2.1225, 3.1189, 0.1486, 2.1225, 3.5274, 0.1486, -2.1225, 3.5274, 0.1486, 2.1225, 1.0249, -0.0076, 6.368, -0.998, -0.0076, 2.1229, 1.0249, -0.0076, 2.1229, 1.5303, 0.0689, 6.368, 2.5189, 0.0689, 2.1229, 2.5189, 0.0689, 6.368, 2.5189, 0.0689, 6.368, 3.1189, 0.0689, 2.1229, 3.1189, 0.0689, 6.368, 3.1189, 0.0689, 6.368, 3.1189, 0.1486, 2.1229, 3.1189, 0.1486, 6.368, 3.1189, 0.1486, 6.368, 3.5274, 0.1486, 2.1229, 3.5274, 0.1486, 6.368, 1.0249, -0.0076, 2.1225, 1.0249, -0.0076, -2.1225, 1.5303, 0.0689, -2.1225, 1.0249, -0.0076, 6.368, 1.0249, -0.0076, 2.1229, 1.5303, 0.0689, 2.1229, 1.0249, -0.0076, 2.1225, 1.5303, 0.0689, -2.1225, 1.5303, 0.0689, 2.1225, 1.0249, -0.0076, 6.368, 1.5303, 0.0689, 2.1229, 1.5303, 0.0689, 6.368, -1.0018, -0.0076, 2.1225, -1.4738, -0.0076, 2.1225, -1.4738, -0.0076, -2.1225, -0.998, -0.0076, 6.368, -1.4738, -0.0076, 6.368, -1.4738, -0.0076, 2.1229, -1.0018, -0.0076, 2.1225, -1.4738, -0.0076, -2.1225, -1.0018, -0.0076, -2.1225, -0.998, -0.0076, 6.368, -1.4738, -0.0076, 2.1229, -0.998, -0.0076, 2.1229 )
 
-[sub_resource type="BoxShape" id=47]
+[sub_resource type="BoxShape" id=13]
 extents = Vector3( 0.801821, 1, 1.99832 )
 
-[sub_resource type="BoxShape" id=48]
+[sub_resource type="BoxShape" id=14]
 extents = Vector3( 1.08071, 1, 0.732753 )
 
-[sub_resource type="BoxShape" id=49]
+[sub_resource type="BoxShape" id=15]
 extents = Vector3( 1.49875, 1, 0.732753 )
 
-[sub_resource type="BoxShape" id=50]
+[sub_resource type="BoxShape" id=16]
 extents = Vector3( 1.02899, 1, 0.602373 )
 
-[sub_resource type="BoxShape" id=51]
+[sub_resource type="BoxShape" id=17]
 extents = Vector3( 0.435, 1, 0.425 )
 
-[sub_resource type="CubeMesh" id=13]
-
-[sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="CapsuleShape" id=15]
+[sub_resource type="CapsuleShape" id=18]
 radius = 2.05424
 height = 3.65173
 
-[sub_resource type="CapsuleShape" id=16]
-radius = 2.05424
-height = 3.65173
-
-[sub_resource type="Animation" id=17]
-resource_name = "Crafitando"
+[sub_resource type="Animation" id=19]
 length = 2.08333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Skeleton:Bone")
@@ -190,8 +180,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 1.14815, 0.334364, 0.380899, 0.122878, -0.605418, -0.102935, 0.779599, 1, 1, 1, 0.0666667, 1, 1.14839, 0.309845, 0.391236, 0.122878, -0.605418, -0.102935, 0.779599, 1, 1, 1, 0.133333, 1, 1.14893, 0.254637, 0.414512, 0.122878, -0.605418, -0.102935, 0.779599, 1, 1, 1, 0.266667, 1, 1.15044, 0.116695, 0.472671, 0.122878, -0.605418, -0.102935, 0.779599, 1, 1, 1, 0.333333, 1, 1.15111, 0.0696108, 0.492522, 0.122878, -0.605418, -0.102935, 0.779599, 1, 1, 1, 0.4, 1, 1.15154, 0.0725455, 0.49447, 0.113122, -0.610983, -0.0957922, 0.777642, 1, 1, 1, 0.466667, 1, 1.15287, 0.145536, 0.48181, 0.0544503, -0.641909, -0.0527888, 0.763021, 1, 1, 1, 0.533333, 1, 1.1577, 0.252451, 0.460556, -0.0327476, -0.679949, 0.0112748, 0.732441, 1, 1, 1, 0.6, 1, 1.1691, 0.325441, 0.43896, -0.0915933, -0.700291, 0.0546108, 0.705848, 1, 1, 1, 0.666667, 1, 1.20875, 0.288963, 0.42332, -0.099495, -0.702692, 0.0604362, 0.701907, 1, 1, 1, 0.733333, 1, 1.30091, 0.0973425, 0.416507, -0.0928127, -0.700667, 0.0555097, 0.705245, 1, 1, 1, 0.8, 1, 1.34749, -0.0616471, 0.418645, -0.0892407, -0.699561, 0.0528766, 0.707004, 1, 1, 1, 0.866667, 1, 1.34035, -0.128398, 0.471859, -0.0892407, -0.699561, 0.0528767, 0.707004, 1, 1, 1, 0.933333, 1, 1.32907, -0.15326, 0.555913, -0.0892407, -0.699561, 0.0528767, 0.707004, 1, 1, 1, 1, 1, 1.32266, -0.157687, 0.603685, -0.0892407, -0.699561, 0.0528766, 0.707004, 1, 1, 1, 2.08333, 1, 1.32266, -0.157687, 0.603685, -0.0892407, -0.699561, 0.0528766, 0.707004, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
-resource_name = "andando com a arma"
+[sub_resource type="Animation" id=20]
 length = 0.625
 loop = true
 tracks/0/type = "transform"
@@ -223,8 +212,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.930683, -0.14145, 0.76627, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.0666667, 1, 0.92279, -0.0947174, 0.784283, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.133333, 1, 0.911632, -0.0286468, 0.809748, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.2, 1, 0.920948, -0.0167215, 0.811525, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.333333, 1, 1.03854, -0.0715359, 0.766022, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.4, 1, 1.05022, -0.101913, 0.756673, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.466667, 1, 1.03139, -0.123401, 0.754105, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.533333, 1, 1.0079, -0.13503, 0.753286, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.6, 1, 0.999609, -0.137896, 0.753191, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.625, 1, 0.999609, -0.137896, 0.753191, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1 )
 
-[sub_resource type="Animation" id=19]
-resource_name = "andando com a sandalha"
+[sub_resource type="Animation" id=21]
 length = 0.625
 loop = true
 tracks/0/type = "transform"
@@ -256,8 +244,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.213614, -0.0422347, 0.0302511, -0.402829, -0.156956, 0.17355, 0.884858, 1, 1, 1, 0.0666667, 1, 0.115692, -0.0671238, 0.0331868, -0.420262, -0.0983747, 0.110049, 0.895316, 1, 1, 1, 0.133333, 1, -0.0227486, -0.102312, 0.040949, -0.439282, -0.0140764, 0.0186239, 0.898046, 1, 1, 1, 0.2, 1, -0.0156662, -0.0866109, 0.0535678, -0.437201, -0.0233859, 0.0198177, 0.898841, 1, 1, 1, 0.266667, 1, 0.174436, 0.0264004, 0.0697677, -0.401289, -0.165191, 0.131242, 0.891322, 1, 1, 1, 0.333333, 1, 0.383392, 0.150619, 0.0875484, -0.345988, -0.314901, 0.248823, 0.848066, 1, 1, 1, 0.4, 1, 0.412363, 0.158872, 0.104841, -0.333282, -0.345659, 0.271933, 0.833964, 1, 1, 1, 0.466667, 1, 0.288888, 0.035332, 0.119556, -0.347228, -0.329208, 0.253209, 0.840797, 1, 1, 1, 0.533333, 1, 0.134828, -0.11881, 0.129186, -0.364212, -0.308281, 0.229537, 0.848307, 1, 1, 1, 0.6, 1, 0.0804534, -0.173214, 0.131872, -0.370086, -0.300801, 0.221114, 0.850684, 1, 1, 1, 0.625, 1, 0.0804534, -0.173214, 0.131872, -0.370086, -0.300801, 0.221114, 0.850684, 1, 1, 1 )
 
-[sub_resource type="Animation" id=20]
-resource_name = "atacando com a sandalha"
+[sub_resource type="Animation" id=22]
 length = 1.66667
 loop = true
 tracks/0/type = "transform"
@@ -289,8 +276,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.0976266, -0.139026, 0.212087, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.0666667, 1, 0.108723, -0.124817, 0.209906, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.133333, 1, 0.135788, -0.0928224, 0.204995, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.266667, 1, 0.222374, -0.0128808, 0.192724, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.333333, 1, 0.271654, 0.0144057, 0.188535, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.466667, 1, 0.359574, 0.0172126, 0.188782, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.666667, 1, 0.453126, -0.00168753, 0.196532, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.8, 1, 0.493107, -0.0195174, 0.203844, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 0.933333, 1, 0.518544, -0.0370721, 0.211042, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 1, 1, 0.52676, -0.0446566, 0.214152, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 1.06667, 1, 0.532066, -0.0506356, 0.216604, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 1.13333, 1, 0.535203, -0.0547796, 0.218303, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 1.2, 1, 0.536303, -0.0564923, 0.219005, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 1.26667, 1, 0.536369, -0.0566031, 0.219051, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1, 1.66667, 1, 0.536369, -0.0566031, 0.219051, -0.448117, -0.268989, 0.193289, 0.830346, 1, 1, 1 )
 
-[sub_resource type="Animation" id=21]
-resource_name = "atirando com arma"
+[sub_resource type="Animation" id=23]
 length = 0.833333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Skeleton:Bone")
@@ -321,8 +307,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.937352, -0.143083, 0.776606, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.0666667, 1, 0.905302, -0.141805, 0.769862, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.133333, 1, 0.848911, -0.139555, 0.757995, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.2, 1, 0.813211, -0.13813, 0.750482, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.266667, 1, 0.810574, -0.138025, 0.749927, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.833333, 1, 0.810574, -0.138025, 0.749927, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1 )
 
-[sub_resource type="Animation" id=22]
-resource_name = "interagindo com coisas"
+[sub_resource type="Animation" id=24]
 length = 1.66667
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Skeleton:Bone")
@@ -353,8 +338,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.482318, 0.766676, 0.31353, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.0666667, 1, 0.514347, 0.766661, 0.327381, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.133333, 1, 0.591193, 0.76658, 0.358568, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.266667, 1, 0.826324, 0.765936, 0.436492, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.4, 1, 1.05815, 0.757316, 0.466046, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.466667, 1, 1.14107, 0.710519, 0.450365, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.533333, 1, 1.20032, 0.625058, 0.420908, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.666667, 1, 1.26224, 0.415514, 0.344742, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.733333, 1, 1.27014, 0.329975, 0.30982, -0.418515, -0.458382, 0.426389, 0.657968, 1, 1, 1, 0.8, 1, 1.26245, 0.267701, 0.281431, -0.421394, -0.454555, 0.423956, 0.660354, 1, 1, 1, 0.866667, 1, 1.23041, 0.216702, 0.257695, -0.432189, -0.439884, 0.414587, 0.669203, 1, 1, 1, 0.933333, 1, 1.17722, 0.17403, 0.237834, -0.449927, -0.414615, 0.398298, 0.683388, 1, 1, 1, 1.06667, 1, 1.02595, 0.110211, 0.20813, -0.49817, -0.33726, 0.347364, 0.71932, 1, 1, 1, 1.2, 1, 0.843101, 0.0705269, 0.18966, -0.549628, -0.235434, 0.278186, 0.751726, 1, 1, 1, 1.4, 1, 0.585896, 0.0439219, 0.177277, -0.603841, -0.0867081, 0.173442, 0.77316, 1, 1, 1, 1.46667, 1, 0.521852, 0.0408403, 0.175843, -0.613635, -0.0503211, 0.147201, 0.774114, 1, 1, 1, 1.53333, 1, 0.476202, 0.0395229, 0.17523, -0.61971, -0.0248305, 0.12868, 0.773811, 1, 1, 1, 1.6, 1, 0.453626, 0.0391937, 0.175077, -0.622445, -0.0123764, 0.11959, 0.773374, 1, 1, 1, 1.66667, 1, 0.450383, 0.039176, 0.175069, -0.622823, -0.0105974, 0.118289, 0.773296, 1, 1, 1 )
 
-[sub_resource type="Animation" id=23]
-resource_name = "parado com arma"
+[sub_resource type="Animation" id=25]
 length = 0.833333
 loop = true
 tracks/0/type = "transform"
@@ -386,8 +370,7 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 1.01558, -0.0479777, 0.739793, 0.738462, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.0666667, 1, 1.01054, -0.0323312, 0.742237, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.133333, 1, 0.999173, 0.0028972, 0.747739, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.266667, 1, 0.970779, 0.0909204, 0.761487, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.333333, 1, 0.961087, 0.120965, 0.76618, 0.738462, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.4, 1, 0.9601, 0.124026, 0.766658, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.466667, 1, 0.966285, 0.104852, 0.763663, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.666667, 1, 1.00339, -0.0101901, 0.745695, 0.738462, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.733333, 1, 1.01229, -0.0377611, 0.741388, 0.738461, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.8, 1, 1.01558, -0.0479777, 0.739793, 0.738462, 0.49626, -0.414334, -0.191646, 1, 1, 1, 0.833333, 1, 1.01558, -0.0479777, 0.739793, 0.738462, 0.49626, -0.414334, -0.191646, 1, 1, 1 )
 
-[sub_resource type="Animation" id=24]
-resource_name = "parado com sandalha"
+[sub_resource type="Animation" id=26]
 length = 1.66667
 loop = true
 tracks/0/type = "transform"
@@ -412,8 +395,7 @@ tracks/2/imported = true
 tracks/2/enabled = true
 tracks/2/keys = PoolRealArray( 0, 1, 0.0142915, -0.170718, 0.0319309, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.0666667, 1, 0.0141182, -0.164419, 0.0331569, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.133333, 1, 0.0136852, -0.14867, 0.0362217, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.2, 1, 0.0130276, -0.124761, 0.0408747, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.6, 1, 0.00787178, 0.0627217, 0.0773602, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.666667, 1, 0.00736192, 0.0812623, 0.0809683, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.733333, 1, 0.00714141, 0.0892798, 0.0825286, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.8, 1, 0.00742993, 0.0879924, 0.082238, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.866667, 1, 0.00860927, 0.0796651, 0.0804674, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.933333, 1, 0.0105574, 0.0659094, 0.0775424, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 1.46667, 1, 0.0331765, -0.0938076, 0.0435807, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 1.53333, 1, 0.0343558, -0.102135, 0.04181, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 1.6, 1, 0.0346699, -0.104353, 0.0413384, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 1.66667, 1, 0.0346699, -0.104353, 0.0413384, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1 )
 
-[sub_resource type="Animation" id=25]
-resource_name = "trocando de arma"
+[sub_resource type="Animation" id=27]
 length = 2.08333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Skeleton:Bone")
@@ -444,31 +426,31 @@ tracks/3/imported = true
 tracks/3/enabled = true
 tracks/3/keys = PoolRealArray( 0, 1, 0.0503826, -0.143033, 0.021036, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 0.0666667, 1, 0.0705537, -0.136636, 0.0299986, -0.425373, -0.0855775, 0.0740534, 0.897914, 1, 1, 1, 0.133333, 1, 0.121225, -0.120566, 0.0525133, -0.4161, -0.1061, 0.062592, 0.900936, 1, 1, 1, 0.2, 1, 0.198665, -0.0960062, 0.0869223, -0.401217, -0.137729, 0.0447726, 0.904462, 1, 1, 1, 0.4, 1, 0.521348, 0.00633216, 0.230301, -0.330904, -0.269876, -0.031813, 0.903691, 1, 1, 1, 0.6, 1, 0.839976, 0.107384, 0.371877, -0.252377, -0.392761, -0.106481, 0.877899, 1, 1, 1, 0.666667, 1, 0.915632, 0.131378, 0.405493, -0.233124, -0.41979, -0.123425, 0.868445, 1, 1, 1, 0.733333, 1, 0.96176, 0.146007, 0.42599, -0.221377, -0.435748, -0.133529, 0.86214, 1, 1, 1, 0.8, 1, 0.976341, 0.150632, 0.432469, -0.217661, -0.440716, -0.136689, 0.860064, 1, 1, 1, 0.866667, 1, 0.95557, 0.144044, 0.423239, -0.222952, -0.433631, -0.132184, 0.863009, 1, 1, 1, 0.933333, 1, 0.90531, 0.128105, 0.400907, -0.235762, -0.41615, -0.121132, 0.869806, 1, 1, 1, 1, 1, 0.832795, 0.105106, 0.368686, -0.254184, -0.390168, -0.104867, 0.878728, 1, 1, 1, 1.2, 1, 0.527897, 0.00840914, 0.233211, -0.329361, -0.272513, -0.0333782, 0.903407, 1, 1, 1, 1.4, 1, 0.217436, -0.0900528, 0.0952629, -0.397478, -0.145438, 0.0404, 0.905111, 1, 1, 1, 1.46667, 1, 0.1388, -0.114992, 0.0603229, -0.412799, -0.11325, 0.0585802, 0.901854, 1, 1, 1, 1.53333, 1, 0.0824205, -0.132873, 0.0352716, -0.423235, -0.0903682, 0.0713849, 0.898671, 1, 1, 1, 1.6, 1, 0.0544162, -0.141754, 0.0228283, -0.428248, -0.0790769, 0.0776674, 0.896838, 1, 1, 1, 1.66667, 1, 0.0503826, -0.143033, 0.021036, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1, 2.08333, 1, 0.0503826, -0.143033, 0.021036, -0.42896, -0.0774557, 0.0785675, 0.896561, 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=26]
+[sub_resource type="SpatialMaterial" id=28]
 next_pass = ExtResource( 65 )
 albedo_color = Color( 0, 0.239216, 0.541176, 1 )
 
-[sub_resource type="SpatialMaterial" id=27]
+[sub_resource type="SpatialMaterial" id=29]
 next_pass = ExtResource( 65 )
 albedo_color = Color( 0.921569, 0.909804, 0.909804, 1 )
 
-[sub_resource type="SpatialMaterial" id=28]
+[sub_resource type="SpatialMaterial" id=30]
 next_pass = ExtResource( 65 )
 albedo_color = Color( 0.247059, 0.282353, 0.301961, 1 )
 
-[sub_resource type="SpatialMaterial" id=29]
+[sub_resource type="SpatialMaterial" id=31]
 next_pass = ExtResource( 65 )
 albedo_color = Color( 0.364706, 0.321569, 0.239216, 1 )
 
-[sub_resource type="SpatialMaterial" id=30]
+[sub_resource type="SpatialMaterial" id=32]
 next_pass = ExtResource( 65 )
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=31]
+[sub_resource type="SpatialMaterial" id=33]
 next_pass = ExtResource( 65 )
 albedo_color = Color( 0.203922, 0.192157, 0.192157, 1 )
 
-[sub_resource type="ArrayMesh" id=32]
+[sub_resource type="ArrayMesh" id=34]
 surfaces/0 = {
 "aabb": AABB( -0.689724, -0.110797, -0.788106, 1.36359, 0.467692, 1.56628 ),
 "array_data": PoolByteArray( 128, 233, 1, 188, 144, 233, 226, 189, 128, 164, 162, 187, 254, 130, 0, 0, 137, 2, 42, 129, 139, 58, 0, 60, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 80, 13, 152, 62, 144, 233, 205, 189, 180, 185, 114, 62, 255, 130, 5, 0, 141, 3, 53, 129, 46, 58, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 96, 192, 254, 189, 144, 233, 205, 189, 250, 240, 197, 62, 255, 130, 8, 0, 133, 3, 30, 129, 232, 58, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 196, 2, 63, 192, 45, 218, 59, 29, 66, 208, 62, 6, 144, 58, 0, 180, 43, 91, 129, 209, 57, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 80, 13, 152, 62, 144, 233, 205, 189, 180, 185, 114, 62, 255, 130, 5, 0, 245, 5, 126, 129, 116, 57, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 12, 21, 26, 63, 192, 150, 96, 189, 112, 164, 162, 187, 4, 130, 8, 0, 0, 8, 126, 129, 23, 57, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 233, 1, 188, 144, 233, 226, 189, 128, 164, 162, 187, 254, 130, 0, 0, 186, 1, 151, 129, 209, 45, 0, 60, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 96, 192, 254, 189, 144, 233, 205, 189, 250, 240, 197, 62, 255, 130, 8, 0, 177, 251, 158, 129, 209, 41, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 106, 6, 197, 190, 112, 233, 205, 189, 136, 164, 162, 187, 254, 130, 0, 0, 196, 1, 145, 129, 93, 48, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 233, 1, 188, 144, 233, 226, 189, 128, 164, 162, 187, 254, 130, 0, 0, 70, 255, 151, 129, 93, 52, 0, 60, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 106, 6, 197, 190, 112, 233, 205, 189, 136, 164, 162, 187, 254, 130, 0, 0, 60, 0, 145, 129, 69, 51, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 96, 192, 254, 189, 136, 233, 205, 189, 29, 6, 203, 190, 253, 130, 248, 0, 79, 4, 158, 129, 23, 53, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 233, 1, 188, 144, 233, 226, 189, 128, 164, 162, 187, 254, 130, 0, 0, 119, 254, 42, 129, 69, 55, 0, 60, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 96, 192, 254, 189, 136, 233, 205, 189, 29, 6, 203, 190, 253, 130, 248, 0, 123, 251, 30, 129, 139, 54, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 72, 13, 152, 62, 144, 233, 205, 189, 251, 227, 124, 190, 254, 130, 253, 0, 115, 253, 53, 129, 255, 55, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 116, 130, 44, 63, 236, 186, 182, 62, 240, 185, 114, 62, 36, 255, 121, 0, 135, 8, 36, 129, 116, 57, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 8, 3, 83, 190, 64, 43, 218, 59, 118, 69, 41, 63, 1, 147, 64, 0, 130, 253, 254, 129, 69, 59, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 80, 217, 56, 62, 32, 152, 96, 189, 115, 236, 32, 63, 3, 142, 55, 0, 136, 14, 36, 129, 139, 58, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 233, 1, 188, 236, 186, 182, 62, 189, 54, 71, 63, 9, 0, 126, 0, 130, 5, 9, 129, 232, 58, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 28, 45, 38, 191, 0, 71, 218, 59, 144, 164, 162, 187, 247, 130, 248, 0, 0, 8, 130, 129, 209, 49, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 204, 83, 0, 191, 0, 151, 96, 189, 36, 241, 197, 62, 254, 135, 38, 0, 185, 226, 156, 129, 209, 45, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 190, 145, 48, 191, 236, 186, 182, 62, 242, 185, 114, 62, 207, 255, 116, 0, 140, 2, 207, 129, 93, 48, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 8, 3, 83, 190, 64, 43, 218, 59, 8, 208, 43, 191, 249, 148, 191, 0, 121, 12, 221, 129, 209, 53, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 206, 83, 0, 191, 0, 151, 96, 189, 73, 6, 203, 190, 248, 137, 213, 0, 73, 31, 157, 129, 93, 52, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 94, 205, 219, 190, 236, 186, 182, 62, 72, 119, 35, 191, 242, 252, 130, 0, 125, 9, 242, 129, 23, 53, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 126, 196, 2, 63, 128, 45, 218, 59, 63, 87, 213, 190, 255, 141, 203, 0, 73, 213, 93, 129, 93, 56, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 80, 217, 56, 62, 32, 152, 96, 189, 6, 119, 35, 191, 251, 142, 202, 0, 120, 235, 34, 129, 69, 55, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 200, 174, 211, 62, 236, 186, 182, 62, 71, 119, 35, 191, 253, 6, 130, 0, 126, 12, 253, 129, 255, 55, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 204, 174, 211, 62, 236, 186, 182, 62, 182, 236, 32, 63, 14, 4, 126, 0, 131, 248, 14, 129, 46, 58, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 90, 205, 219, 190, 236, 186, 182, 62, 182, 236, 32, 63, 3, 250, 126, 0, 130, 254, 3, 129, 162, 59, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 190, 145, 48, 191, 236, 186, 182, 62, 61, 228, 124, 190, 220, 1, 135, 0, 121, 249, 220, 129, 69, 51, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 233, 1, 188, 236, 186, 182, 62, 79, 193, 73, 191, 247, 0, 130, 0, 126, 250, 247, 129, 139, 54, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 116, 130, 44, 63, 236, 186, 182, 62, 60, 228, 124, 190, 49, 1, 140, 0, 116, 253, 49, 129, 186, 56, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 90, 205, 219, 190, 236, 186, 182, 62, 182, 236, 32, 63, 3, 250, 126, 0, 131, 238, 2, 129, 209, 41, 28, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 8, 3, 83, 190, 64, 43, 218, 59, 118, 69, 41, 63, 1, 147, 64, 0, 163, 212, 183, 129, 0, 0, 189, 58, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 72, 13, 152, 62, 144, 233, 205, 189, 251, 227, 124, 190, 254, 130, 253, 0, 11, 252, 126, 129, 186, 56, 94, 59, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 128, 233, 1, 188, 144, 233, 226, 189, 128, 164, 162, 187, 254, 130, 0, 0, 0, 0, 126, 129, 23, 57, 0, 60, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0 ),
@@ -476,7 +458,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 120,
-"material": SubResource( 26 ),
+"material": SubResource( 28 ),
 "name": "bermuda",
 "primitive": 4,
 "skeleton_aabb": [ AABB( -0.689724, -0.110797, -0.788106, 1.36359, 0.467692, 1.56628 ) ],
@@ -489,7 +471,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 150,
-"material": SubResource( 27 ),
+"material": SubResource( 29 ),
 "name": "Camisa",
 "primitive": 4,
 "skeleton_aabb": [ AABB( -0.689724, 0.356895, -0.788106, 1.36359, 0.783142, 1.56628 ) ],
@@ -502,7 +484,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 30,
-"material": SubResource( 28 ),
+"material": SubResource( 30 ),
 "name": "Bolso",
 "primitive": 4,
 "skeleton_aabb": [ AABB( 0.299216, 0.571353, 0.161591, 0.301805, 0.2802, 0.305292 ) ],
@@ -515,7 +497,7 @@ surfaces/3 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 2352,
-"material": SubResource( 29 ),
+"material": SubResource( 31 ),
 "name": "Rosto",
 "primitive": 4,
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.376445, 1.1879, -0.736833, 1.123, 1.10777, 1.48126 ), AABB( -0.173145, 0.390193, 0.975927, 0.448992, 0.197556, 0.603512 ), AABB( -0.173145, 0.406563, -1.56233, 0.431066, 0.191435, 0.553951 ) ],
@@ -528,7 +510,7 @@ surfaces/4 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 882,
-"material": SubResource( 30 ),
+"material": SubResource( 32 ),
 "name": "preto.001",
 "primitive": 4,
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.661131, 1.78541, -0.452087, 1.24789, 0.71866, 0.911764 ) ],
@@ -541,47 +523,47 @@ surfaces/5 = {
 "blend_shape_data": [  ],
 "format": 97751,
 "index_count": 1332,
-"material": SubResource( 31 ),
+"material": SubResource( 33 ),
 "name": "Cabelo",
 "primitive": 4,
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.544218, 1.35567, -0.625497, 1.04909, 0.957734, 1.25858 ) ],
 "vertex_count": 276
 }
 
-[sub_resource type="BoxShape" id=33]
+[sub_resource type="BoxShape" id=35]
 extents = Vector3( 3, 3.68382, 3 )
-
-[sub_resource type="SpatialMaterial" id=34]
-resource_local_to_scene = true
-flags_transparent = true
-albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
-
-[sub_resource type="PrismMesh" id=35]
-material = SubResource( 34 )
-size = Vector3( 6, 6, 6 )
 
 [sub_resource type="SpatialMaterial" id=36]
 resource_local_to_scene = true
 flags_transparent = true
 albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
-[sub_resource type="CubeMesh" id=37]
+[sub_resource type="PrismMesh" id=37]
 material = SubResource( 36 )
 size = Vector3( 6, 6, 6 )
 
 [sub_resource type="SpatialMaterial" id=38]
+resource_local_to_scene = true
+flags_transparent = true
 albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
-[sub_resource type="SphereMesh" id=39]
+[sub_resource type="CubeMesh" id=39]
 material = SubResource( 38 )
+size = Vector3( 6, 6, 6 )
 
 [sub_resource type="SpatialMaterial" id=40]
 albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
 
-[sub_resource type="CapsuleMesh" id=41]
+[sub_resource type="SphereMesh" id=41]
 material = SubResource( 40 )
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="SpatialMaterial" id=42]
+albedo_color = Color( 0, 1, 0.0156863, 0.878431 )
+
+[sub_resource type="CapsuleMesh" id=43]
+material = SubResource( 42 )
+
+[sub_resource type="Animation" id=44]
 length = 0.1
 step = 0.01
 tracks/0/type = "value"
@@ -633,7 +615,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 0, 0, 0.878431 ), Color( 0, 1, 0.0156863, 0.878431 ) ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=45]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape/Spatial/Trap:mesh:material:albedo_color")
@@ -684,17 +666,20 @@ tracks/3/keys = {
 "values": [ Color( 0, 1, 0.0156863, 0.878431 ), Color( 0.929412, 0.0470588, 0.0470588, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape" id=44]
+[sub_resource type="CapsuleShape" id=46]
 radius = 1.84828
 
-[sub_resource type="CubeMesh" id=45]
+[sub_resource type="CubeMesh" id=47]
 size = Vector3( 6, 6, 6 )
 
-[sub_resource type="BoxShape" id=46]
+[sub_resource type="BoxShape" id=48]
 extents = Vector3( 3, 3, 3 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 32 )
+
+[node name="Spatial" parent="." instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, -0.312683, -0.949857, 0, 0.949857, -0.312683, 7.62971, 12.921, 16.3765 )
 
 [node name="Spawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
@@ -910,23 +895,23 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Spatial/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23813, 0, -0.215664 )
-shape = SubResource( 47 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Scene Root/Spatial/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.989726, 0, 2.204 )
-shape = SubResource( 48 )
+shape = SubResource( 14 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Scene Root/Spatial/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33206, 0, 1.76964 )
-shape = SubResource( 49 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Scene Root/Spatial/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.29281, 0, -5.45779 )
-shape = SubResource( 50 )
+shape = SubResource( 16 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="Scene Root/Spatial/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09269, 1.82836, 1.64646 )
-shape = SubResource( 51 )
+shape = SubResource( 17 )
 
 [node name="LoucoDaGranola" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03813, 3.42999, 1.48528 )
@@ -969,24 +954,6 @@ mesh = ExtResource( 33 )
 material/0 = null
 material/1 = null
 
-[node name="Cano da arma" type="MeshInstance" parent="LoucoDaGranola/Spatial"]
-transform = Transform( 0.999112, 0, 0, 0, 0.528336, 0, 0, 0, 0.624785, -2.83512, -0.723664, -0.110381 )
-visible = false
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
-
-[node name="Position3D" type="Position3D" parent="LoucoDaGranola/Spatial/Cano da arma"]
-transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.99623e-08, 0, 0, 0 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LoucoDaGranola/Spatial"]
-anims/andando = ExtResource( 34 )
-
-[node name="Mob" type="AudioStreamPlayer3D" parent="LoucoDaGranola"]
-
-[node name="CollisionShape" type="CollisionShape" parent="LoucoDaGranola"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 15 )
-
 [node name="World" type="WorldEnvironment" parent="."]
 environment = ExtResource( 35 )
 
@@ -997,7 +964,7 @@ collision_mask = 19
 
 [node name="CollisionShape" type="CollisionShape" parent="PLAYER"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.249256, 0 )
-shape = SubResource( 16 )
+shape = SubResource( 18 )
 
 [node name="Char" type="Spatial" parent="PLAYER"]
 
@@ -1056,15 +1023,15 @@ material/4 = null
 transform = Transform( -2.76965e-07, 0, 1.7, 0, 1.7, 0, -1.7, 0, -2.76965e-07, 0, -2.63068, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PLAYER/Char/Armature/Shotgun"]
-anims/Crafitando = SubResource( 17 )
-"anims/andando com a arma" = SubResource( 18 )
-"anims/andando com a sandalha" = SubResource( 19 )
-"anims/atacando com a sandalha" = SubResource( 20 )
-"anims/atirando com arma" = SubResource( 21 )
-"anims/interagindo com coisas" = SubResource( 22 )
-"anims/parado com arma" = SubResource( 23 )
-"anims/parado com sandalha" = SubResource( 24 )
-"anims/trocando de arma" = SubResource( 25 )
+anims/Crafitando = SubResource( 19 )
+"anims/andando com a arma" = SubResource( 20 )
+"anims/andando com a sandalha" = SubResource( 21 )
+"anims/atacando com a sandalha" = SubResource( 22 )
+"anims/atirando com arma" = SubResource( 23 )
+"anims/interagindo com coisas" = SubResource( 24 )
+"anims/parado com arma" = SubResource( 25 )
+"anims/parado com sandalha" = SubResource( 26 )
+"anims/trocando de arma" = SubResource( 27 )
 
 [node name="Skeleton" type="Skeleton" parent="PLAYER/Char/Armature/Shotgun"]
 transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0 )
@@ -1091,7 +1058,7 @@ bones/3/bound_children = [  ]
 
 [node name="SADALHA001" type="MeshInstance" parent="PLAYER/Char/Armature/Shotgun/Skeleton"]
 transform = Transform( 1.45544, 0, 0.362883, 0, 1.5, 0, -0.362883, 0, 1.45544, 0, 0, 0 )
-mesh = SubResource( 32 )
+mesh = SubResource( 34 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -1230,21 +1197,21 @@ collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="PLAYER/Char/Contruct_area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.175465, -6.12214 )
-shape = SubResource( 33 )
+shape = SubResource( 35 )
 
 [node name="Spatial" type="Spatial" parent="PLAYER/Char/Contruct_area/CollisionShape"]
 
 [node name="Trap" type="MeshInstance" parent="PLAYER/Char/Contruct_area/CollisionShape/Spatial"]
-mesh = SubResource( 35 )
+mesh = SubResource( 37 )
 material/0 = null
 
 [node name="Wall" type="MeshInstance" parent="PLAYER/Char/Contruct_area/CollisionShape/Spatial"]
-mesh = SubResource( 37 )
+mesh = SubResource( 39 )
 material/0 = null
 
 [node name="Turret" type="MeshInstance" parent="PLAYER/Char/Contruct_area/CollisionShape/Spatial"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
-mesh = SubResource( 39 )
+mesh = SubResource( 41 )
 material/0 = null
 __meta__ = {
 "_editor_description_": "				 "
@@ -1252,13 +1219,13 @@ __meta__ = {
 
 [node name="Granead" type="MeshInstance" parent="PLAYER/Char/Contruct_area/CollisionShape/Spatial"]
 transform = Transform( 1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, -4.76837e-07 )
-mesh = SubResource( 41 )
+mesh = SubResource( 43 )
 material/0 = null
 
 [node name="livre" type="AnimationPlayer" parent="PLAYER/Char/Contruct_area"]
 autoplay = "livre"
-anims/livre = SubResource( 42 )
-anims/ocupado = SubResource( 43 )
+anims/livre = SubResource( 44 )
+anims/ocupado = SubResource( 45 )
 
 [node name="optimizer" type="Spatial" parent="PLAYER"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.0502, 0 )
@@ -1436,7 +1403,7 @@ material/3 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="PLAYER/optimizer/Turrets/StaticBody"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 14.835, 0 )
-shape = SubResource( 44 )
+shape = SubResource( 46 )
 
 [node name="Walll" type="Spatial" parent="PLAYER/optimizer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.12601, 0 )
@@ -1448,12 +1415,12 @@ collision_mask = 0
 
 [node name="Triangle" type="MeshInstance" parent="PLAYER/optimizer/Walll/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.3044, 0 )
-mesh = SubResource( 45 )
+mesh = SubResource( 47 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="PLAYER/optimizer/Walll/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.3044, 0 )
-shape = SubResource( 46 )
+shape = SubResource( 48 )
 
 [node name="Cam" type="InterpolatedCamera" parent="PLAYER"]
 transform = Transform( 1, 0, 0, 0, 0.406737, 0.913545, 0, -0.913545, 0.406737, 0, 27, 8.8 )

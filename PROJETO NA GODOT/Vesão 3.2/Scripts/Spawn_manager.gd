@@ -63,6 +63,7 @@ func _process(delta):
 func set_active():
 	print("active")
 	active=true
+	Global.set_level_state(true)
 	_ready()
 	get_node("Spawn_pos/Start").start()
 

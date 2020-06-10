@@ -34,8 +34,10 @@ _global_script_class_icons={
 
 config/name="Squad acai"
 run/main_scene="res://scenes/Interface/Menu.tscn"
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://ic_on.webp"
+boot_splash/image="res://assets/Logo 4k.png"
+boot_splash/bg_color=Color( 0.341176, 0.337255, 0.337255, 1 )
+config/icon="res://Icone.png"
+config/windows_native_icon="res://Icone.ico"
 
 [autoload]
 
@@ -52,7 +54,6 @@ gdscript/warnings/unused_argument=false
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor_landscape"
 window/stretch/mode="2d"
@@ -1197,8 +1198,13 @@ start={
 3d_physics/layer_5="Colisor para personagem"
 3d_physics/layer_6="Colisor para inimigo"
 
+[locale]
+
+translations=PoolStringArray( "res://assets/Translation.pt_BR.translation", "res://assets/Translation.en.translation", "res://assets/Translation.fr_FR.translation" )
+
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 quality/shadow_atlas/size.mobile=1024

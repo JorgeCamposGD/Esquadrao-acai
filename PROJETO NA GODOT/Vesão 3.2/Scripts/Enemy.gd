@@ -6,7 +6,7 @@ const GRAVITY = 0.98
 const MAX_FALL_SPEED = 30
 const H_LOOK_SENS = 1.0
 const V_LOOK_SENS = 1.0
-
+var item=preload("res://scenes/itens/drop.tscn")
 export (int,"melee","pistol","shotgun","smg","sniper") var arma_atual=0
 export (float, 0,5,0.020) var atack_melee=2
 export (float, 0,5,0.020) var fire_rate_pistol
@@ -15,7 +15,7 @@ export (float, 0,5,0.020) var fire_rate_smg
 export (float, 0,5,0.020) var fire_rate_sniper
 export (float,1,100) var move_speed =12
 
-export (int,1,1000,10) var hp_atual=30
+export (int,1,1000,10) var hp_atual=100
 
 export (Array,Resource)var Sons
 
@@ -42,6 +42,7 @@ var status="normal"
 var enemy=true
 var atk=false
 func _ready():
+	randomize()
 	set_physics_process(usable)
 	move_speed*=scale.x
 
@@ -118,15 +119,16 @@ func atk(delta):
 	
 		if arma_atual==0 and body_in_rage.size()>0:
 			anim.play("andando")
-			print("cooldown")
+			
 	else:
 		cooldown-=delta
 
 func compleat_atk():
 	for enemy in body_in_rage:
 		if enemy.has_method("damage"):
-			print("atacou")
 			enemy.damage(5,0)
+		elif enemy.get_parent().has_method("damage"):
+			enemy.get_parent().damage(5)
 
 func return_walk():
 	cooldown=fire_rate[0]
@@ -186,6 +188,23 @@ func damage(dano,type):
 func die():
 	Global.remove_enemy(self)
 	my_creator.remove_instance(self)
+	if Global.is_host():
+		var class_item=randi()% (Global.get_classes().size()+1)
+		var type=null
+		if class_item!=0:
+			class_item=Global.get_classes()[class_item-1]
+			type=randi()%4
+		else:
+			type=0
+		rpc("drop_item",class_item,type)
+	
+
+remotesync func drop_item(classe,type):
+	var textures=Ress_3D.get_item()
+	var inst=item.instance()
+	get_parent().add_child(inst)
+	inst.global_transform.origin=(get_global_transform().origin)
+	inst.set_text(textures[classe][type],classe,type)
 	queue_free()
 func _on_Timer_timeout():
 
@@ -208,7 +227,9 @@ func on_trap(type):
 
 
 func _on_Area_body_entered(body):
-	if body.has_method("damage"):
+	
+	if body.has_method("damage") or body.get_parent().has_method("damage"):
+		
 		body_in_rage.append(body)
 		atacking=true
 

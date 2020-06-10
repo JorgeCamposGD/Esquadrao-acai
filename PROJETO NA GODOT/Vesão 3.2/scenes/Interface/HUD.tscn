@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Interface/Buttons/BotaoTRAVARMOVIMENTO.png" type="Texture" id=1]
 [ext_resource path="res://assets/Interface/Buttons/BotaoATIRAR.png" type="Texture" id=2]
@@ -10,6 +10,27 @@
 [ext_resource path="res://assets/Interface/Buttons/RodaMovimentoExterior.png" type="Texture" id=8]
 [ext_resource path="res://assets/Fonts/Fonte 1.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=10]
+[ext_resource path="res://assets/Fonts/Fonte 1.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://assets/Icons/BOMBAS/Icone-Bomba-Cupuacu.png" type="Texture" id=12]
+[ext_resource path="res://assets/Icons/BOMBAS/Icone-Granada-Carangueijo.png" type="Texture" id=13]
+[ext_resource path="res://assets/Icons/BOMBAS/Icone-Pato-Bomba.png" type="Texture" id=14]
+[ext_resource path="res://assets/Icons/BOMBAS/Icone-Molotov-Maniva.png" type="Texture" id=15]
+[ext_resource path="res://assets/Icons/ARMAS/Icone-Metralhadora.png" type="Texture" id=16]
+[ext_resource path="res://assets/Icons/ARMAS/Icone-Pistola.png" type="Texture" id=17]
+[ext_resource path="res://assets/Icons/ARMAS/Icone-Sniper.png" type="Texture" id=18]
+[ext_resource path="res://assets/Icons/ARMAS/Icone-Escopeta.png" type="Texture" id=19]
+[ext_resource path="res://assets/Icons/BARRICADAS/Icone-Barricada-Madeira.png" type="Texture" id=20]
+[ext_resource path="res://assets/Icons/BARRICADAS/Icone-Barricada-Arame.png" type="Texture" id=21]
+[ext_resource path="res://assets/Icons/BARRICADAS/Icone-Barricada-Metal.png" type="Texture" id=22]
+[ext_resource path="res://assets/Icons/BARRICADAS/Icone-Barricada-Eletrificada.png" type="Texture" id=23]
+[ext_resource path="res://assets/Icons/TORRETAS/Icone-Torre-Acai.png" type="Texture" id=24]
+[ext_resource path="res://assets/Icons/TORRETAS/Icone-Torre-Mandioca.png" type="Texture" id=25]
+[ext_resource path="res://assets/Icons/TORRETAS/Icone-Torre-Poraque.png" type="Texture" id=26]
+[ext_resource path="res://assets/Icons/TORRETAS/Icone-Torre-Manicoba.png" type="Texture" id=27]
+[ext_resource path="res://assets/Icons/TRAPS/Icone-Armadilha-Caranguejo.png" type="Texture" id=28]
+[ext_resource path="res://assets/Icons/TRAPS/Icone-Armadilha-Gelo.png" type="Texture" id=29]
+[ext_resource path="res://assets/Icons/TRAPS/Icone-Armadilha-Manga.png" type="Texture" id=30]
+[ext_resource path="res://assets/Icons/TRAPS/Icone-Armadilha-Farinha.png" type="Texture" id=31]
 
 [sub_resource type="DynamicFont" id=1]
 size = 37
@@ -19,16 +40,23 @@ use_filter = true
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 50
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 72
 use_filter = true
 extra_spacing_char = 9
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 35
+font_data = ExtResource( 11 )
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -2.05054
-margin_right = -2.05054
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,6 +134,170 @@ normal = ExtResource( 1 )
 action = "circle"
 visibility_mode = 1
 
+[node name="Pc_hud" type="Control" parent="CanvasLayer"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapons" type="Control" parent="CanvasLayer/Pc_hud"]
+margin_left = 1759.84
+margin_top = 154.0
+margin_right = 1799.84
+margin_bottom = 194.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shotgun" type="Sprite" parent="CanvasLayer/Pc_hud/Weapons"]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 19 )
+
+[node name="Smg" type="Sprite" parent="CanvasLayer/Pc_hud/Weapons"]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 16 )
+
+[node name="Pistol" type="Sprite" parent="CanvasLayer/Pc_hud/Weapons"]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 17 )
+
+[node name="Sniper" type="Sprite" parent="CanvasLayer/Pc_hud/Weapons"]
+visible = false
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 18 )
+
+[node name="Ammo" type="Label" parent="CanvasLayer/Pc_hud/Weapons"]
+anchor_left = -12.125
+anchor_top = 2.85
+anchor_right = 3.6
+anchor_bottom = 4.55
+custom_fonts/font = SubResource( 2 )
+text = "ammo: 30"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Constructions" type="Control" parent="CanvasLayer/Pc_hud"]
+margin_left = 1600.0
+margin_top = 810.0
+margin_right = 1640.0
+margin_bottom = 850.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Smg" type="Control" parent="CanvasLayer/Pc_hud/Constructions"]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icone-Torre-Acai" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Smg"]
+position = Vector2( 15.1099, 142.031 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 24 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Icone-Torre-Mandioca" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Smg"]
+position = Vector2( 159.84, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 25 )
+
+[node name="Icone-Torre-Manicoba" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Smg"]
+position = Vector2( 0, -150.527 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 27 )
+
+[node name="Icone-Torre-Poraque" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Smg"]
+position = Vector2( -160, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 26 )
+
+[node name="Shotgun" type="Control" parent="CanvasLayer/Pc_hud/Constructions"]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icone-Barricada-Arame" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Shotgun"]
+position = Vector2( -160, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 21 )
+
+[node name="Icone-Barricada-Eletrificada" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Shotgun"]
+position = Vector2( 159.84, 0 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 23 )
+
+[node name="Icone-Barricada-Madeira" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Shotgun"]
+position = Vector2( 2.28003, 148.234 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 20 )
+
+[node name="Icone-Barricada-Metal" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Shotgun"]
+position = Vector2( 2.27979, -170.932 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 22 )
+
+[node name="Sniper" type="Control" parent="CanvasLayer/Pc_hud/Constructions"]
+visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icone-Armadilha-Caranguejo" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Sniper"]
+position = Vector2( 0, 155.457 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 28 )
+
+[node name="Icone-Armadilha-Farinha" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Sniper"]
+position = Vector2( 153.065, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 31 )
+
+[node name="Icone-Armadilha-Gelo" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Sniper"]
+position = Vector2( 0, -148.282 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 29 )
+
+[node name="Icone-Armadilha-Manga" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Sniper"]
+position = Vector2( -174.59, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+
+[node name="Pistol" type="Control" parent="CanvasLayer/Pc_hud/Constructions"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icone-Bomba-Cupuacu" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Pistol"]
+position = Vector2( -120, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+
+[node name="Icone-Granada-Carangueijo" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Pistol"]
+position = Vector2( 0, 146.826 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 13 )
+
+[node name="Icone-Molotov-Maniva" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Pistol"]
+position = Vector2( 0, -140 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 15 )
+
+[node name="Icone-Pato-Bomba" type="Sprite" parent="CanvasLayer/Pc_hud/Constructions/Pistol"]
+position = Vector2( 155, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
 [node name="ProgressBar2" type="TextureProgress" parent="."]
 anchor_left = 0.022
 anchor_top = 0.032
@@ -148,9 +340,30 @@ margin_left = 0.559982
 margin_top = -0.440018
 margin_right = 0.919983
 margin_bottom = 0.159973
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Nome"
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Pause Panel" type="Panel" parent="."]
+visible = false
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Wait_players" type="Label" parent="Pause Panel"]
+anchor_left = 0.242708
+anchor_top = 0.456481
+anchor_right = 0.757292
+anchor_bottom = 0.543519
+custom_fonts/font = SubResource( 4 )
+text = "Esperando jogadores"
+__meta__ = {
+"_edit_use_anchors_": true
 }
 [connection signal="gui_input" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_gui_input"]

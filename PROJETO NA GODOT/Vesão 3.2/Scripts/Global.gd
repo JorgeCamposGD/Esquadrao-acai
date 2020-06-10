@@ -16,10 +16,10 @@ var scene_0_mobile="res://scenes/Maps/Mapa alpha.tscn"
 #var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
 var players=[]
 var instanced_enemys=[]
-
+var classes=[]
 var instanced_players={}
 var players_info={}
-var my_info={}
+var my_info={"hp":0}
 
 
 var players_status={}
@@ -33,13 +33,15 @@ var loader
 var wait_frames
 var all_ready
 var ip
+var ip_local
 var upnp
 
 var actual_game_state="on_menu"
-
+var cam
 var loading_scenes=false
 var offline=true
-
+var state=false
+var self_id
 func get_game_state():
 	return actual_game_state
 
@@ -48,12 +50,13 @@ func start_tutorial():
 	pass
 
 func _ready():
+	
 	upnp = UPNP.new()
 	upnp.discover()
 	var num_devices = upnp.get_device_count()
 	for i in range(num_devices):
 		var upnp_device = upnp.get_device(i)
-
+		ip_local=upnp_device.igd_our_addr
 	offline=Global.offline
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
@@ -111,7 +114,7 @@ func _process(time):
 
 remotesync func selected_level(level_id):
 	
-	var self_id= get_tree().get_network_unique_id()
+	self_id= get_tree().get_network_unique_id()
 	
 	if OS.get_name()!="Android":
 		loader = ResourceLoader.load_interactive(stages[level_id])
@@ -127,6 +130,16 @@ remotesync func selected_level(level_id):
 	animation.play("loading")
 	
 	wait_frames = 1
+func get_ip_local():
+	return ip_local
+func set_my_status(status):
+
+	my_info["ammo"]=status[1]
+	if status[0]!=players_info[self_id]["hp"]:
+		
+		my_info["hp"]=status[0]
+		rpc('_send_player_info',self_id,my_info)
+
 
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
@@ -236,6 +249,7 @@ func create_server(player_info):
 
 	p_info["host"]=true
 	p_info["id"]=1
+	p_info["hp"]=0
 	get_tree().set_network_peer(peer)
 
 	players_info[peer.get_unique_id()]=p_info
@@ -257,6 +271,7 @@ func conect_to_server(ip,player_info):#recebe o id do player e as informações
 	get_tree().set_network_peer(peer) 
 	p_info["host"]=false
 	p_info["id"]=peer.get_unique_id()
+	p_info["hp"]=0
 	my_info=player_info
 
 
@@ -315,6 +330,7 @@ remote func _request_player_info(request_from_id,player_id):
 remote func _send_player_info(id,info):
 	#recebe do jogador as informações e o id, em seguida adiciona ao dicionario utilizando o ID como chave
 	players_info[id]=info
+	
 	emit_signal("players_change",players_info,id,"player_in")
 
 
@@ -347,9 +363,15 @@ func _connection_on_server_fail():
 func _add_player(player):
 	players.append(player)
 
+func is_host():
+	return get_tree().is_network_server()
+
+func get_classes():
+	return classes
 func get_players_info():
 	return players_info
-
+func get_my_info():
+	return players_info[get_tree().get_network_unique_id()]
 func disconnect_game():
 	peer.close_connection(5)
 
@@ -371,6 +393,9 @@ func set_level(id):
 
 func start_the_game(level):
 	var selected
+	for pl in players_info:
+		classes.append( players_info[pl]["classe"] )
+	print(classes)
 	if stages.size()>=(level):
 		selected=level
 	
@@ -395,3 +420,12 @@ func _ip_recived(revived):
 
 func get_difficulty():
 	return 1
+
+func set_level_state(status):
+	state=status
+	
+func set_cam(new_cam):
+	cam=new_cam
+	
+func get_cam():
+	return cam

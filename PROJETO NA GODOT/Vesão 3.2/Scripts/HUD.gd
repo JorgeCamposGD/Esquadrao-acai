@@ -9,22 +9,43 @@ onready var texture_pos=get_node("CanvasLayer/Mobile_hud/TextureButton").get_pos
 onready var hp_bar=get_node("ProgressBar")
 onready var name_label=get_node("NameLabel")
 onready var txt_btn=get_node("CanvasLayer/Mobile_hud/TextureButton")
-
+onready var ammo_display=$CanvasLayer/Pc_hud/Weapons/Ammo
 var fps
 var Sistema=OS.get_name()
 var touch_input=Vector2()
 var my_name=""
 var analog_index=null
 var events={}
+var ammo
+
+func start():
+	get_node("Pause Panel").hide()
 
 func _ready():
+	var classe_name
+	match Global.get_my_info()["classe"]:
+		1:
+			classe_name="Pistol"
+		2:
+			classe_name="Shotgun"
+		3:
+			classe_name="Smg"
+		4:
+			classe_name="Sniper"
 
+	get_node("CanvasLayer/Pc_hud/Weapons/"+classe_name).show()
+	get_node("CanvasLayer/Pc_hud/Constructions/"+classe_name).show()
+	get_node("Pause Panel").show()
+	get_node("Pause Panel/Wait_players").set_text(tr("ESPERANDO"))
 	Engine.set_target_fps(60)
 	if Sistema=="Android":
 		mobile_interface.show()
 	name_label.set_text(my_name)
 
 func _process(delta):
+	if Global.get_my_info()["ammo"]!=ammo:
+		ammo=Global.get_my_info()["ammo"]
+		ammo_display.set_text(tr("AMMO_ACOUNT"+":"+str(ammo)))
 	fps=Engine.get_frames_per_second()
 	fps_label.set_text("FPS: "+str(fps) )
 	if Sistema=="Android":

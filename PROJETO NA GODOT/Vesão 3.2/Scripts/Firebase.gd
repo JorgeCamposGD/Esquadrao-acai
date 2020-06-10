@@ -1,7 +1,7 @@
 extends Node
 #Okay
 signal ip_recived
-
+signal ipv6_recived
 const API_KEY="AIzaSyBv7Qo7BgIFGuRNvH-BdldYmRc_9fe-K8Q"
 const CREATE_ACOUNT_ADRESS="https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=%s"%API_KEY
 const LOGIN_ADRESS="https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=%s"%API_KEY
@@ -9,13 +9,15 @@ const FIRESTORE="acai-squad-test"
 
 onready var firebase_request=$Firebase
 onready var ipv6_request=$IPV6
+onready var ipv4_request=$IPV4
 
 var user_info
+var ipv4
 var ipv6
 var user_ip
 var getting_ip=false
 var ip_adress="https://api.ipify.org"
-
+var ipv6_adress="https://api6.ipify.org"
 
 
 func _get_user_info(result: Array) -> Dictionary:
@@ -88,23 +90,34 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 
 
 
+func _on_IPV4_request_completed(result, response_code, headers, body):
+	ipv4=body.get_string_from_ascii()
+	emit_signal("ip_recived",ipv4)
+
 func _on_IPV6_request_completed(result, response_code, headers, body):
 	ipv6=body.get_string_from_ascii()
-	emit_signal("ip_recived",ipv6)
+	emit_signal("ipv6_recived",ipv6)
 
 func get_ip() -> void:
 	var self_ip
 
+	if ipv4!=null:
+		self_ip=ipv4
+	else:
+		if ipv4_request.get_http_client_status ( )==HTTPClient.STATUS_DISCONNECTED:
+			ipv4_request.request(ip_adress,[],false,HTTPClient.METHOD_GET)
+		
+		if ipv4!=null:
+			self_ip=ipv4
+			
 	if ipv6!=null:
 		self_ip=ipv6
 	else:
 		if ipv6_request.get_http_client_status ( )==HTTPClient.STATUS_DISCONNECTED:
-			ipv6_request.request(ip_adress,[],false,HTTPClient.METHOD_GET)
+			ipv6_request.request(ipv6_adress,[],false,HTTPClient.METHOD_GET)
 		
 		if ipv6!=null:
 			self_ip=ipv6
-			
-
 
 
 func _on_Firebase_request_completed(result, response_code, headers, body):

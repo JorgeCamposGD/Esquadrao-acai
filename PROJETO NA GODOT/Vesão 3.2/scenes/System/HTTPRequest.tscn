@@ -5,8 +5,11 @@
 [node name="HTTP" type="Node"]
 script = ExtResource( 1 )
 
+[node name="IPV4" type="HTTPRequest" parent="."]
+
 [node name="IPV6" type="HTTPRequest" parent="."]
 
 [node name="Firebase" type="HTTPRequest" parent="."]
+[connection signal="request_completed" from="IPV4" to="." method="_on_IPV4_request_completed"]
 [connection signal="request_completed" from="IPV6" to="." method="_on_IPV6_request_completed"]
 [connection signal="request_completed" from="Firebase" to="." method="_on_Firebase_request_completed"]

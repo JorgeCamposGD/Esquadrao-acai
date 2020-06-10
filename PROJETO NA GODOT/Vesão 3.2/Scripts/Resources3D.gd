@@ -25,6 +25,41 @@ var player_scene=preload("res://scenes/Player.tscn")
 
 var turret_bullet=preload("res://scenes/Personagem/especiais/Bullet turret.tscn")
 
+var drop_texture={
+						1:
+						{
+							0:preload("res://assets/Icons/CRAFT/Icone-Mandioca.png"),
+							1:preload("res://assets/Icons/CRAFT/Icone-Cupuacu.png"),
+							2:preload("res://assets/Icons/CRAFT/Icone-Tucupi.png"),
+							3:preload("res://assets/Icons/CRAFT/IconePato.png")
+						},
+						3:
+						{
+							0:preload("res://assets/Icons/CONSUMIVEL/Icone-Tigela-Acai.png"),
+							1:preload("res://assets/Icons/CRAFT/Icone-Poraque.png"),
+							2:preload("res://assets/Icons/CRAFT/Icone-Maniva.png"),
+							3:preload("res://assets/Icons/CRAFT/Icone-Mandioca.png")
+						},
+						2:
+						{
+							0:preload("res://assets/Icons/CRAFT/Icone-Madeira.png"),
+							1:preload("res://assets/Icons/CRAFT/Icone-Corda.png"),
+							2:preload("res://assets/Icons/CRAFT/Icone-Sucata.png"),
+							3:preload("res://assets/Icons/CRAFT/Icone-Poraque.png")
+						},
+						4:
+						{
+							0:preload("res://assets/Icons/CRAFT/IconeCarangueijo.png"),
+							1:preload("res://assets/Icons/CRAFT/Icone-Manga.png"),
+							2:preload("res://assets/Icons/CRAFT/Icone-Pimenta.png"),
+							3:preload("res://assets/Icons/CRAFT/Icone-Granola.png")
+						},
+
+					0:{
+						0:preload("res://assets/Icons/CRAFT/Icone-Municao.png")
+					}
+				}
+
 func get_t_bullet(classe):
 	return turret_bullet
 
@@ -42,3 +77,6 @@ func get_envir(type):
 
 func get_player():
 	return player_scene
+
+func get_item():
+	return drop_texture

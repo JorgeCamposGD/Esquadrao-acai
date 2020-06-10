@@ -27,11 +27,12 @@ func _process(delta):
 		die()
 		
 	
-func dmg(damage):
+func damage(damage):
 	wall_hp-=damage
+	print(wall_hp)
 
 func set_type(type):
 	my_type=type
 
 func die():
-	pass
+	get_node("AnimationPlayer").play("Die")

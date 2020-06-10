@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Personagem/Balas/bullet.tscn" type="PackedScene" id=2]
@@ -64,7 +64,6 @@
 [ext_resource path="res://assets/sounds/Som de armas/pistola.wav" type="AudioStream" id=62]
 [ext_resource path="res://scenes/Personagem/Armas/Pistola/atira.anim" type="Animation" id=63]
 [ext_resource path="res://scenes/Personagem/Armas/Pistola/Circulo_001.mesh" type="ArrayMesh" id=64]
-[ext_resource path="res://scenes/Personagem/Armas/Smg/metralhadora.dae" type="PackedScene" id=65]
 [ext_resource path="res://scenes/Personagem/Armas/Smg/Cubo.mesh" type="ArrayMesh" id=66]
 [ext_resource path="res://scenes/Personagem/Armas/Sniper/Circulo_002.mesh" type="ArrayMesh" id=67]
 
@@ -811,9 +810,6 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="metralhadora" parent="Char/Armature/Shotgun/SHOTGUNS DO GORDO DA EDREIRA" instance=ExtResource( 65 )]
-transform = Transform( 1, 9.31323e-10, -1.49012e-08, -9.31323e-10, 1, -1.01281e-08, 0, 5.00586e-09, 1, 11245.7, 1858.78, -3835.34 )
-
 [node name="Smg" type="Spatial" parent="Char/Armature"]
 transform = Transform( -2.60673e-07, 0, 1.6, 0, 1.6, 0, -1.6, 0, -2.60673e-07, 0, -2.6, 0 )
 visible = false
@@ -1018,6 +1014,7 @@ script = null
 [node name="Granadas" type="RigidBody" parent="optimizer"]
 collision_layer = 2
 collision_mask = 6
+mode = 1
 gravity_scale = 3.0
 
 [node name="Molotov" type="MeshInstance" parent="optimizer/Granadas"]
