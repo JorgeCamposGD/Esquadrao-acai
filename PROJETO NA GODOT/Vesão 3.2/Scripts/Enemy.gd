@@ -47,7 +47,7 @@ puppet var pmotiom=Vector3()
 puppet var ppos=Transform()
 
 func _ready():
-	ppos.get_global_transform()
+	ppos=get_global_transform()
 	
 	randomize()
 	set_physics_process(usable)
