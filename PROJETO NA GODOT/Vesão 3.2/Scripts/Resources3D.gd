@@ -28,7 +28,7 @@ var turret_bullet=preload("res://scenes/Personagem/especiais/Bullet turret.tscn"
 var drop_texture={
 						1:
 						{
-							0:preload("res://assets/Icons/CRAFT/Icone-Mandioca.png"),
+							0:preload("res://assets/Icons/CRAFT E CONSUMIVEL/Icone-Coxinha.png"),
 							1:preload("res://assets/Icons/CRAFT/Icone-Cupuacu.png"),
 							2:preload("res://assets/Icons/CRAFT/Icone-Tucupi.png"),
 							3:preload("res://assets/Icons/CRAFT/IconePato.png")

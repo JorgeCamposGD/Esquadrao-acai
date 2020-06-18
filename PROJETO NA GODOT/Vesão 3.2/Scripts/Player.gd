@@ -1,7 +1,7 @@
 extends KinematicBody
 #okay
 class_name player
-var imortal=true
+var imortal=false
 
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
@@ -73,6 +73,15 @@ puppet var puppet_move_vec=Vector3()
 puppet var puppet_transform=Transform()
 puppet var puppet_lock=false
 puppet var puppet_anim="parado com arma"
+var finish=false
+remote func finish_level():
+	finish=true
+	if Global.is_master(self):
+		hud.set_finish()
+	set_physics_process(false)
+	get_node("CollisionShape").set_disabled(true)
+	rpc("finish_level")
+	
 func _ready():
 	match classe:
 		"Pistol":
@@ -134,15 +143,22 @@ func _start():
 
 	
 func _physics_process(delta):
+	var dead=0
+	var in_game=0
+	for x in Global.get_players_info():
+		in_game+=1
+		if Global.get_players_info()[x]["hp"]<=0:
+			dead+=1
 	
-
+	if dead==in_game:
+		all_dead()
 	action_state=0
 
 
 
 	var move_vec = Vector3()
 
-	if (Global.is_master(self) or off_line) and live:
+	if (Global.is_master(self) or off_line) and live and not finish:
 
 		if hp_atual<=0:
 			die()
@@ -175,8 +191,8 @@ func _physics_process(delta):
 	
 
 		
-		rset("puppet_transform",get_global_transform())
-		rset("puppet_move_vec",move_vec)
+		rset_unreliable("puppet_transform",get_global_transform())
+		rset_unreliable("puppet_move_vec",move_vec)
 	else:
 		move_vec=puppet_move_vec
 		set_global_transform(puppet_transform)
@@ -277,6 +293,10 @@ func _physics_process(delta):
 			anim_name=puppet_anim
 	if not(anim_control.is_playing() ):
 		anim_control.play(anim_name)
+		
+func all_dead():
+	if Global.is_master(self):
+		hud.all_dead()
 func atack():
 
 	if cooldown<=0:
@@ -368,7 +388,8 @@ func construct_item(classe,type):
 		var item_point=ray_to_obj.get_collision_point()
 	
 		resources[type]-=1
-		hud.set_resources(resources)
+		if Global.is_master(self):
+			hud.set_resources(resources)
 		rpc("construct",classe,graned_place,item_point,type)
 		#item.scale=scale
 remotesync func construct(classe,grenade,point,type):
@@ -402,7 +423,8 @@ func _on_Melee_body_exited(body):
 
 func server_out():
 	get_tree().paused=true
-	
+	if Global.is_master(self):
+		hud.disconect()
 func die():
 	live=false
 	#chama animação de morrer
@@ -428,6 +450,8 @@ func colect(item,classe_item,type):
 			resources[type]+=1
 			
 		item.rpc("colected")
+	
 	my_status[2]=resources
 	Global.set_my_status(my_status)
-	hud.set_resources(resources)
+	if Global.is_master(self):
+		hud.set_resources(resources)

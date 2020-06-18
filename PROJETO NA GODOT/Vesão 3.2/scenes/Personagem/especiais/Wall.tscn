@@ -61,6 +61,7 @@ collision_mask = 0
 
 [node name="BARRICADA DE ARAME FARPADO" type="Spatial" parent="StaticBody"]
 transform = Transform( 1.9994, -0.0342903, 0.0348995, 0.0348994, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
+visible = false
 
 [node name="Arame" type="MeshInstance" parent="StaticBody/BARRICADA DE ARAME FARPADO"]
 mesh = ExtResource( 3 )
@@ -69,6 +70,7 @@ material/1 = null
 
 [node name="Barricada de puraque" type="Spatial" parent="StaticBody"]
 transform = Transform( 1.9994, -0.0342903, 0.0348995, 0.0348994, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
+visible = false
 
 [node name="BARRICADA DE PURAQUE" type="MeshInstance" parent="StaticBody/Barricada de puraque"]
 transform = Transform( 1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, 0, 0 )
@@ -80,6 +82,7 @@ material/3 = null
 
 [node name="Barricada de metal" type="Spatial" parent="StaticBody"]
 transform = Transform( 1.9994, -0.0342903, 0.0348995, 0.0348994, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
+visible = false
 
 [node name="barricada de metal" type="MeshInstance" parent="StaticBody/Barricada de metal"]
 transform = Transform( 1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, 0, 0 )
@@ -91,6 +94,7 @@ material/3 = null
 
 [node name="BARRICADA DE MADEIRA" type="Spatial" parent="StaticBody"]
 transform = Transform( 1.9994, -0.0342905, 0.0348995, 0.0348995, 1.99939, -0.0349049, -0.0342904, 0.0355034, 1.99939, 0, 0, 0 )
+visible = false
 
 [node name="BARRICADA DE MADEIRA" type="MeshInstance" parent="StaticBody/BARRICADA DE MADEIRA"]
 mesh = ExtResource( 2 )

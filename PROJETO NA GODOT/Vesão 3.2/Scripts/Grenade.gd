@@ -7,7 +7,7 @@ onready var patob=get_node("Pato")
 onready var detonator=get_node("Timer")
 onready var anim=get_node("AnimationPlayer")
 var type
-var timer=[2,5,0,2.4]
+var timer=[2,5,0,2.56]
 var efecty_time=[0,0,5,0]
 onready var music=get_node("Explosion")
 var on_area=[]
@@ -39,7 +39,8 @@ func set_type(type):
 	print(get_colliding_bodies())
 
 func stop():
-	set_mode(RigidBody.MODE_STATIC) 
+	self.set_mode(RigidBody.MODE_STATIC) 
+	
 
 func _on_Spatial_body_entered(body):
 	call_deferred("set_contact_monitor",false)
@@ -47,15 +48,15 @@ func _on_Spatial_body_entered(body):
 	if type==3:
 		music.set_stream(load("res://assets/sounds/Bombas/pato bomba.wav"))
 		music.play()
-	elif type==2:
-		music.set_stream(load("res://assets/sounds/Bombas/Motolov.wav"))
 	
 
 func _on_Timer_timeout():
 	
 	anim.play(str(type))
 	get_node("Area").set_monitoring(true)
-
+	if type==2:
+		music.set_stream(load("res://assets/sounds/Bombas/Motolov.wav"))
+		music.play()
 
 
 
@@ -65,3 +66,7 @@ func _on_Area_body_entered(body):
 	if body.has_method("aply_efect") and not(aplyed.has(body)):
 		body.aply_efect(1,type,efecty_time[type])
 		aplyed.append(body)
+
+
+func _on_Spatial_body_exited(body):
+	pass # Replace with function body.

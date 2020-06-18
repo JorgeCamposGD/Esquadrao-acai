@@ -6,7 +6,7 @@ onready var paraliza=get_node("paralize")
 onready var manga=get_node("Mangas")
 onready var anim=get_node("AnimationPlayer")
 var my_type
-var duration=[3,4,5,6]
+var duration=[3,4,10,10]
 var active=false
 func _ready():
 

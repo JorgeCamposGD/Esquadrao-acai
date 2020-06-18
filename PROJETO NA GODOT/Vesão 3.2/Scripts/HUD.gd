@@ -1,5 +1,6 @@
 extends Control
 
+
 onready var fps_label=get_node("CanvasLayer/FPS")
 onready var mobile_interface=get_node("CanvasLayer/Mobile_hud")
 onready var texture_size=get_node("CanvasLayer/Mobile_hud/TextureButton").get_size()
@@ -11,6 +12,8 @@ onready var name_label=get_node("NameLabel")
 onready var txt_btn=get_node("CanvasLayer/Mobile_hud/TextureButton")
 onready var ammo_display=$CanvasLayer/Pc_hud/Weapons/Ammo
 onready var res_hud=[get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res0"),get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res1"),get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res2"),get_node("CanvasLayer/Pc_hud/Constructions/Resources/Res3")]
+onready var mission=get_node("CanvasLayer/Mission")
+onready var fim=get_node("CanvasLayer/Panel")
 var fps
 var Sistema=OS.get_name()
 var touch_input=Vector2()
@@ -19,10 +22,16 @@ var analog_index=null
 var events={}
 var ammo
 var resources
+var started=false
 func start():
+	set_physics_process(true)
 	get_node("Pause Panel").hide()
+	mission.set_text(tr("Missao")+str(Global.get_tempo()) )
 
 func _ready():
+	set_physics_process(false)
+	_set_size(Settings.resolution)
+
 	set_resources(get_parent().get_resources())
 	var classe_name
 	match Global.get_my_info()["classe"]:
@@ -43,7 +52,16 @@ func _ready():
 	if Sistema=="Android":
 		mobile_interface.show()
 	name_label.set_text(my_name)
+func all_dead():
+	get_node("CanvasLayer/Panel2").show()
+	
+func disconect():
+	get_node("CanvasLayer/Panel3").show()
+func _physics_process(delta):
+	mission.set_text(tr("Missao")+str(int( Global.get_tempo() )   ) )
 
+func set_finish():
+	fim.show()
 func _process(delta):
 	if Global.get_my_info()["ammo"]!=ammo:
 	
@@ -72,7 +90,7 @@ func set_resources(res):
 		res_hud[x].set_text(str(res[x]))
 
 func _on_TextureButton_gui_input(event):
-	
+	print("apertou")
 	var btn_pos=txt_btn.get_global_position()
 	if Global.is_master(get_parent()):
 		if (event is InputEventScreenTouch) or (event is InputEventScreenDrag): 
@@ -119,3 +137,11 @@ func set_hp(hp_max,hp_actual):
 
 
 
+
+
+func _on_Button_pressed():
+	get_tree().quit()
+
+
+func _on_Voltar_ao_menu_pressed():
+	get_tree().quit()

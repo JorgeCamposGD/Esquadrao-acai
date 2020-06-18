@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/Interface/Buttons/BotaoTRAVARMOVIMENTO.png" type="Texture" id=1]
 [ext_resource path="res://assets/Interface/Buttons/BotaoATIRAR.png" type="Texture" id=2]
@@ -33,31 +33,41 @@
 [ext_resource path="res://assets/Icons/TRAPS/Icone-Armadilha-Farinha.png" type="Texture" id=31]
 
 [sub_resource type="DynamicFont" id=1]
-size = 37
+size = 62
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 43
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 50
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 46
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
+size = 70
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 72
 use_filter = true
 extra_spacing_char = 9
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 35
 font_data = ExtResource( 11 )
 
@@ -73,86 +83,42 @@ __meta__ = {
 layer = 2
 
 [node name="FPS" type="Label" parent="CanvasLayer"]
-margin_left = 5.13342
-margin_top = 3.08005
-margin_right = 96.1335
-margin_bottom = 50.08
+margin_top = 125.58
+margin_right = 91.0001
+margin_bottom = 195.58
 custom_fonts/font = SubResource( 1 )
 text = "64fs"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mobile_hud" type="Control" parent="CanvasLayer"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Mission" type="RichTextLabel" parent="CanvasLayer"]
+anchor_left = 0.297995
+anchor_right = 0.831849
+anchor_bottom = 0.224074
+custom_fonts/normal_font = SubResource( 2 )
+text = "Espere o barco de resgate chegar, tempo restante:
+"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
-
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
-anchor_left = 1.0
-anchor_top = 16.509
-anchor_right = 10.659
-anchor_bottom = 26.509
-margin_left = -15.0
-margin_top = -0.359985
-margin_right = -1.35995
-margin_bottom = -0.359863
-keep_pressed_outside = true
-texture_normal = ExtResource( 8 )
-expand = true
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Analog" type="Sprite" parent="CanvasLayer/Mobile_hud/TextureButton"]
-position = Vector2( 200, 200 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
-
-[node name="Shoot" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
-position = Vector2( 1574.04, 728.101 )
-scale = Vector2( 3, 3 )
-normal = ExtResource( 2 )
-action = "square"
-visibility_mode = 1
-
-[node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
-position = Vector2( 1422.28, 556.898 )
-scale = Vector2( 4.5, 4.5 )
-normal = ExtResource( 7 )
-action = "r1"
-visibility_mode = 1
-
-[node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
-position = Vector2( 1759.84, 39.8183 )
-scale = Vector2( 3, 3 )
-normal = ExtResource( 4 )
-action = "ui_cancel"
-visibility_mode = 1
-
-[node name="Lock" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
-position = Vector2( 1665.14, 491.473 )
-scale = Vector2( 2, 2 )
-normal = ExtResource( 1 )
-action = "circle"
-visibility_mode = 1
 
 [node name="Pc_hud" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Weapons" type="Control" parent="CanvasLayer/Pc_hud"]
-margin_left = 1759.84
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -160.16
 margin_top = 154.0
-margin_right = 1799.84
+margin_right = -120.16
 margin_bottom = 194.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Shotgun" type="Sprite" parent="CanvasLayer/Pc_hud/Weapons"]
@@ -180,7 +146,7 @@ anchor_left = -12.125
 anchor_top = 2.85
 anchor_right = 3.6
 anchor_bottom = 4.55
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "ammo: 30"
 align = 2
 __meta__ = {
@@ -188,10 +154,14 @@ __meta__ = {
 }
 
 [node name="Constructions" type="Control" parent="CanvasLayer/Pc_hud"]
-margin_left = 1600.0
-margin_top = 810.0
-margin_right = 1640.0
-margin_bottom = 850.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -254.86
+margin_top = -244.0
+margin_right = -214.86
+margin_bottom = -204.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -319,7 +289,7 @@ margin_left = -177.72
 margin_top = -126.108
 margin_right = -117.72
 margin_bottom = 0.891907
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "52
 "
 uppercase = true
@@ -332,7 +302,7 @@ margin_left = -64.0
 margin_top = 40.0
 margin_right = -4.0
 margin_bottom = 167.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "52
 "
 uppercase = true
@@ -345,7 +315,7 @@ margin_left = 96.0
 margin_top = -126.108
 margin_right = 156.0
 margin_bottom = 0.891907
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "52
 "
 uppercase = true
@@ -358,7 +328,7 @@ margin_left = -64.0
 margin_top = -293.5
 margin_right = -4.0
 margin_bottom = -166.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "52
 "
 uppercase = true
@@ -370,15 +340,200 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.51746
+margin_bottom = 2.51746
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1225.95
+margin_top = -468.962
+margin_right = 1241.05
+margin_bottom = -83.9617
+custom_fonts/font = SubResource( 5 )
+text = "Fim da Demo
+Obrigado por jogar,
+em breve a versão final 
+será lançada na Steam e playstore"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -409.556
+margin_top = 199.483
+margin_right = 409.444
+margin_bottom = 443.483
+custom_fonts/font = SubResource( 5 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.51746
+margin_bottom = 2.51746
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1225.95
+margin_top = -468.962
+margin_right = 1241.05
+margin_bottom = -83.9617
+custom_fonts/font = SubResource( 5 )
+text = "Todos os jogadores morreram.
+tente novamente"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Voltar ao menu" type="Button" parent="CanvasLayer/Panel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -409.556
+margin_top = 199.483
+margin_right = 409.444
+margin_bottom = 443.483
+custom_fonts/font = SubResource( 5 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.51746
+margin_bottom = 2.51746
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1225.95
+margin_top = -468.962
+margin_right = 1241.05
+margin_bottom = -83.9617
+custom_fonts/font = SubResource( 5 )
+text = "Perda de conexão com o host.
+reinicie o jogo."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Voltar ao menu" type="Button" parent="CanvasLayer/Panel3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -409.556
+margin_top = 199.483
+margin_right = 409.444
+margin_bottom = 443.483
+custom_fonts/font = SubResource( 5 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mobile_hud" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 0.0208333
+anchor_bottom = 0.037037
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Mobile_hud"]
+anchor_left = 1.0
+anchor_top = 16.509
+anchor_right = 10.659
+anchor_bottom = 26.509
+margin_left = -15.0
+margin_top = -0.359985
+margin_right = -1.35995
+margin_bottom = -0.359863
+keep_pressed_outside = true
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Analog" type="Sprite" parent="CanvasLayer/Mobile_hud/TextureButton"]
+position = Vector2( 200, 200 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
+[node name="Shoot" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1574.04, 728.101 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 2 )
+action = "square"
+visibility_mode = 1
+
+[node name="Interact" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1422.28, 556.898 )
+scale = Vector2( 4.5, 4.5 )
+normal = ExtResource( 7 )
+action = "r1"
+visibility_mode = 1
+
+[node name="Options" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1759.84, 39.8183 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 4 )
+action = "ui_cancel"
+visibility_mode = 1
+
+[node name="Lock" type="TouchScreenButton" parent="CanvasLayer/Mobile_hud"]
+position = Vector2( 1665.14, 491.473 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 1 )
+action = "circle"
+visibility_mode = 1
+
 [node name="ProgressBar2" type="TextureProgress" parent="."]
-anchor_left = 0.022
-anchor_top = 0.032
-anchor_right = 0.404
-anchor_bottom = 0.194
-margin_left = 0.403797
-margin_top = 0.0341454
-margin_right = -0.0362549
-margin_bottom = 0.0741425
+margin_top = 3.08006
+margin_right = 732.996
+margin_bottom = 178.08
+rect_scale = Vector2( 0.7, 0.7 )
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
@@ -388,15 +543,12 @@ __meta__ = {
 
 [node name="ProgressBar" type="TextureProgress" parent="."]
 modulate = Color( 1, 1, 1, 0.545098 )
-anchor_left = 0.022
-anchor_top = 0.032
-anchor_right = 0.404
-anchor_bottom = 0.194
-margin_left = 163.76
-margin_top = 54.44
-margin_right = -8.68005
-margin_bottom = -55.52
+margin_top = 3.08006
+margin_right = 733.0
+margin_bottom = 178.08
+rect_scale = Vector2( 0.7, 0.7 )
 value = 100.0
+allow_lesser = true
 texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 __meta__ = {
@@ -404,15 +556,10 @@ __meta__ = {
 }
 
 [node name="NameLabel" type="Label" parent="."]
-anchor_left = 0.107
-anchor_top = 0.168
-anchor_right = 0.399
-anchor_bottom = 0.248
-margin_left = 0.559982
-margin_top = -0.440018
-margin_right = 0.919983
-margin_bottom = 0.159973
-custom_fonts/font = SubResource( 4 )
+margin_top = 3.08006
+margin_right = 561.0
+margin_bottom = 90.08
+custom_fonts/font = SubResource( 6 )
 text = "Nome"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -433,9 +580,12 @@ anchor_left = 0.242708
 anchor_top = 0.456481
 anchor_right = 0.757292
 anchor_bottom = 0.543519
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Esperando jogadores"
 __meta__ = {
 "_edit_use_anchors_": true
 }
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel2/Voltar ao menu" to="." method="_on_Voltar_ao_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel3/Voltar ao menu" to="." method="_on_Voltar_ao_menu_pressed"]
 [connection signal="gui_input" from="CanvasLayer/Mobile_hud/TextureButton" to="." method="_on_TextureButton_gui_input"]

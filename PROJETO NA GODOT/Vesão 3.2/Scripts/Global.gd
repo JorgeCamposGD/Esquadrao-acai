@@ -12,8 +12,7 @@ onready var stages_mobile=[scene_0_mobile]
 onready var animation=$Anim
 
 var scene_0="res://scenes/Maps/Mapa alpha.tscn"
-var scene_0_mobile="res://scenes/Maps/Mapa alpha.tscn"
-#var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
+var scene_0_mobile="res://scenes/Maps/Mapa alpha mobile.tscn"
 var players=[]
 var instanced_enemys=[]
 var classes=[]
@@ -21,7 +20,7 @@ var instanced_players={}
 var players_info={}
 var my_info={"hp":0}
 
-
+var tempo_restante=300
 var players_status={}
 
 var time_max = 100 # msec
@@ -44,6 +43,7 @@ var state=false
 var self_id
 var actual_music
 var next_music
+var started=false
 onready var music_box=get_node("Music_box")
 
 func get_game_state():
@@ -53,6 +53,10 @@ func get_game_state():
 func start_tutorial():
 	pass
 
+func _physics_process(delta):
+	if started:
+		if tempo_restante>0:
+			tempo_restante-=delta
 func _ready():
 	
 	upnp = UPNP.new()
@@ -78,7 +82,8 @@ func _ready():
 	get_tree().connect('server_disconnected', self, '_server_disconnected')
 
 
-
+func get_tempo():
+	return tempo_restante
 func set_upnp():
 
 	if upnp.get_gateway() and upnp.get_gateway().is_valid_gateway():
@@ -196,6 +201,7 @@ remotesync func _set_players(key,place,size):
 
 func try_set_players(key,place,size):
 	if instanced_players.size()<size:
+		yield(get_tree(), "idle_frame")
 		yield(get_tree(), "idle_frame")
 		try_set_players(key,place,size)
 	else:
@@ -405,6 +411,8 @@ func start_the_game(level):
 	
 	if get_tree().is_network_server():
 		rpc("selected_level",selected)
+		started=true
+	
 
 func set_music(path):
 	if actual_music==null:

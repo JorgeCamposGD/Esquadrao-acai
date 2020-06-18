@@ -4,9 +4,9 @@ export (Array,PackedScene) var mob_resource=[preload("res://scenes/enemys/LoucoD
 
 var active=false
 
-export (int,0,30) var maximo_de_inimigos_no_easy=10
-export (int,0,30) var maximo_de_inimigos_no_medium=15
-export (int,0,30) var maximo_de_inimigos_no_hard=20
+export (int,0,30) var maximo_de_inimigos_no_easy=15
+export (int,0,300) var maximo_de_inimigos_no_medium=15
+export (int,0,30) var maximo_de_inimigos_no_hard=15
 export (int,0,30) var maximo_de_ondas=5
 export (int,0,30) var inimigos_por_onda=5
 
@@ -32,7 +32,10 @@ var state="waiting_start"
 
 func _ready():
 	difficulty=Global.get_difficulty() if Global.get_difficulty()!=null else 1
+	var multiply=0
 	
+	for x in Global.get_players_info():
+		multiply+=1
 	match difficulty:
 		0:
 			difficulty_limit=maximo_de_inimigos_no_easy
@@ -40,6 +43,9 @@ func _ready():
 			difficulty_limit=maximo_de_inimigos_no_medium
 		2:
 			difficulty_limit=maximo_de_inimigos_no_hard
+	
+	difficulty_limit*=multiply
+	print(difficulty_limit)
 	randomize()
 	if not(active):
 		return

@@ -90,11 +90,14 @@ func get_targuet():
 
 	else:
 		for t in enemys:
-			if targuet==null:
-				
-				targuet=t.get_global_transform().origin
-				
-			targuet_pos=get_bigger_distance(targuet,t.get_global_transform().origin,my_pos)
+			var wr = weakref(t)
+
+			if wr.get_ref():
+				if targuet==null:
+					
+					targuet=t.get_global_transform().origin
+					
+				targuet_pos=get_bigger_distance(targuet,t.get_global_transform().origin,my_pos)
 			
 	if targuet_pos!=null:
 		if my_pos.distance_to(targuet_pos)>=turret_range[my_type]:

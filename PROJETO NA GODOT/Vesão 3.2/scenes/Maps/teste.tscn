@@ -1,0 +1,150 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/Players_pos.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Spawn_manager.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Level_manager.gd" type="Script" id=32]
+[ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=33]
+[ext_resource path="res://assets/Enemys/andando.anim" type="Animation" id=34]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape" id=4]
+radius = 2.05424
+height = 3.65173
+
+[sub_resource type="Environment" id=5]
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="PlaneMesh" id=6]
+size = Vector2( 200, 200 )
+
+[sub_resource type="ConcavePolygonShape" id=7]
+data = PoolVector3Array( 100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 32 )
+
+[node name="Spawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
+script = ExtResource( 2 )
+
+[node name="Spawn_pos" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0768, -1.58473, 2.31607 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos"]
+
+[node name="Spawn_pos2" type="Position3D" parent="Spawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1874, -2.8897, -6.68034 )
+
+[node name="Start" type="Timer" parent="Spawn/Spawn_pos2"]
+wait_time = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spawn/Spawn_pos2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="Spawn/Spawn_pos2"]
+
+[node name="PlayerPos" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4227, 13.4788 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 2.56641, 19.0873, -0.542589 )
+
+[node name="LoucoDaGranola" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03813, 3.42999, 1.48528 )
+collision_layer = 4
+collision_mask = 39
+
+[node name="DOIDO DA GRANOLA" type="Spatial" parent="LoucoDaGranola"]
+
+[node name="Spatial" type="Spatial" parent="LoucoDaGranola"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0 )
+
+[node name="Armadure" type="Spatial" parent="LoucoDaGranola/Spatial"]
+transform = Transform( 1.31756, 0, 0, 0, 1.31756, 0, 0, 0, 1.31756, 0.558617, 2.64046, -0.0744687 )
+
+[node name="Skeleton" type="Skeleton" parent="LoucoDaGranola/Spatial/Armadure"]
+bones/0/name = "Bone.001"
+bones/0/parent = -1
+bones/0/rest = Transform( -0.200778, 0.976186, -0.0821574, 0.0153007, -0.08073, -0.996618, -0.979517, -0.201356, 0.00127243, -0.470352, -1.39861, 0.0452919 )
+bones/0/enabled = true
+bones/0/bound_children = [  ]
+bones/1/name = "Bone"
+bones/1/parent = 0
+bones/1/rest = Transform( -0.184437, -0.979518, 0.0808007, 0.899714, -0.201356, -0.38726, 0.395598, 0.00127252, 0.918423, 0.0575858, 0.282344, -1.43335 )
+bones/1/enabled = true
+bones/1/bound_children = [  ]
+bones/2/name = "Bone.002"
+bones/2/parent = 0
+bones/2/rest = Transform( -0.98893, -0.130985, -0.0697186, 0.0585931, 0.0869549, -0.994488, 0.136325, -0.987564, -0.0783175, -0.584191, 0.824938, -1.36402 )
+bones/2/enabled = true
+bones/2/bound_children = [  ]
+bones/3/name = "Bone.003"
+bones/3/parent = 0
+bones/3/rest = Transform( -0.935262, -0.124218, 0.331444, -0.338157, 0.0369281, -0.940365, 0.104571, -0.991568, -0.0765428, 0.498924, 0.757662, -0.595716 )
+bones/3/enabled = true
+bones/3/bound_children = [  ]
+
+[node name="Corpo" type="MeshInstance" parent="LoucoDaGranola/Spatial/Armadure/Skeleton"]
+transform = Transform( -1.7, 0, -2.56693e-07, 0, 1.7, 0, 2.56693e-07, 0, -1.7, -0.4, -1.525, -3.72529e-09 )
+mesh = ExtResource( 33 )
+material/0 = null
+material/1 = null
+
+[node name="Cano da arma" type="MeshInstance" parent="LoucoDaGranola/Spatial"]
+transform = Transform( 0.999112, 0, 0, 0, 0.528336, 0, 0, 0, 0.624785, -2.83512, -0.723664, -0.110381 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Position3D" type="Position3D" parent="LoucoDaGranola/Spatial/Cano da arma"]
+transform = Transform( -4.37503e-08, 0, -1.60055, 0, 1.89274, 0, 1.00089, 0, -6.99623e-08, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoucoDaGranola/Spatial"]
+anims/andando = ExtResource( 34 )
+
+[node name="Mob" type="AudioStreamPlayer3D" parent="LoucoDaGranola"]
+
+[node name="CollisionShape" type="CollisionShape" parent="LoucoDaGranola"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="World" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.35814, 0.933668, 0, -0.933668, 0.35814, 0, 34.1466, 16.3045 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 184.121, 0 )
+light_color = Color( 0.45098, 0.466667, 0.0745098, 1 )
+light_energy = 0.34
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 7 )
+[connection signal="timeout" from="Spawn/Spawn_pos/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos/Timer" to="Spawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos2/Start" to="Spawn" method="_on_Start_timeout"]
+[connection signal="timeout" from="Spawn/Spawn_pos2/Timer" to="Spawn" method="_on_Timer_timeout"]
+[connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]

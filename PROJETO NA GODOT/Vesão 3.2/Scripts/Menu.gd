@@ -1,68 +1,69 @@
 extends Control
 
-onready var create_account_btn=$Login/Panel2/Submit/Login_email2
-onready var login_with_email=$Login/Panel2/Login/Login_with_email
-onready var create_account_label=$Login/Panel2/Submit/Create_account
-onready var online=get_node("Login")
-onready var config_btn=$Panel/Config
-onready var Play_online=$Panel/Play_online
-onready var Play_direct_btn=get_node("Panel/Play_direct")
-onready var exit=$Panel/Exit
-onready var play_solo=$Panel/Play_solo
-onready var game_name=$Panel/Game_name
-onready var email_login=$Login/Panel2/Login/Email/Email_adress
-onready var password_login=$Login/Panel2/Login/Password/Email_password
-onready var create_account=$Login/Panel2/Submit/Email2/Create_email
-onready var create_password=$Login/Panel2/Submit/Password2/Create_password
-onready var confirm_password=get_node("Login/Panel2/Submit/Confirm password/Create_password")
-onready var confirm_password_text=get_node("Login/Panel2/Submit/Confirm password")
-onready var Ip_label=$Play_direct_panel/Panel2/IPV4_Label
-onready var play_direct=$Play_direct_panel
-onready var nick_name=$Play_direct_panel/Panel2/Nickname
-onready var notify_conect=$Play_direct_panel/Panel2/Notify_conect
-onready var inserted_ip=$Play_direct_panel/Panel2/insert_ip
-onready var lobby_popup=$Lobby_popup
-onready var lobby_panel=$Lobby_popup/Lobby_panel
-onready var mission_start=$Lobby_popup/Lobby_panel/Start_Game
-onready var your_ip=$Play_direct_panel/Panel2/your_ip
-onready var host_name=$Lobby_popup/Lobby_panel/Host/Host_name
-onready var player1_name=$Lobby_popup/Lobby_panel/Player1/player1_name
-onready var player2_name=$Lobby_popup/Lobby_panel/Player2/player2_name
-onready var player3_name=$Lobby_popup/Lobby_panel/Player3/player3_name
+onready var create_account_btn=$PanelContainer/Login/Panel2/Submit/Login_email2
+onready var login_with_email=$PanelContainer/Login/Panel2/Login/Login_with_email
+onready var create_account_label=$PanelContainer/Login/Panel2/Submit/Create_account
+onready var online=$PanelContainer/Login
+onready var config_btn=$PanelContainer/Panel/Config
+onready var Play_online=$PanelContainer/Panel/Play_online
+onready var Play_direct_btn=$PanelContainer/Panel/Play_direct
+onready var exit=$PanelContainer/Panel/Exit
+onready var play_solo=$PanelContainer/Panel/Play_solo
+onready var game_name=$PanelContainer/Panel/Game_name
+onready var email_login=$PanelContainer/Login/Panel2/Login/Email/Email_adress
+onready var password_login=$PanelContainer/Login/Panel2/Login/Password/Email_password
+onready var create_account=$PanelContainer/Login/Panel2/Submit/Email2/Create_email
+onready var create_password=$PanelContainer/Login/Panel2/Submit/Password2/Create_password
+onready var confirm_password=$PanelContainer/Login/Panel2/Submit/Confirm_password/Create_password
+onready var confirm_password_text=$PanelContainer/Login/Panel2/Submit/Confirm_password
+onready var Ip_label=$PanelContainer/Play_direct_panel/Panel2/IPV4_Label
+onready var play_direct=$PanelContainer/Play_direct_panel
+onready var nick_name=$PanelContainer/Play_direct_panel/Panel2/Nickname
+onready var notify_conect=$PanelContainer/Play_direct_panel/Panel2/Notify_conect
+onready var inserted_ip=$PanelContainer/Play_direct_panel/Panel2/insert_ip
+onready var lobby_popup=$PanelContainer/Lobby_popup
+onready var lobby_panel=$PanelContainer/Lobby_popup/Lobby_panel
+onready var mission_start=$PanelContainer/Lobby_popup/Lobby_panel/Start_Game
+onready var your_ip=$PanelContainer/Play_direct_panel/Panel2/your_ip
+onready var host_name=$PanelContainer/Lobby_popup/Lobby_panel/Host/Host_name
+onready var player1_name=$PanelContainer/Lobby_popup/Lobby_panel/Player1/player1_name
+onready var player2_name=$PanelContainer/Lobby_popup/Lobby_panel/Player2/player2_name
+onready var player3_name=$PanelContainer/Lobby_popup/Lobby_panel/Player3/player3_name
 
-onready var host_class=$Lobby_popup/Lobby_panel/Host/MenuButton
-onready var player1_class=$Lobby_popup/Lobby_panel/Player1/MenuButton
-onready var player2_class=$Lobby_popup/Lobby_panel/Player2/MenuButton
-onready var player3_class=$Lobby_popup/Lobby_panel/Player3/MenuButton
+onready var host_class=$PanelContainer/Lobby_popup/Lobby_panel/Host/MenuButton
+onready var player1_class=$PanelContainer/Lobby_popup/Lobby_panel/Player1/MenuButton
+onready var player2_class=$PanelContainer/Lobby_popup/Lobby_panel/Player2/MenuButton
+onready var player3_class=$PanelContainer/Lobby_popup/Lobby_panel/Player3/MenuButton
 
-onready var player_n1=$Lobby_popup/Lobby_panel/Player1/Host_identifier
-onready var player_n2=$Lobby_popup/Lobby_panel/Player2/Host_identifier
-onready var player_n3=$Lobby_popup/Lobby_panel/Player3/Host_identifier
+onready var player_n1=$PanelContainer/Lobby_popup/Lobby_panel/Player1/Host_identifier
+onready var player_n2=$PanelContainer/Lobby_popup/Lobby_panel/Player2/Host_identifier
+onready var player_n3=$PanelContainer/Lobby_popup/Lobby_panel/Player3/Host_identifier
 
-onready var menu0=$Lobby_popup/Lobby_panel/Host/MenuButton
-onready var menu1=$Lobby_popup/Lobby_panel/Player1/MenuButton
-onready var menu2=$Lobby_popup/Lobby_panel/Player2/MenuButton
-onready var menu3=$Lobby_popup/Lobby_panel/Player3/MenuButton
+onready var menu0=$PanelContainer/Lobby_popup/Lobby_panel/Host/MenuButton
+onready var menu1=$PanelContainer/Lobby_popup/Lobby_panel/Player1/MenuButton
+onready var menu2=$PanelContainer/Lobby_popup/Lobby_panel/Player2/MenuButton
+onready var menu3=$PanelContainer/Lobby_popup/Lobby_panel/Player3/MenuButton
 
-onready var conect_to_host=$Play_direct_panel/Panel2/Conect_to_host
-onready var create_host=$Play_direct_panel/Panel2/Create_host
-onready var btn_return1=$Play_direct_panel/Panel2/Return
-onready var btn_return2=$Lobby_popup/Lobby_panel/Return
-onready var btn_return3=$Login/Panel2/Return
-onready var btn_return4=$Config_popup/Config_panel/Return
-onready var password1=$Login/Panel2/Submit/Password2
-onready var passwort0=$Login/Panel2/Login/Password
+onready var conect_to_host=$PanelContainer/Play_direct_panel/Panel2/Conect_to_host
+onready var create_host=$PanelContainer/Play_direct_panel/Panel2/Create_host
+onready var btn_return1=$PanelContainer/Play_direct_panel/Panel2/Return
+onready var btn_return2=$PanelContainer/Lobby_popup/Lobby_panel/Return
+onready var btn_return3=$PanelContainer/Login/Panel2/Return
+onready var btn_return4=$PanelContainer/Config_popup/Config_panel/Config_list/Return
+onready var password1=$PanelContainer/Login/Panel2/Submit/Password2
+onready var passwort0=$PanelContainer/Login/Panel2/Login/Password
 onready var menu_list=[menu0,menu1,menu2,menu3]
 
-onready var select_button=$Lobby_popup/Lobby_panel/stage_select
-onready var connect_status=$Play_direct_panel/Panel2/Notify_conect
+onready var select_button=$PanelContainer/Lobby_popup/Lobby_panel/stage_select
+onready var connect_status=$PanelContainer/Play_direct_panel/Panel2/Notify_conect
 onready var players_labels=[host_name, player1_name, player2_name, player3_name]
 onready var players_classe_btn=[host_class, player1_class, player2_class, player3_class]
-onready var ip_local_label=$Play_direct_panel/Panel2/IP_local_Label
-onready var your_ip_local=$Play_direct_panel/Panel2/your_ip_local
-onready var language_label=$Config_popup/Config_panel/Language_label
-onready var you_ipv6=$Play_direct_panel/Panel2/Ipv6Label
-onready var yout_ipv6_label=$Play_direct_panel/Panel2/your_ipv6
+onready var ip_local_label=$PanelContainer/Play_direct_panel/Panel2/IP_local_Label
+onready var your_ip_local=$PanelContainer/Play_direct_panel/Panel2/your_ip_local
+onready var language_label=$PanelContainer/Config_popup/Config_panel/Config_list/Laguage_container/Language_label
+onready var you_ipv6=$PanelContainer/Play_direct_panel/Panel2/Ipv6Label
+onready var yout_ipv6_label=$PanelContainer/Play_direct_panel/Panel2/your_ipv6
+onready var resolution_options=$PanelContainer/Config_popup/Config_panel/Config_list/Resolution/Resolution_options
 var locals=["pt_BR","en","fr_FR"]
 var slots_array=[]
 var self_info={
@@ -83,8 +84,25 @@ var used_slots={}
 var pre_slots={}
 var username
 var selected=0
-
+var resolutions=[Vector2(1280,720),Vector2(1366,768),Vector2(1600,900),Vector2(1920,1080),Vector2(2560,1440),Vector2(3840,2160)]
+var screen
+var in_show=[]
 func _ready():
+	OS.set_window_position(Vector2())
+	screen=OS.get_screen_size()
+	Settings.resolution=screen
+	get_node("PanelContainer/Config_popup/Config_panel/Config_list/FullScreen_container/CheckBox").pressed=OS.is_window_fullscreen()
+	var ress_native
+	for i in resolutions:
+		if i.y==screen.y:
+			var native_ress=""
+			resolution_options.select(resolutions.rfind(i))
+			_on_Resolution_options_item_selected(resolutions.rfind(i))
+			native_ress+=resolution_options.get_item_text(resolutions.rfind(i))
+			native_ress+=tr("Nativa"+str(i))
+			
+			break
+	 
 	Global.set_music("res://assets/sounds/musica final.wav")
 	retranslate()
 	if OS.has_environment("USERNAME"):
@@ -103,23 +121,29 @@ func _ready():
 
 func _on_Play_pressed():
 
-	Global.start_tutorial()
+	var tutorial=get_node("PanelContainer/Tutorial")
+	to_show(tutorial)
 
-func _on_Play_p2p_pressed():
-	pass # Replace with function body.
 
-func _on_Play_host_pressed():
-	pass
-	#get_node("PopupPanel").show()
-
-func _on_Exit_pressed():
+func Exit_pressed():
 	get_tree().quit()
 
 func _on_Return_pressed():
-	$Play_direct_panel.hide()
+
+	var before_size=in_show.size()
+	if in_show.size()>0:
+		if in_show.size()>=before_size:
+			print(in_show.size())
+			in_show.back().hide()
+			in_show.erase(in_show.back())
+			yield(get_tree(), "idle_frame")
+			yield(get_tree(), "idle_")
+			print("passou: ",in_show.size())
+
 
 func _on_Play_online_pressed():
-	online.show()
+	
+	to_show(online)
 
 func _on_Login_email_pressed():
 	if email_login.get_text()!=null and password_login.get_text()!=null:
@@ -140,9 +164,9 @@ func _on_Login_email2_pressed():
 			print("coloque uma senha")
 	else:
 		print("colocar o endereço de email")
-func _on_Play_direct_pressed():
-	play_direct.show()
 
+func _on_Play_direct_pressed():
+	to_show(play_direct)
 
 func _on_Create_host_pressed():
 	self_info["name"]=nick_name.get_text()
@@ -153,7 +177,7 @@ func _on_Create_host_pressed():
 
 		
 		Global.create_server(self_info)
-	lobby_popup.show()
+	to_show(lobby_popup)
 	go_to_lobby()
 
 func _on_Conect_to_host_pressed():
@@ -199,7 +223,7 @@ func go_to_lobby():
 		host_name.set_text(players_info[1].name)
 		host_class.set_disabled(false)
 		select_button.set_disabled(false)
-	lobby_popup.show()
+	to_show(lobby_popup)
 
 
 
@@ -207,11 +231,9 @@ func go_to_lobby():
 
 func _on_Quit_pressed():
 	slots_array.clear()
-	lobby_popup.hide()
 	Global.disconnect_game()
 	for x in players_labels:
 		x.set_text("")
-	
 	connect_status.set_text("")
 
 
@@ -311,14 +333,8 @@ func _on_stage_select_item_selected(id):
 func _on_Start_Game_pressed():
 	Global.start_the_game(selected)
 
-
-func _on_return_config_pressed():
-	$Config_popup.hide()
-
-
 func _on_Config_pressed():
-	$Config_popup.show()
-
+	to_show($PanelContainer/Config_popup)
 
 func _on_OptionButton_item_selected(id):
 	TranslationServer.set_locale(locals[id])
@@ -362,3 +378,32 @@ func retranslate():
 	create_account_btn.set_text(tr("CREATE_ACCOUNT"))
 	language_label.set_text(tr("Language:"))
 	your_ip_local
+
+
+func _on_Play_solo3_pressed():
+	get_node("PanelContainer/Tutorial").hide()
+
+
+func _on_Resolution_options_item_selected(id):
+	Settings.set_resolution(id)
+	get_node("PanelContainer")._set_size(resolutions[id]+Vector2(14,14))
+	print(OS.get_screen_size() )
+
+func to_show(interface):
+	if not(in_show.has(interface)):
+		in_show.append(interface)
+	interface.show()
+
+func _on_CheckBox_toggled(button_pressed):
+	
+	OS.window_fullscreen=button_pressed
+	
+
+
+func _on_Exit_pressed():
+	if in_show.size()==0:
+		get_tree().quit()
+
+
+func _on_PanelContainer_item_rect_changed():
+	print("mudou")

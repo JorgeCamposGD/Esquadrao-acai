@@ -41,47 +41,57 @@ var my_creator
 var status="normal"
 var enemy=true
 var atk=false
-var efects=[[],[]]
+var efects=[]
 var on_fire=false
+puppet var pmotiom=Vector3()
+puppet var ppos=Transform()
+
 func _ready():
+	ppos.get_global_transform()
+	
 	randomize()
 	set_physics_process(usable)
 	move_speed*=scale.x
 
 func _physics_process(delta):
-	
-	if get_global_transform().origin.y<=-10:
-		die()
-	my_pos=get_global_transform().origin
-	if hp_atual<=0:
-		die()
-		#get_node("AnimationPlayer").play("Die")
-		return
-	if on_fire:
-		hp_atual-=10*delta
 	var move_vec = Vector3()
+	if Global.get_tree().is_network_server():
+		if get_global_transform().origin.y<=-10:
+			die()
+		my_pos=get_global_transform().origin
+		if hp_atual<=0:
+			die()
+			#get_node("AnimationPlayer").play("Die")
+			return
+		if on_fire:
+			hp_atual-=10*delta
+		
+	
+		
+			
+		move_vec=get_targuet(type_find,enemy)-my_pos if get_targuet(type_find,enemy)!=Vector3() else Vector3()
+		
+		move_vec = move_vec.normalized()
+		
+		move_vec *= move_speed#direção de movimento
+		move_vec.y = y_speed#gravidade
+		rset_unreliable("pmotiom",move_vec)
+		rset_unreliable("ppos",get_global_transform())
 
-	match status:
-		_, "normal":
-			move_vec=get_targuet(type_find,enemy)-my_pos if get_targuet(type_find,enemy)!=Vector3() else Vector3()
-			
-			move_vec = move_vec.normalized()
-			
-			move_vec *= move_speed#direção de movimento
-			move_vec.y = y_speed#gravidade
-			cooldown-=delta if cooldown>0 else 0
+	else:
+		move_vec=pmotiom
+		set_global_transform(ppos)
+	cooldown-=delta if cooldown>0 else 0
 		
-		"traped":
-			pass
-		"paralized":
-			pass
-		
-		"freezed":
-			pass
-			
-		"counter":
-			pass
-		
+	if efects.has(0):
+		move_vec=Vector3()
+	if efects.has(1):
+		move_vec=Vector3()
+	if efects.has(2):
+		move_speed=4
+	if efects.has(3):
+		move_speed=4
+		hp_atual-=10*delta
 	if move_vec.z!=0 or move_vec.x!=0 and not(atacking):
 		#get_node("AnimationPlayer").play("ANDANDO")
 		#verifica se o Player esta andando
@@ -223,23 +233,22 @@ func aply_efect(classe,type,duration):
 
 	var aplied=false
 	if classe==4:
-		if not(efects[1].has(type)):
-			efects[1].append(type)
+		if not(efects.has(type)):
+			efects.append(type)
 			aplied=true
+			get_node("Efect"+str(type) ) .start(duration[type])
 	elif classe==1:
-		if not(efects[1].has(type)):
-			efects[1].append(type)
-			aplied=true
-			if type==3:
-				hp_atual-=100
-			elif type==1:
-				hp_atual-=50
-			elif type==0:
-				hp_atual-=25
-			elif type==2:
-				on_fire=true
-				get_node("Fire").start(duration)
-	print("aplyed", classe,type,duration)
+		aplied=true
+		if type==3:
+			hp_atual-=100
+		elif type==1:
+			hp_atual-=50
+		elif type==0:
+			hp_atual-=25
+		elif type==2:
+			on_fire=true
+			get_node("Fire").start(duration)
+
 	return aplied
 
 func _on_Area_body_entered(body):
@@ -256,3 +265,20 @@ func _on_Area_body_exited(body):
 
 func _on_Fire_timeout():
 	on_fire=false
+
+
+func _on_Efect0_timeout():
+	efects.erase(0)
+
+
+func _on_Efect1_timeout():
+	efects.erase(1)
+
+
+func _on_Efect2_timeout():
+	efects.erase(2) # Replace with function body.
+	move_speed=12
+
+func _on_Efect3_timeout():
+	efects.erase(3)
+	move_speed=12
