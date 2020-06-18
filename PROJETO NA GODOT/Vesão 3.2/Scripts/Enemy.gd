@@ -211,7 +211,7 @@ func die():
 		else:
 			type=0
 		rpc("drop_item",class_item,type)
-	
+	queue_free()
 
 remotesync func drop_item(classe,type):
 	var textures=Ress_3D.get_item()
@@ -219,7 +219,7 @@ remotesync func drop_item(classe,type):
 	get_parent().add_child(inst)
 	inst.global_transform.origin=(get_global_transform().origin)
 	inst.set_text(textures[classe][type],classe,type)
-	queue_free()
+	
 func _on_Timer_timeout():
 
 	queue_free()
