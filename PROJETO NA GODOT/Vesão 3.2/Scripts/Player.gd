@@ -184,7 +184,7 @@ func _physics_process(delta):
 			cooldown-=delta
 		else:
 			cooldown=0
-		if hud!=null:
+		if hud!=null and Global.is_master(self):
 			var wr = weakref(hud)
 			if not(up or down or left or right) and hud.get_input_vec()!=Vector2() and wr.get_ref():
 				move_vec.x=hud.get_input_vec().x

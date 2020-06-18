@@ -48,13 +48,14 @@ puppet var p_hp=Vector3()
 puppet var ppos=Transform()
 
 func _ready():
-	ppos=get_global_transform()
+	
 	
 	randomize()
 	set_physics_process(usable)
 	move_speed*=scale.x
 
 func _physics_process(delta):
+	ppos=get_global_transform().origin
 	var move_vec = Vector3()
 
 	if get_global_transform().origin.y<=-10:
