@@ -43,7 +43,8 @@ var enemy=true
 var atk=false
 var efects=[]
 var on_fire=false
-puppet var pmotiom=Vector3()
+onready var sync_node=get_node("Sync")
+puppet var p_hp=Vector3()
 puppet var ppos=Transform()
 
 func _ready():
@@ -55,32 +56,28 @@ func _ready():
 
 func _physics_process(delta):
 	var move_vec = Vector3()
-	if Global.get_tree().is_network_server():
-		if get_global_transform().origin.y<=-10:
-			die()
-		my_pos=get_global_transform().origin
-		if hp_atual<=0:
-			die()
-			#get_node("AnimationPlayer").play("Die")
-			return
-		if on_fire:
-			hp_atual-=10*delta
-		
+
+	if get_global_transform().origin.y<=-10:
+		die()
+	my_pos=get_global_transform().origin
+	if hp_atual<=0:
+		die()
+		#get_node("AnimationPlayer").play("Die")
+		return
+	if on_fire:
+		hp_atual-=10*delta
+	
+
 	
 		
-			
-		move_vec=get_targuet(type_find,enemy)-my_pos if get_targuet(type_find,enemy)!=Vector3() else Vector3()
-		
-		move_vec = move_vec.normalized()
-		
-		move_vec *= move_speed#direção de movimento
-		move_vec.y = y_speed#gravidade
-		rset_unreliable("pmotiom",move_vec)
-		rset_unreliable("ppos",get_global_transform())
+	move_vec=get_targuet(type_find,enemy)-my_pos if get_targuet(type_find,enemy)!=Vector3() else Vector3()
+	
+	move_vec = move_vec.normalized()
+	
+	move_vec *= move_speed#direção de movimento
+	move_vec.y = y_speed#gravidade
 
-	else:
-		move_vec=pmotiom
-		set_global_transform(ppos)
+
 	cooldown-=delta if cooldown>0 else 0
 		
 	if efects.has(0):
@@ -282,3 +279,12 @@ func _on_Efect2_timeout():
 func _on_Efect3_timeout():
 	efects.erase(3)
 	move_speed=12
+
+
+func _on_Sync_timeout():
+	if Global.get_tree().is_network_server():
+		rset_unreliable("ppos",get_global_transform().origin)
+		rset_unreliable("p_hp",p_hp)
+	else:
+		global_transform.origin=ppos
+	sync_node.start(0.3)

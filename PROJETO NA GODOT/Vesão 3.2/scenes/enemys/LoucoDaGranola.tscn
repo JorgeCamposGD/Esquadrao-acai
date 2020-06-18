@@ -120,6 +120,9 @@ anims/dano = SubResource( 5 )
 [node name="Fire" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Sync" type="Timer" parent="."]
+autostart = true
 [connection signal="body_entered" from="Spatial/Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Spatial/Area" to="." method="_on_Area_body_exited"]
 [connection signal="timeout" from="Efect0" to="." method="_on_Efect0_timeout"]
@@ -127,3 +130,4 @@ one_shot = true
 [connection signal="timeout" from="Efect2" to="." method="_on_Efect2_timeout"]
 [connection signal="timeout" from="Efect3" to="." method="_on_Efect3_timeout"]
 [connection signal="timeout" from="Fire" to="." method="_on_Fire_timeout"]
+[connection signal="timeout" from="Sync" to="." method="_on_Sync_timeout"]

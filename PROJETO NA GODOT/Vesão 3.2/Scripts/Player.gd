@@ -185,7 +185,8 @@ func _physics_process(delta):
 		else:
 			cooldown=0
 		if hud!=null:
-			if not(up or down or left or right) and hud.get_input_vec()!=Vector2():
+			var wr = weakref(hud)
+			if not(up or down or left or right) and hud.get_input_vec()!=Vector2() and wr.get_ref():
 				move_vec.x=hud.get_input_vec().x
 				move_vec.z=hud.get_input_vec().y
 	
