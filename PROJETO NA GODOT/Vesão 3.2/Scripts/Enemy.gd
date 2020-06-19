@@ -59,15 +59,12 @@ func _physics_process(delta):
 	var move_vec = Vector3()
 
 	if get_global_transform().origin.y<=-10:
-		rpc("die")
-	
+		die()
+	my_pos=get_global_transform().origin
 	if hp_atual<=0:
-		rpc("die")
+		die()
 		#get_node("AnimationPlayer").play("Die")
 		return
-		
-	my_pos=get_global_transform().origin
-	
 	if on_fire:
 		hp_atual-=10*delta
 	
@@ -140,12 +137,11 @@ func atk(delta):
 		cooldown-=delta
 
 func compleat_atk():
-	if Global.get_tree().is_network_server():
-		for enemy in body_in_rage:
-			if enemy.has_method("damage"):
-				enemy.rpc("damage",5,0)
-			elif enemy.get_parent().has_method("damage"):
-				enemy.get_parent().rpc("damage",5)
+	for enemy in body_in_rage:
+		if enemy.has_method("damage"):
+			enemy.damage(5,0)
+		elif enemy.get_parent().has_method("damage"):
+			enemy.get_parent().damage(5)
 
 func return_walk():
 	cooldown=fire_rate[0]
@@ -203,7 +199,7 @@ func damage(dano,type):
 					dmg_anim.play("dano")
 		#get_node("AnimationPlayer2").play("Dano")
 	
-remotesync func die():
+func die():
 	Global.remove_enemy(self)
 	my_creator.remove_instance(self)
 	if Global.is_host():

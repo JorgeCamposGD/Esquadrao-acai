@@ -25,15 +25,14 @@ func set_type(type):
 
 
 func _on_Spatial_body_entered(body):
-	if body.has_method("aply_efect") and Global.get_tree().is_network_server():
+	if body.has_method("aply_efect"):
 		if body.aply_efect(4,my_type,duration) and not(active):
 			get_node("Timer").start(duration[my_type])
 			if my_type==0:
 				set_deferred("monitoring",false)
 
-remotesync func die():
+func die():
 	anim.play("die")
 
 func _on_Timer_timeout():
-	if Global.get_tree().is_network_server():
-		rpc("die")
+	die()
