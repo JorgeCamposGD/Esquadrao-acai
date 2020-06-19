@@ -64,7 +64,7 @@ func _physics_process(delta):
 			turrets.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
 			
 			if cooldown<=0:
-				if cast.is_colliding() :
+				if cast.is_colliding() and Global.is_host():
 					rpc("atk")
 					cooldown=firerate[my_type]
 					energy[my_type]-=1

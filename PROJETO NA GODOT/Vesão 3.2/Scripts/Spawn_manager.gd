@@ -77,7 +77,9 @@ func instace_mob(persist):
 	if active==true and in_wave and instanced_enemys.size()<=difficulty_limit:
 		if Global.get_tree().is_network_server():
 			var random_point=spawn_points[randi()%spawn_points.size()].get_global_transform()
-			get_node("Spawn_pos/Timer").start(0.5)#randi()%3+1) 
+			var rnd= RandomNumberGenerator.new()
+			rnd.randomize()
+			get_node("Spawn_pos/Timer").start( rnd.randf_range(1.0,4.0) ) 
 			var id=Global.get_tree().get_network_unique_id()
 
 			var new_enemy=mob_resource[mob_id].instance()

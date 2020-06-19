@@ -1,7 +1,7 @@
 extends KinematicBody
 #okay
 class_name player
-var imortal=false
+var imortal=true
 
 const JUMP_FORCE = 30
 const GRAVITY = 0.98
@@ -453,7 +453,7 @@ func colect(item,classe_item,type):
 		if classe_name==classe:
 			resources[type]+=1
 			
-		item.rpc("colected")
+			item.rpc("colected")
 	
 	my_status[2]=resources
 	Global.set_my_status(my_status)
