@@ -63,7 +63,7 @@ func _on_Timer_timeout():
 
 
 func _on_Area_body_entered(body):
-	if body.has_method("aply_efect") and not(aplyed.has(body)):
+	if body.has_method("aply_efect") and not(aplyed.has(body)) and Global.is_host():
 		body.aply_efect(1,type,efecty_time[type])
 		aplyed.append(body)
 

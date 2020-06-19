@@ -1130,7 +1130,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
 script = ExtResource( 2 )
 
 [node name="Spawn_pos" type="Position3D" parent="Spawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3711, 10.5779, 2.31607 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.1199, 2.10793, 2.31607 )
 
 [node name="Start" type="Timer" parent="Spawn/Spawn_pos"]
 wait_time = 3.0
@@ -1416,6 +1416,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene Root/Coisas do cenario/VER O PESO/chao/StaticBody"]
+transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0, 0 )
 shape = SubResource( 64 )
 
 [node name="lixos" type="MeshInstance" parent="Scene Root/Coisas do cenario/VER O PESO"]

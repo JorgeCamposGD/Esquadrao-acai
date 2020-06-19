@@ -43,8 +43,9 @@ func _ready():
 func _physics_process(delta):
 	targuet=get_targuet()
 
-	if energy[my_type]<=0:
-		anim.play("end")
+	if energy[my_type]<=0 and Global.get_tree().is_network_server() :
+		rpc("die")
+
 	else:
 		if targuet==null:
 			turrets.rotate_object_local(Vector3(0,1,0),delta)
@@ -63,7 +64,7 @@ func _physics_process(delta):
 			rotquat.set_euler(Vector3(0,rot,0))#aplicação dos angulos de rotação ao quaternion
 			turrets.global_transform.basis= Basis(bodyquat.slerp(rotquat,delta*rotate_speed) ).scaled(scale)#interpolação dos quaternions, fazendo o personagem girar
 			
-			if cooldown<=0:
+			if cooldown<=0 and Global.get_tree().is_network_server():
 				if cast.is_colliding() :
 					rpc("atk")
 					cooldown=firerate[my_type]
@@ -127,3 +128,6 @@ func get_bigger_distance(local1,local2,my_pos):
 
 func _on_Timer_timeout():
 	targuet=get_targuet()
+
+remotesync func die():
+	anim.play("end")
