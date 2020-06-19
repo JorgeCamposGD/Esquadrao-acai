@@ -137,7 +137,7 @@ func _on_Return_pressed():
 			in_show.back().hide()
 			in_show.erase(in_show.back())
 			yield(get_tree(), "idle_frame")
-			yield(get_tree(), "idle_")
+
 			print("passou: ",in_show.size())
 
 

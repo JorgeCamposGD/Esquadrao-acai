@@ -78,11 +78,13 @@ func instace_mob(persist):
 		if Global.get_tree().is_network_server():
 			var random_point=spawn_points[randi()%spawn_points.size()].get_global_transform()
 			get_node("Spawn_pos/Timer").start(randi()%3+1) 
-			rpc("_instance_mob",mob_id,random_point)
+			var id=Global.get_tree().get_network_unique_id()
+			rpc("_instance_mob",mob_id,random_point,id)
 			
 
-remotesync func _instance_mob(mob_id,point):
+remotesync func _instance_mob(mob_id,point,master_id):
 	var new_enemy=mob_resource[mob_id].instance()
+	new_enemy.set_network_master(master_id)
 	get_parent().call_deferred("add_child",new_enemy)
 	new_enemy.set_creator(self)
 	new_enemy.set_global_transform(point)
