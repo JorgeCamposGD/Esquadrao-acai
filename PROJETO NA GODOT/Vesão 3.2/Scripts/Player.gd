@@ -58,7 +58,7 @@ var in_range_colisor=[]
 var melee=false
 
 var free=true
-
+var constructions=0
 var move_state=0
 var action_state=0
 var peer_id=null
@@ -391,9 +391,10 @@ func construct_item(classe,type):
 		resources[type]-=1
 		if Global.is_master(self):
 			hud.set_resources(resources)
-		rpc("construct",classe,graned_place,item_point,type)
+		rpc("construct",classe,graned_place,item_point,type,constructions)
+		constructions+=1
 		#item.scale=scale
-remotesync func construct(classe,grenade,point,type):
+remotesync func construct(classe,grenade,point,type,const_n):
 	
 
 	var item=Ress_3D.get_special_resource(classe).instance()
@@ -413,7 +414,9 @@ remotesync func construct(classe,grenade,point,type):
 	item.set_type(type)
 	world.call_deferred("add_child",item)
 
+	item.set_name(item.get_name()+str(const_n))
 	
+
 func _on_Melee_body_entered(body):
 
 	body_in_rage.append(body)

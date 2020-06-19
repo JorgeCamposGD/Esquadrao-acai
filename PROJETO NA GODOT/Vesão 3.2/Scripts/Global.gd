@@ -405,7 +405,7 @@ func start_the_game(level):
 	var selected
 	for pl in players_info:
 		classes.append( players_info[pl]["classe"] )
-	print(classes)
+
 	if stages.size()>=(level):
 		selected=level
 	

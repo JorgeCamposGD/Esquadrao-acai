@@ -45,7 +45,7 @@ func _ready():
 			difficulty_limit=maximo_de_inimigos_no_hard
 	
 	difficulty_limit*=multiply
-	print(difficulty_limit)
+
 	randomize()
 	if not(active):
 		return
@@ -67,7 +67,7 @@ func _process(delta):
 		return
 
 func set_active():
-	print("active")
+
 	active=true
 	Global.set_level_state(true)
 	_ready()
@@ -90,7 +90,7 @@ func instace_mob(persist):
 			new_enemy.set_name(new_enemy.get_name()+""+str(instance_count))
 			instance_count+=1
 			var newName=new_enemy.get_name()
-			print(newName)
+
 			rpc("_instance_mob",mob_id,random_point,id, newName)
 			
 

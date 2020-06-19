@@ -1307,7 +1307,6 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 [connection signal="script_changed" from="." to="." method="_on_Control_script_changed"]
-[connection signal="item_rect_changed" from="PanelContainer" to="." method="_on_PanelContainer_item_rect_changed"]
 [connection signal="pressed" from="PanelContainer/Panel/Play_online" to="." method="_on_Play_online_pressed"]
 [connection signal="pressed" from="PanelContainer/Panel/Play_direct" to="." method="_on_Play_direct_pressed"]
 [connection signal="pressed" from="PanelContainer/Panel/Exit" to="." method="_on_Exit_pressed"]

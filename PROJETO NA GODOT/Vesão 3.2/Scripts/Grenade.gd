@@ -35,9 +35,6 @@ func _ready():
 func set_type(type):
 	self.type=type
 
-
-	print(get_colliding_bodies())
-
 func stop():
 	self.set_mode(RigidBody.MODE_STATIC) 
 	

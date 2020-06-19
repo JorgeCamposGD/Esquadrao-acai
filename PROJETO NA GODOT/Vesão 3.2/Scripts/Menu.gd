@@ -133,12 +133,12 @@ func _on_Return_pressed():
 	var before_size=in_show.size()
 	if in_show.size()>0:
 		if in_show.size()>=before_size:
-			print(in_show.size())
+
 			in_show.back().hide()
 			in_show.erase(in_show.back())
 			yield(get_tree(), "idle_frame")
 
-			print("passou: ",in_show.size())
+
 
 
 func _on_Play_online_pressed():
@@ -387,7 +387,7 @@ func _on_Play_solo3_pressed():
 func _on_Resolution_options_item_selected(id):
 	Settings.set_resolution(id)
 	get_node("PanelContainer")._set_size(resolutions[id]+Vector2(14,14))
-	print(OS.get_screen_size() )
+	print_debug(OS.get_screen_size() )
 
 func to_show(interface):
 	if not(in_show.has(interface)):
@@ -405,5 +405,4 @@ func _on_Exit_pressed():
 		get_tree().quit()
 
 
-func _on_PanelContainer_item_rect_changed():
-	print("mudou")
+

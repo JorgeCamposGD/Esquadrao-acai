@@ -83,14 +83,14 @@ func set_name(new_name):
 	_ready()
 func set_ammo(qtd):
 	ammo_display.set_text(tr("AMMO_ACOUNT"+":"+str(qtd)))
-	print("asdasf")
+
 func set_resources(res):
 
 	for x in range(res.size()):
 		res_hud[x].set_text(str(res[x]))
 
 func _on_TextureButton_gui_input(event):
-	print("apertou")
+
 	var btn_pos=txt_btn.get_global_position()
 	if Global.is_master(get_parent()):
 		if (event is InputEventScreenTouch) or (event is InputEventScreenDrag): 
