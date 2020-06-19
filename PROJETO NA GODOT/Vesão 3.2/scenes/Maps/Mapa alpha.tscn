@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=2]
+[gd_scene load_steps=196 format=2]
 
 [ext_resource path="res://scenes/Players_pos.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Spawn_manager.gd" type="Script" id=2]
@@ -33,7 +33,7 @@
 [ext_resource path="res://assets/characters/Gordo da pedreira/Cubo_008.mesh" type="ArrayMesh" id=31]
 [ext_resource path="res://Scripts/Level_manager.gd" type="Script" id=32]
 [ext_resource path="res://assets/Enemys/Esfera UV_003.mesh" type="ArrayMesh" id=33]
-[ext_resource path="res://scenes/itens/drop.tscn" type="PackedScene" id=34]
+[ext_resource path="res://assets/Icons/CRAFT/Icone-Manga.png" type="Texture" id=34]
 [ext_resource path="res://scenes/waterEnvi.tres" type="Environment" id=35]
 [ext_resource path="res://assets/characters/Nitty/Esfera icosaedrica.mesh" type="ArrayMesh" id=36]
 [ext_resource path="res://assets/characters/Bahia/Esfera icosaedrica_002.mesh" type="ArrayMesh" id=37]
@@ -312,6 +312,10 @@ points = PoolVector3Array( -1.66016, 0.0497393, 1.33271, -1.73097, 0.113864, 1.1
 
 [sub_resource type="BoxShape" id=52]
 extents = Vector3( 49.6161, 21.5052, 81.6582 )
+
+[sub_resource type="SpatialMaterial" id=101]
+flags_transparent = true
+flags_unshaded = true
 
 [sub_resource type="CapsuleMesh" id=53]
 
@@ -893,7 +897,7 @@ size = Vector3( 6, 6, 6 )
 [sub_resource type="BoxShape" id=100]
 extents = Vector3( 3, 3, 3 )
 
-[node name="Spatial" type="Spatial"]
+[node name="Mapa alpha" type="Spatial"]
 script = ExtResource( 32 )
 
 [node name="barco" type="MeshInstance" parent="."]
@@ -1122,8 +1126,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 58.61 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 14.95, 0, 3.8147e-06 )
 shape = SubResource( 52 )
 
-[node name="Spatial" parent="." instance=ExtResource( 34 )]
-transform = Transform( 1, 0, 0, 0, -0.312683, -0.949857, 0, 0.949857, -0.312683, 7.62971, 12.921, 16.3765 )
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.26074, 0.965408, 0, -0.965408, 0.26074, 7.62971, 5.04237, 16.3765 )
+
+[node name="Sprite" type="Sprite3D" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.937172, -0.348867, 0, 0.348867, 0.937172, 0, 0, 0 )
+material_override = SubResource( 101 )
+texture = ExtResource( 34 )
 
 [node name="Spawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7015, 12.4549, 17.4544 )
