@@ -23,7 +23,7 @@ export (int,"closer","minimun_hp")  var type_find
 export (bool) var usable=true
 
 onready var body=get_node("Spatial")
-onready var anim=get_node("Spatial/Armação002/Skeleton/AnimationPlayer")
+onready var anim=get_node("Spatial/Armature/Skeleton/AnimationPlayer")
 onready var fire_rate=[atack_melee,
 					fire_rate_pistol,
 					fire_rate_shotgun,
@@ -210,15 +210,16 @@ func die():
 			type=randi()%4
 		else:
 			type=0
-		rpc("drop_item",class_item,type)
+		rpc("drop_item",class_item,type,get_name())
 
 
-remotesync func drop_item(classe,type):
+remotesync func drop_item(classe,type,newName):
 	var textures=Ress_3D.get_item()
 	var inst=item.instance()
 	get_parent().add_child(inst)
 	inst.global_transform.origin=(get_global_transform().origin)
 	inst.set_text(textures[classe][type],classe,type)
+	inst.set_name(newName)
 	queue_free()
 
 func set_creator(creator):

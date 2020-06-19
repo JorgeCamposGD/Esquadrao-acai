@@ -18,7 +18,7 @@ export (Array,Array,int) var granola_waves=[3,6,9]
 export (Array,NodePath) var spawn_places
 
 onready var world=get_tree().get_root()
-
+var instance_count=0
 var actual_wave=0
 var instanced_enemys=[]
 var in_wave=true
@@ -79,17 +79,31 @@ func instace_mob(persist):
 			var random_point=spawn_points[randi()%spawn_points.size()].get_global_transform()
 			get_node("Spawn_pos/Timer").start(0.5)#randi()%3+1) 
 			var id=Global.get_tree().get_network_unique_id()
-			rpc("_instance_mob",mob_id,random_point,id)
+
+			var new_enemy=mob_resource[mob_id].instance()
+			new_enemy.set_network_master(id)
+			get_parent().call_deferred("add_child",new_enemy)
+			new_enemy.set_creator(self)
+			new_enemy.set_global_transform(random_point)
+			instanced_enemys.append(new_enemy)
+			Global.add_enemy(new_enemy)
+			new_enemy.set_name(new_enemy.get_name()+""+str(instance_count))
+			instance_count+=1
+			var newName=new_enemy.get_name()
+			print(newName)
+			rpc("_instance_mob",mob_id,random_point,id, newName)
 			
 
-remotesync func _instance_mob(mob_id,point,master_id):
+remote func _instance_mob(mob_id,point,master_id,new_name):
 	var new_enemy=mob_resource[mob_id].instance()
 	new_enemy.set_network_master(master_id)
-	get_parent().call_deferred("add_child",new_enemy)
+	get_parent().call_deferred("add_child",new_enemy,true)
 	new_enemy.set_creator(self)
 	new_enemy.set_global_transform(point)
 	instanced_enemys.append(new_enemy)
 	Global.add_enemy(new_enemy)
+	new_enemy.set_name(new_name)
+
 func _on_Timer_timeout():
 
 	instace_mob(true)
