@@ -337,7 +337,7 @@ remotesync func atk(melee,body,cano_pos,type):
 func get_global_pos():
 	return get_global_transform().origin
 
-func damage(dano,type):
+remotesync func damage(dano,type):
 	if imortal:
 		return
 	if Global.is_master(self):
@@ -348,8 +348,7 @@ func damage(dano,type):
 					my_status[0]=hp_atual
 					
 					Global.set_my_status(my_status)
-		if Global.is_master(self):
-			hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
+		hud.set_hp(hp_maximo,clamp(hp_atual,1,hp_maximo) )
 		#animation_dmg.play("dmg")
 
 func set_class(id_class):
@@ -435,7 +434,7 @@ func colect(item,classe_item,type):
 		ammo+=classe_status[classe]["ammo_initial"]/5
 		my_status[1]=ammo
 		
-		item.colected()
+		item.rpc("colected")
 	else:
 
 		match classe_item:
@@ -450,7 +449,7 @@ func colect(item,classe_item,type):
 		if classe_name==classe:
 			resources[type]+=1
 			
-		item.rpc("colected")
+			item.rpc("colected")
 	
 	my_status[2]=resources
 	Global.set_my_status(my_status)

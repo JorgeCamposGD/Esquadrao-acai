@@ -23,16 +23,16 @@ func _ready():
 			puraque.set_visible(true)
 
 func _process(delta):
-	if wall_hp<=0:
-		die()
+	if wall_hp<=0 and Global.get_tree().is_network_server():
+		rpc("die")
 		
 	
-func damage(damage):
+remotesync func damage(damage):
 	wall_hp-=damage
-	print(wall_hp)
+	print("wall_damage")
 
 func set_type(type):
 	my_type=type
 
-func die():
+remotesync func die():
 	get_node("AnimationPlayer").play("Die")
