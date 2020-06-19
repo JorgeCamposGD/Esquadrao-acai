@@ -5,7 +5,7 @@ export (Array,PackedScene) var mob_resource=[preload("res://scenes/enemys/LoucoD
 var active=false
 
 export (int,0,30) var maximo_de_inimigos_no_easy=15
-export (int,0,300) var maximo_de_inimigos_no_medium=15
+export (int,0,300) var maximo_de_inimigos_no_medium=50
 export (int,0,30) var maximo_de_inimigos_no_hard=15
 export (int,0,30) var maximo_de_ondas=5
 export (int,0,30) var inimigos_por_onda=5
@@ -77,7 +77,7 @@ func instace_mob(persist):
 	if active==true and in_wave and instanced_enemys.size()<=difficulty_limit:
 		if Global.get_tree().is_network_server():
 			var random_point=spawn_points[randi()%spawn_points.size()].get_global_transform()
-			get_node("Spawn_pos/Timer").start(randi()%3+1) 
+			get_node("Spawn_pos/Timer").start(0.5)#randi()%3+1) 
 			var id=Global.get_tree().get_network_unique_id()
 			rpc("_instance_mob",mob_id,random_point,id)
 			

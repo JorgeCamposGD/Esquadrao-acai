@@ -211,7 +211,7 @@ func die():
 		else:
 			type=0
 		rpc("drop_item",class_item,type)
-	queue_free()
+
 
 remotesync func drop_item(classe,type):
 	var textures=Ress_3D.get_item()
