@@ -28,8 +28,7 @@ func _physics_process(delta):
 	var col = move_and_collide(delta * dir * bullet_speed)
 	if (col):
 		if (col.collider and col.collider.has_method("damage")):
-			if Global.is_host():
-				col.collider.damage(bullet_dmg,0)
+			col.collider.damage(bullet_dmg,0)
 
 #		$CollisionShape.disabled=true
 		$anim.play("explode")

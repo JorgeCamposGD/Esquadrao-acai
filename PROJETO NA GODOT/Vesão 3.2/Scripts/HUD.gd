@@ -85,7 +85,7 @@ func set_ammo(qtd):
 	ammo_display.set_text(tr("AMMO_ACOUNT"+":"+str(qtd)))
 	print("asdasf")
 func set_resources(res):
-	
+
 	for x in range(res.size()):
 		res_hud[x].set_text(str(res[x]))
 
