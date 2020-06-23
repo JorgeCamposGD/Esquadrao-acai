@@ -87,11 +87,8 @@ var selected=0
 var resolutions=[Vector2(1280,720),Vector2(1366,768),Vector2(1600,900),Vector2(1920,1080),Vector2(2560,1440),Vector2(3840,2160)]
 var screen
 var in_show=[]
-var current_ress
-var res_option
-
 func _ready():
-	#OS.set_window_position(Vector2())
+	OS.set_window_position(Vector2())
 	screen=OS.get_screen_size()
 	Settings.resolution=screen
 	get_node("PanelContainer/Config_popup/Config_panel/Config_list/FullScreen_container/CheckBox").pressed=OS.is_window_fullscreen()
@@ -101,13 +98,9 @@ func _ready():
 			var native_ress=""
 			resolution_options.select(resolutions.rfind(i))
 			_on_Resolution_options_item_selected(resolutions.rfind(i))
-			#native_ress+=resolution_options.get_item_text(resolutions.rfind(i))
-			current_ress=i
-			native_ress+=(str(current_ress)+"*")
-			native_ress+=tr("Nativa")
-			res_option=resolutions.rfind(i)
-			resolution_options.set_item_text(resolutions.rfind(i),native_ress)
-			_on_Resolution_options_item_selected(res_option)
+			native_ress+=resolution_options.get_item_text(resolutions.rfind(i))
+			native_ress+=tr("Nativa"+str(i))
+			
 			break
 	 
 	Global.set_music("res://assets/sounds/musica final.wav")
@@ -394,7 +387,7 @@ func _on_Play_solo3_pressed():
 func _on_Resolution_options_item_selected(id):
 	Settings.set_resolution(id)
 	get_node("PanelContainer")._set_size(resolutions[id]+Vector2(14,14))
-
+	print_debug(OS.get_screen_size() )
 
 func to_show(interface):
 	if not(in_show.has(interface)):
@@ -404,7 +397,7 @@ func to_show(interface):
 func _on_CheckBox_toggled(button_pressed):
 	
 	OS.window_fullscreen=button_pressed
-	_on_Resolution_options_item_selected(res_option)
+	
 
 
 func _on_Exit_pressed():

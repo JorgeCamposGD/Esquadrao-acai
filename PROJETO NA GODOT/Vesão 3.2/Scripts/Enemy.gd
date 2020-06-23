@@ -43,7 +43,6 @@ var enemy=true
 var atk=false
 var efects=[]
 var on_fire=false
-var live=true
 onready var sync_node=get_node("Sync")
 puppet var p_hp=Vector3()
 puppet var ppos=Transform()
@@ -61,7 +60,6 @@ func _physics_process(delta):
 
 	if get_global_transform().origin.y<=-10:
 		die()
-		return
 	my_pos=get_global_transform().origin
 	if hp_atual<=0:
 		die()
@@ -202,10 +200,9 @@ func damage(dano,type):
 		#get_node("AnimationPlayer2").play("Dano")
 	
 func die():
-	
 	Global.remove_enemy(self)
 	my_creator.remove_instance(self)
-	if Global.is_host() and live:
+	if Global.is_host():
 		var class_item=randi()% (Global.get_classes().size()+1)
 		var type=null
 		if class_item!=0:
@@ -213,9 +210,8 @@ func die():
 			type=randi()%4
 		else:
 			type=0
-		live=false
 		rpc("drop_item",class_item,type,get_name())
-	
+
 
 remotesync func drop_item(classe,type,newName):
 	var textures=Ress_3D.get_item()
@@ -285,7 +281,7 @@ func _on_Efect3_timeout():
 
 
 func _on_Sync_timeout():
-	if Global.get_tree().is_network_server() and live:
+	if Global.get_tree().is_network_server():
 		rset_unreliable("ppos",get_global_transform().origin)
 		rset_unreliable("p_hp",p_hp)
 	else:

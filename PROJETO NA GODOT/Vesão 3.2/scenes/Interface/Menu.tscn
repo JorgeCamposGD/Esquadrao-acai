@@ -664,7 +664,7 @@ custom_colors/selection_color = Color( 0, 0.780392, 1, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
-text = "seu IPv4: "
+text = "Your IP: "
 align = 2
 editable = false
 __meta__ = {
@@ -736,9 +736,6 @@ __meta__ = {
 anchor_top = 0.478545
 anchor_right = 0.314331
 anchor_bottom = 0.576493
-margin_top = -0.128967
-margin_right = -31.1149
-margin_bottom = -0.541565
 hint_tooltip = "your ip adress, if you are the host, send to your friends."
 custom_styles/read_only = SubResource( 17 )
 custom_styles/focus = SubResource( 18 )
@@ -748,8 +745,8 @@ custom_colors/selection_color = Color( 0, 0.780392, 1, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
-text = "seu ip Local:"
-align = 2
+text = "Votre ip locale:"
+align = 1
 editable = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1328,8 +1325,8 @@ __meta__ = {
 [connection signal="item_selected" from="PanelContainer/Lobby_popup/Lobby_panel/Player2/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="item_selected" from="PanelContainer/Lobby_popup/Lobby_panel/Player3/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Start_Game" to="." method="_on_Start_Game_pressed"]
-[connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Return" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Return" to="." method="_on_Quit_pressed"]
 [connection signal="item_selected" from="PanelContainer/Lobby_popup/Lobby_panel/stage_select" to="." method="_on_stage_select_item_selected"]
 [connection signal="item_selected" from="PanelContainer/Config_popup/Config_panel/Config_list/Resolution/Resolution_options" to="." method="_on_Resolution_options_item_selected"]
 [connection signal="item_selected" from="PanelContainer/Config_popup/Config_panel/Config_list/Laguage_container/Laguage_options" to="." method="_on_OptionButton_item_selected"]
