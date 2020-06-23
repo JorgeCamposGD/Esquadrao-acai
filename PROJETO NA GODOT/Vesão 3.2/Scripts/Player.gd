@@ -391,7 +391,7 @@ func construct_item(classe,type):
 		resources[type]-=1
 		if Global.is_master(self):
 			hud.set_resources(resources)
-		rpc("construct",classe,graned_place,item_point,type,constructions)
+		rpc("construct",classe,graned_place,item_point,type,str(constructions+Global.get_tree().get_network_unique_id()) )
 		constructions+=1
 		#item.scale=scale
 remotesync func construct(classe,grenade,point,type,const_n):

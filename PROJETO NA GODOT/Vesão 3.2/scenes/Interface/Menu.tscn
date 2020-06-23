@@ -537,7 +537,6 @@ __meta__ = {
 }
 
 [node name="Play_direct_panel" type="PanelContainer" parent="PanelContainer"]
-visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1927.0
@@ -607,7 +606,7 @@ anchor_bottom = 0.335787
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
 custom_fonts/font = SubResource( 15 )
-text = "191.178.145.160"
+text = "189.82.193.68"
 align = 1
 max_length = 50
 placeholder_text = "IP:"
@@ -782,10 +781,10 @@ __meta__ = {
 
 [node name="Lobby_popup" type="PanelContainer" parent="PanelContainer"]
 visible = false
-margin_left = 953.0
-margin_top = 533.0
-margin_right = 2873.0
-margin_bottom = 1613.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1927.0
+margin_bottom = 1087.0
 
 [node name="Lobby_panel" type="Panel" parent="PanelContainer/Lobby_popup"]
 margin_left = 7.0

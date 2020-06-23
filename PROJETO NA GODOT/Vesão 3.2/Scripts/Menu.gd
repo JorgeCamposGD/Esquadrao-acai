@@ -88,7 +88,7 @@ var resolutions=[Vector2(1280,720),Vector2(1366,768),Vector2(1600,900),Vector2(1
 var screen
 var in_show=[]
 func _ready():
-	OS.set_window_position(Vector2())
+	#OS.set_window_position(Vector2())
 	screen=OS.get_screen_size()
 	Settings.resolution=screen
 	get_node("PanelContainer/Config_popup/Config_panel/Config_list/FullScreen_container/CheckBox").pressed=OS.is_window_fullscreen()

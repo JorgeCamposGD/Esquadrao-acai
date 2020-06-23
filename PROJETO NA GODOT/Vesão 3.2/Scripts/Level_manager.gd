@@ -15,7 +15,7 @@ var level_status=null
 var ready_ship=false
 func _ready():
 
-
+	
 	if high_world:
 		world.set_environment(Ress_3D.get_envir("pc"))
 
@@ -32,7 +32,7 @@ func iniciar_o_barco():
 func open_ship():
 	pass
 func game_status_change(type):
-
+	print("aqui")
 	if type=="wait_players":
 		print("to esperando")
 	elif type=="ready":
@@ -41,6 +41,7 @@ func game_status_change(type):
 			yield(get_tree(), "idle_frame")
 			game_status_change(type)
 		else:
+			
 			get_node("wait_timer").start(5)
 		
 func _on_wait_timer_timeout():
