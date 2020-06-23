@@ -93,10 +93,11 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 func _on_IPV4_request_completed(result, response_code, headers, body):
 	ipv4=body.get_string_from_ascii()
 	emit_signal("ip_recived",ipv4)
-
+	print(ipv4)
 func _on_IPV6_request_completed(result, response_code, headers, body):
 	ipv6=body.get_string_from_ascii()
 	emit_signal("ipv6_recived",ipv6)
+	print(ipv6)
 
 func get_ip() -> void:
 	var self_ip
