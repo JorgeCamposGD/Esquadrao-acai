@@ -537,7 +537,6 @@ __meta__ = {
 }
 
 [node name="Play_direct_panel" type="PanelContainer" parent="PanelContainer"]
-visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1927.0
@@ -607,7 +606,7 @@ anchor_bottom = 0.335787
 margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 3413.14, -455.885 )
 custom_fonts/font = SubResource( 15 )
-text = "191.178.145.160"
+text = "189.82.193.68"
 align = 1
 max_length = 50
 placeholder_text = "IP:"
@@ -1328,8 +1327,8 @@ __meta__ = {
 [connection signal="item_selected" from="PanelContainer/Lobby_popup/Lobby_panel/Player2/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="item_selected" from="PanelContainer/Lobby_popup/Lobby_panel/Player3/MenuButton" to="." method="_on_MenuButton_item_selected"]
 [connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Start_Game" to="." method="_on_Start_Game_pressed"]
-[connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Return" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="PanelContainer/Lobby_popup/Lobby_panel/Return" to="." method="_on_Quit_pressed"]
 [connection signal="item_selected" from="PanelContainer/Lobby_popup/Lobby_panel/stage_select" to="." method="_on_stage_select_item_selected"]
 [connection signal="item_selected" from="PanelContainer/Config_popup/Config_panel/Config_list/Resolution/Resolution_options" to="." method="_on_Resolution_options_item_selected"]
 [connection signal="item_selected" from="PanelContainer/Config_popup/Config_panel/Config_list/Laguage_container/Laguage_options" to="." method="_on_OptionButton_item_selected"]
