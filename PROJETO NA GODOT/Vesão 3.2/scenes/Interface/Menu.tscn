@@ -537,6 +537,7 @@ __meta__ = {
 }
 
 [node name="Play_direct_panel" type="PanelContainer" parent="PanelContainer"]
+visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1927.0

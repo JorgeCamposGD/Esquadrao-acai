@@ -48,6 +48,9 @@ Settings="*res://Scripts/settings.gd"
 
 [debug]
 
+gdscript/warnings/enable=false
+gdscript/warnings/unassigned_variable=false
+gdscript/warnings/unassigned_variable_op_assign=false
 gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_argument=false
 
@@ -1211,7 +1214,6 @@ translations=PoolStringArray( "res://assets/Translation.pt_BR.translation", "res
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 quality/shadow_atlas/size.mobile=1024
